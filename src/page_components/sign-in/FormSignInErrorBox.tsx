@@ -1,25 +1,31 @@
-import React from "react"
-import { t, AlertBox, SiteAlert, AlertNotice, ErrorMessage } from "@bloom-housing/ui-components"
-import type { UseFormMethods } from "react-hook-form"
-import { NetworkStatus } from "./FormSignIn"
+import React from "react";
+import { t, AlertBox, SiteAlert, AlertNotice, ErrorMessage } from "../../..";
+import type { UseFormMethods } from "react-hook-form";
+import { NetworkStatus } from "./FormSignIn";
 
 export type FormSignInErrorBoxProps = {
-  errors: FormSignInErrorBoxControl["errors"]
-  networkStatus: NetworkStatus
-  errorMessageId: string
-}
+  errors: FormSignInErrorBoxControl["errors"];
+  networkStatus: NetworkStatus;
+  errorMessageId: string;
+};
 
 export type FormSignInErrorBoxControl = {
-  errors: UseFormMethods["errors"]
-  control: UseFormMethods["control"]
-}
+  errors: UseFormMethods["errors"];
+  control: UseFormMethods["control"];
+};
 
-const FormSignInErrorBox = ({ networkStatus, errors, errorMessageId }: FormSignInErrorBoxProps) => {
+const FormSignInErrorBox = ({
+  networkStatus,
+  errors,
+  errorMessageId,
+}: FormSignInErrorBoxProps) => {
   return (
     <div className="border-b">
       {Object.entries(errors).length > 0 && !networkStatus.content && (
         <AlertBox type="alert" inverted closeable>
-          {errors.authentication ? errors.authentication.message : t("errors.errorsToResolve")}
+          {errors.authentication
+            ? errors.authentication.message
+            : t("errors.errorsToResolve")}
         </AlertBox>
       )}
 
@@ -29,7 +35,11 @@ const FormSignInErrorBox = ({ networkStatus, errors, errorMessageId }: FormSignI
           error={!!networkStatus.content}
           className="block mt-0 leading-normal text-alert"
         >
-          <AlertBox type={"alert"} inverted onClose={() => networkStatus.reset()}>
+          <AlertBox
+            type={"alert"}
+            inverted
+            onClose={() => networkStatus.reset()}
+          >
             {networkStatus.content.title}
           </AlertBox>
 
@@ -41,7 +51,11 @@ const FormSignInErrorBox = ({ networkStatus, errors, errorMessageId }: FormSignI
 
       {networkStatus.type === "success" && (
         <>
-          <AlertBox type="success" inverted onClose={() => networkStatus.reset()}>
+          <AlertBox
+            type="success"
+            inverted
+            onClose={() => networkStatus.reset()}
+          >
             {networkStatus.content?.title}
           </AlertBox>
 
@@ -53,7 +67,7 @@ const FormSignInErrorBox = ({ networkStatus, errors, errorMessageId }: FormSignI
 
       <SiteAlert type="notice" dismissable />
     </div>
-  )
-}
+  );
+};
 
-export { FormSignInErrorBox as default, FormSignInErrorBox }
+export { FormSignInErrorBox as default, FormSignInErrorBox };

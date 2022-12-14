@@ -1,5 +1,5 @@
-import React from "react"
-import { UseFormMethods } from "react-hook-form"
+import React from "react";
+import { UseFormMethods } from "react-hook-form";
 import {
   t,
   GridSection,
@@ -8,17 +8,17 @@ import {
   Field,
   Select,
   resolveObject,
-} from "@bloom-housing/ui-components"
+} from "../..";
 
 type FormAddressProps = {
-  subtitle: string
-  dataKey: string
-  enableMailCheckbox?: boolean
-  register: UseFormMethods["register"]
-  errors?: UseFormMethods["errors"]
-  required?: boolean
-  stateKeys: string[]
-}
+  subtitle: string;
+  dataKey: string;
+  enableMailCheckbox?: boolean;
+  register: UseFormMethods["register"];
+  errors?: UseFormMethods["errors"];
+  required?: boolean;
+  stateKeys: string[];
+};
 
 export const FormAddress = ({
   subtitle,
@@ -121,5 +121,5 @@ export const FormAddress = ({
         )}
       </GridSection>
     </>
-  )
-}
+  );
+};

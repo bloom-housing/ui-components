@@ -1,5 +1,4 @@
 {
-  "extends": "../tsconfig.json" /* TODO: is this worth connecting? */,
   "compilerOptions": {
     "outDir": "build/lib",
     "module": "esnext",

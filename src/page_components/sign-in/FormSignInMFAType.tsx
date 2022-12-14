@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   AppearanceStyleType,
   Button,
@@ -9,24 +9,24 @@ import {
   t,
   SiteAlert,
   FormSignInErrorBox,
-} from "@bloom-housing/ui-components"
-import type { UseFormMethods } from "react-hook-form"
-import { NetworkStatus } from "./FormSignIn"
+} from "../../..";
+import type { UseFormMethods } from "react-hook-form";
+import { NetworkStatus } from "./FormSignIn";
 
 export type FormSignInMFAProps = {
-  control: FormSignInMFAControl
-  onSubmit: (data: unknown) => void
-  networkError: NetworkStatus
-  emailOnClick: () => void
-  smsOnClick: () => void
-}
+  control: FormSignInMFAControl;
+  onSubmit: (data: unknown) => void;
+  networkError: NetworkStatus;
+  emailOnClick: () => void;
+  smsOnClick: () => void;
+};
 
 export type FormSignInMFAControl = {
-  errors: UseFormMethods["errors"]
-  handleSubmit: UseFormMethods["handleSubmit"]
-  register: UseFormMethods["register"]
-  setValue: UseFormMethods["setValue"]
-}
+  errors: UseFormMethods["errors"];
+  handleSubmit: UseFormMethods["handleSubmit"];
+  register: UseFormMethods["register"];
+  setValue: UseFormMethods["setValue"];
+};
 
 const FormSignInMFAType = ({
   onSubmit,
@@ -36,8 +36,8 @@ const FormSignInMFAType = ({
   smsOnClick,
 }: FormSignInMFAProps) => {
   const onError = () => {
-    window.scrollTo(0, 0)
-  }
+    window.scrollTo(0, 0);
+  };
 
   return (
     <FormCard>
@@ -58,7 +58,11 @@ const FormSignInMFAType = ({
 
       <SiteAlert type="notice" dismissable />
       <div className="form-card__group pt-0">
-        <Form id="sign-in-mfa" className="mt-10" onSubmit={handleSubmit(onSubmit, onError)}>
+        <Form
+          id="sign-in-mfa"
+          className="mt-10"
+          onSubmit={handleSubmit(onSubmit, onError)}
+        >
           <Field
             caps={true}
             name="mfaType"
@@ -92,7 +96,7 @@ const FormSignInMFAType = ({
         </Form>
       </div>
     </FormCard>
-  )
-}
+  );
+};
 
-export { FormSignInMFAType as default, FormSignInMFAType }
+export { FormSignInMFAType as default, FormSignInMFAType };

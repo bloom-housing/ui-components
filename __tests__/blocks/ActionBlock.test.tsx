@@ -1,10 +1,10 @@
-import React from "react"
-import { render, cleanup } from "@testing-library/react"
-import { ActionBlock, ActionBlockLayout } from "../../src/blocks/ActionBlock"
-import { Button } from "@bloom-housing/ui-components"
-import { AppearanceStyleType } from "../../src/global/AppearanceTypes"
+import React from "react";
+import { render, cleanup } from "@testing-library/react";
+import { ActionBlock, ActionBlockLayout } from "../../src/blocks/ActionBlock";
+import { Button } from "../../";
+import { AppearanceStyleType } from "../../src/global/AppearanceTypes";
 
-afterEach(cleanup)
+afterEach(cleanup);
 
 describe("<ActionBlock>", () => {
   it("can render with header & subheader", () => {
@@ -23,11 +23,11 @@ describe("<ActionBlock>", () => {
           </Button>,
         ]}
       />
-    )
-    expect(getByText("My Applications")).not.toBeNull()
-    expect(getByText("Subheader Text")).not.toBeNull()
-    expect(getByText("Action")).not.toBeNull()
-  })
+    );
+    expect(getByText("My Applications")).not.toBeNull();
+    expect(getByText("Subheader Text")).not.toBeNull();
+    expect(getByText("Action")).not.toBeNull();
+  });
 
   it("subheader is hidden for inline layout", () => {
     const { getByText, container } = render(
@@ -46,9 +46,11 @@ describe("<ActionBlock>", () => {
           </Button>,
         ]}
       />
-    )
-    expect(getByText("My Applications")).not.toBeNull()
-    expect(container.getElementsByClassName("action-block__subheader").length).toBe(0)
-    expect(getByText("Action")).not.toBeNull()
-  })
-})
+    );
+    expect(getByText("My Applications")).not.toBeNull();
+    expect(
+      container.getElementsByClassName("action-block__subheader").length
+    ).toBe(0);
+    expect(getByText("Action")).not.toBeNull();
+  });
+});

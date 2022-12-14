@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext } from "react";
 import {
   AppearanceStyleType,
   Button,
@@ -12,31 +12,31 @@ import {
   AlertNotice,
   ErrorMessage,
   emailRegex,
-} from "@bloom-housing/ui-components"
-import { NetworkErrorReset, NetworkStatusContent } from "../sign-in/FormSignIn"
-import { NavigationContext } from "../../config/NavigationContext"
-import type { UseFormMethods } from "react-hook-form"
+} from "../../..";
+import { NetworkErrorReset, NetworkStatusContent } from "../sign-in/FormSignIn";
+import { NavigationContext } from "../../config/NavigationContext";
+import type { UseFormMethods } from "react-hook-form";
 
 export type FormForgotPasswordProps = {
-  control: FormForgotPasswordControl
-  onSubmit: (data: FormForgotPasswordValues) => void
-  networkError: FormForgotPasswordNetworkError
-}
+  control: FormForgotPasswordControl;
+  onSubmit: (data: FormForgotPasswordValues) => void;
+  networkError: FormForgotPasswordNetworkError;
+};
 
 export type FormForgotPasswordNetworkError = {
-  error: NetworkStatusContent
-  reset: NetworkErrorReset
-}
+  error: NetworkStatusContent;
+  reset: NetworkErrorReset;
+};
 
 export type FormForgotPasswordControl = {
-  errors: UseFormMethods["errors"]
-  handleSubmit: UseFormMethods["handleSubmit"]
-  register: UseFormMethods["register"]
-}
+  errors: UseFormMethods["errors"];
+  handleSubmit: UseFormMethods["handleSubmit"];
+  register: UseFormMethods["register"];
+};
 
 export type FormForgotPasswordValues = {
-  email: string
-}
+  email: string;
+};
 
 const FormForgotPassword = ({
   onSubmit,
@@ -44,26 +44,33 @@ const FormForgotPassword = ({
   control: { errors, register, handleSubmit },
 }: FormForgotPasswordProps) => {
   const onError = () => {
-    window.scrollTo(0, 0)
-  }
+    window.scrollTo(0, 0);
+  };
 
-  const { router } = useContext(NavigationContext)
+  const { router } = useContext(NavigationContext);
 
   return (
     <FormCard>
       <div className="form-card__lead text-center border-b mx-0">
         <Icon size="2xl" symbol="profile" />
-        <h1 className="form-card__title">{t("authentication.forgotPassword.sendEmail")}</h1>
+        <h1 className="form-card__title">
+          {t("authentication.forgotPassword.sendEmail")}
+        </h1>
       </div>
 
       {Object.entries(errors).length > 0 && !networkError.error && (
         <AlertBox type="alert" inverted closeable>
-          {errors.authentication ? errors.authentication.message : t("errors.errorsToResolve")}
+          {errors.authentication
+            ? errors.authentication.message
+            : t("errors.errorsToResolve")}
         </AlertBox>
       )}
 
       {!!networkError.error?.error && Object.entries(errors).length === 0 && (
-        <ErrorMessage id={"forgotpasswordemail-error"} error={!!networkError.error}>
+        <ErrorMessage
+          id={"forgotpasswordemail-error"}
+          error={!!networkError.error}
+        >
           <AlertBox type="alert" inverted onClose={() => networkError.reset()}>
             {networkError.error.title}
           </AlertBox>
@@ -77,14 +84,20 @@ const FormForgotPassword = ({
       <SiteAlert type="notice" dismissable />
 
       <div className="form-card__group pt-0">
-        <Form id="sign-in" className="mt-10" onSubmit={handleSubmit(onSubmit, onError)}>
+        <Form
+          id="sign-in"
+          className="mt-10"
+          onSubmit={handleSubmit(onSubmit, onError)}
+        >
           <Field
             caps={true}
             name="email"
             label={t("t.email")}
             validation={{ required: true, pattern: emailRegex }}
             error={errors.email}
-            errorMessage={errors.email ? t("authentication.signIn.loginError") : undefined}
+            errorMessage={
+              errors.email ? t("authentication.signIn.loginError") : undefined
+            }
             register={register}
             onChange={() => networkError.reset()}
           />
@@ -103,7 +116,7 @@ const FormForgotPassword = ({
         </Form>
       </div>
     </FormCard>
-  )
-}
+  );
+};
 
-export { FormForgotPassword as default, FormForgotPassword }
+export { FormForgotPassword as default, FormForgotPassword };

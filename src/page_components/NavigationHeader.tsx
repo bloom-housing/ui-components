@@ -1,30 +1,30 @@
-import React, { useMemo, useContext } from "react"
-import { PageHeader, TabNav, TabNavItem, AppearanceSizeType } from "@bloom-housing/ui-components"
-import { NavigationContext } from "../config/NavigationContext"
-import "./NavigationHeader.scss"
+import React, { useMemo, useContext } from "react";
+import { PageHeader, TabNav, TabNavItem, AppearanceSizeType } from "../..";
+import { NavigationContext } from "../config/NavigationContext";
+import "./NavigationHeader.scss";
 
 type NavigationHeaderProps = {
-  className?: string
-  title: React.ReactNode
-  listingId?: string
-  tabs?: NavigationHeaderTabs
-  breadcrumbs?: React.ReactNode
-  children?: React.ReactChild
-}
+  className?: string;
+  title: React.ReactNode;
+  listingId?: string;
+  tabs?: NavigationHeaderTabs;
+  breadcrumbs?: React.ReactNode;
+  children?: React.ReactChild;
+};
 
 type NavigationHeaderTabs = {
-  show?: boolean
-  flagsQty?: number
-  listingLabel: string
-  applicationsLabel: string
-}
+  show?: boolean;
+  flagsQty?: number;
+  listingLabel: string;
+  applicationsLabel: string;
+};
 
 type NavigationHeaderTabsElement = {
-  label: string
-  path: string
-  activePaths: string[]
-  content: React.ReactNode | undefined
-}
+  label: string;
+  path: string;
+  activePaths: string[];
+  content: React.ReactNode | undefined;
+};
 
 const NavigationHeader = ({
   className,
@@ -34,8 +34,8 @@ const NavigationHeader = ({
   children,
   breadcrumbs,
 }: NavigationHeaderProps) => {
-  const navigation = useContext(NavigationContext)
-  const currentPath = navigation.router.asPath
+  const navigation = useContext(NavigationContext);
+  const currentPath = navigation.router.asPath;
 
   const tabNavElements = useMemo(() => {
     const elements: NavigationHeaderTabsElement[] = [
@@ -57,10 +57,10 @@ const NavigationHeader = ({
         ],
         content: undefined,
       },
-    ]
+    ];
 
-    return elements
-  }, [tabs, listingId])
+    return elements;
+  }, [tabs, listingId]);
 
   const tabNavItems = useMemo(() => {
     return (
@@ -77,8 +77,8 @@ const NavigationHeader = ({
           </TabNavItem>
         ))}
       </TabNav>
-    )
-  }, [currentPath, tabNavElements])
+    );
+  }, [currentPath, tabNavElements]);
 
   return (
     <PageHeader
@@ -89,7 +89,7 @@ const NavigationHeader = ({
     >
       {children}
     </PageHeader>
-  )
-}
+  );
+};
 
-export { NavigationHeader as default, NavigationHeader }
+export { NavigationHeader as default, NavigationHeader };

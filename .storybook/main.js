@@ -1,8 +1,8 @@
-const path = require("path")
-const { resolve } = require("path")
-const bloomTheme = require("../tailwind.config.js")
-const tailwindVars = require("@bloom-housing/ui-components/tailwind.tosass.js")(bloomTheme)
-const { NormalModuleReplacementPlugin } = require("webpack")
+const path = require("path");
+const { resolve } = require("path");
+const bloomTheme = require("../tailwind.config.js");
+const tailwindVars = require("../tailwind.tosass.js")(bloomTheme);
+const { NormalModuleReplacementPlugin } = require("webpack");
 
 module.exports = {
   stories: ["../src/**/*.stories.@(tsx|mdx)"],
@@ -20,7 +20,8 @@ module.exports = {
     reactDocgen: "react-docgen-typescript",
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+      propFilter: (prop) =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
   // In trouble? try https://storybook.js.org/docs/configurations/custom-webpack-config/#debug-the-default-webpack-config
@@ -52,7 +53,7 @@ module.exports = {
         },
       ],
       include: path.resolve(__dirname, "../"),
-    })
+    });
 
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
@@ -64,9 +65,9 @@ module.exports = {
           },
         },
       ],
-    })
+    });
 
-    config.resolve.extensions.push(".ts", ".tsx")
-    return config
+    config.resolve.extensions.push(".ts", ".tsx");
+    return config;
   },
-}
+};

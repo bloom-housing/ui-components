@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   AppearanceStyleType,
   Button,
@@ -8,29 +8,31 @@ import {
   Icon,
   MarkdownSection,
   t,
-} from "@bloom-housing/ui-components"
-import Markdown from "markdown-to-jsx"
-import { useForm } from "react-hook-form"
+} from "../../..";
+import Markdown from "markdown-to-jsx";
+import { useForm } from "react-hook-form";
 
 type FormTermsInValues = {
-  agree: boolean
-}
+  agree: boolean;
+};
 
 export type FormTermsProps = {
-  onSubmit: () => void
-  terms?: string
-}
+  onSubmit: () => void;
+  terms?: string;
+};
 
 const FormTerms = (props: FormTermsProps) => {
   // eslint-disable-next-line @typescript-eslint/unbound-method
-  const { handleSubmit, register, errors } = useForm<FormTermsInValues>()
+  const { handleSubmit, register, errors } = useForm<FormTermsInValues>();
 
   return (
     <Form id="terms" className="mt-10" onSubmit={handleSubmit(props.onSubmit)}>
       <FormCard>
         <div className="form-card__lead text-center">
           <Icon size="2xl" symbol="settings" />
-          <h2 className="form-card__title">{t(`authentication.terms.reviewToc`)}</h2>
+          <h2 className="form-card__title">
+            {t(`authentication.terms.reviewToc`)}
+          </h2>
           <p className="field-note mt-4 text-center">
             {t(`authentication.terms.youMustAcceptToc`)}
           </p>
@@ -38,7 +40,9 @@ const FormTerms = (props: FormTermsProps) => {
           <div className="overflow-y-auto max-h-96 mt-5 pr-4 text-left">
             {props.terms && (
               <MarkdownSection padding={false} fullwidth={true}>
-                <Markdown options={{ disableParsingRawHTML: false }}>{props.terms}</Markdown>
+                <Markdown options={{ disableParsingRawHTML: false }}>
+                  {props.terms}
+                </Markdown>
               </MarkdownSection>
             )}
           </div>
@@ -63,14 +67,17 @@ const FormTerms = (props: FormTermsProps) => {
 
         <div className="form-card__pager">
           <div className="form-card__pager-row primary">
-            <Button styleType={AppearanceStyleType.primary} data-test-id="form-submit">
+            <Button
+              styleType={AppearanceStyleType.primary}
+              data-test-id="form-submit"
+            >
               {t("t.submit")}
             </Button>
           </div>
         </div>
       </FormCard>
     </Form>
-  )
-}
+  );
+};
 
-export { FormTerms as default, FormTerms }
+export { FormTerms as default, FormTerms };

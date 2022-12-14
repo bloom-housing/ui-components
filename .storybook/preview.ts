@@ -1,12 +1,12 @@
-import "@bloom-housing/ui-components/src/global/css-imports.scss"
-import "@bloom-housing/ui-components/src/global/app-css.scss"
+import "../src/global/css-imports.scss";
+import "../src/global/app-css.scss";
 
-import { BADGES } from "./constants"
+import { BADGES } from "./constants";
 
 // Set up translation file
-import { addTranslation } from "../src/helpers/translator"
-import general from "../src/locales/general.json"
-addTranslation(general)
+import { addTranslation } from "../src/helpers/translator";
+import general from "../src/locales/general.json";
+addTranslation(general);
 
 export const parameters = {
   options: {
@@ -53,4 +53,4 @@ export const parameters = {
       title: "2nd Generation",
     },
   },
-}
+};
