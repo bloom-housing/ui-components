@@ -23,7 +23,8 @@
     "test:coverage": "jest -w 1 --coverage --watchAll=false",
     "prettier": "prettier --write \"**/*.tsx\"",
     "test:a11y": "build-storybook -o ./storybook-static && jest storyshot --testRegex=storyshots.spec.ts",
-    "version:ui-components": "lerna version --no-commit-hooks --conventional-graduate --include-merged-tags --force-git-tag"
+    "version": "lerna version --no-commit-hooks --conventional-graduate --include-merged-tags --force-git-tag",
+    "publish":"lerna publish from-package --yes --include-merged-tags --no-verify-access"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -120,5 +121,5 @@
     "ts-jest": "^26.4.1",
     "typesafe-actions": "^5.1.0"
   },
-  "gitHead": "02379da7dc3cf07b4476a19d5406abddefb47164"
+  "gitHead": "ef00e4db1a1bd4608525685ab81632ff4ba970cf"
 }
