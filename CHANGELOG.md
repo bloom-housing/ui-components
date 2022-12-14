@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 7.0.8-alpha.0 (2022-12-14)
+
+
+### Bug Fixes
+
+* bloom main uic contents ([951d4c7](https://github.com/bloom-housing/ui-components/commit/951d4c78b8a7f82837b12b4983fd0b6e693a9b0d))
+* lerna setup ([1cedf21](https://github.com/bloom-housing/ui-components/commit/1cedf2143199d2d4616c338ed02256a416e9dd68))
+* updated paths + functional storybook ([d2448bc](https://github.com/bloom-housing/ui-components/commit/d2448bc6613d955460df44f50c4a461cba8f09d4))
+
+
+
+
+
 ## [7.0.7](https://github.com/bloom-housing/bloom/compare/@bloom-housing/ui-components@7.0.6...@bloom-housing/ui-components@7.0.7) (2022-12-08)
 
 **Note:** Version bump only for package @bloom-housing/ui-components
