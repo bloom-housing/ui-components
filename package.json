@@ -22,9 +22,7 @@
     "test": "jest -w 1",
     "test:coverage": "jest -w 1 --coverage --watchAll=false",
     "prettier": "prettier --write \"**/*.tsx\"",
-    "test:a11y": "build-storybook -o ./storybook-static && jest storyshot --testRegex=storyshots.spec.ts",
-    "version:ui-components": "lerna version --no-commit-hooks --conventional-graduate --include-merged-tags --force-git-tag",
-    "publish:ui-components": "lerna publish from-package --yes --include-merged-tags --no-verify-access"
+    "test:a11y": "build-storybook -o ./storybook-static && jest storyshot --testRegex=storyshots.spec.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -61,7 +59,6 @@
     "dotenv": "^8.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.5.3",
-    "lerna": "6.1.0",
     "mockdate": "^3.0.2",
     "postcss": "^8.3.6",
     "postcss-loader": "^4.3",
@@ -74,6 +71,7 @@
     "regenerator-runtime": "^0.13.7",
     "sass": "1.52.1",
     "sass-loader": "^10.0.3",
+    "semantic-release": "19.0.5",
     "style-loader": "^1.1.3",
     "ts-jest": "^26.4.1",
     "ts-loader": "^8.0.4",
