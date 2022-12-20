@@ -11,6 +11,11 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
   "scripts": {
     "build-storybook": "build-storybook -c .storybook -s ./public",
     "start": "start-storybook -s ./public",
