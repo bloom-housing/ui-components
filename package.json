@@ -22,11 +22,6 @@
       }
     ]
   },
-  "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/npm",
-      "@semantic-release/github"],
   "scripts": {
     "build-storybook": "build-storybook -c .storybook -s ./public",
     "start": "start-storybook -s ./public",
