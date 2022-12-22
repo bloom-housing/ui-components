@@ -31,13 +31,7 @@ const ResendConfirmationModal = ({
   onSubmit,
 }: ResendConfirmationModalProps) => {
   // eslint-disable-next-line @typescript-eslint/unbound-method
-  const {
-    register,
-    formState: { errors },
-    reset,
-    getValues,
-    trigger,
-  } = useForm({
+  const { register, errors, reset, getValues, trigger } = useForm({
     defaultValues: useMemo(() => {
       return {
         emailResend: initialEmailValue,
