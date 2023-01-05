@@ -14,21 +14,6 @@
   "release": {
     "branches": [
       "main"
-    ],
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      [
-        "@semantic-release/git",
-        {
-          "assets": [
-            "dist/**/*.{js,css}",
-            "docs",
-            "package.json"
-          ],
-          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-        }
-      ]
     ]
   },
   "scripts": {
@@ -45,7 +30,6 @@
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "@geometricpanda/storybook-addon-badges": "^0.2.1",
-    "@semantic-release/git": "10.0.1",
     "@storybook/addon-a11y": "^6.3.8",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-docs": "^6.3.8",
