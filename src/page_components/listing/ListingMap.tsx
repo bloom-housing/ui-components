@@ -80,7 +80,7 @@ const ListingMap = (props: ListingMapProps) => {
     })
   }, [props.address?.latitude, props.address?.longitude, props.enableCustomPinPositioning])
 
-  const onMarkerDragEnd = useCallback((event) => {
+  const onMarkerDragEnd = useCallback((event: any) => {
     if (props.setLatLong) {
       props.setLatLong({
         latitude: event.lngLat[1],
