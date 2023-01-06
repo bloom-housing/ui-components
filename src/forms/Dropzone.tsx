@@ -28,7 +28,7 @@ const Dropzone = (props: DropzoneProps) => {
   const maxFiles = props.maxFiles || 1
 
   const onDrop = useCallback(
-    (acceptedFiles) => {
+    (acceptedFiles: File[]) => {
       acceptedFiles.forEach((file: File) => uploader(file))
     },
     [uploader]

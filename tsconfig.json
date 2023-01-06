@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "build/lib",
+    "outDir": "dist",
     "module": "esnext",
     "esModuleInterop": true,
     "target": "es5",
@@ -22,7 +22,8 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "skipLibCheck": true
   },
   "include": ["src/**/*", "__tests__/**/*"]
   // "exclude": ["../../node_modules", "node_modules", "build", "scripts"]
