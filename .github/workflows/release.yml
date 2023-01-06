@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      # testing
+      - alpha
 jobs:
   release:
     name: Release
