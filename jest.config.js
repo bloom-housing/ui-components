@@ -1,40 +1,15 @@
-/*eslint no-undef: "error"*/
-/*eslint-env node*/
-
-process.env.TZ = "UTC"
-
+/** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
   testRegex: ["/*.test.tsx$", "/*.test.ts$"],
-  collectCoverageFrom: [
-    "**/*.tsx",
-    "!**/*.stories.tsx",
-    "<rootDir>/ui-components/src/helpers/*.ts",
-  ],
-  coverageReporters: ["lcov", "text"],
-  coverageDirectory: "test-coverage",
-  coverageThreshold: {
-    global: {
-      branches: 0,
-      functions: 0,
-      lines: 0,
-      statements: 0,
-    },
-  },
-  preset: "ts-jest",
-  globals: {
-    "ts-jest": {
-      tsConfig: "tsconfig.json",
-    },
-  },
-  rootDir: "..",
-  roots: ["<rootDir>/ui-components"],
+  preset: 'ts-jest',
+  testEnvironment: 'node',
   transform: {
     "^.+\\.[t|j]sx?$": "ts-jest",
   },
-  setupFiles: ["dotenv/config"],
-  setupFilesAfterEnv: ["<rootDir>/ui-components/.jest/setup-tests.js"],
+  testEnvironment: "jsdom",
   moduleNameMapper: {
     "\\.(scss|css|less)$": "identity-obj-proxy",
   },
-  testPathIgnorePatterns: ["storyshots.d.ts"],
-}
+  transformIgnorePatterns: ["node_modules", "node_modules/?!(nanoid)/"],
+  setupFilesAfterEnv: ["<rootDir>/.jest/setup-tests.js"],
+};
