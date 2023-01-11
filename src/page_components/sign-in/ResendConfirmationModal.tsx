@@ -7,7 +7,7 @@ import {
   Field,
   emailRegex,
   AppearanceSizeType,
-} from "@bloom-housing/ui-components"
+} from "../../.."
 import React, { useEffect, useMemo } from "react"
 import { useForm } from "react-hook-form"
 

@@ -1,5 +1,5 @@
 import React, { useMemo, useContext } from "react"
-import { PageHeader, TabNav, TabNavItem, AppearanceSizeType } from "@bloom-housing/ui-components"
+import { PageHeader, TabNav, TabNavItem, AppearanceSizeType } from "../.."
 import { NavigationContext } from "../config/NavigationContext"
 import "./NavigationHeader.scss"
 
@@ -9,7 +9,7 @@ type NavigationHeaderProps = {
   listingId?: string
   tabs?: NavigationHeaderTabs
   breadcrumbs?: React.ReactNode
-  children?: React.ReactChild
+  children?: React.ReactNode
 }
 
 type NavigationHeaderTabs = {

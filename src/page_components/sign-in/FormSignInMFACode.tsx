@@ -9,7 +9,7 @@ import {
   t,
   SiteAlert,
   FormSignInErrorBox,
-} from "@bloom-housing/ui-components"
+} from "../../.."
 import { NetworkStatus, FormSignInControl } from "./FormSignIn"
 
 export enum RequestType {

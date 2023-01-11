@@ -9,7 +9,7 @@ import {
   LinkButton,
   t,
   FormSignInErrorBox,
-} from "@bloom-housing/ui-components"
+} from "../../.."
 import type { UseFormMethods } from "react-hook-form"
 import { NavigationContext } from "../../config/NavigationContext"
 import { AlertTypes } from "../../notifications/alertTypes"

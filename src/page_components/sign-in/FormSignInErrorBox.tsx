@@ -1,5 +1,5 @@
 import React from "react"
-import { t, AlertBox, SiteAlert, AlertNotice, ErrorMessage } from "@bloom-housing/ui-components"
+import { t, AlertBox, SiteAlert, AlertNotice, ErrorMessage } from "../../.."
 import type { UseFormMethods } from "react-hook-form"
 import { NetworkStatus } from "./FormSignIn"
 

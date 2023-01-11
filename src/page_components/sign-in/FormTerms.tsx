@@ -8,7 +8,7 @@ import {
   Icon,
   MarkdownSection,
   t,
-} from "@bloom-housing/ui-components"
+} from "../../.."
 import Markdown from "markdown-to-jsx"
 import { useForm } from "react-hook-form"
 

@@ -17,7 +17,7 @@ export const GroupedTable = (props: GroupedTableProps) => {
 
   const headerLabels = Object.values(headers).map((col, index) => {
     const uniqKey = process.env.NODE_ENV === "test" ? `header-${index}` : nanoid()
-    return <th key={uniqKey}>{col}</th>
+    return <th key={uniqKey}>{col as string}</th>
   })
 
   const body: React.ReactNode[] = []

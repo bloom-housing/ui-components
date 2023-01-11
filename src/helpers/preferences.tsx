@@ -8,7 +8,7 @@ import {
   Field,
   Select,
   resolveObject,
-} from "@bloom-housing/ui-components"
+} from "../../"
 
 type FormAddressProps = {
   subtitle: string

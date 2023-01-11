@@ -12,7 +12,7 @@ import {
   AlertNotice,
   ErrorMessage,
   emailRegex,
-} from "@bloom-housing/ui-components"
+} from "../../.."
 import { NetworkErrorReset, NetworkStatusContent } from "../sign-in/FormSignIn"
 import { NavigationContext } from "../../config/NavigationContext"
 import type { UseFormMethods } from "react-hook-form"
