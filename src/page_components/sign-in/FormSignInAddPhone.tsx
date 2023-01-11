@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import {
   AppearanceStyleType,
   Button,
@@ -9,26 +9,26 @@ import {
   SiteAlert,
   PhoneField,
   FormSignInErrorBox,
-} from "../../..";
-import type { UseFormMethods } from "react-hook-form";
-import { NetworkStatus } from "./FormSignIn";
+} from "@bloom-housing/ui-components"
+import type { UseFormMethods } from "react-hook-form"
+import { NetworkStatus } from "./FormSignIn"
 
 export type FormSignInAddPhoneProps = {
-  control: FormSignInAddPhoneControl;
-  onSubmit: (data: FormSignInAddPhoneValues) => void;
-  networkError: NetworkStatus;
-  phoneNumber: string;
-};
+  control: FormSignInAddPhoneControl
+  onSubmit: (data: FormSignInAddPhoneValues) => void
+  networkError: NetworkStatus
+  phoneNumber: string
+}
 
 export type FormSignInAddPhoneControl = {
-  errors: UseFormMethods["errors"];
-  handleSubmit: UseFormMethods["handleSubmit"];
-  control: UseFormMethods["control"];
-};
+  errors: UseFormMethods["errors"]
+  handleSubmit: UseFormMethods["handleSubmit"]
+  control: UseFormMethods["control"]
+}
 
 export type FormSignInAddPhoneValues = {
-  phoneNumber: string;
-};
+  phoneNumber: string
+}
 
 const FormSignInAddPhone = ({
   onSubmit,
@@ -37,19 +37,15 @@ const FormSignInAddPhone = ({
   phoneNumber,
 }: FormSignInAddPhoneProps) => {
   const onError = () => {
-    window.scrollTo(0, 0);
-  };
-  const { errors, handleSubmit } = control;
+    window.scrollTo(0, 0)
+  }
+  const { errors, handleSubmit } = control
   return (
     <FormCard>
       <div className="form-card__lead text-center">
         <Icon size="2xl" symbol="profile" className="form-card__header-icon" />
-        <h2 className="form-card__title is-borderless">
-          {t("nav.signInMFA.addNumber")}
-        </h2>
-        <p className="form-card__sub-title">
-          {t("nav.signInMFA.addNumberSecondaryTitle")}
-        </p>
+        <h2 className="form-card__title is-borderless">{t("nav.signInMFA.addNumber")}</h2>
+        <p className="form-card__sub-title">{t("nav.signInMFA.addNumberSecondaryTitle")}</p>
       </div>
       <FormSignInErrorBox
         errors={errors}
@@ -59,11 +55,7 @@ const FormSignInAddPhone = ({
 
       <SiteAlert type="notice" dismissable />
       <div className="form-card__group pt-0">
-        <Form
-          id="sign-in-mfa"
-          className="mt-10"
-          onSubmit={handleSubmit(onSubmit, onError)}
-        >
+        <Form id="sign-in-mfa" className="mt-10" onSubmit={handleSubmit(onSubmit, onError)}>
           <PhoneField
             label={t("nav.signInMFA.phoneNumber")}
             caps={true}
@@ -89,7 +81,7 @@ const FormSignInAddPhone = ({
         </Form>
       </div>
     </FormCard>
-  );
-};
+  )
+}
 
-export { FormSignInAddPhone as default, FormSignInAddPhone };
+export { FormSignInAddPhone as default, FormSignInAddPhone }

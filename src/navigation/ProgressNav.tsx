@@ -26,7 +26,7 @@ const ProgressNavItem = (props: {
     }
   }
 
-  const srTextBuilder = (): string | React.ReactNode => {
+  const srTextBuilder = (): string | React.ReactFragment => {
     if (props.section < props.currentPageSection) {
       return (
         <span className="sr-only">

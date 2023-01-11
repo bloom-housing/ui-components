@@ -1,13 +1,13 @@
-import React from "react";
-import ActionBlock, { ActionBlockLayout } from "./ActionBlock";
-import HeaderBadge from "../icons/HeaderBadge";
-import { Button } from "../..";
-import { AppearanceStyleType } from "../global/AppearanceTypes";
-import Icon from "../icons/Icon";
+import React from "react"
+import ActionBlock, { ActionBlockLayout } from "./ActionBlock"
+import HeaderBadge from "../icons/HeaderBadge"
+import { Button } from "@bloom-housing/ui-components"
+import { AppearanceStyleType } from "../global/AppearanceTypes"
+import Icon from "../icons/Icon"
 
 export default {
   title: "Blocks/Action Block",
-};
+}
 
 export const blockWithIcon = () => (
   <ActionBlock
@@ -15,29 +15,23 @@ export const blockWithIcon = () => (
     background="primary-lighter"
     icon={<Icon size="3xl" symbol="mail" />}
     actions={[
-      <Button
-        onClick={() => console.log("click")}
-        styleType={AppearanceStyleType.primary}
-      >
+      <Button onClick={() => console.log("click")} styleType={AppearanceStyleType.primary}>
         Action
       </Button>,
     ]}
   ></ActionBlock>
-);
+)
 
 export const blockNoIconNoBackgroung = () => (
   <ActionBlock
     header="Full length headline text that spans the block"
     actions={[
-      <Button
-        onClick={() => console.log("click")}
-        styleType={AppearanceStyleType.info}
-      >
+      <Button onClick={() => console.log("click")} styleType={AppearanceStyleType.info}>
         Button
       </Button>,
     ]}
   ></ActionBlock>
-);
+)
 
 export const blockWithDarkerBg = () => (
   <ActionBlock
@@ -45,21 +39,15 @@ export const blockWithDarkerBg = () => (
     icon={<Icon size="3xl" symbol="mail" />}
     background="primary-darker"
     actions={[
-      <Button
-        onClick={() => console.log("click")}
-        styleType={AppearanceStyleType.primary}
-      >
+      <Button onClick={() => console.log("click")} styleType={AppearanceStyleType.primary}>
         Action
       </Button>,
-      <Button
-        onClick={() => console.log("click")}
-        styleType={AppearanceStyleType.info}
-      >
+      <Button onClick={() => console.log("click")} styleType={AppearanceStyleType.info}>
         Action
       </Button>,
     ]}
   ></ActionBlock>
-);
+)
 
 export const blockWithSubheader = () => (
   <ActionBlock
@@ -69,7 +57,7 @@ export const blockWithSubheader = () => (
     background="primary-lighter"
     actions={[<Button onClick={() => console.log("click")}>Action</Button>]}
   ></ActionBlock>
-);
+)
 
 export const inlineBlock = () => (
   <ActionBlock
@@ -78,15 +66,12 @@ export const inlineBlock = () => (
     background="primary-lighter"
     layout={ActionBlockLayout.inline}
     actions={[
-      <Button
-        onClick={() => console.log("click")}
-        styleType={AppearanceStyleType.primary}
-      >
+      <Button onClick={() => console.log("click")} styleType={AppearanceStyleType.primary}>
         Action
       </Button>,
     ]}
   ></ActionBlock>
-);
+)
 
 export const inlineBlockWith2actions = () => (
   <ActionBlock
@@ -94,15 +79,11 @@ export const inlineBlockWith2actions = () => (
     background="primary-darker"
     layout={ActionBlockLayout.inline}
     actions={[
-      <Button onClick={() => console.log("click")}>
-        First Come, First Served
-      </Button>,
-      <Button onClick={() => console.log("click")}>
-        First Come, First Served
-      </Button>,
+      <Button onClick={() => console.log("click")}>First Come, First Served</Button>,
+      <Button onClick={() => console.log("click")}>First Come, First Served</Button>,
     ]}
   ></ActionBlock>
-);
+)
 
 export const inlineBlockWith2actionsAsLinks = () => (
   <ActionBlock
@@ -118,4 +99,4 @@ export const inlineBlockWith2actionsAsLinks = () => (
       </a>,
     ]}
   ></ActionBlock>
-);
+)

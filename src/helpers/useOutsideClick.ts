@@ -7,7 +7,7 @@ type OutsideClickProps = {
 
 export const useOutsideClick = ({ ref, callback }: OutsideClickProps) => {
   const handleClick = useCallback(
-    (e: any) => {
+    (e) => {
       if (ref?.current && !ref.current.contains(e.target)) {
         callback()
       }

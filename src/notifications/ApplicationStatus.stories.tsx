@@ -1,37 +1,33 @@
-import * as React from "react";
-import dayjs from "dayjs";
-import advancedFormat from "dayjs/plugin/advancedFormat";
-import { ApplicationStatus } from "./ApplicationStatus";
-import { ApplicationStatusType } from "../global/ApplicationStatusType";
-import { t } from "../helpers/translator";
-import Archer from "../../__tests__/fixtures/archer.json";
-import { text, withKnobs } from "@storybook/addon-knobs";
-import formatDateTime from "../helpers/DateFormat";
+import * as React from "react"
+import dayjs from "dayjs"
+import advancedFormat from "dayjs/plugin/advancedFormat"
+import { ApplicationStatus } from "./ApplicationStatus"
+import { ApplicationStatusType } from "../global/ApplicationStatusType"
+import { t } from "../helpers/translator"
+import Archer from "../../__tests__/fixtures/archer.json"
+import { text, withKnobs } from "@storybook/addon-knobs"
+import formatDateTime from "@bloom-housing/shared-helpers/src/DateFormat"
 
-dayjs.extend(advancedFormat);
+dayjs.extend(advancedFormat)
 
 export default {
   component: ApplicationStatus,
   title: "Notifications/Application Status",
   decorators: [(storyFn: any) => <div>{storyFn()}</div>, withKnobs],
-};
+}
 
-const listing = Object.assign({}, Archer) as any;
-listing.applicationOpenDate = "";
-let days = 10;
-listing.applicationDueDate = dayjs().add(days, "days").format();
+const listing = Object.assign({}, Archer) as any
+listing.applicationOpenDate = ""
+let days = 10
+listing.applicationDueDate = dayjs().add(days, "days").format()
 
 export const dueSoonAndVivid = () => (
   <ApplicationStatus
-    content={
-      t("listings.applicationDeadline") +
-      ": " +
-      formatDateTime(listing.applicationDueDate)
-    }
+    content={t("listings.applicationDeadline") + ": " + formatDateTime(listing.applicationDueDate)}
     status={ApplicationStatusType.Open}
     vivid
   />
-);
+)
 
 export const withSubContent = () => (
   <ApplicationStatus
@@ -40,115 +36,93 @@ export const withSubContent = () => (
     status={ApplicationStatusType.Open}
     vivid
   />
-);
+)
 
 export const dueSoonWithTime = () => (
   <ApplicationStatus
     content={
-      t("listings.applicationDeadline") +
-      ": " +
-      formatDateTime(listing.applicationDueDate, true)
+      t("listings.applicationDeadline") + ": " + formatDateTime(listing.applicationDueDate, true)
     }
     status={ApplicationStatusType.Open}
   />
-);
+)
 
-const listingPast = Object.assign({}, Archer) as any;
-listingPast.applicationOpenDate = "";
-days = 10;
+const listingPast = Object.assign({}, Archer) as any
+listingPast.applicationOpenDate = ""
+days = 10
 
 export const pastDue = () => (
   <ApplicationStatus
     content={
-      t("listings.applicationsClosed") +
-      ": " +
-      formatDateTime(listingPast.applicationDueDate)
+      t("listings.applicationsClosed") + ": " + formatDateTime(listingPast.applicationDueDate)
     }
     status={ApplicationStatusType.Closed}
   />
-);
+)
 
-listingPast.applicationDueDate = dayjs().subtract(days, "days").format();
+listingPast.applicationDueDate = dayjs().subtract(days, "days").format()
 
 export const pastDueAndVivid = () => (
   <ApplicationStatus
     content={
-      t("listings.applicationsClosed") +
-      ": " +
-      formatDateTime(listingPast.applicationDueDate)
+      t("listings.applicationsClosed") + ": " + formatDateTime(listingPast.applicationDueDate)
     }
     status={ApplicationStatusType.Closed}
     vivid={true}
   />
-);
+)
 
 export const pastDueWithStyles = () => (
   <ApplicationStatus
     className={text("className", "place-content-center")}
     content={
-      t("listings.applicationsClosed") +
-      ": " +
-      formatDateTime(listingPast.applicationDueDate)
+      t("listings.applicationsClosed") + ": " + formatDateTime(listingPast.applicationDueDate)
     }
     status={ApplicationStatusType.Closed}
   />
-);
+)
 
 export const pastDueWithIconColor = () => (
   <ApplicationStatus
     content={
-      t("listings.applicationsClosed") +
-      ": " +
-      formatDateTime(listingPast.applicationDueDate)
+      t("listings.applicationsClosed") + ": " + formatDateTime(listingPast.applicationDueDate)
     }
     iconColor={text("Icon Color", "#ff0000")}
     status={ApplicationStatusType.Closed}
   />
-);
+)
 
-const listing2 = Object.assign({}, Archer) as any;
-days = 10;
-listing2.applicationDueDate = dayjs().add(days, "days").format();
+const listing2 = Object.assign({}, Archer) as any
+days = 10
+listing2.applicationDueDate = dayjs().add(days, "days").format()
 
 export const openSoon = () => (
   <ApplicationStatus
     content={
-      t("listings.applicationOpenPeriod") +
-      ": " +
-      formatDateTime(listing2.applicationDueDate)
+      t("listings.applicationOpenPeriod") + ": " + formatDateTime(listing2.applicationDueDate)
     }
     status={ApplicationStatusType.Open}
   />
-);
+)
 
-const listing3 = Object.assign({}, Archer) as any;
-days = 10;
-listing3.applicationDueDate = dayjs().add(days, "days").format();
+const listing3 = Object.assign({}, Archer) as any
+days = 10
+listing3.applicationDueDate = dayjs().add(days, "days").format()
 
 export const openedAlready = () => (
   <ApplicationStatus
-    content={
-      t("listings.applicationDeadline") +
-      ": " +
-      formatDateTime(listing3.applicationDueDate)
-    }
+    content={t("listings.applicationDeadline") + ": " + formatDateTime(listing3.applicationDueDate)}
     status={ApplicationStatusType.Open}
   />
-);
+)
 
 export const openedWithNoDue = () => (
-  <ApplicationStatus
-    content={t("listings.applicationFCFS")}
-    status={ApplicationStatusType.Open}
-  />
-);
+  <ApplicationStatus content={t("listings.applicationFCFS")} status={ApplicationStatusType.Open} />
+)
 
 export const openedWithFCFS = () => (
-  <ApplicationStatus
-    content={t("listings.applicationFCFS")}
-    status={ApplicationStatusType.Open}
-  />
-);
+  <ApplicationStatus content={t("listings.applicationFCFS")} status={ApplicationStatusType.Open} />
+)
 
 export const openedWithFCFSVivid = () => (
   <ApplicationStatus
@@ -156,7 +130,7 @@ export const openedWithFCFSVivid = () => (
     status={ApplicationStatusType.Open}
     vivid
   />
-);
+)
 
 export const postLottery = () => (
   <ApplicationStatus
@@ -164,7 +138,7 @@ export const postLottery = () => (
     status={ApplicationStatusType.PostLottery}
     withIcon={false}
   />
-);
+)
 
 export const matched = () => (
   <ApplicationStatus
@@ -173,4 +147,4 @@ export const matched = () => (
     withIcon={true}
     iconType={"check"}
   />
-);
+)

@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import {
   AppearanceStyleType,
   Button,
@@ -9,8 +9,8 @@ import {
   t,
   SiteAlert,
   FormSignInErrorBox,
-} from "../../..";
-import { NetworkStatus, FormSignInControl } from "./FormSignIn";
+} from "@bloom-housing/ui-components"
+import { NetworkStatus, FormSignInControl } from "./FormSignIn"
 
 export enum RequestType {
   email = "email",
@@ -18,18 +18,18 @@ export enum RequestType {
 }
 
 export type FormSignInMFACodeProps = {
-  control: FormSignInControl;
-  onSubmit: (data: FormSignInMFACodeValues) => void;
-  networkError: NetworkStatus;
-  mfaType: RequestType;
-  allowPhoneNumberEdit: boolean;
-  phoneNumber: string;
-  goBackToPhone: () => void;
-};
+  control: FormSignInControl
+  onSubmit: (data: FormSignInMFACodeValues) => void
+  networkError: NetworkStatus
+  mfaType: RequestType
+  allowPhoneNumberEdit: boolean
+  phoneNumber: string
+  goBackToPhone: () => void
+}
 
 export type FormSignInMFACodeValues = {
-  mfaCode: string;
-};
+  mfaCode: string
+}
 
 const FormSignInMFACode = ({
   onSubmit,
@@ -41,10 +41,10 @@ const FormSignInMFACode = ({
   goBackToPhone,
 }: FormSignInMFACodeProps) => {
   const onError = () => {
-    window.scrollTo(0, 0);
-  };
+    window.scrollTo(0, 0)
+  }
 
-  let note;
+  let note
   if (allowPhoneNumberEdit) {
     note = (
       <>
@@ -58,16 +58,14 @@ const FormSignInMFACode = ({
           {t("nav.signInMFA.editPhoneNumber")}{" "}
         </Button>
       </>
-    );
+    )
   }
 
   return (
     <FormCard>
       <div className="form-card__lead text-center">
         <Icon size="2xl" symbol="profile" className="form-card__header-icon" />
-        <h2 className="form-card__title is-borderless">
-          {t("nav.signInMFA.verifyTitle")}
-        </h2>
+        <h2 className="form-card__title is-borderless">{t("nav.signInMFA.verifyTitle")}</h2>
         <p className="form-card__sub-title">
           {mfaType === RequestType.sms
             ? t("nav.signInMFA.haveSentCodeToPhone")
@@ -82,11 +80,7 @@ const FormSignInMFACode = ({
 
       <SiteAlert type="notice" dismissable />
       <div className="form-card__group pt-0">
-        <Form
-          id="sign-in-mfa"
-          className="mt-10"
-          onSubmit={handleSubmit(onSubmit, onError)}
-        >
+        <Form id="sign-in-mfa" className="mt-10" onSubmit={handleSubmit(onSubmit, onError)}>
           <Field
             caps={true}
             name="mfaCode"
@@ -99,17 +93,14 @@ const FormSignInMFACode = ({
             note={note}
           />
           <div className="text-center mt-10">
-            <Button
-              styleType={AppearanceStyleType.primary}
-              data-test-id="verify-and-sign-in"
-            >
+            <Button styleType={AppearanceStyleType.primary} data-test-id="verify-and-sign-in">
               {t("nav.signInMFA.signIn")}
             </Button>
           </div>
         </Form>
       </div>
     </FormCard>
-  );
-};
+  )
+}
 
-export { FormSignInMFACode as default, FormSignInMFACode };
+export { FormSignInMFACode as default, FormSignInMFACode }

@@ -1,19 +1,19 @@
-import React from "react";
-import { Button, t } from "../..";
+import React from "react"
+import { Button, t } from "@bloom-housing/ui-components"
 
 type AgPaginationProps = {
-  totalItems: number;
-  totalPages: number;
-  currentPage: number;
-  itemsPerPage: number;
-  quantityLabel?: string;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-  setItemsPerPage: React.Dispatch<React.SetStateAction<number>>;
-  onPageChange?: (page: number) => void;
-  onPerPageChange?: (size: number) => void;
-};
+  totalItems: number
+  totalPages: number
+  currentPage: number
+  itemsPerPage: number
+  quantityLabel?: string
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>
+  setItemsPerPage: React.Dispatch<React.SetStateAction<number>>
+  onPageChange?: (page: number) => void
+  onPerPageChange?: (size: number) => void
+}
 
-const AG_PER_PAGE_OPTIONS = [8, 25, 50, 100];
+const AG_PER_PAGE_OPTIONS = [8, 25, 50, 100]
 
 const AgPagination = ({
   totalItems,
@@ -27,19 +27,19 @@ const AgPagination = ({
   onPerPageChange,
 }: AgPaginationProps) => {
   const onNextClick = () => {
-    setCurrentPage(currentPage + 1);
-    onPageChange && onPageChange(currentPage);
-  };
+    setCurrentPage(currentPage + 1)
+    onPageChange && onPageChange(currentPage)
+  }
 
   const onPrevClick = () => {
-    setCurrentPage(currentPage - 1);
-    onPageChange && onPageChange(currentPage);
-  };
+    setCurrentPage(currentPage - 1)
+    onPageChange && onPageChange(currentPage)
+  }
 
   const onRowLimitChange = (size: string) => {
-    setItemsPerPage(parseInt(size));
-    onPerPageChange && onPerPageChange(itemsPerPage);
-  };
+    setItemsPerPage(parseInt(size))
+    onPerPageChange && onPerPageChange(itemsPerPage)
+  }
 
   return (
     <div className="data-pager flex flex-col md:flex-row">
@@ -58,9 +58,7 @@ const AgPagination = ({
           <span className="field-label" id="lbTotalPages">
             {totalItems}
           </span>
-          {quantityLabel && (
-            <span className="field-label">{quantityLabel}</span>
-          )}
+          {quantityLabel && <span className="field-label">{quantityLabel}</span>}
         </div>
 
         <div className="flex mt-5 md:mt-0 md:items-center">
@@ -99,12 +97,12 @@ const AgPagination = ({
               {Array(totalPages)
                 .fill(totalPages)
                 .map((_, i) => {
-                  const value = i + 1;
+                  const value = i + 1
                   return (
                     <option key={value} value={value}>
                       {value}
                     </option>
-                  );
+                  )
                 })}
             </select>
           </div>
@@ -133,7 +131,7 @@ const AgPagination = ({
         </Button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export { AgPagination as default, AgPagination, AG_PER_PAGE_OPTIONS };
+export { AgPagination as default, AgPagination, AG_PER_PAGE_OPTIONS }

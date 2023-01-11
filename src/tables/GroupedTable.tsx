@@ -17,7 +17,7 @@ export const GroupedTable = (props: GroupedTableProps) => {
 
   const headerLabels = Object.values(headers).map((col, index) => {
     const uniqKey = process.env.NODE_ENV === "test" ? `header-${index}` : nanoid()
-    return <th key={uniqKey}>{col as string}</th>
+    return <th key={uniqKey}>{col}</th>
   })
 
   const body: React.ReactNode[] = []
@@ -68,7 +68,7 @@ export const GroupedTable = (props: GroupedTableProps) => {
     })
   })
 
-  const tableClasses = ["w-full", "text-sm"]
+  const tableClasses = ["w-full", "text-xs"]
   if (props.responsiveCollapse) {
     tableClasses.push("responsive-collapse")
   }

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext } from "react"
 import {
   AppearanceStyleType,
   Button,
@@ -9,47 +9,47 @@ import {
   LinkButton,
   t,
   FormSignInErrorBox,
-} from "../../..";
-import type { UseFormMethods } from "react-hook-form";
-import { NavigationContext } from "../../config/NavigationContext";
-import { AlertTypes } from "../../notifications/alertTypes";
+} from "@bloom-housing/ui-components"
+import type { UseFormMethods } from "react-hook-form"
+import { NavigationContext } from "../../config/NavigationContext"
+import { AlertTypes } from "../../notifications/alertTypes"
 
-export type NetworkErrorDetermineError = (status: number, error: Error) => void;
+export type NetworkErrorDetermineError = (status: number, error: Error) => void
 
-export type NetworkStatusType = AlertTypes;
+export type NetworkStatusType = AlertTypes
 
-export type NetworkErrorReset = () => void;
+export type NetworkErrorReset = () => void
 
 export type NetworkStatusContent = {
-  title: string;
-  description: string;
-  error?: boolean;
-} | null;
+  title: string
+  description: string
+  error?: boolean
+} | null
 
 export type NetworkStatus = {
-  content: NetworkStatusContent;
-  type?: NetworkStatusType;
-  reset: NetworkErrorReset;
-};
+  content: NetworkStatusContent
+  type?: NetworkStatusType
+  reset: NetworkErrorReset
+}
 
 export type FormSignInProps = {
-  control: FormSignInControl;
-  onSubmit: (data: FormSignInValues) => void;
-  networkStatus: NetworkStatus;
-  showRegisterBtn?: boolean;
-};
+  control: FormSignInControl
+  onSubmit: (data: FormSignInValues) => void
+  networkStatus: NetworkStatus
+  showRegisterBtn?: boolean
+}
 
 export type FormSignInControl = {
-  errors: UseFormMethods["errors"];
-  handleSubmit: UseFormMethods["handleSubmit"];
-  register: UseFormMethods["register"];
-  watch: UseFormMethods["watch"];
-};
+  errors: UseFormMethods["errors"]
+  handleSubmit: UseFormMethods["handleSubmit"]
+  register: UseFormMethods["register"]
+  watch: UseFormMethods["watch"]
+}
 
 export type FormSignInValues = {
-  email: string;
-  password: string;
-};
+  email: string
+  password: string
+}
 
 const FormSignIn = ({
   onSubmit,
@@ -58,9 +58,9 @@ const FormSignIn = ({
   control: { errors, register, handleSubmit },
 }: FormSignInProps) => {
   const onError = () => {
-    window.scrollTo(0, 0);
-  };
-  const { LinkComponent } = useContext(NavigationContext);
+    window.scrollTo(0, 0)
+  }
+  const { LinkComponent } = useContext(NavigationContext)
 
   return (
     <FormCard>
@@ -74,11 +74,7 @@ const FormSignIn = ({
         errorMessageId={"main-sign-in"}
       />
       <div className="form-card__group pt-0">
-        <Form
-          id="sign-in"
-          className="mt-10"
-          onSubmit={handleSubmit(onSubmit, onError)}
-        >
+        <Form id="sign-in" className="mt-10" onSubmit={handleSubmit(onSubmit, onError)}>
           <Field
             caps={true}
             name="email"
@@ -90,7 +86,7 @@ const FormSignIn = ({
             dataTestId="sign-in-email-field"
           />
 
-          <aside className="float-right text-tiny font-semibold">
+          <aside className="float-right text-sm font-semibold">
             <LinkComponent href="/forgot-password">
               {t("authentication.signIn.forgotPassword")}
             </LinkComponent>
@@ -109,10 +105,7 @@ const FormSignIn = ({
           />
 
           <div className="text-center mt-6">
-            <Button
-              styleType={AppearanceStyleType.primary}
-              data-test-id="sign-in-button"
-            >
+            <Button styleType={AppearanceStyleType.primary} data-test-id="sign-in-button">
               {t("nav.signIn")}
             </Button>
           </div>
@@ -120,17 +113,13 @@ const FormSignIn = ({
       </div>
       {showRegisterBtn && (
         <div className="form-card__group text-center border-t">
-          <h2 className="mb-6">
-            {t("authentication.createAccount.noAccount")}
-          </h2>
+          <h2 className="mb-6">{t("authentication.createAccount.noAccount")}</h2>
 
-          <LinkButton href="/create-account">
-            {t("account.createAccount")}
-          </LinkButton>
+          <LinkButton href="/create-account">{t("account.createAccount")}</LinkButton>
         </div>
       )}
     </FormCard>
-  );
-};
+  )
+}
 
-export { FormSignIn as default, FormSignIn };
+export { FormSignIn as default, FormSignIn }
