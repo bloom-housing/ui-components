@@ -30,7 +30,7 @@ const AdditionalFees = ({
   if (!deposit && !applicationFee && (!footerContent || footerContent?.length === 0)) return <></>
   return (
     <InfoCard title={strings.sectionHeader} className="bg-gray-100 border-0">
-      <GridSection columns={2} className="mb-5">
+      {(applicationFee || deposit) && (<GridSection columns={2} className="mb-5">
         {applicationFee && (
           <GridCell>
             <div className="text-base">{strings.applicationFee}</div>
@@ -49,7 +49,7 @@ const AdditionalFees = ({
             ))}
           </GridCell>
         )}
-      </GridSection>
+      </GridSection>)}
       {footerContent && footerContent?.length > 0 && (
         <div className="info-card__columns text-sm">
           {footerContent?.map((elem, idx) => (
