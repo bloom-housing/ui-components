@@ -28,7 +28,7 @@ const AdditionalFees = ({
       <p className="info-card__title mb-2">{strings.sectionHeader}</p>
       <div className="info-card__columns text-sm">
         {applicationFee && (
-          <div className={`info-card__column-2"`}>
+          <div className="info-card__column-2">
             <div className="text-base">{strings.applicationFee}</div>
             <div className="text-xl font-bold">{applicationFee}</div>
             {strings.applicationFeeSubtext?.map((appFeeSubtext, index) => (
@@ -37,7 +37,7 @@ const AdditionalFees = ({
           </div>
         )}
         {deposit && (
-          <div className={`info-card__column-2`}>
+          <div className="info-card__column-2">
             <div className="text-base">{strings.deposit}</div>
             <div className="text-xl font-bold">{deposit}</div>
             {strings.depositSubtext?.map((depositSubtext, index) => (
