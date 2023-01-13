@@ -1,4 +1,9 @@
 import * as React from "react"
+import {
+  GridSection,
+  GridCell,
+  InfoCard,
+} from "../../..";
 
 export interface AdditionalFeesProps {
   /** The application fee for the property, rendered in the first block */
@@ -24,28 +29,27 @@ const AdditionalFees = ({
 }: AdditionalFeesProps) => {
   if (!deposit && !applicationFee && (!footerContent || footerContent?.length === 0)) return <></>
   return (
-    <div className="info-card bg-gray-100 border-0">
-      <p className="info-card__title mb-2">{strings.sectionHeader}</p>
-      <div className="info-card__columns text-sm">
+    <InfoCard title={strings.sectionHeader} className="bg-gray-100 border-0">
+      <GridSection columns={2} className="mb-5">
         {applicationFee && (
-          <div className="info-card__column-2">
+          <GridCell>
             <div className="text-base">{strings.applicationFee}</div>
             <div className="text-xl font-bold">{applicationFee}</div>
             {strings.applicationFeeSubtext?.map((appFeeSubtext, index) => (
-              <div key={index}>{appFeeSubtext}</div>
+              <div key={index} className="text-sm">{appFeeSubtext}</div>
             ))}
-          </div>
+          </GridCell>
         )}
         {deposit && (
-          <div className="info-card__column-2">
+          <GridCell>
             <div className="text-base">{strings.deposit}</div>
             <div className="text-xl font-bold">{deposit}</div>
             {strings.depositSubtext?.map((depositSubtext, index) => (
-              <div key={index}>{depositSubtext}</div>
+              <div className="text-sm" key={index}>{depositSubtext}</div>
             ))}
-          </div>
+          </GridCell>
         )}
-      </div>
+      </GridSection>
       {footerContent && footerContent?.length > 0 && (
         <div className="info-card__columns text-sm">
           {footerContent?.map((elem, idx) => (
@@ -55,7 +59,7 @@ const AdditionalFees = ({
           ))}
         </div>
       )}
-    </div>
+    </InfoCard>
   )
 }
 
