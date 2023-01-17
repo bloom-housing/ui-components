@@ -233,7 +233,7 @@ const AgTable = ({
         </div>
         {headerContent}
       </div>
-      <div className="applications-table">
+      <div className="applications-table" aria-busy={data.loading}>
         <LoadingOverlay isLoading={data.loading}>
           <div>
             <AgGridReact

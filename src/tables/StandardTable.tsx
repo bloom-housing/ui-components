@@ -182,7 +182,12 @@ export const StandardTable = (props: StandardTableProps) => {
           headerLabel={props.strings?.sortString ?? t("t.sort")}
           className={`table__draggable-cell pl-7`}
         >
-          <Icon symbol={faGripLines} size={"medium"} fill={IconFillColors.primary} />
+          <Icon
+            symbol={faGripLines}
+            size={"medium"}
+            fill={IconFillColors.primary}
+            aria-label={"Drag"}
+          />
         </Cell>
       )
     }
