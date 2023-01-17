@@ -87,6 +87,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.5.3",
     "jest-environment-jsdom": "^26.5.3",
+    "lint-staged": "^10.4.0",
     "mockdate": "^3.0.2",
     "postcss": "^8.3.6",
     "postcss-loader": "^4.3",
@@ -98,6 +99,7 @@
     "react-is": "^17.0.2",
     "react-test-renderer": "^17.0.2",
     "regenerator-runtime": "^0.13.7",
+    "require-from-string": "2.0.2",
     "sass": "1.52.1",
     "sass-loader": "^10.0.3",
     "semantic-release": "19.0.5",
@@ -152,5 +154,13 @@
     "singleQuote": false,
     "printWidth": 100,
     "semi": false
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo '\n(1) Linting...\n----------' && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": "eslint --max-warnings 0"
   }
 }
