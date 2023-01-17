@@ -6,7 +6,6 @@ const ErrorMessage = (props: {
   children?: React.ReactNode
   className?: string
 }) => {
-  const unused = true
   if (props.error) {
     const classes = ["error-message"]
     if (props.className) {
