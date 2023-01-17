@@ -1,12 +1,6 @@
 # Bloom UI Components
 
-This package is the home of the core UI components for the Bloom affordable housing system, meant to be imported from one or more applications that provide the end-user interface.
-
-## Types of Components
-
-Bloom components have been design with the principles of [Atomic Design](http://atomicdesign.bradfrost.com/) in mind, and some of the directory structure and naming conventions are based on that.
-
-There are also Page Components as a distinct class, which represent larger combinations of components (atomic: organisms) that are meant to be directly imported into specific pages in the system (e.g. a home page).
+This package contains a component library used by the Bloom affordable housing system.
 
 ## Locales/Translations
 
@@ -14,9 +8,9 @@ There are also Page Components as a distinct class, which represent larger combi
 
 ## Storybook
 
-The UI components package includes [Storybook](https://storybook.js.org/) for easy browsing of the component tree, and is the best way to get started understand what's available ([we publish our Storybook](https://storybook.bloom.exygy.dev/)). When creating a new component write a default story for the base component and include stories for each state.
+UIC uses [Storybook](https://storybook.js.org/) to document our components, and reviewing it is the best way to get started and understand what's available. You can view our published Storybook [here](https://storybook.bloom.exygy.dev/).
 
-To spin up Storybook locally, from within `ui-components` run:
+To spin up Storybook locally, from root run:
 
 ```
 yarn start
@@ -24,7 +18,7 @@ yarn start
 
 ## Testing
 
-To run the unit test suite which is built with Jest and RTL, from within `ui-components` run:
+To run the unit test suite which is built with Jest and RTL, from root run:
 
 ```
 yarn test
@@ -36,9 +30,9 @@ or
 yarn test:coverage
 ```
 
-which generates local coverage reports, useful as you are writing tests to ensure you have encompassed all the states.
+which generates local coverage reports.
 
-To run our accessibility suite which leverages Storybook, from within `ui-components` run:
+To run our accessibility suite which leverages Storybook, from root run:
 
 ```
 yarn test:a11y
@@ -54,13 +48,13 @@ yarn test:a11y
 
 ## Style Conventions
 
-- Some styles live in a global folder, but for the most part our components are styled with isolated SCSS files located alongside React component TS files.
+- Our components are styled with SCSS files located alongside React component TS files.
 
-- We are currently in the process of migrating components to a second-generation styling convention which relies on CSS variables for design tokens and generally removes `@apply` Tailwind statements.
+- We are currently in the process of migrating components to a second-generation styling convention which relies on CSS variables for internal design tokens and removes `@apply` Tailwind statements. V2 style components are indicated in our Storybook with a :triangular_flag_on_post:.
 
-- Bloom design tokens include colors, typography settings, sizes, borders, and so forth. They're located in the `src/global/tokens` folder.
+- Bloom design tokens encompass many styles including colors, typography settings, sizes, border, + more.
 
-- More information on this process can be found in [Styling2ndGen.md](https://github.com/bloom-housing/bloom/blob/dev/docs/Styling2ndGen.md).
+- More information on this migration can be found in [V2Styles.md](https://github.com/bloom-housing/ui-components/blob/main/V2Styles.md).
 
 ### Naming Conventions
 
