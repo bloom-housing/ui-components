@@ -39,3 +39,6 @@ workflows:
       - jest-ui-components:
           requires:
             - setup
+      - jest-ui-components-a11y:
+          requires:
+            - setup
