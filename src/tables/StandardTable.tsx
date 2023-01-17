@@ -22,7 +22,11 @@ export const Row = (props: { id?: string; className?: string; children: React.Re
 )
 
 export const HeaderCell = (props: { children: React.ReactNode; className?: string }) => (
-  <th className={props.className}>{props.children}</th>
+  <th className={props.className}>
+    <span className={!props.children ? "sr-only" : ""}>
+      {!props.children ? "Actions" : props.children}
+    </span>
+  </th>
 )
 
 export const Cell = (props: {

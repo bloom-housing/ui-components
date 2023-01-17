@@ -25,8 +25,7 @@ export const twoImages = () => (
     images={[
       { url: "/images/listing.jpg" },
       {
-        url:
-          "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/oakhouse_cgdqmx.jpg",
+        url: "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/oakhouse_cgdqmx.jpg",
       },
     ]}
   />
@@ -37,12 +36,10 @@ export const threeImages = () => (
     images={[
       { url: "/images/listing.jpg" },
       {
-        url:
-          "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/oakhouse_cgdqmx.jpg",
+        url: "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/oakhouse_cgdqmx.jpg",
       },
       {
-        url:
-          "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/house_goo3cp.jpg",
+        url: "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/house_goo3cp.jpg",
       },
     ]}
   />
@@ -53,8 +50,7 @@ export const fourImages = () => (
     images={[
       { url: "/images/listing.jpg" },
       {
-        url:
-          "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/oakhouse_cgdqmx.jpg",
+        url: "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/oakhouse_cgdqmx.jpg",
         mobileUrl:
           "https://res.cloudinary.com/exygy/image/upload/w_767,c_limit,q_55/dev/oakhouse_cgdqmx.jpg",
         thumbnailUrl:
@@ -62,12 +58,10 @@ export const fourImages = () => (
         description: "The second photo in the list",
       },
       {
-        url:
-          "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/house_goo3cp.jpg",
+        url: "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/house_goo3cp.jpg",
       },
       {
-        url:
-          "https://regional-dahlia-staging.s3-us-west-1.amazonaws.com/listings/triton/thetriton.png",
+        url: "https://regional-dahlia-staging.s3-us-west-1.amazonaws.com/listings/triton/thetriton.png",
       },
     ]}
     modalCloseLabel="Back to listing"
@@ -81,15 +75,11 @@ export const withLink = () => <ImageCard href="/listings" imageUrl="/images/list
 export const withNoImage = () => <ImageCard />
 
 export const withOneStatusAndSmaller = () => (
-  <header className="image-card--leader">
-    <ImageCard
-      href="/listings"
-      imageUrl="/images/listing.jpg"
-      statuses={[
-        { status: ApplicationStatusType.Closed, content: t("listings.applicationsClosed") },
-      ]}
-    />
-  </header>
+  <ImageCard
+    href="/listings"
+    imageUrl="/images/listing.jpg"
+    statuses={[{ status: ApplicationStatusType.Closed, content: t("listings.applicationsClosed") }]}
+  />
 )
 
 export const withDescriptionAsAlt = () => (

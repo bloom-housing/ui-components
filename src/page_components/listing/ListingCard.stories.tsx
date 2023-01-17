@@ -130,7 +130,6 @@ export const WithPillHeader = () => {
         },
         contentSubheader: { content: "Optional content subheader" },
         tableHeader: { content: "Optional table header", isPillType: true },
-        tableSubheader: { content: "Optional table subheader" },
       }}
     />
   )
