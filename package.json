@@ -40,6 +40,8 @@
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.4",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "@geometricpanda/storybook-addon-badges": "^0.2.1",
@@ -160,10 +162,11 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo '\n(1) Linting...\n----------' && lint-staged"
+      "commit-msg": "echo '\n(1) Verifying conventional commit format... \n   (If this fails, install commitizen and commit with 'git cz' to automate the formatting!)\n----------' && commitlint -E HUSKY_GIT_PARAMS",
+      "prepare--commit-msg": "echo '\n(2) Linting...\n----------' && lint-staged"
     }
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": "eslint --max-warnings 0"
+    "*.{js,ts,tsx}": "eslint 'src/**' --max-warnings 0"
   }
 }
