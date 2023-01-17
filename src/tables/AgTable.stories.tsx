@@ -74,7 +74,7 @@ export const Default = () => {
   )
 }
 
-// The external library we are using is throwing an a11y error:
+// The external library we are using here (ag-grid-react) is throwing an a11y error:
 Default.parameters = {
   a11y: {
     config: {
