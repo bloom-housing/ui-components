@@ -15,7 +15,7 @@ afterEach(cleanup)
 describe("<ApplicationStatus>", () => {
   it("renders as due soon", () => {
     const { getByText } = render(dueSoonAndVivid())
-    expect(getByText("Application Due Date:", { exact: false })).toBeTruthy()
+    expect(getByText("Application Deadline:", { exact: false })).toBeTruthy()
   })
   it("renders as past due vivid", () => {
     const { getByText } = render(pastDueAndVivid())

@@ -1,7 +1,6 @@
 import * as React from "react"
 import { BADGES } from "../../.storybook/constants"
 import { ImageCard } from "./ImageCard"
-import { t } from "../helpers/translator"
 import { ApplicationStatusType } from "../global/ApplicationStatusType"
 import { IconFillColors } from "../icons/Icon"
 import ImageCardDocumentation from "./ImageCard.docs.mdx"
@@ -25,8 +24,7 @@ export const twoImages = () => (
     images={[
       { url: "/images/listing.jpg" },
       {
-        url:
-          "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/oakhouse_cgdqmx.jpg",
+        url: "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/oakhouse_cgdqmx.jpg",
       },
     ]}
   />
@@ -37,12 +35,10 @@ export const threeImages = () => (
     images={[
       { url: "/images/listing.jpg" },
       {
-        url:
-          "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/oakhouse_cgdqmx.jpg",
+        url: "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/oakhouse_cgdqmx.jpg",
       },
       {
-        url:
-          "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/house_goo3cp.jpg",
+        url: "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/house_goo3cp.jpg",
       },
     ]}
   />
@@ -53,8 +49,7 @@ export const fourImages = () => (
     images={[
       { url: "/images/listing.jpg" },
       {
-        url:
-          "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/oakhouse_cgdqmx.jpg",
+        url: "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/oakhouse_cgdqmx.jpg",
         mobileUrl:
           "https://res.cloudinary.com/exygy/image/upload/w_767,c_limit,q_55/dev/oakhouse_cgdqmx.jpg",
         thumbnailUrl:
@@ -62,12 +57,10 @@ export const fourImages = () => (
         description: "The second photo in the list",
       },
       {
-        url:
-          "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/house_goo3cp.jpg",
+        url: "https://res.cloudinary.com/exygy/image/upload/w_1302,c_limit,q_65/dev/house_goo3cp.jpg",
       },
       {
-        url:
-          "https://regional-dahlia-staging.s3-us-west-1.amazonaws.com/listings/triton/thetriton.png",
+        url: "https://regional-dahlia-staging.s3-us-west-1.amazonaws.com/listings/triton/thetriton.png",
       },
     ]}
     modalCloseLabel="Back to listing"
@@ -85,9 +78,7 @@ export const withOneStatusAndSmaller = () => (
     <ImageCard
       href="/listings"
       imageUrl="/images/listing.jpg"
-      statuses={[
-        { status: ApplicationStatusType.Closed, content: t("listings.applicationsClosed") },
-      ]}
+      statuses={[{ status: ApplicationStatusType.Closed, content: "Applications Closed" }]}
     />
   </header>
 )
@@ -101,7 +92,7 @@ export const withOneStatusAndTag = () => (
     href="/listings"
     imageUrl="/images/listing.jpg"
     tags={[{ text: "Label" }]}
-    statuses={[{ status: ApplicationStatusType.Closed, content: t("listings.applicationsClosed") }]}
+    statuses={[{ status: ApplicationStatusType.Closed, content: "Applications Closed" }]}
   />
 )
 export const withMultipleTags = () => (
@@ -109,7 +100,7 @@ export const withMultipleTags = () => (
     href="/listings"
     imageUrl="/images/listing.jpg"
     tags={[{ text: "Label" }, { text: "Label2" }]}
-    statuses={[{ status: ApplicationStatusType.Closed, content: t("listings.applicationsClosed") }]}
+    statuses={[{ status: ApplicationStatusType.Closed, content: "Applications Closed" }]}
   />
 )
 
@@ -121,7 +112,7 @@ export const withLongTagsAndIcons = () => (
       { text: "This is a long label", iconType: "mail", iconColor: IconFillColors.white },
       { text: "This is another longer label" },
     ]}
-    statuses={[{ status: ApplicationStatusType.Closed, content: t("listings.applicationsClosed") }]}
+    statuses={[{ status: ApplicationStatusType.Closed, content: "Applications Closed" }]}
   />
 )
 
@@ -139,7 +130,7 @@ export const withManyTags = () => (
       { text: "Label 7" },
       { text: "Label 8" },
     ]}
-    statuses={[{ status: ApplicationStatusType.Closed, content: t("listings.applicationsClosed") }]}
+    statuses={[{ status: ApplicationStatusType.Closed, content: "Applications Closed" }]}
   />
 )
 
@@ -154,7 +145,7 @@ export const withMultipleAppStatus = () => (
         content: "First Come First Served",
         subContent: "Application Due Date: July 10th",
       },
-      { status: ApplicationStatusType.Closed, content: t("listings.applicationsClosed") },
+      { status: ApplicationStatusType.Closed, content: "Applications Closed" },
       {
         status: ApplicationStatusType.PostLottery,
         content: "Lottery Results Posted: September 3rd",

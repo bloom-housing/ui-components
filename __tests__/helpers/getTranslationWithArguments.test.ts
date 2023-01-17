@@ -1,20 +1,29 @@
 import { cleanup } from "@testing-library/react"
 import { getTranslationWithArguments } from "../../src/helpers/getTranslationWithArguments"
 
+import * as translator from "../../src/helpers/translator"
+
 afterEach(cleanup)
 
 describe("getTranslationWithArguments", () => {
   it("should return a translated string with no arguments", () => {
-    expect(getTranslationWithArguments("t.yes")).toBe("Yes")
+    const mock = jest.spyOn(translator, "t")
+    getTranslationWithArguments("t.yes")
+    expect(mock).toBeCalledWith("t.yes")
   })
   it("should return a translated string with one argument", () => {
-    expect(getTranslationWithArguments("listings.percentAMIUnit*percent:20")).toBe("20% AMI Unit")
+    const mock = jest.spyOn(translator, "t")
+    getTranslationWithArguments("listings.percentAMIUnit*percent:20")
+    expect(mock).toBeCalledWith("listings.percentAMIUnit", { percent: "20" })
   })
   it("should return a translated string with two (or more) arguments", () => {
-    expect(
-      getTranslationWithArguments(
-        "listings.reservedUnitsForWhoAre*communityType:Community Type*reservedType:Reserved Type"
-      )
-    ).toBe("Reserved for Community Type who are Reserved Type")
+    const mock = jest.spyOn(translator, "t")
+    getTranslationWithArguments(
+      "listings.reservedUnitsForWhoAre*communityType:Community Type*reservedType:Reserved Type"
+    )
+    expect(mock).toBeCalledWith("listings.reservedUnitsForWhoAre", {
+      communityType: "Community Type",
+      reservedType: "Reserved Type",
+    })
   })
 })

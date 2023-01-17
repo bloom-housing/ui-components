@@ -19,6 +19,14 @@ export const Default = () => {
       register={register}
       watch={watch}
       error={!!errors?.time}
+      strings={{
+        hour: "Hour",
+        minutes: "Minutes",
+        minutesPlaceholder: "MM",
+        seconds: "Seconds",
+        time: "Time",
+        timeError: "Time Error",
+      }}
     />
   )
 }

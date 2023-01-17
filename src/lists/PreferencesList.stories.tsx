@@ -17,13 +17,11 @@ export default {
 
 const listingPreferences = [
   {
-    ordinal: 1,
     links: [],
     title: "Title 1",
     description: "Description 1",
   },
   {
-    ordinal: 2,
     links: [
       {
         url: "http://www.google.com",
@@ -35,7 +33,6 @@ const listingPreferences = [
     description: "Description 2",
   },
   {
-    ordinal: 3,
     links: [],
     title: "Title 3",
     subtitle: "Subtitle 3",

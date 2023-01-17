@@ -30,7 +30,7 @@ const HousingCounselor = (props: HousingCounselorProps) => {
       <h3 className="font-sans text-lg">{props.name}</h3>
       <p className="text-sm text-gray-800 pb-2">
         {props.strings?.languageServices ?? t("housingCounselors.languageServices")}
-        {props.languages.map((language) => LanguageLabel(language))}
+        <span className={"ml-2"}>{props.languages.map((language) => LanguageLabel(language))}</span>
       </p>
       {props.addressStreet && (
         <p className="icon-item pb-2">

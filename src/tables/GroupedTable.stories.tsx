@@ -2,7 +2,6 @@ import React from "react"
 
 import { GroupedTable } from "./GroupedTable"
 import { mockData } from "../tables/StandardTable.stories"
-import t from "../helpers/translator"
 
 export default {
   title: "Tables/GroupedTable",
@@ -10,9 +9,9 @@ export default {
 }
 
 const headers = {
-  name: t("t.name"),
-  relationship: t("t.relationship"),
-  dob: t("application.household.member.dateOfBirth"),
+  name: "Name",
+  relationship: "Relationship",
+  dob: "Date of Birth",
 }
 
 const data = [

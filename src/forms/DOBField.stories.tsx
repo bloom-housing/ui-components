@@ -20,6 +20,15 @@ export const Default = () => {
       watch={watch}
       error={errors?.dateOfBirth}
       validateAge18={true}
+      strings={{
+        dateError: "Date Error",
+        day: "Day",
+        dayPlaceholder: "DD",
+        month: "Month",
+        monthPlaceholder: "MM",
+        year: "Year",
+        yearPlaceholder: "YYYY",
+      }}
     />
   )
 }

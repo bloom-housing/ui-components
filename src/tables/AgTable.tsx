@@ -34,6 +34,10 @@ export interface AgTableProps {
   strings?: {
     filter?: string
     searchError?: string
+    next?: string
+    jumpTo?: string
+    previous?: string
+    show?: string
   }
 }
 
@@ -265,6 +269,12 @@ const AgTable = ({
             quantityLabel={totalItemsLabel}
             setCurrentPage={pagination.setCurrentPage}
             setItemsPerPage={pagination.setPerPage}
+            strings={{
+              next: strings?.next,
+              jumpTo: strings?.jumpTo,
+              previous: strings?.previous,
+              show: strings?.show,
+            }}
           />
         )}
       </div>

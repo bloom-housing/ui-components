@@ -5,9 +5,14 @@ import { HousingCounselor } from "../../src/blocks/HousingCounselor"
 afterEach(cleanup)
 
 describe("<HousingCounselor>", () => {
+  const strings = {
+    website: "Website",
+    callNumber: "123-456-7890",
+  }
+
   it("renders with only required fields", () => {
     const { getByText } = render(
-      <HousingCounselor name={"Counselor Name"} languages={["English"]} />
+      <HousingCounselor name={"Counselor Name"} languages={["English"]} strings={strings} />
     )
     expect(getByText("Counselor Name")).not.toBeNull()
     expect(getByText("English", { exact: false })).not.toBeNull()
@@ -22,6 +27,7 @@ describe("<HousingCounselor>", () => {
         addressCityState={"San Francisco, CA"}
         website={"www.counselor.org"}
         phone={"123-456-7890"}
+        strings={strings}
       />
     )
     expect(getByText("Counselor Name")).not.toBeNull()

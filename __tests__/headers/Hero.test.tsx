@@ -22,6 +22,10 @@ describe("<Hero>", () => {
         buttonTitle="I am a Button"
         buttonLink="/listings"
         allApplicationsClosed={true}
+        strings={{
+          allApplicationsClosed:
+            "All applications are currently closed, but you can view closed listings.",
+        }}
       />
     )
     expect(getByText("Say Hello to Your Hero")).toBeTruthy()

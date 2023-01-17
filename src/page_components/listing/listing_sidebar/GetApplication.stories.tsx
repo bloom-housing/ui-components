@@ -6,6 +6,17 @@ export default {
   component: GetApplication,
 }
 
+const strings = {
+  applyOnline: "Apply Online",
+  downloadApplication: "Download Application",
+  getAPaperApplication: "Get a Paper Application",
+  getDirections: "Get Directions",
+  howToApply: "How to Apply",
+  officeHoursHeading: "Office Hours",
+  pickUpApplication: "Pick up an application",
+  orString: "or",
+}
+
 export const AllFields = () => {
   return (
     <GetApplication
@@ -27,6 +38,7 @@ export const AllFields = () => {
         zipCode: "90210",
       }}
       preview={false}
+      strings={strings}
     />
   )
 }
@@ -48,6 +60,7 @@ export const WithoutPaperAppFiles = () => {
         zipCode: "90210",
       }}
       preview={false}
+      strings={strings}
     />
   )
 }
@@ -73,6 +86,7 @@ export const Preview = () => {
         zipCode: "90210",
       }}
       preview={true}
+      strings={strings}
     />
   )
 }
@@ -98,6 +112,11 @@ export const OpenInFuture = () => {
         zipCode: "90210",
       }}
       preview={false}
+      strings={{
+        ...strings,
+        applicationsOpenInFuture:
+          "Application will be available for download and pick up on November 20th, 2021",
+      }}
     />
   )
 }
@@ -119,6 +138,7 @@ export const Pickup = () => {
         zipCode: "90210",
       }}
       preview={false}
+      strings={strings}
     />
   )
 }
@@ -133,6 +153,7 @@ export const OnlineAndNoPickUp = () => {
       paperMethod={false}
       postmarkedApplicationsReceivedByDate={"November 30th, 2021"}
       preview={false}
+      strings={strings}
     />
   )
 }
@@ -157,6 +178,7 @@ export const PaperAndPickup = () => {
         zipCode: "90210",
       }}
       preview={false}
+      strings={strings}
     />
   )
 }
@@ -173,6 +195,7 @@ export const PaperAndNoPickup = () => {
       paperMethod={true}
       postmarkedApplicationsReceivedByDate={"November 30th, 2021"}
       preview={false}
+      strings={strings}
     />
   )
 }

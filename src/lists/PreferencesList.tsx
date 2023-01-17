@@ -19,6 +19,7 @@ export interface PreferencesListProps {
   listingPreferences: ListPreference[]
 }
 
+// TODO: Remove this business logic from component
 const getOrdinal = (n: number) => {
   if (locale() == "en") {
     const s = ["th", "st", "nd", "rd"]

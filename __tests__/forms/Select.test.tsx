@@ -2,6 +2,7 @@ import React from "react"
 import { render, cleanup } from "@testing-library/react"
 import { Select } from "../../src/forms/Select"
 import { useForm } from "react-hook-form"
+import * as translator from "../../src/helpers/translator"
 
 afterEach(cleanup)
 
@@ -47,18 +48,20 @@ const ErrorSelect = () => {
 
 describe("<Select>", () => {
   it("renders default state", () => {
-    const { getByText } = render(<DefaultSelect />)
+    jest.spyOn(translator, "t").mockReturnValue("Translated String")
+
+    const { getByText, getAllByText } = render(<DefaultSelect />)
     expect(getByText("Ethnicity")).toBeTruthy()
     expect(getByText("Select One")).toBeTruthy()
-    expect(getByText("Hispanic / Latino")).toBeTruthy()
-    expect(getByText("Not Hispanic / Latino")).toBeTruthy()
+    expect(getAllByText("Translated String").length).toBeTruthy()
   })
   it("renders with an error", () => {
-    const { getByText } = render(<ErrorSelect />)
+    const { getByText, getAllByText } = render(<ErrorSelect />)
+    jest.spyOn(translator, "t").mockReturnValue("Translated String")
+
     expect(getByText("Ethnicity")).toBeTruthy()
     expect(getByText("Select One")).toBeTruthy()
-    expect(getByText("Hispanic / Latino")).toBeTruthy()
-    expect(getByText("Not Hispanic / Latino")).toBeTruthy()
+    expect(getAllByText("Translated String").length).toBeTruthy()
     expect(getByText("Uh oh!")).toBeTruthy()
   })
 })

@@ -9,7 +9,7 @@ import {
 
 afterEach(cleanup)
 
-describe("<Applications>", () => {
+describe("<GetApplication>", () => {
   it("renders with all optional fields", () => {
     const { getByText, getAllByText } = render(<AllFields />)
     expect(getByText("How to Apply")).toBeTruthy()

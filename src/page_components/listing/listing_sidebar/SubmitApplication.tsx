@@ -21,6 +21,7 @@ export interface ApplicationAddressesProps {
     dropOffHeader?: string
     officeHoursHeader?: string
     mapString: string
+    orString?: string
   }
 }
 
@@ -50,7 +51,9 @@ const SubmitApplication = ({
         )}
         {applicationDropOffAddress && (
           <>
-            {applicationMailingAddress && <OrDivider bgColor="gray-100" />}
+            {applicationMailingAddress && (
+              <OrDivider strings={{ orString: strings.orString }} bgColor="gray-100" />
+            )}
             <Heading priority={3} styleType={"capsWeighted"}>
               {strings.dropOffHeader}
             </Heading>

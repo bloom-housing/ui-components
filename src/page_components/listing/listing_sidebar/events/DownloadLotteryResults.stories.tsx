@@ -7,7 +7,11 @@ export default {
 
 export const NoDate = () => {
   return (
-    <DownloadLotteryResults pdfURL={"https://www.exygy.com"} buttonText={"View lottery results"} />
+    <DownloadLotteryResults
+      pdfURL={"https://www.exygy.com"}
+      buttonText={"View lottery results"}
+      strings={{ sectionHeader: "Download Results" }}
+    />
   )
 }
 
@@ -17,6 +21,7 @@ export const Date = () => {
       resultsDate={"February 21, 2023"}
       pdfURL={"https://www.exygy.com"}
       buttonText={"View lottery results"}
+      strings={{ sectionHeader: "Download Results" }}
     />
   )
 }

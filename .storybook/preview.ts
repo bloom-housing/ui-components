@@ -1,12 +1,7 @@
-import "../src/global/css-imports.scss";
-import "../src/global/app-css.scss";
+import "../src/global/css-imports.scss"
+import "../src/global/app-css.scss"
 
-import { BADGES } from "./constants";
-
-// Set up translation file
-import { addTranslation } from "../src/helpers/translator";
-import general from "../src/locales/general.json";
-addTranslation(general);
+import { BADGES } from "./constants"
 
 export const parameters = {
   options: {
@@ -53,4 +48,4 @@ export const parameters = {
       title: "2nd Generation",
     },
   },
-};
+}

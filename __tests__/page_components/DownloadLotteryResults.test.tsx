@@ -11,6 +11,9 @@ describe("<DownloadLotteryResults>", () => {
         resultsDate={"February 21, 2023"}
         pdfURL={"https://www.exygy.com"}
         buttonText={"View lottery results"}
+        strings={{
+          sectionHeader: "Lottery Results",
+        }}
       />
     )
     expect(getByText("February 21, 2023")).toBeTruthy()

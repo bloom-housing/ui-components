@@ -1,7 +1,6 @@
 import React from "react"
 import { render, cleanup, fireEvent } from "@testing-library/react"
 import { HouseholdMemberForm } from "../../src/forms/HouseholdMemberForm"
-import { t } from "../../src/helpers/translator"
 
 afterEach(cleanup)
 
@@ -17,11 +16,12 @@ describe("<HouseholdMemberForm>", () => {
         key={"abcd"}
         subtitle={"Primary Applicant"}
         editMember={editMemberSpy}
+        strings={{ edit: "Edit" }}
       />
     )
     expect(getByText("Primary Applicant")).toBeTruthy()
     expect(getByText("Breana Oquendo")).toBeTruthy()
-    fireEvent.click(getByText(t("t.edit")))
+    fireEvent.click(getByText("Edit"))
     expect(editMemberSpy).toHaveBeenCalledTimes(1)
   })
   it("renders as a household member", () => {
@@ -35,11 +35,12 @@ describe("<HouseholdMemberForm>", () => {
         key={"abcd"}
         subtitle={"Household Member"}
         editMember={editMemberSpy}
+        strings={{ edit: "Edit" }}
       />
     )
-    expect(getByText(t("application.household.householdMember"))).toBeTruthy()
+    expect(getByText("Household Member")).toBeTruthy()
     expect(getByText("Sonja Aldenkamp")).toBeTruthy()
-    fireEvent.click(getByText(t("t.edit")))
+    fireEvent.click(getByText("Edit"))
     expect(editMemberSpy).toHaveBeenCalledTimes(1)
   })
 })

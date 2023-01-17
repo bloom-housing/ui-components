@@ -2,7 +2,6 @@ import React from "react"
 import { render, cleanup, fireEvent } from "@testing-library/react"
 import { HouseholdSizeField } from "../../src/forms/HouseholdSizeField"
 import { useForm } from "react-hook-form"
-import { t } from "../../src/helpers/translator"
 
 afterEach(cleanup)
 
@@ -41,6 +40,10 @@ const ErrorHouseholdSize = (props: ErrorHouseholdSizeProps) => {
       householdSizeMin={2}
       register={register}
       validate={true}
+      strings={{
+        getAssistance: "Get Assistance",
+        dontQualifyDescription: "Unfortunately it appears you do not qualify for this listing.",
+      }}
     />
   )
 }
@@ -49,15 +52,15 @@ describe("<HouseholdSizeField>", () => {
   it("renders default state", () => {
     const { queryByText } = render(<DefaultHouseholdSize />)
     expect(queryByText("Uh oh!")).toBeNull()
-    expect(queryByText(t("application.household.dontQualifyHeader"))).toBeNull()
-    expect(queryByText(t("pageTitle.getAssistance"))).toBeNull()
+    expect(queryByText("Unfortunately it appears you do not qualify for this listing.")).toBeNull()
+    expect(queryByText("Get Assistance")).toBeNull()
   })
   it("renders error state", () => {
     const clearErrorsSpy = jest.fn()
     const { getByText, getByRole } = render(<ErrorHouseholdSize clearErrorsSpy={clearErrorsSpy} />)
     expect(getByText("Uh oh!")).toBeTruthy()
-    expect(getByText(t("application.household.dontQualifyHeader"))).toBeTruthy()
-    expect(getByText(t("pageTitle.getAssistance"))).toBeTruthy()
+    expect(getByText("Unfortunately it appears you do not qualify for this listing.")).toBeTruthy()
+    expect(getByText("Get Assistance")).toBeTruthy()
     fireEvent.click(getByRole("button"))
     expect(clearErrorsSpy).toHaveBeenCalledTimes(1)
   })

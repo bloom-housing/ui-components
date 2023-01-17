@@ -1,19 +1,25 @@
-import React from "react";
-import { Button, t } from "../..";
+import React from "react"
+import { Button, t } from "../.."
 
 type AgPaginationProps = {
-  totalItems: number;
-  totalPages: number;
-  currentPage: number;
-  itemsPerPage: number;
-  quantityLabel?: string;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-  setItemsPerPage: React.Dispatch<React.SetStateAction<number>>;
-  onPageChange?: (page: number) => void;
-  onPerPageChange?: (size: number) => void;
-};
+  totalItems: number
+  totalPages: number
+  currentPage: number
+  itemsPerPage: number
+  quantityLabel?: string
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>
+  setItemsPerPage: React.Dispatch<React.SetStateAction<number>>
+  onPageChange?: (page: number) => void
+  onPerPageChange?: (size: number) => void
+  strings?: {
+    next?: string
+    jumpTo?: string
+    previous?: string
+    show?: string
+  }
+}
 
-const AG_PER_PAGE_OPTIONS = [8, 25, 50, 100];
+const AG_PER_PAGE_OPTIONS = [8, 25, 50, 100]
 
 const AgPagination = ({
   totalItems,
@@ -25,21 +31,22 @@ const AgPagination = ({
   setItemsPerPage,
   onPageChange,
   onPerPageChange,
+  strings,
 }: AgPaginationProps) => {
   const onNextClick = () => {
-    setCurrentPage(currentPage + 1);
-    onPageChange && onPageChange(currentPage);
-  };
+    setCurrentPage(currentPage + 1)
+    onPageChange && onPageChange(currentPage)
+  }
 
   const onPrevClick = () => {
-    setCurrentPage(currentPage - 1);
-    onPageChange && onPageChange(currentPage);
-  };
+    setCurrentPage(currentPage - 1)
+    onPageChange && onPageChange(currentPage)
+  }
 
   const onRowLimitChange = (size: string) => {
-    setItemsPerPage(parseInt(size));
-    onPerPageChange && onPerPageChange(itemsPerPage);
-  };
+    setItemsPerPage(parseInt(size))
+    onPerPageChange && onPerPageChange(itemsPerPage)
+  }
 
   return (
     <div className="data-pager flex flex-col md:flex-row">
@@ -49,7 +56,7 @@ const AgPagination = ({
           onClick={onPrevClick}
           disabled={currentPage === 1}
         >
-          {t("t.previous")}
+          {strings?.previous ?? t("t.previous")}
         </Button>
       </div>
 
@@ -58,15 +65,13 @@ const AgPagination = ({
           <span className="field-label" id="lbTotalPages">
             {totalItems}
           </span>
-          {quantityLabel && (
-            <span className="field-label">{quantityLabel}</span>
-          )}
+          {quantityLabel && <span className="field-label">{quantityLabel}</span>}
         </div>
 
         <div className="flex mt-5 md:mt-0 md:items-center">
           <div className="field data-pager__control md:mb-0">
             <label className="field-label font-sans" htmlFor="page-size">
-              {t("t.show")}
+              {strings?.show ?? t("t.show")}
             </label>
             <select
               data-test-id="ag-page-size"
@@ -85,7 +90,7 @@ const AgPagination = ({
 
           <div className="field data-pager__control">
             <label className="field-label font-sans" htmlFor="page-jump">
-              {t("t.jumpTo")}
+              {strings?.jumpTo ?? t("t.jumpTo")}
             </label>
             <select
               data-test-id="ag-page-select"
@@ -99,12 +104,12 @@ const AgPagination = ({
               {Array(totalPages)
                 .fill(totalPages)
                 .map((_, i) => {
-                  const value = i + 1;
+                  const value = i + 1
                   return (
                     <option key={value} value={value}>
                       {value}
                     </option>
-                  );
+                  )
                 })}
             </select>
           </div>
@@ -119,7 +124,7 @@ const AgPagination = ({
             onClick={onPrevClick}
             disabled={currentPage === 1}
           >
-            {t("t.previous")}
+            {strings?.previous ?? t("t.previous")}
           </Button>
         </div>
 
@@ -129,11 +134,11 @@ const AgPagination = ({
           onClick={onNextClick}
           disabled={totalPages === currentPage || totalPages === 0}
         >
-          {t("t.next")}
+          {strings?.next ?? t("t.next")}
         </Button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export { AgPagination as default, AgPagination, AG_PER_PAGE_OPTIONS };
+export { AgPagination as default, AgPagination, AG_PER_PAGE_OPTIONS }

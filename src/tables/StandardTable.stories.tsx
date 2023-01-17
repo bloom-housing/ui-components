@@ -12,8 +12,8 @@ export default {
 
 export const mockHeaders: TableHeaders = {
   name: "t.name",
-  relationship: "t.relationship",
-  dob: "application.household.member.dateOfBirth",
+  relationship: "Relationship",
+  dob: "Date of Birth",
 }
 
 export const mockData: StandardTableData = [
@@ -58,7 +58,7 @@ export const ImageCells = () => (
 )
 
 export const preferenceHeaders = {
-  name: "t.name",
+  name: "Name",
   action: "",
 }
 

@@ -1,5 +1,5 @@
 import React from "react"
-import { render, cleanup } from "@testing-library/react"
+import { render, cleanup, getAllByText } from "@testing-library/react"
 import { TimeField } from "../../src/forms/TimeField"
 import { useForm } from "react-hook-form"
 
@@ -18,6 +18,11 @@ const DefaultTimeField = () => {
       watch={watch}
       seconds={true}
       error={!!errors?.time}
+      strings={{
+        hour: "Hour",
+        minutes: "minutes",
+        seconds: "seconds",
+      }}
     />
   )
 }

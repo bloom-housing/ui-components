@@ -19,6 +19,11 @@ const Optional = ({ disabled = false }) => {
       disabled={disabled || undefined}
       error={errors?.dateOfBirth}
       validateAge18={true}
+      strings={{
+        month: "Month",
+        day: "Day",
+        year: "Year",
+      }}
     />
   )
 }

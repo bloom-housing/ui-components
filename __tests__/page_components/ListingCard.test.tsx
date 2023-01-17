@@ -1,11 +1,14 @@
 import React from "react"
 import { render, cleanup } from "@testing-library/react"
 import { ListingCard } from "../../src/page_components/listing/ListingCard"
+import * as translator from "../../src/helpers/translator"
 
 afterEach(cleanup)
 
 describe("<ListingCard>", () => {
   it("renders full props without error", () => {
+    jest.spyOn(translator, "t").mockReturnValue("Translated String")
+
     const { getByText, getAllByText } = render(
       <ListingCard
         imageCardProps={{
@@ -48,9 +51,7 @@ describe("<ListingCard>", () => {
     expect(getByText("child content")).toBeTruthy()
     expect(getAllByText("reserved community tag")).toBeTruthy()
     expect(getAllByText("status content")).toBeTruthy()
-    expect(getAllByText("Unit Type")).toBeTruthy()
-    expect(getAllByText("Income Range")).toBeTruthy()
-    expect(getAllByText("Rent")).toBeTruthy()
+    expect(getAllByText("Translated String").length).toBe(3)
     expect(getAllByText("cellA")).toBeTruthy()
     expect(getAllByText("cellB")).toBeTruthy()
     expect(getAllByText("cellC")).toBeTruthy()

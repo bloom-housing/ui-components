@@ -38,7 +38,7 @@ export const WithButtonsAndMessages = () => (
       </GridCell>,
     ]}
   >
-    <StatusMessages>
+    <StatusMessages strings={{ statusHistory: "Status History", lastUpdated: "Last Updated" }}>
       <StatusMessage
         status="Submitted"
         style={AppearanceStyleType.success}
@@ -70,6 +70,9 @@ export const OnlyTimestamp = () => (
       </GridCell>,
     ]}
   >
-    <StatusMessages lastTimestamp="February 3, 2021" />
+    <StatusMessages
+      lastTimestamp="February 3, 2021"
+      strings={{ statusHistory: "Status History", lastUpdated: "Last Updated" }}
+    />
   </StatusAside>
 )

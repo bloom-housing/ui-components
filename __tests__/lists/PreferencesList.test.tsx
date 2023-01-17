@@ -1,6 +1,7 @@
 import React from "react"
 import { render, cleanup } from "@testing-library/react"
 import { PreferencesList } from "../../src/lists/PreferencesList"
+import * as translator from "../../src/helpers/translator"
 
 afterEach(cleanup)
 
@@ -35,6 +36,7 @@ const listingPreferences = [
 
 describe("<PreferencesList>", () => {
   it("renders without error", () => {
+    jest.spyOn(translator, "locale").mockReturnValue("en")
     const { getByText } = render(<PreferencesList listingPreferences={listingPreferences} />)
     expect(getByText("Title 1")).toBeTruthy()
     expect(getByText("Subtitle 1")).toBeTruthy()

@@ -13,6 +13,9 @@ export const editable = () => (
     key={"FirstnameLastname"}
     subtitle={"Household Member"}
     editMember={() => {}}
+    strings={{
+      edit: "Edit",
+    }}
   />
 )
 
@@ -23,5 +26,8 @@ export const notEditable = () => (
     key={"FirstnameLastname"}
     subtitle={"Household Member"}
     editMode={false}
+    strings={{
+      edit: "Edit",
+    }}
   />
 )

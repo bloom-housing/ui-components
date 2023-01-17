@@ -32,6 +32,7 @@ export const AllFields = () => {
         sectionHeader: "Paper App Header",
         officeHoursHeader: "Office Hours Header",
         mapString: "Get Directions",
+        orString: "or",
       }}
     />
   )
@@ -55,6 +56,7 @@ export const DropOffOnly = () => {
         sectionHeader: "Paper App Header",
         officeHoursHeader: "Office Hours Header",
         mapString: "Get Directions",
+        orString: "Or",
       }}
     />
   )
@@ -77,6 +79,7 @@ export const MailingOnly = () => {
         sectionHeader: "Paper App Header",
         officeHoursHeader: "Office Hours Header",
         mapString: "Get Directions",
+        orString: "Or",
       }}
     />
   )
@@ -99,6 +102,7 @@ export const DropOffNoOfficeHours = () => {
         sectionHeader: "Paper App Header",
         officeHoursHeader: "Office Hours Header",
         mapString: "Get Directions",
+        orString: "Or",
       }}
     />
   )

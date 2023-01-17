@@ -70,6 +70,14 @@ export const Default = () => {
         setSort: tableOptions.sort.setSortOptions,
       }}
       headerContent={<div className="flex-row">right content</div>}
+      strings={{
+        filter: "Filter",
+        searchError: "Search Error",
+        next: "Next",
+        jumpTo: "Jump to",
+        previous: "Previous",
+        show: "Show",
+      }}
     />
   )
 }

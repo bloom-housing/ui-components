@@ -7,6 +7,12 @@ export default {
   decorators: [(storyFn: any) => <div style={{ padding: "1rem" }}>{storyFn()}</div>],
 }
 
+const strings = {
+  description: "Description",
+  readLess: "Read less",
+  readMore: "Read more",
+}
+
 export const FieldGroupDefault = () => {
   const { register } = useForm({ mode: "onChange" })
   return (
@@ -23,6 +29,7 @@ export const FieldGroupDefault = () => {
       fieldLabelClassName={"text-primary"}
       groupNote={"Group Note"}
       groupLabel={"Group Label"}
+      strings={strings}
     />
   )
 }
@@ -52,6 +59,7 @@ export const FieldGroupDescriptions = () => {
       fieldClassName="ml-0"
       groupNote={"Group Note"}
       groupLabel={"Group Label"}
+      strings={strings}
     />
   )
 }
@@ -73,6 +81,7 @@ export const FieldGroupError = () => {
       fieldLabelClassName={"text-primary"}
       groupNote={"Group Note"}
       groupLabel={"Group Label"}
+      strings={strings}
     />
   )
 }

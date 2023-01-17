@@ -19,6 +19,15 @@ export const Default = () => {
       register={register}
       watch={watch}
       error={errors?.appDueDate}
+      strings={{
+        dateError: "Date error",
+        day: "Day",
+        dayPlaceholder: "DD",
+        month: "Month",
+        monthPlaceholder: "MM",
+        year: "Year",
+        yearPlaceholder: "YYYY",
+      }}
     />
   )
 }

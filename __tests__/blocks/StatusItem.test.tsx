@@ -1,11 +1,20 @@
 import React from "react"
 import { render, cleanup } from "@testing-library/react"
 import { StatusItem } from "../../src/blocks/StatusItem"
-import { t } from "../../src/helpers/translator"
 
 afterEach(cleanup)
 
 describe("<StatusItem>", () => {
+  const strings = {
+    applicationDeadline: "Application Due Date",
+    edited: "Edited",
+    seeListing: "See Listing",
+    status: "Status",
+    submittedStatus: "Submitted Status",
+    viewApplication: "View Application",
+    yourNumber: "Your confirmation number is",
+  }
+
   it("renders without error", () => {
     const { getByText } = render(
       <StatusItem
@@ -15,13 +24,15 @@ describe("<StatusItem>", () => {
         confirmationNumber={"1234abcd"}
         listingName={"Listing Name"}
         listingURL={"/listing/abcd1234/listing-name"}
+        strings={strings}
       />
     )
 
     expect(getByText("Listing Name")).not.toBeNull()
-    expect(getByText(t("listings.applicationDeadline"), { exact: false })).not.toBeNull()
-    expect(getByText(t("application.yourLotteryNumber"), { exact: false })).not.toBeNull()
+    expect(getByText("Application Due Date", { exact: false })).not.toBeNull()
+    expect(getByText("Your confirmation number is", { exact: false })).not.toBeNull()
   })
+
   it("renders without a confirmation number or due date if not provided", () => {
     const { getByText, queryByText } = render(
       <StatusItem
@@ -29,11 +40,12 @@ describe("<StatusItem>", () => {
         applicationUpdatedAt={"March 8th, 2022"}
         listingName={"Listing Name"}
         listingURL={"/listing/abcd1234/listing-name"}
+        strings={strings}
       />
     )
 
     expect(getByText("Listing Name")).not.toBeNull()
-    expect(queryByText(t("listings.applicationDeadline"), { exact: false })).toBeNull()
-    expect(queryByText(t("application.yourLotteryNumber"))).toBeNull()
+    expect(queryByText("Application Due Date", { exact: false })).toBeNull()
+    expect(queryByText("Your confirmation number is")).toBeNull()
   })
 })

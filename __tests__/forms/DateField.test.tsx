@@ -16,7 +16,12 @@ const Optional = ({ disabled = false }) => {
       register={register}
       watch={watch}
       disabled={disabled || undefined}
-      error={errors?.appDueDate}
+      error={errors.appDueDate}
+      strings={{
+        day: "Day",
+        month: "Month",
+        year: "Year",
+      }}
     />
   )
 }

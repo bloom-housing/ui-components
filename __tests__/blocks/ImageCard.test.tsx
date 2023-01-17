@@ -1,22 +1,29 @@
 import React from "react"
 import { render, cleanup, fireEvent } from "@testing-library/react"
 import { ImageCard } from "../../src/blocks/ImageCard"
-import { t } from "../../src/helpers/translator"
 import { ApplicationStatusType } from "../../src/global/ApplicationStatusType"
 
 afterEach(cleanup)
 
 describe("<ImageCard>", () => {
+  const strings = { defaultImageAltText: "A picture of the building" }
+
   it("renders title, subtitle, image and alt text", () => {
     const { getByAltText } = render(
-      <ImageCard imageUrl={"/images/listing.jpg"} description={"A description of the image"} />
+      <ImageCard
+        imageUrl={"/images/listing.jpg"}
+        description={"A description of the image"}
+        strings={strings}
+      />
     )
 
     expect(getByAltText("A description of the image")).not.toBeNull()
   })
 
   it("renders with a link", () => {
-    const { getByAltText } = render(<ImageCard imageUrl={"/images/listing.jpg"} href="/listings" />)
+    const { getByAltText } = render(
+      <ImageCard imageUrl={"/images/listing.jpg"} href="/listings" strings={strings} />
+    )
     expect(getByAltText("A picture of the building").closest("a")?.getAttribute("href")).toBe(
       "/listings"
     )
@@ -26,9 +33,8 @@ describe("<ImageCard>", () => {
     const { getByText } = render(
       <ImageCard
         imageUrl={"/images/listing.jpg"}
-        statuses={[
-          { status: ApplicationStatusType.Closed, content: t("listings.applicationsClosed") },
-        ]}
+        statuses={[{ status: ApplicationStatusType.Closed, content: "Applications Closed" }]}
+        strings={strings}
       />
     )
     expect(getByText("Applications Closed", { exact: false })).not.toBeNull()
@@ -42,6 +48,7 @@ describe("<ImageCard>", () => {
           { status: ApplicationStatusType.Closed, content: "Applications Closed" },
           { status: ApplicationStatusType.PreLottery, content: "Lottery Results Posted Tomorrow" },
         ]}
+        strings={strings}
       />
     )
     expect(getByText("Applications Closed", { exact: false })).not.toBeNull()
@@ -55,6 +62,7 @@ describe("<ImageCard>", () => {
         statuses={[
           { status: ApplicationStatusType.Matched, content: "Matched", iconType: "check" },
         ]}
+        strings={strings}
       />
     )
     expect(getByText("Matched", { exact: false })).not.toBeNull()
@@ -68,6 +76,7 @@ describe("<ImageCard>", () => {
           { text: "This is a long label", iconType: "mail" },
           { text: "This is another longer label" },
         ]}
+        strings={strings}
       />
     )
     expect(getByText("This is a long label")).not.toBeNull()
@@ -85,6 +94,7 @@ describe("<ImageCard>", () => {
           { url: "/images/listing.jpg", description: "A description of the image" },
           { url: "/images/banner.png", description: "second image" },
         ]}
+        strings={strings}
       />
     )
     expect(getByAltText("A description of the image")).not.toBeNull()

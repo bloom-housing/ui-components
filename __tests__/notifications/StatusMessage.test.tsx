@@ -6,13 +6,20 @@ import { AppearanceStyleType } from "../../src/global/AppearanceTypes"
 afterEach(cleanup)
 
 describe("<StatusMessage>", () => {
+  const strings = {
+    lastUpdated: "Last Updated",
+    statusHistory: "Status History",
+  }
+
   it("can render with no messages", () => {
-    const { getByText } = render(<StatusMessages lastTimestamp="August 25, 2021"></StatusMessages>)
+    const { getByText } = render(
+      <StatusMessages lastTimestamp="August 25, 2021" strings={strings}></StatusMessages>
+    )
     expect(getByText("Last Updated", { exact: false })).toBeTruthy()
   })
   it("can render with messages", () => {
     const { getByText } = render(
-      <StatusMessages>
+      <StatusMessages strings={strings}>
         <StatusMessage
           status="Submitted"
           style={AppearanceStyleType.success}

@@ -38,6 +38,12 @@ export const defaultDropzone = () => {
         uploader={exampleUploader}
         accept="image/*"
         progress={progressValue}
+        strings={{
+          chooseFromFolder: "Choose from folder",
+          dragHere: "Drag files here",
+          dropHere: "Drop files here",
+          orString: "or",
+        }}
       />
       {progressValue == 0 && (
         <p className="mt-16">(Provide Cloudinary credentials via the Knobs below.)</p>

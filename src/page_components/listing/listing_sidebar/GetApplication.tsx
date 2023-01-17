@@ -42,6 +42,7 @@ export interface ApplicationsProps {
     howToApply?: string
     officeHoursHeading?: string
     pickUpApplication?: string
+    orString?: string
   }
 }
 /** Displays information regarding how to apply, including an online application link button, paper application downloads, and a paper application pickup address */
@@ -89,7 +90,9 @@ const GetApplication = (props: ApplicationsProps) => {
 
       {props.applicationsOpen && props.paperMethod && !!props.paperApplications?.length && (
         <>
-          {props.onlineApplicationURL && <OrDivider bgColor="white" />}
+          {props.onlineApplicationURL && (
+            <OrDivider strings={{ orString: props?.strings?.orString }} bgColor="white" />
+          )}
           <div className="text-serif-lg">
             {props.strings?.getAPaperApplication ?? t("listings.apply.getAPaperApplication")}
           </div>
@@ -120,7 +123,7 @@ const GetApplication = (props: ApplicationsProps) => {
       {props.applicationPickUpAddress && (
         <>
           {props.applicationsOpen && (props.onlineApplicationURL || props.paperMethod) && (
-            <OrDivider bgColor="white" />
+            <OrDivider strings={{ orString: props?.strings?.orString }} bgColor="white" />
           )}
           <Heading priority={3} styleType={"capsWeighted"}>
             {props.strings?.pickUpApplication ?? t("listings.apply.pickUpAnApplication")}

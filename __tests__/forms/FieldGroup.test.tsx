@@ -5,6 +5,12 @@ import { useForm } from "react-hook-form"
 
 afterEach(cleanup)
 
+const strings = {
+  readMore: "read more",
+  readLess: "read less",
+  description: "Enter Description",
+}
+
 const FieldGroupCustom = () => {
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const { register } = useForm({ mode: "onChange" })
@@ -22,6 +28,7 @@ const FieldGroupCustom = () => {
       groupNote={"Group Note"}
       groupLabel={"Group Label"}
       dataTestId={"unitTest"}
+      strings={strings}
     />
   )
 }
@@ -40,6 +47,7 @@ const FieldGroupError = () => {
         { id: "5678", label: "Input 2" },
       ]}
       errorMessage={"Uh oh!"}
+      strings={strings}
     />
   )
 }
@@ -61,6 +69,7 @@ const FieldGroupDefaultValues = () => {
       groupNote={"Group Note"}
       groupLabel={"Group Label"}
       dataTestId={"unitTest"}
+      strings={strings}
     />
   )
 }
@@ -97,6 +106,7 @@ const FieldGroupSubfieldsUnchecked = () => {
       groupNote={"Group Note"}
       groupLabel={"Group Label"}
       dataTestId={"unitTest"}
+      strings={strings}
     />
   )
 }
@@ -133,6 +143,7 @@ const FieldGroupSubfieldsChecked = () => {
       groupNote={"Group Note"}
       groupLabel={"Group Label"}
       dataTestId={"unitTest"}
+      strings={strings}
     />
   )
 }

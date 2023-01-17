@@ -1,14 +1,13 @@
 import React from "react"
 import { render, cleanup } from "@testing-library/react"
 import { GroupedTable } from "../../src/tables/GroupedTable"
-import { t } from "../../src/helpers/translator"
 
 afterEach(cleanup)
 
 export const headers = {
-  name: t("t.name"),
-  relationship: t("t.relationship"),
-  dob: t("application.household.member.dateOfBirth"),
+  name: "Name",
+  relationship: "Relationship",
+  dob: "Date of Birth",
 }
 
 const data = [
