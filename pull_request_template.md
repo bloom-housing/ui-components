@@ -22,6 +22,7 @@ Describe the tests that you ran to verify your changes. Please also list any rel
 - [ ] I have made any corresponding changes to the documentation
 - [ ] My changes generate no new warnings
 - [ ] I have added tests that prove my fix is effective or that my feature works
+- [ ] I have added or updated stories if new changes are not captured in Storybook
 - [ ] New and existing unit tests pass locally with my changes
 - [ ] I have exported any new pieces added to ui-components
 - [ ] I have documented this change in the changelog, and any breaking changes are well described
