@@ -1,9 +1,6 @@
 import * as React from "react"
-import {
-  GridSection,
-  GridCell,
-  InfoCard,
-} from "../../..";
+import { GridSection, GridCell } from "../../sections/GridSection"
+import { InfoCard } from "../../blocks/InfoCard"
 
 export interface AdditionalFeesProps {
   /** The application fee for the property, rendered in the first block */
@@ -27,10 +24,11 @@ const AdditionalFees = ({
   footerContent,
   strings,
 }: AdditionalFeesProps) => {
-  if (!deposit && !applicationFee && (!footerContent || footerContent?.length === 0)) return <></>
+  const hasFooter = footerContent && footerContent?.length > 0
+  if (!deposit && !applicationFee && !hasFooter) return <></>
   return (
     <InfoCard title={strings.sectionHeader} className="bg-gray-100 border-0">
-      {(applicationFee || deposit) && (<GridSection columns={2} className="mb-5">
+      <GridSection columns={2} className={`${hasFooter && "mb-5"}`}>
         {applicationFee && (
           <GridCell>
             <div className="text-base">{strings.applicationFee}</div>
@@ -49,8 +47,8 @@ const AdditionalFees = ({
             ))}
           </GridCell>
         )}
-      </GridSection>)}
-      {footerContent && footerContent?.length > 0 && (
+      </GridSection>
+      {hasFooter && (
         <div className="info-card__columns text-sm">
           {footerContent?.map((elem, idx) => (
             <div key={`footer_info_${idx}`} className="info-card__column-2">
