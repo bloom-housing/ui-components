@@ -26,7 +26,6 @@ export * from "./src/blocks/MediaCard"
 export * from "./src/config"
 
 /* Footers */
-export * from "./src/footers/ExygyFooter"
 export * from "./src/footers/SiteFooter"
 
 /* Forms */
@@ -131,13 +130,9 @@ export * from "./src/page_components/listing/listing_sidebar/ExpandableSection"
 export * from "./src/page_components/listing/listing_sidebar/events/DownloadLotteryResults"
 export * from "./src/page_components/listing/listing_sidebar/events/EventSection"
 export * from "./src/page_components/sign-in/FormTerms"
-export * from "./src/page_components/sign-in/ResendConfirmationModal"
-export * from "./src/page_components/sign-in/FormSignIn"
 export * from "./src/page_components/sign-in/FormSignInMFAType"
 export * from "./src/page_components/sign-in/FormSignInMFACode"
 export * from "./src/page_components/sign-in/FormSignInAddPhone"
-export * from "./src/page_components/sign-in/FormSignInErrorBox"
-export * from "./src/page_components/forgot-password/FormForgotPassword"
 export * from "./src/page_components/NavigationHeader"
 
 /* Responsive Wrappers */

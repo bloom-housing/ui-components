@@ -3,7 +3,6 @@ import * as React from "react"
 import { SiteFooter } from "./SiteFooter"
 import { FooterNav } from "../navigation/FooterNav"
 import { LocalizedLink } from "../actions/LocalizedLink"
-import { ExygyFooter } from "./ExygyFooter"
 import { FooterSection } from "../sections/FooterSection"
 
 export default {
@@ -84,8 +83,5 @@ export const withLogoAndCredits = () => (
     <FooterNav copyright="Alameda County © 2020 • All Rights Reserved">
       <LocalizedLink href="/policy">Policy</LocalizedLink>
     </FooterNav>
-    <FooterSection className="bg-black" small>
-      <ExygyFooter />
-    </FooterSection>
   </SiteFooter>
 )
