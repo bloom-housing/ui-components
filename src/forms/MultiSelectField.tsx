@@ -53,7 +53,6 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
           delay: 300, // debounce for 300ms
           inputClassName: "input",
           multiple: true,
-          placeholder: props.placeholder,
           deleteOnBackspace: true,
           showAllControl: true,
           cssNameSpace: "multi-select-field",
@@ -83,7 +82,12 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
       {props.label && label}
       <div className="control" data-test-id={props.dataTestId}>
         <Icon symbol="search" size="medium" />
-        <input id={props.id} ref={autocompleteRef} className="input" />
+        <input
+          id={props.id}
+          ref={autocompleteRef}
+          className="input"
+          placeholder={props.placeholder}
+        />
       </div>
     </div>
   )

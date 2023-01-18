@@ -73,3 +73,17 @@ export const Default = () => {
     />
   )
 }
+
+// The external library we are using here (ag-grid-react) is throwing an a11y error:
+Default.parameters = {
+  a11y: {
+    config: {
+      rules: [
+        {
+          id: "aria-required-children",
+          enabled: false,
+        },
+      ],
+    },
+  },
+}
