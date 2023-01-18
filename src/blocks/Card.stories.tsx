@@ -46,7 +46,7 @@ export const MixedContent = () => (
     <Card>
       <div>
         <figure>
-          <img src="/images/listing.jpg" />
+          <img src="/images/listing.jpg" alt={"Image Alt"} />
         </figure>
 
         <Card.Header

@@ -5,7 +5,7 @@ import "./HeadingGroup.scss"
 export interface HeadingGroupProps {
   /** A string or element to display in an `h2` tag (overridable via `headingPriority`) */
   heading: React.ReactNode
-  /** A string or element to display in an `p` tag (using `aria-roledescription="subtitle"`) */
+  /** A string or element to display in an `p` tag (using `role="doc-subtitle"`) */
   subheading: React.ReactNode
   /**
    * The heading level (1 through 6)
@@ -23,7 +23,7 @@ const HeadingGroup = (props: HeadingGroupProps) => {
   return (
     <hgroup className={classNames.join(" ")} role="group">
       <Heading priority={props.headingPriority ?? 2}>{props.heading}</Heading>
-      <p aria-roledescription="subtitle">{props.subheading}</p>
+      <p role="doc-subtitle">{props.subheading}</p>
     </hgroup>
   )
 }

@@ -161,8 +161,9 @@ const ImageCard = (props: ImageCardProps) => {
               )}
               <button
                 aria-label={
-                  props.moreImagesDescription &&
-                  `${props.images.length - 2} ${props.moreImagesDescription}`
+                  props.moreImagesDescription
+                    ? `${props.images.length - 2} ${props.moreImagesDescription}`
+                    : "More Images"
                 }
                 data-test-id="open-modal-button"
                 onClick={() => {
