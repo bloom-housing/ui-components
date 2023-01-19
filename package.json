@@ -30,7 +30,7 @@
   ],
   "scripts": {
     "build-storybook": "build-storybook -c .storybook -s ./public",
-    "start": "start-storybook -s ./public",
+    "start": "start-storybook -s ./public -p 40791",
     "build": "tsc",
     "test": "jest -w 1",
     "test:coverage": "jest -w 1 --coverage --watchAll=false",
