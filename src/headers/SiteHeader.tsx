@@ -303,7 +303,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
             if (menuLink.href) {
               return (
                 <LinkComponent
-                  className={`navbar-link ${props.menuItemClassName && props.menuItemClassName}`}
+                  className={`navbar-link ${props.menuItemClassName ?? ""}`}
                   href={menuLink.href}
                   key={`${menuLink.title}-${index}`}
                   data-test-id={`${menuLink.title}`}
@@ -314,9 +314,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
             } else {
               return (
                 <button
-                  className={`navbar-link ${
-                    props.menuItemClassName && props.menuItemClassName
-                  } desktop-header-button`}
+                  className={`navbar-link ${props.menuItemClassName ?? ""} desktop-header-button`}
                   tabIndex={0}
                   onClick={() => {
                     menuAction(menuLink.onClick)
@@ -418,15 +416,15 @@ const SiteHeader = (props: SiteHeaderProps) => {
     return (
       <div className={`navbar-logo ${getLogoWidthClass()}`}>
         <LinkComponent
-          className={`logo ${props.logoClass && props.logoClass} ${
-            props.logoWidth && "navbar-custom-width"
+          className={`logo ${props.logoClass ?? ""} ${
+            (props.logoWidth && "navbar-custom-width") ?? ""
           }`}
           href={props.homeURL}
           aria-label={props.strings?.logoAriaLable ?? t("t.homePage")}
         >
-          <div className={`logo-content ${props.imageOnly && "navbar-image-only-container"}`}>
+          <div className={`logo-content ${props.imageOnly ? "navbar-image-only-container" : ""}`}>
             <img
-              className={`logo__image ${props.imageOnly && "navbar-image-only"}`}
+              className={`logo__image ${props.imageOnly ? "navbar-image-only" : ""}`}
               src={props.logoSrc}
               alt={"Site logo"}
             />
@@ -443,7 +441,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
         <LanguageNav ariaLabel={props.languageNavLabel} languages={props.languages} />
       )}
 
-      <div className={`navbar-notice ${!props.noticeMobile && `navbar-notice-hide`}`}>
+      <div className={`navbar-notice ${!props.noticeMobile ? `navbar-notice-hide` : ""}`}>
         <div className="navbar-notice__text">{props.notice ?? ""}</div>
       </div>
 
