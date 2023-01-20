@@ -28,6 +28,7 @@ export interface GridSectionProps {
   grid?: boolean
   columns?: number
   inset?: boolean
+  wrapperClassName?: string
   className?: string
   tightSpacing?: boolean
   reverse?: boolean
@@ -38,6 +39,7 @@ export interface GridSectionProps {
 const GridSection = (props: GridSectionProps) => {
   const sectionClasses = ["grid-section"]
   if (props.separator) sectionClasses.push("has-separator")
+  if (props.wrapperClassName) sectionClasses.push(props.wrapperClassName)
 
   const gridClasses = ["grid-section__inner"]
   const grid = typeof props.grid != "undefined" ? props.grid : true

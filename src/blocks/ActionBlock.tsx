@@ -1,4 +1,5 @@
 import React from "react"
+import { Heading } from "../text/Heading"
 import "./ActionBlock.scss"
 
 export enum ActionBlockLayout {
@@ -16,6 +17,7 @@ interface ActionBlockProps {
   background?: string
   className?: string
   header: string
+  headerPriority?: number
   icon?: React.ReactNode
   layout?: ActionBlockLayout
   subheader?: string
@@ -25,6 +27,7 @@ const ActionBlock = ({
   background = ActionBlockBackground.none,
   className,
   header,
+  headerPriority,
   icon,
   layout = ActionBlockLayout.block,
   subheader,
@@ -41,7 +44,9 @@ const ActionBlock = ({
     <div className={actionBlockClasses.join(" ")}>
       <div className="action-block__head">
         {icon && <div className="action-block__icon">{icon}</div>}
-        <h2 className="action-block__header">{header}</h2>
+        <Heading priority={headerPriority ?? 3} className="action-block__header">
+          {header}
+        </Heading>
         {subheader && layout === ActionBlockLayout.block && (
           <p className="action-block__subheader">{subheader}</p>
         )}

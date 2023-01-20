@@ -32,6 +32,7 @@
     width: auto;
     flex-shrink: 0;
     @screen lg {
+      @apply w-full;
       @apply text-left;
     }
   }
@@ -46,7 +47,7 @@
       display: flex;
       align-items: flex-start;
       flex-wrap: wrap;
-      justify-content: flex-end;
+      justify-content: end;
     }
   }
 }

@@ -17,6 +17,7 @@ export interface MenuLink {
   iconSrc?: string
   onClick?: () => void
   subMenuLinks?: MenuLink[]
+  class?: string
   title: string
 }
 
@@ -38,6 +39,8 @@ export interface SiteHeaderProps {
   noticeMobile?: boolean
   siteHeaderWidth?: SiteHeaderWidth
   title?: string
+  subtitle?: string
+  desktopMinWidth?: number
   strings?: {
     close?: string
     logoAriaLable?: string
@@ -54,7 +57,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
 
   const { LinkComponent } = useContext(NavigationContext)
 
-  const DESKTOP_MIN_WIDTH = 767 // @screen md
+  const DESKTOP_MIN_WIDTH = props.desktopMinWidth || 767 // @screen md
   // Enables toggling off navbar links when entering mobile
   useEffect(() => {
     if (window.innerWidth > DESKTOP_MIN_WIDTH) {
@@ -303,7 +306,9 @@ const SiteHeader = (props: SiteHeaderProps) => {
             if (menuLink.href) {
               return (
                 <LinkComponent
-                  className={`navbar-link ${props.menuItemClassName && props.menuItemClassName}`}
+                  className={`navbar-link ${props.menuItemClassName && props.menuItemClassName} ${
+                    menuLink.class && menuLink.class
+                  }`}
                   href={menuLink.href}
                   key={`${menuLink.title}-${index}`}
                   data-test-id={`${menuLink.title}`}
@@ -346,7 +351,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
                 onMouseEnter={() => changeMenuShow(menuLink.title, activeMenus, setActiveMenus)}
                 onMouseLeave={() => changeMenuShow(menuLink.title, activeMenus, setActiveMenus)}
                 role={"button"}
-                data-test-id={`${menuLink.title}`}
+                data-test-id={`${menuLink.title}-${index}`}
               >
                 {menuContent}
               </span>

@@ -73,6 +73,7 @@ export * from "./src/helpers/preferences"
 export * from "./src/helpers/resolveObject"
 export * from "./src/helpers/translator"
 export * from "./src/helpers/useIntersect"
+export * from "./src/helpers/useKeyPress"
 export * from "./src/helpers/useMutate"
 export * from "./src/helpers/validators"
 
