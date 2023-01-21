@@ -29,6 +29,7 @@ export interface SiteHeaderProps {
   logoClass?: string
   logoSrc: string
   logoWidth?: LogoWidth
+  mainContentId?: string
   menuItemClassName?: string
   menuLinks: MenuLink[]
   mobileDrawer?: boolean
@@ -437,6 +438,11 @@ const SiteHeader = (props: SiteHeaderProps) => {
 
   return (
     <header className={"site-header"}>
+      {props.mainContentId && (
+        <a className="sr-only" href={props.mainContentId}>
+          Skip to main content
+        </a>
+      )}
       {props.languages && (
         <LanguageNav ariaLabel={props.languageNavLabel} languages={props.languages} />
       )}
