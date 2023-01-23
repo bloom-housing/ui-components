@@ -487,6 +487,7 @@
   "listings.developmentalDisabilities": "發展障礙人士",
   "listings.downloadPdf": "下載 PDF 檔案",
   "listings.eligibilityNotebook": "申請資格筆記本",
+  "listings.eligibleApplicants.FCFS": "我們將按照「先申請先入住」的原則聯絡合格的申請人，直至空置房被入住為止。",
   "listings.enterLotteryForWaitlist": "提交申請表，列入 %{units} 個單位候補名單的空缺名額。",
   "listings.featuresCards": "物業特點說明卡",
   "listings.forIncomeCalculationsBMR": "收入計算是以單位類型為準",

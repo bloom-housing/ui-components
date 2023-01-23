@@ -30,7 +30,7 @@
   ],
   "scripts": {
     "build-storybook": "build-storybook -c .storybook -s ./public",
-    "start": "start-storybook -s ./public",
+    "start": "start-storybook -s ./public -p 40791",
     "build": "tsc",
     "test": "jest -w 1",
     "test:coverage": "jest -w 1 --coverage --watchAll=false",
@@ -40,6 +40,8 @@
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.4",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "@geometricpanda/storybook-addon-badges": "^0.2.1",
@@ -73,6 +75,8 @@
     "@types/react-text-mask": "^5.4.6",
     "@types/react-transition-group": "^4.4.0",
     "@types/webpack": "^4.41.22",
+    "@typescript-eslint/parser": "^5.12.1",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
     "autoprefixer": "^10.3.4",
     "babel-loader": "^8.2.2",
     "babel-plugin-require-context-hook": "^1.0.0",
@@ -84,9 +88,11 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-react-hooks": "^4.1.2",
+    "husky": "^4.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.5.3",
     "jest-environment-jsdom": "^26.5.3",
+    "lint-staged": "^10.4.0",
     "mockdate": "^3.0.2",
     "postcss": "^8.3.6",
     "postcss-loader": "^4.3",
@@ -98,6 +104,7 @@
     "react-is": "^17.0.2",
     "react-test-renderer": "^17.0.2",
     "regenerator-runtime": "^0.13.7",
+    "require-from-string": "2.0.2",
     "sass": "1.52.1",
     "sass-loader": "^10.0.3",
     "semantic-release": "19.0.5",
@@ -114,7 +121,6 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@mapbox/mapbox-sdk": "^0.13.0",
     "@types/jwt-decode": "^2.2.1",
-    "@types/markdown-to-jsx": "^6.11.2",
     "@types/mdx": "^2.0.1",
     "@types/node": "^12.12.67",
     "@types/node-polyglot": "^2.4.1",
@@ -128,7 +134,7 @@
     "axios": "0.21.2",
     "dayjs": "^1.10.7",
     "jwt-decode": "^2.2.0",
-    "markdown-to-jsx": "^6.11.4",
+    "markdown-to-jsx": "7.1.8",
     "nanoid": "^3.1.12",
     "node-polyglot": "^2.4.0",
     "react": "^17.0.2",
@@ -152,5 +158,13 @@
     "singleQuote": false,
     "printWidth": 100,
     "semi": false
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "echo '\n(1) Verifying conventional commit format... \n   (If this fails, install commitizen and commit with 'git cz' to automate the formatting!)\n----------' && commitlint -E HUSKY_GIT_PARAMS && echo '\n(2) Linting...\n----------' && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": "eslint --max-warnings 0"
   }
 }

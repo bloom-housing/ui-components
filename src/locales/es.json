@@ -505,6 +505,7 @@
   "listings.developmentalDisabilities": "Personas con discapacidades del desarrollo",
   "listings.downloadPdf": "Descargar PDF",
   "listings.eligibilityNotebook": "Cuaderno de elegibilidad",
+  "listings.eligibleApplicants.FCFS": "Se contactará a los solicitantes elegibles por orden hasta que se cubran las vacantes.",
   "listings.enterLotteryForWaitlist": "Enviar una solicitud para un lugar abierto en la lista de espera de %{units} viviendas.",
   "listings.featuresCards": "Tarjetas de características",
   "listings.forIncomeCalculationsBMR": "Los cálculos de los ingresos están basados en el tipo de vivienda",

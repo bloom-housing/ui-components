@@ -440,6 +440,7 @@
   "listings.developmentalDisabilities": "Mga taong may kapansanan sa pag-unlad",
   "listings.downloadPdf": "I-download ang PDF",
   "listings.eligibilityNotebook": "Notebook ng Pagiging Kwalipikado",
+  "listings.eligibleApplicants.FCFS": "Ang mga kwalipikadong aplikante ay ilalagay sa waitlist sa batayang first come first serve hanggang sa mapuno ang mga puwesto ng waitlist.",
   "listings.enterLotteryForWaitlist": "Magsumite ng application para sa bukas ng slot ng waitlist para sa %{units} na unit.",
   "listings.featuresCards": "Mga Feature Card",
   "listings.forIncomeCalculationsBMR": "Ang mga kalkulasyon ng kita ay batay sa uri ng unit",
