@@ -49,7 +49,7 @@ const AdditionalFees = ({
         )}
       </GridSection>
       {hasFooter && (
-        <div className="info-card__columns text-sm">
+        <div className="info-card__columns text-xs">
           {footerContent?.map((elem, idx) => (
             <div key={`footer_info_${idx}`} className="info-card__column-2">
               {elem}

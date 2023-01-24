@@ -7,21 +7,21 @@ import {
   Field,
   emailRegex,
   AppearanceSizeType,
-} from "../../..";
-import React, { useEffect, useMemo } from "react";
-import { useForm } from "react-hook-form";
+} from "../../.."
+import React, { useEffect, useMemo } from "react"
+import { useForm } from "react-hook-form"
 
 export type ResendConfirmationModalProps = {
-  isOpen: boolean;
-  initialEmailValue: string;
-  onClose: () => void;
-  onSubmit: (email: string) => void;
-  loading: boolean;
-};
+  isOpen: boolean
+  initialEmailValue: string
+  onClose: () => void
+  onSubmit: (email: string) => void
+  loading: boolean
+}
 
 export type ResendConfirmationModalForm = {
-  onSubmit: (email: string) => void;
-};
+  onSubmit: (email: string) => void
+}
 
 const ResendConfirmationModal = ({
   isOpen,
@@ -35,23 +35,23 @@ const ResendConfirmationModal = ({
     defaultValues: useMemo(() => {
       return {
         emailResend: initialEmailValue,
-      };
+      }
     }, [initialEmailValue]),
-  });
+  })
 
   useEffect(() => {
     reset({
       emailResend: initialEmailValue,
-    });
-  }, [initialEmailValue, reset]);
+    })
+  }, [initialEmailValue, reset])
 
   const onFormSubmit = async () => {
-    const isValid = await trigger();
-    if (!isValid) return;
+    const isValid = await trigger()
+    if (!isValid) return
 
-    const { emailResend } = getValues();
-    onSubmit(emailResend);
-  };
+    const { emailResend } = getValues()
+    onSubmit(emailResend)
+  }
 
   return (
     <Modal
@@ -59,8 +59,8 @@ const ResendConfirmationModal = ({
       title={t("authentication.signIn.yourAccountIsNotConfirmed")}
       ariaDescription={t("authentication.createAccount.linkExpired")}
       onClose={() => {
-        onClose();
-        window.scrollTo(0, 0);
+        onClose()
+        window.scrollTo(0, 0)
       }}
       actions={[
         <Button
@@ -76,8 +76,8 @@ const ResendConfirmationModal = ({
           type="button"
           styleType={AppearanceStyleType.alert}
           onClick={() => {
-            onClose();
-            window.scrollTo(0, 0);
+            onClose()
+            window.scrollTo(0, 0)
           }}
           size={AppearanceSizeType.small}
         >
@@ -100,12 +100,10 @@ const ResendConfirmationModal = ({
           />
         </Form>
 
-        <p className="pt-4">
-          {t("authentication.createAccount.resendEmailInfo")}
-        </p>
+        <p className="pt-4">{t("authentication.createAccount.resendEmailInfo")}</p>
       </>
     </Modal>
-  );
-};
+  )
+}
 
-export { ResendConfirmationModal as default, ResendConfirmationModal };
+export { ResendConfirmationModal as default, ResendConfirmationModal }

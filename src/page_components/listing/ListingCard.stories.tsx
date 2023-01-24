@@ -74,11 +74,7 @@ export const withStackedTable = () => {
         },
         stackedData: [
           {
-            units: {
-              cellText: "Studio",
-              cellSubText: "23 available",
-              hideSubTextMobile: true,
-            },
+            units: { cellText: "Studio", cellSubText: "23 available", hideSubTextMobile: true },
             availability: { cellText: "23", cellSubText: "available" },
             income: { cellText: "$0 to $6,854", cellSubText: "per month" },
             rent: { cellText: "30%", cellSubText: "income" },
@@ -105,10 +101,7 @@ export const WithHeaders = () => {
       tableProps={{ ...standardTableProps }}
       footerButtons={[{ text: "See Details", href: "see-details-link", ariaHidden: true }]}
       contentProps={{
-        contentHeader: {
-          content: "Optional content header",
-          href: "listing-link",
-        },
+        contentHeader: { content: "Optional content header", href: "listing-link" },
         contentSubheader: { content: "Optional content subheader" },
         tableHeader: { content: "Optional table header" },
         tableSubheader: { content: "Optional table subheader" },
@@ -124,10 +117,7 @@ export const WithPillHeader = () => {
       tableProps={{ ...standardTableProps }}
       footerButtons={[{ text: "See Details", href: "see-details-link", ariaHidden: true }]}
       contentProps={{
-        contentHeader: {
-          content: "Optional content header",
-          href: "listing-link",
-        },
+        contentHeader: { content: "Optional content header", href: "listing-link" },
         contentSubheader: { content: "Optional content subheader" },
         tableHeader: { content: "Optional table header", isPillType: true },
       }}
@@ -184,9 +174,7 @@ export const WithHeadersContent = () => {
         contentHeader: { content: "Property Listing" },
         contentSubheader: { content: "Street Address, Local City ST 12345" },
         tableHeader: { content: "Open Waitlist & Available Units" },
-        tableSubheader: {
-          content: "Includes priority units for mobility impairments",
-        },
+        tableSubheader: { content: "Includes priority units for mobility impairments" },
       }}
     />
   )
@@ -224,7 +212,7 @@ const exampleCustomContent = () => {
   }
   return (
     <div className={"text-gray-750"}>
-      <div className={"font-alt-sans font-semibold text-base mb-2 text-gray-900"}>
+      <div className={"font-alt-sans font-semibold text-base mb-2 text-gray-950"}>
         Available units
       </div>
       {getHeader("Units")}

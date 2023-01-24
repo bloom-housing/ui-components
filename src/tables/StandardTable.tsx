@@ -222,7 +222,7 @@ export const StandardTable = (props: StandardTableProps) => {
     )
   })
 
-  const tableClasses = ["w-full", "text-sm"]
+  const tableClasses = ["w-full", "text-xs"]
   if (props.responsiveCollapse) {
     tableClasses.push("responsive-collapse")
   }
