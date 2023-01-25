@@ -439,7 +439,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
   return (
     <header className={"site-header"}>
       {props.mainContentId && (
-        <a className="sr-only" href={props.mainContentId}>
+        <a className="skip-link" href={`#${props.mainContentId}`}>
           Skip to main content
         </a>
       )}
