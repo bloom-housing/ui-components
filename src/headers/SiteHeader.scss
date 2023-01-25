@@ -398,7 +398,6 @@
   @apply sr-only;
   &:focus {
     @apply not-sr-only;
-    transition: all 400ms;
     position: absolute;
     padding: var(--bloom-s2) var(--bloom-s4);
     text-decoration: underline;
