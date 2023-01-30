@@ -440,7 +440,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
     <header className={"site-header"}>
       {props.mainContentId && (
         <a className="skip-link" href={`#${props.mainContentId}`}>
-          Skip to main content
+          {t("t.skipToMainContent")}
         </a>
       )}
       {props.languages && (

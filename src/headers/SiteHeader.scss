@@ -399,6 +399,7 @@
   &:focus {
     @apply not-sr-only;
     position: absolute;
+    z-index: 100;
     padding: var(--bloom-s2) var(--bloom-s4);
     text-decoration: underline;
     font-size: var(--bloom-font-size-base);
