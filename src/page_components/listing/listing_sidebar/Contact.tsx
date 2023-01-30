@@ -21,6 +21,8 @@ export interface ContactProps {
   contactPhoneNumberNote?: string
   /** The contact's title */
   contactTitle?: string
+  /** Classnames to style the contact's title */
+  contactTitleClassname?: string
   /** The text for the section's header */
   sectionTitle: string
   strings: { email?: string; getDirections: string; website?: string }
@@ -36,6 +38,7 @@ const Contact = ({
   contactPhoneNumber,
   contactPhoneNumberNote,
   contactTitle,
+  contactTitleClassname,
   sectionTitle,
   strings,
 }: ContactProps) => {
@@ -46,6 +49,8 @@ const Contact = ({
     contactCompany?.website && !contactCompany?.website.startsWith("http")
       ? `http://${contactCompany?.website}`
       : contactCompany?.website
+  const contactTitleClasses = ["text-gray-700"]
+  if (contactTitleClassname) contactTitleClasses.push(contactTitleClassname)
 
   return (
     <section className="aside-block">
@@ -54,7 +59,7 @@ const Contact = ({
       </Heading>
 
       {contactName && <p className="text-xl">{contactName}</p>}
-      {contactTitle && <p className="text-gray-700">{contactTitle}</p>}
+      {contactTitle && <p className={contactTitleClasses.join(" ")}>{contactTitle}</p>}
       {contactCompany?.name && <p className="text-gray-700">{contactCompany.name}</p>}
 
       {contactPhoneNumber && (
