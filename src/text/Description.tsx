@@ -16,16 +16,16 @@ export const Description = (props: DescriptionProps) => {
 
   return (
     <>
-      <dd className="description__title">{props.term}</dd>
+      <dt className="description__title">{props.term}</dt>
       {props.markdown ? (
-        <dt className={dtClasses.join(" ")}>
+        <dd className={dtClasses.join(" ")}>
           <Markdown
             options={{ disableParsingRawHTML: true, ...props.markdownProps }}
             children={props.description}
           />
-        </dt>
+        </dd>
       ) : (
-        <dt className={dtClasses.join(" ")}>{props.description}</dt>
+        <dd className={dtClasses.join(" ")}>{props.description}</dd>
       )}
     </>
   )
