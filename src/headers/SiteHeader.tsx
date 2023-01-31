@@ -43,6 +43,7 @@ export interface SiteHeaderProps {
     close?: string
     logoAriaLable?: string
     menu?: string
+    skipToMainContent?: string
   }
 }
 
@@ -440,7 +441,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
     <header className={"site-header"}>
       {props.mainContentId && (
         <a className="skip-link" href={`#${props.mainContentId}`}>
-          {t("t.skipToMainContent")}
+          {props.strings?.skipToMainContent}
         </a>
       )}
       {props.languages && (
