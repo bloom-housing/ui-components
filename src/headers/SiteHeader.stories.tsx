@@ -32,6 +32,22 @@ export const withLanguage = () => (
   />
 )
 
+export const withLanguageAndSkipLink = () => (
+  <SiteHeader
+    homeURL={"/"}
+    languages={[
+      { label: "English", onClick: () => console.log("Clicked English"), active: true },
+      { label: "Español", onClick: () => console.log("Clicked Español"), active: false },
+      { label: "中文", onClick: () => console.log("Clicked 中文"), active: false },
+    ]}
+    logoSrc="/images/logo_glyph.svg"
+    title="Alameda County Housing Portal"
+    menuLinks={[]}
+    mainContentId={"main-content"}
+    strings={{ skipToMainContent: "Skip to main content" }}
+  />
+)
+
 export const withLanguageAndMobileNotice = () => (
   <SiteHeader
     homeURL={"/"}
