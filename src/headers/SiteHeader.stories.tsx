@@ -44,6 +44,7 @@ export const withLanguageAndSkipLink = () => (
     title="Alameda County Housing Portal"
     menuLinks={[]}
     mainContentId={"main-content"}
+    strings={{ skipToMainContent: "Skip to main content" }}
   />
 )
 
