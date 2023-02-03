@@ -17,10 +17,13 @@
 // Data lists
 .column-definition-list {
   @include clearfix;
-  @apply grid;
-  grid-template-columns: 1fr 1fr;
-  @apply gap-x-4;
-  grid-row-gap: 0.15rem;
+
+  @screen md {
+    @apply grid;
+    grid-template-columns: 1fr 1fr;
+    @apply gap-x-4;
+    grid-row-gap: 0.15rem;
+  }
   
   .description__title {
     @apply text-xl;
@@ -46,10 +49,13 @@
     @screen md {
       @apply mb-0;
       @apply float-left;
+      &:last-of-type {
+        @apply col-span-2;
+      }
     }
 
     &:last-of-type {
-      @apply w-full;
+      @apply w-full
     }
   }
 }
