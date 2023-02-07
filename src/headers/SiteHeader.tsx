@@ -12,6 +12,7 @@ type LogoWidth = "slim" | "base" | "medium" | "wide"
 type SiteHeaderWidth = "base" | "wide"
 
 export interface MenuLink {
+  className?: string
   href?: string
   iconClassName?: string
   iconSrc?: string
@@ -21,7 +22,9 @@ export interface MenuLink {
 }
 
 export interface SiteHeaderProps {
+  desktopMinWidth?: number
   dropdownItemClassName?: string
+  flattenSubMenus?: boolean
   homeURL: string
   imageOnly?: boolean
   languageNavLabel?: string
@@ -34,10 +37,10 @@ export interface SiteHeaderProps {
   menuLinks: MenuLink[]
   mobileDrawer?: boolean
   mobileText?: boolean
-  flattenSubMenus?: boolean
   notice?: string | React.ReactNode
   noticeMobile?: boolean
   siteHeaderWidth?: SiteHeaderWidth
+  subtitle?: string
   title?: string
   strings?: {
     close?: string
@@ -56,7 +59,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
 
   const { LinkComponent } = useContext(NavigationContext)
 
-  const DESKTOP_MIN_WIDTH = 767 // @screen md
+  const DESKTOP_MIN_WIDTH = props.desktopMinWidth || 767 // @screen md
   // Enables toggling off navbar links when entering mobile
   useEffect(() => {
     if (window.innerWidth > DESKTOP_MIN_WIDTH) {
@@ -74,7 +77,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
     }
     window.addEventListener("resize", updateMedia)
     return () => window.removeEventListener("resize", updateMedia)
-  }, [])
+  }, [DESKTOP_MIN_WIDTH])
 
   const getLogoWidthClass = () => {
     if (props.logoWidth === "slim") return "navbar-logo-width-slim"
@@ -154,7 +157,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
                 }
                 dropdownOptionKeyDown(event, index)
               }}
-              data-test-id={`${option.title}`}
+              data-test-id={`${option.title}-${index}`}
             >
               {dropdownOptionContent(option)}
             </button>
@@ -305,10 +308,12 @@ const SiteHeader = (props: SiteHeaderProps) => {
             if (menuLink.href) {
               return (
                 <LinkComponent
-                  className={`navbar-link ${props.menuItemClassName ?? ""}`}
+                  className={`navbar-link ${props.menuItemClassName ?? ""} ${
+                    menuLink.className ?? ""
+                  }`}
                   href={menuLink.href}
                   key={`${menuLink.title}-${index}`}
-                  data-test-id={`${menuLink.title}`}
+                  data-test-id={`${menuLink.title}-${index}`}
                 >
                   {menuContent}
                 </LinkComponent>
@@ -346,7 +351,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
                 onMouseEnter={() => changeMenuShow(menuLink.title, activeMenus, setActiveMenus)}
                 onMouseLeave={() => changeMenuShow(menuLink.title, activeMenus, setActiveMenus)}
                 role={"button"}
-                data-test-id={`${menuLink.title}`}
+                data-test-id={`${menuLink.title}-${index}`}
               >
                 {menuContent}
               </span>
@@ -415,6 +420,17 @@ const SiteHeader = (props: SiteHeaderProps) => {
   }
 
   const getLogo = () => {
+    let titleHtml
+    if (props.title && props.subtitle) {
+      titleHtml = (
+        <div className="logo__title">
+          {props.title}
+          <div className="logo__subtitle">{props.subtitle}</div>
+        </div>
+      )
+    } else if (props.title) {
+      titleHtml = <div className="logo__title">{props.title}</div>
+    }
     return (
       <div className={`navbar-logo ${getLogoWidthClass()}`}>
         <LinkComponent
@@ -430,7 +446,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
               src={props.logoSrc}
               alt={"Site logo"}
             />
-            {props.title && <div className="logo__title">{props.title}</div>}
+            {props.title && <div className="logo__title">{titleHtml}</div>}
           </div>
         </LinkComponent>
       </div>
