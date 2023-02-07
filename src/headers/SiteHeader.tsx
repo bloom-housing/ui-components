@@ -210,7 +210,12 @@ const SiteHeader = (props: SiteHeaderProps) => {
                   }}
                 >
                   {menuLink.title}
-                  <Icon size="small" symbol="arrowDown" fill={"#555555"} className={"pl-2"} />
+                  <Icon
+                    size="small"
+                    symbol="arrowDown"
+                    fill={"#555555"}
+                    className={"navbar-icon-spacing"}
+                  />
                 </button>
                 {activeMobileMenus.indexOf(menuLink.title) >= 0 && (
                   <div className={dropdownContainerClassName}>
@@ -252,7 +257,12 @@ const SiteHeader = (props: SiteHeaderProps) => {
               }}
               aria-label={props.strings?.close ?? t("t.close")}
             >
-              <Icon size="small" symbol="arrowForward" fill={"#ffffff"} className={"pl-2"} />
+              <Icon
+                size="small"
+                symbol="arrowForward"
+                fill={"#ffffff"}
+                className={"navbar-icon-spacing"}
+              />
             </button>
             {buildMobileMenuOptions(
               props.menuLinks,
@@ -376,7 +386,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
       <>
         {props.mobileText ? (
           <button
-            className={"flex flex-row items-center justify-center"}
+            className={"navbar-mobile-menu-text-button"}
             onClick={() => {
               mobileHeaderAction()
             }}
@@ -387,13 +397,13 @@ const SiteHeader = (props: SiteHeaderProps) => {
               }
             }}
           >
-            <div className={"pr-2 text-sm text-primary uppercase"}>
+            <div className={"navbar-mobile-menu-text-button-content"}>
               {props.strings?.menu ?? t("t.menu")}
             </div>
             <Icon
               symbol={mobileMenu ? "closeSmall" : "hamburger"}
               size={"base"}
-              className={"pr-3"}
+              className={"navbar-mobile-menu-icon"}
             />
           </button>
         ) : (

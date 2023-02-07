@@ -237,6 +237,24 @@
           @apply mx-2;
         }
 
+        .navbar-mobile-menu-text-button {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+
+          .navbar-mobile-menu-text-button-content {
+            padding-right: var(--bloom-s2);
+            font-size: var(--bloom-font-size-sm);
+            color: var(--bloom-color-primary);
+            text-transform: uppercase;
+          }
+
+          .navbar-mobile-menu-icon {
+            padding-right: var(--bloom-s3);
+          }
+        }
+
         .navbar-dropdown-title {
           flex-shrink: 0;
         }
@@ -406,4 +424,8 @@
     color: var(--bloom-color-primary);
     background-color: var(--bloom-color-white);
   }
+}
+
+.navbar-icon-spacing {
+  padding-left: var(--bloom-s2);
 }
