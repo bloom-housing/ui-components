@@ -1,31 +1,31 @@
+@import "../global/accessibility.scss";
+
 .site-header {
   .navbar-mobile-dropdown-container {
-    background-color: white;
+    background-color: var(--bloom-color-white);
+
     .navbar-mobile-dropdown {
-      @apply border-b;
-      @apply border-gray-450;
-      @apply w-full;
-      @apply flex;
-      @apply flex-col;
+      border-bottom: 1px solid var(--bloom-color-gray-450);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
       .navbar-mobile-dropdown-item {
-        @apply w-full;
-        @apply flex;
-        @apply text-gray-750;
-        @apply pt-3;
-        @apply pb-3;
-        @apply pl-4;
-        @apply pr-4;
-        @apply border-t;
-        @apply border-gray-450;
-        font-size: 14px;
+        width: 100%;
+        display: flex;
+        color: var(--bloom-color-gray-750);
+        padding: var(--bloom-s3) var(--bloom-s4) var(--bloom-s3) var(--bloom-s4);
+        border-top: 1px solid var(--bloom-color-gray-450);
+        font-size: var(--bloom-font-size-sm);
+
         &:hover,
         &:focus {
-          @apply bg-gray-400;
+          background-color: var(--bloom-color-gray-400);
         }
       }
 
       .navbar-mobile-dropdown-item-sublink {
-        @apply pl-8;
+        padding-left: var(--bloom-s8);
       }
     }
   }
@@ -34,56 +34,51 @@
     position: fixed;
     top: 0;
     right: 0;
-    background-color: white;
+    background-color: var(--bloom-color-white);
     z-index: 10;
-    @apply h-full;
+    height: 100%;
+
     .navbar-mobile-drawer-dropdown {
-      @apply border-b;
-      @apply border-gray-450;
-      @apply w-full;
-      @apply flex;
-      @apply flex-col;
+      border-bottom: 1px solid var(--bloom-color-gray-450);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
 
       .navbar-mobile-drawer-close-row {
-        @apply bg-primary;
-        @apply pt-3;
-        @apply pb-3;
-        @apply pr-2;
-        @apply pl-2;
-        @apply flex;
+        background-color: var(--bloom-color-primary);
+        padding: var(--bloom-s3) var(--bloom-s2) var(--bloom-s3) var(--bloom-s2);
+        display: flex;
       }
 
       .navbar-mobile-drawer-dropdown-item {
-        @apply flex;
-        @apply text-gray-750;
-        @apply pt-3;
-        @apply pb-3;
-        @apply pl-4;
-        @apply pr-24;
-        @apply border-t;
-        @apply border-l;
-        @apply border-gray-450;
-        font-size: 14px;
-        @apply w-full;
+        display: flex;
+        color: var(--bloom-color-gray-750);
+        padding: var(--bloom-s3) var(--bloom-s24) var(--bloom-s3) var(--bloom-s4);
+        border-top: 1px solid var(--bloom-color-gray-450);
+        border-left: 1px solid var(--bloom-color-gray-450);
+        font-size: var(--bloom-font-size-sm);
+        width: 100%;
+
         &:hover,
         &:focus {
-          @apply bg-gray-400;
+          background-color: var(--bloom-color-gray-400);
         }
       }
 
       .navbar-mobile-drawer-dropdown-item-sublink {
-        @apply pl-8;
-        @apply pr-2;
+        padding-left: var(--bloom-s8);
+        padding-right: var(--bloom-s2);
       }
     }
   }
 
   .navbar-container {
     display: flex;
-    @apply w-full;
+    width: 100%;
     align-items: center;
     justify-content: center;
 
+    // TODO: What are these four explicit pixel numbers
     .navbar-width-base {
       width: 1025px;
     }
@@ -102,21 +97,21 @@
       max-width: 100%;
 
       .navbar-logo {
-        @apply flex;
-        @apply items-center;
+        display: flex;
+        align-items: center;
         justify-content: center;
         flex-grow: 1;
-        @screen md {
+
+        @media (min-width: $screen-md) {
           flex-shrink: 0;
           flex-grow: initial;
         }
 
         .logo {
-          @apply cursor-pointer;
-          @apply text-black;
-          @apply block;
-          @apply text-center;
-          @apply z-10;
+          cursor: pointer;
+          color: var(--bloom-color-black);
+          text-align: center;
+          z-index: 10;
           width: 100%;
           height: 95%;
           display: flex;
@@ -125,14 +120,16 @@
 
           .logo-content {
             @apply p-1;
+            padding: var(--bloom-s1);
           }
 
           .navbar-image-only-container {
-            @apply p-0;
+            padding: 0;
             width: 100%;
             height: 100%;
-            // 75px - .5rem of padding from the container around it
-            @screen md {
+
+            // 75px minus .5rem of padding from the container around it
+            @media (min-width: $screen-md) {
               height: 67px;
               height: 120px;
               display: flex;
@@ -148,93 +145,91 @@
             }
           }
 
-          @screen md {
+          @media (min-width: $screen-md) {
             height: 120px;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
             margin-bottom: -0.75rem;
             margin-top: -2.4rem;
-            @apply pt-1;
-            @apply pb-1;
-            @apply pl-3;
-            @apply pr-3;
+            padding: var(--bloom-s1) var(--bloom-s3) var(--bloom-s1) var(--bloom-s3);
 
             &:focus {
               box-shadow: 0 0 3px 4px $tailwind-accent-cool;
             }
           }
 
-          @screen print {
+          @media (min-width: $screen-print) {
             margin-top: 0;
           }
 
-          @apply bg-white;
-          @apply border-b-0;
-
-          @apply flex;
+          background-color: var(--bloom-color-white);
+          border-bottom: 0;
+          display: flex;
 
           .logo__image {
-            @apply inline-block;
-            @apply mt-1;
-            @apply mb-1;
+            display: inline-block;
+            margin-top: var(--bloom-s1);
+            margin-bottom: var(--bloom-s1);
             max-height: 1.5rem;
 
-            @screen md {
-              @apply mt-3;
-              @apply mb-2;
+            @media (min-width: $screen-md) {
+              margin-top: var(--bloom-s3);
+              margin-bottom: var(--bloom-s2);
               max-height: 2rem;
             }
           }
 
           .logo__title {
-            @apply uppercase;
-            @apply font-bold;
-            @apply text-gray-950;
-            @apply font-alt-sans;
-            @apply tracking-wider;
-            @apply text-xs;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--bloom-color-gray-950);
+            font-family: var(--bloom-font-alt-sans);
+            letter-spacing: 0.05em;
+            font-size: var(--bloom-font-size-xs);
 
-            @screen md {
-              @apply text-sm;
+            @media (min-width: $screen-md) {
+              font-size: var(--bloom-font-size-sm);
             }
           }
         }
 
         .navbar-custom-width {
-          @screen md {
-            @apply flex;
-            @apply items-center;
-            @apply justify-center;
-            @apply flex-col;
+          @media (min-width: $screen-md) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
           }
         }
       }
 
       .navbar-menu {
-        @apply flex;
+        display: flex;
         justify-content: flex-end;
+        //TODO: What are these two explicit pixel numbers
         min-width: 110px;
 
-        @screen md {
+        @media (min-width: $screen-md) {
           height: 75px;
         }
 
         .navbar-mobile-menu-button {
-          @apply relative;
-          @apply rounded;
-          @apply px-2;
-          @apply text-xl;
-          @apply text-center;
-          @apply uppercase;
-          @apply font-alt-sans;
-          @apply inline-block;
-          @apply tracking-widest;
-          @apply text-xs;
-          @apply font-bold;
-          @apply leading-snug;
-          @apply border-primary;
-          @apply border-2;
+          position: relative;
+          border-radius: var(--bloom-s1);
+          padding-left: var(--bloom-s2);
+          padding-right: var(--bloom-s2);
+          font-size: var(--bloom-font-size-xl);
+          text-align: center;
+          text-transform: uppercase;
+          font-family: var(--bloom-font-alt-sans);
+          display: inline-block;
+          letter-spacing: 0.1em;
+          font-size: var(--bloom-font-size-xs);
+          font-weight: 700;
+          line-height: 1.375;
+          border: 2px var(--bloom-color-primary);
           text-decoration: none;
-          @apply mx-2;
+          margin-left: var(--bloom-s2);
+          margin-right: var(--bloom-s2);
         }
 
         .navbar-mobile-menu-text-button {
@@ -261,31 +256,29 @@
 
         .navbar-link {
           text-transform: uppercase;
-          @apply text-xs;
-          @apply pr-3;
-          @apply pl-3;
-          @apply text-gray-750;
-          @apply h-full;
-          @apply pb-4;
-          @apply pt-1;
-          @apply flex;
-          @apply items-end;
+          font-size: var(--bloom-font-size-xs);
+          padding-left: var(--bloom-s3);
+          padding-right: var(--bloom-s3);
+          color: var(--bloom-color-gray-750);
+          height: 100%;
+          padding: var(--bloom-s1) var(--bloom-s3) var(--bloom-s4) var(--bloom-s3);
+          display: flex;
+          align-items: flex-end;
           border-bottom: 3px solid transparent;
 
           @media (min-width: 840px) {
-            @apply pr-4;
-            @apply pl-4;
+            padding-right: var(--bloom-s4);
+            padding-left: var(--bloom-s4);
           }
 
           &:focus {
-            box-shadow: 0 0 3px 4px $tailwind-accent-cool;
+            box-shadow: 0 0 3px 4px var(--bloom-color-accent-cool);
             outline: none;
           }
 
           &:hover {
-            border-bottom: 3px solid;
-            @apply border-primary;
-            @apply cursor-pointer;
+            border-bottom: 3px solid var(--bloom-color-primary);
+            cursor: pointer;
           }
 
           div {
@@ -294,41 +287,40 @@
         }
 
         .desktop-header-button {
-          @apply pt-7;
+          padding-top: var(--bloom-s7);
           border-bottom: 3px solid transparent;
         }
 
         .navbar-dropdown-container {
-          background-color: white;
+          background-color: var(--bloom-color-white);
           position: absolute;
+          // TODO What are these exact numbers
           margin-left: -127px;
           margin-top: 38.5px;
-          @apply border-gray-450;
-          @apply border;
+          border: 1px solid var(--bloom-color-gray-450);
           border-top: none;
           width: 143px;
+
           .navbar-dropdown {
             display: flex;
             flex-direction: column;
+
             .navbar-dropdown-item {
-              @apply flex;
-              @apply flex-row;
-              @apply items-center;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
               justify-content: left;
-              @apply text-gray-750;
-              @apply pt-3;
-              @apply pb-3;
-              @apply pl-3;
-              @apply pr-3;
-              @apply border-t;
-              @apply border-gray-450;
-              @apply normal-case;
-              font-size: 14px;
+              color: var(--bloom-color-gray-750);
+              padding: var(--bloom-s3);
+              border-top: 1px solid var(--bloom-color-gray-450);
+              text-transform: none;
+              font-size: var(--bloom-font-size-sm);
               text-align: left;
-              @apply w-full;
+              width: 100%;
+
               &:hover,
               &:focus {
-                @apply bg-gray-400;
+                background-color: var(--bloom-color-gray-400);
               }
             }
           }
@@ -338,34 +330,34 @@
   }
 
   .navbar-notice {
-    @apply w-full;
-    @apply bg-primary;
-    @screen md {
-      @apply text-right;
+    width: 100%;
+    background-color: var(--bloom-color-primary);
+
+    @media (min-width: $screen-md) {
+      text-align: right;
     }
-    @apply text-left;
-    @apply text-white;
-    @apply block;
+    text-align: left;
+    color: var(--bloom-color-white);
+    display: block;
   }
 
   .navbar-notice-hide {
     display: none;
 
-    @screen md {
+    @media (min-width: $screen-md) {
       display: block;
     }
   }
 
   .navbar-notice__text {
-    @apply max-w-5xl;
-    @apply text-xs;
-    @apply py-2;
-    @apply px-3;
+    max-width: 64rem;
+    font-size: var(--bloom-font-size-xs);
+    padding: var(--bloom-s2) var(--bloom-s3);
     margin: auto;
 
     a,
     a:hover {
-      @apply underline;
+      text-decoration: underline;
       color: inherit;
     }
   }
@@ -375,47 +367,51 @@
   transition: all 400ms;
   transform: translateX(100%);
 }
+
 .drawer-transition-enter-active {
   transition: all 400ms;
   transform: translateX(0%);
 }
+
 .drawer-transition-exit {
   transition: all 500ms;
   transform: translateX(100%);
 }
+
 .drawer-transition-exit-active {
   transform: translateX(100%);
   transition: all 500ms;
 }
 
 .navbar-logo-width-slim {
-  @screen md {
+  @media (min-width: $screen-md) {
     width: 100px;
   }
 }
 
 .navbar-logo-width-base {
-  @screen md {
+  @media (min-width: $screen-md) {
     width: 200px;
   }
 }
 
 .navbar-logo-width-med {
-  @screen md {
+  @media (min-width: $screen-md) {
     width: 255px;
   }
 }
 
 .navbar-logo-width-wide {
-  @screen md {
+  @media (min-width: $screen-md) {
     width: 350px;
   }
 }
 
 .skip-link {
-  @apply sr-only;
+  @extend .sr-only;
+
   &:focus {
-    @apply not-sr-only;
+    @extend .not-sr-only;
     position: absolute;
     z-index: 20;
     padding: var(--bloom-s2) var(--bloom-s4);
