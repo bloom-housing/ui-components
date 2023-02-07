@@ -430,17 +430,6 @@ const SiteHeader = (props: SiteHeaderProps) => {
   }
 
   const getLogo = () => {
-    let titleHtml
-    if (props.title && props.subtitle) {
-      titleHtml = (
-        <div className="logo__title">
-          {props.title}
-          <div className="logo__subtitle">{props.subtitle}</div>
-        </div>
-      )
-    } else if (props.title) {
-      titleHtml = <div className="logo__title">{props.title}</div>
-    }
     return (
       <div className={`navbar-logo ${getLogoWidthClass()}`}>
         <LinkComponent
@@ -456,7 +445,12 @@ const SiteHeader = (props: SiteHeaderProps) => {
               src={props.logoSrc}
               alt={"Site logo"}
             />
-            {props.title && <div className="logo__title">{titleHtml}</div>}
+            {props.title && (
+              <div className="logo__title">
+                {props.title}
+                {props.subtitle && <div className="logo__subtitle">{props.subtitle}</div>}
+              </div>
+            )}
           </div>
         </LinkComponent>
       </div>
