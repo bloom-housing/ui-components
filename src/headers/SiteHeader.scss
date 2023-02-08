@@ -97,6 +97,7 @@
       max-width: 100%;
 
       .navbar-logo {
+        // min-width: fit-content; DETROIT CHANGE
         display: flex;
         align-items: center;
         justify-content: center;
@@ -167,27 +168,28 @@
 
           .logo__image {
             display: inline-block;
-            margin-top: var(--bloom-s1);
+            margin-top: var(--bloom-s1); //@apply mt-0; DETROIT CHANGE
             margin-bottom: var(--bloom-s1);
             max-height: 1.5rem;
 
             @media (min-width: $screen-md) {
-              margin-top: var(--bloom-s3);
+              margin-top: var(--bloom-s3); //@apply mt-0; DETROIT CHANGE
               margin-bottom: var(--bloom-s2);
               max-height: 2rem;
+              // @apply inline-block; DETROIT CHANGE
             }
           }
 
           .logo__title {
             text-transform: uppercase;
             font-weight: 700;
-            color: var(--bloom-color-gray-950);
+            color: var(--bloom-color-gray-950); // @apply text-gray-900; DETROIT CHANGE
             font-family: var(--bloom-font-alt-sans);
             letter-spacing: 0.05em;
-            font-size: var(--bloom-font-size-xs);
+            font-size: var(--bloom-font-size-xs); //@apply text-sm; DETROIT CHANGE
 
             @media (min-width: $screen-md) {
-              font-size: var(--bloom-font-size-sm);
+              font-size: var(--bloom-font-size-sm); // @apply text-tiny; DETROIT CHANGE
             }
           }
         }
@@ -217,13 +219,12 @@
           border-radius: var(--bloom-s1);
           padding-left: var(--bloom-s2);
           padding-right: var(--bloom-s2);
-          font-size: var(--bloom-font-size-xl);
           text-align: center;
           text-transform: uppercase;
           font-family: var(--bloom-font-alt-sans);
           display: inline-block;
           letter-spacing: 0.1em;
-          font-size: var(--bloom-font-size-xs);
+          font-size: var(--bloom-font-size-xs); //@apply text-sm; DETROIT CHANGE
           font-weight: 700;
           line-height: 1.375;
           border: 2px var(--bloom-color-primary);
@@ -256,7 +257,7 @@
 
         .navbar-link {
           text-transform: uppercase;
-          font-size: var(--bloom-font-size-xs);
+          font-size: var(--bloom-font-size-xs); //@apply text-sm; DETROIT CHANGE
           padding-left: var(--bloom-s3);
           padding-right: var(--bloom-s3);
           color: var(--bloom-color-gray-750);
@@ -351,7 +352,7 @@
 
   .navbar-notice__text {
     max-width: 64rem;
-    font-size: var(--bloom-font-size-xs);
+    font-size: var(--bloom-font-size-xs); // @apply text-sm; DETROIT CHANGE
     padding: var(--bloom-s2) var(--bloom-s3);
     margin: auto;
 
