@@ -80,10 +80,10 @@ const SiteHeader = (props: SiteHeaderProps) => {
   }, [DESKTOP_MIN_WIDTH])
 
   const getLogoWidthClass = () => {
-    if (props.logoWidth === "slim") return "navbar-logo-width-slim"
-    if (!props.logoWidth || props.logoWidth === "base") return "navbar-logo-width-base"
-    if (props.logoWidth === "medium") return "navbar-logo-width-med"
-    if (props.logoWidth === "wide") return "navbar-logo-width-wide"
+    if (props.logoWidth === "slim") return "site-header__logo-width-slim"
+    if (!props.logoWidth || props.logoWidth === "base") return "site-header__logo-width-base"
+    if (props.logoWidth === "medium") return "site-header__logo-width-med"
+    if (props.logoWidth === "wide") return "site-header__logo-width-wide"
     return ""
   }
 
@@ -174,9 +174,9 @@ const SiteHeader = (props: SiteHeaderProps) => {
         {menuTitle}
         <Icon size="small" symbol="arrowDown" fill={"#555555"} className={"pl-2"} />
         {activeMenus.indexOf(menuTitle) >= 0 && (
-          <span className={"navbar-dropdown-container"}>
-            <div className={"navbar-dropdown"}>
-              {getDropdownOptions(subMenus, "navbar-dropdown-item", menuTitle)}
+          <span className={"site-header__dropdown-container"}>
+            <div className={"site-header__dropdown"}>
+              {getDropdownOptions(subMenus, "site-header__dropdown-item", menuTitle)}
             </div>
           </span>
         )}
@@ -214,7 +214,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
                     size="small"
                     symbol="arrowDown"
                     fill={"#555555"}
-                    className={"navbar-icon-spacing"}
+                    className={"site-header__icon-spacing"}
                   />
                 </button>
                 {activeMobileMenus.indexOf(menuLink.title) >= 0 && (
@@ -244,7 +244,12 @@ const SiteHeader = (props: SiteHeaderProps) => {
   // Render the mobile drawer that opens on menu press when prop mobileDrawer is set
   const getMobileDrawer = () => {
     return (
-      <CSSTransition in={mobileDrawer} timeout={400} classNames={"drawer-transition"} unmountOnExit>
+      <CSSTransition
+        in={mobileDrawer}
+        timeout={400}
+        classNames={"site-header__drawer-transition"}
+        unmountOnExit
+      >
         <span className={"site-header__mobile-drawer-dropdown-container"}>
           <div className={"site-header__mobile-drawer-dropdown"}>
             <button
@@ -261,7 +266,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
                 size="small"
                 symbol="arrowForward"
                 fill={"#ffffff"}
-                className={"navbar-icon-spacing"}
+                className={"site-header__icon-spacing"}
               />
             </button>
             {buildMobileMenuOptions(
@@ -285,8 +290,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
               {buildMobileMenuOptions(
                 props.menuLinks,
                 "site-header__mobile-dropdown-item site-header__mobile-dropdown-item-sublink",
-                "site-header__mobile-dropdown-item",
-                "navbar-mobile-dropdown-links"
+                "site-header__mobile-dropdown-item"
               )}
             </div>
           </span>
@@ -318,7 +322,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
             if (menuLink.href) {
               return (
                 <LinkComponent
-                  className={`navbar-link ${props.menuItemClassName ?? ""} ${
+                  className={`site-header__link ${props.menuItemClassName ?? ""} ${
                     menuLink.className ?? ""
                   }`}
                   href={menuLink.href}
@@ -331,7 +335,9 @@ const SiteHeader = (props: SiteHeaderProps) => {
             } else {
               return (
                 <button
-                  className={`navbar-link ${props.menuItemClassName ?? ""} desktop-header-button`}
+                  className={`site-header__link ${
+                    props.menuItemClassName ?? ""
+                  } site-header__desktop-header-button`}
                   tabIndex={0}
                   onClick={() => {
                     menuAction(menuLink.onClick)
@@ -350,7 +356,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
           } else {
             return (
               <span
-                className={`navbar-link navbar-dropdown-title`}
+                className={`site-header__link site-header__dropdown-title`}
                 tabIndex={0}
                 key={`${menuLink.title}-${index}`}
                 onKeyPress={(event) => {
@@ -386,7 +392,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
       <>
         {props.mobileText ? (
           <button
-            className={"navbar-mobile-menu-text-button"}
+            className={"site-header__mobile-menu-text-button"}
             onClick={() => {
               mobileHeaderAction()
             }}
@@ -397,13 +403,13 @@ const SiteHeader = (props: SiteHeaderProps) => {
               }
             }}
           >
-            <div className={"navbar-mobile-menu-text-button-content"}>
+            <div className={"site-header__mobile-menu-text-button-content"}>
               {props.strings?.menu ?? t("t.menu")}
             </div>
             <Icon
               symbol={mobileMenu ? "closeSmall" : "hamburger"}
               size={"base"}
-              className={"navbar-mobile-menu-icon"}
+              className={"site-header__mobile-menu-icon"}
             />
           </button>
         ) : (
@@ -419,7 +425,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
             }}
             icon={mobileMenu ? "closeSmall" : "hamburger"}
             iconSize="base"
-            className={"navbar-mobile-menu-button"}
+            className={"site-header__mobile-menu-button"}
             unstyled
           >
             {mobileMenu ? props.strings?.close ?? t("t.close") : props.strings?.menu ?? t("t.menu")}
@@ -431,22 +437,28 @@ const SiteHeader = (props: SiteHeaderProps) => {
 
   const getLogo = () => {
     return (
-      <div className={`navbar-logo ${getLogoWidthClass()}`}>
+      <div className={`site-header__logo-container ${getLogoWidthClass()}`}>
         <LinkComponent
-          className={`logo ${props.logoClass ?? ""} ${
-            (props.logoWidth && "navbar-custom-width") ?? ""
+          className={`site-header__logo ${props.logoClass ?? ""} ${
+            (props.logoWidth && "site-header__custom-width") ?? ""
           }`}
           href={props.homeURL}
           aria-label={props.strings?.logoAriaLable ?? t("t.homePage")}
         >
-          <div className={`logo-content ${props.imageOnly ? "navbar-image-only-container" : ""}`}>
+          <div
+            className={`site-header__logo-content ${
+              props.imageOnly ? "site-header__image-only-container" : ""
+            }`}
+          >
             <img
-              className={`logo__image ${props.imageOnly ? "navbar-image-only" : ""}`}
+              className={`site-header__logo-image ${
+                props.imageOnly ? "site-header__image-only" : ""
+              }`}
               src={props.logoSrc}
               alt={"Site logo"}
             />
             {props.title && (
-              <div className="logo__title">
+              <div className="site-header__logo-title">
                 {props.title}
                 {props.subtitle && <div className="logo__subtitle">{props.subtitle}</div>}
               </div>
@@ -460,7 +472,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
   return (
     <header className={"site-header"}>
       {props.mainContentId && (
-        <a className="skip-link" href={`#${props.mainContentId}`}>
+        <a className="site-header__skip-link" href={`#${props.mainContentId}`}>
           {props.strings?.skipToMainContent}
         </a>
       )}
@@ -474,14 +486,16 @@ const SiteHeader = (props: SiteHeaderProps) => {
         <div className="site-header__notice-text">{props.notice ?? ""}</div>
       </div>
 
-      <nav className="navbar-container" role="navigation" aria-label="main navigation">
+      <nav className="site-header__container" role="navigation" aria-label="main navigation">
         <div
-          className={`navbar ${
-            props.siteHeaderWidth === "wide" ? "navbar-width-wide" : "navbar-width-base"
+          className={`site-header__base ${
+            props.siteHeaderWidth === "wide" ? "site-header__width-wide" : "side-header__width-base"
           }`}
         >
           {getLogo()}
-          <div className="navbar-menu">{isDesktop ? getDesktopHeader() : getMobileHeader()}</div>
+          <div className="site-header__navbar-menu">
+            {isDesktop ? getDesktopHeader() : getMobileHeader()}
+          </div>
         </div>
       </nav>
       {!isDesktop && mobileMenu && getMobileDropdown()}
