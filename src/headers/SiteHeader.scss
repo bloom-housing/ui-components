@@ -220,7 +220,7 @@
     padding: var(--bloom-s1) var(--bloom-s3) var(--bloom-s1) var(--bloom-s3);
 
     &:focus {
-      box-shadow: 0 0 3px 4px $tailwind-accent-cool;
+      box-shadow: 0 0 3px 4px var(--bloom-color-accent-cool);
     }
   }
 
@@ -379,7 +379,6 @@
   padding: var(--link-padding);
   display: flex;
   align-items: var(--link-align-items);
-  border-bottom: 3px solid transparent;
   font-weight: var(--link-font-weight);
   border-bottom: var(--link-bottom-border);
 
