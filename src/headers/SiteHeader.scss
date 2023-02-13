@@ -11,75 +11,77 @@
   --mobile-menu-text-size: var(--bloom-font-size-xs);
 }
 
-.navbar-mobile-dropdown-container {
+.site-header__mobile-dropdown-container {
   background-color: var(--background-color);
+}
 
-  .navbar-mobile-dropdown {
-    border-bottom: 1px solid var(--border-color);
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+.site-header__mobile-dropdown {
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
-    .navbar-mobile-dropdown-item {
-      width: 100%;
-      display: flex;
-      color: var(--link-text-color);
-      padding: var(--bloom-s3) var(--bloom-s4) var(--bloom-s3) var(--bloom-s4);
-      border-top: 1px solid var(--border-color);
-      font-size: var(--bloom-font-size-sm);
+.site-header__mobile-dropdown-item {
+  width: 100%;
+  display: flex;
+  color: var(--link-text-color);
+  padding: var(--bloom-s3) var(--bloom-s4) var(--bloom-s3) var(--bloom-s4);
+  border-top: 1px solid var(--border-color);
+  font-size: var(--bloom-font-size-sm);
 
-      &:hover,
-      &:focus {
-        background-color: var(--bloom-color-gray-400);
-      }
-    }
-
-    .navbar-mobile-dropdown-item-sublink {
-      padding-left: var(--bloom-s8);
-    }
+  &:hover,
+  &:focus {
+    background-color: var(--bloom-color-gray-400);
+    color: var(--link-text-color);
   }
 }
 
-.navbar-mobile-drawer-dropdown-container {
+.site-header__mobile-dropdown-item-sublink {
+  padding-left: var(--bloom-s8);
+}
+
+.site-header__mobile-drawer-dropdown-container {
   position: fixed;
   top: 0;
   right: 0;
   background-color: var(--background-color);
   z-index: 10;
   height: 100%;
+}
 
-  .navbar-mobile-drawer-dropdown {
-    border-bottom: 1px solid var(--border-color);
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+.site-header__mobile-drawer-dropdown {
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
-    .navbar-mobile-drawer-close-row {
-      background-color: var(--bloom-color-primary);
-      padding: var(--bloom-s3) var(--bloom-s2) var(--bloom-s3) var(--bloom-s2);
-      display: flex;
-    }
+.site-header__mobile-drawer-close-row {
+  background-color: var(--bloom-color-primary);
+  padding: var(--bloom-s3) var(--bloom-s2) var(--bloom-s3) var(--bloom-s2);
+  display: flex;
+}
 
-    .navbar-mobile-drawer-dropdown-item {
-      display: flex;
-      color: var(--link-text-color);
-      padding: var(--bloom-s3) var(--bloom-s24) var(--bloom-s3) var(--bloom-s4);
-      border-top: 1px solid var(--border-color);
-      border-left: 1px solid var(--border-color);
-      font-size: var(--bloom-font-size-sm);
-      width: 100%;
+.site-header__mobile-drawer-dropdown-item {
+  display: flex;
+  color: var(--link-text-color);
+  padding: var(--bloom-s3) var(--bloom-s24) var(--bloom-s3) var(--bloom-s4);
+  border-top: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  font-size: var(--bloom-font-size-sm);
+  width: 100%;
 
-      &:hover,
-      &:focus {
-        background-color: var(--bloom-color-gray-400);
-      }
-    }
-
-    .navbar-mobile-drawer-dropdown-item-sublink {
-      padding-left: var(--bloom-s8);
-      padding-right: var(--bloom-s2);
-    }
+  &:hover,
+  &:focus {
+    background-color: var(--bloom-color-gray-400);
+    color: var(--link-text-color);
   }
+}
+
+.site-header__mobile-drawer-dropdown-item-sublink {
+  padding-left: var(--bloom-s8);
+  padding-right: var(--bloom-s2);
 }
 
 .navbar-container {
@@ -340,7 +342,7 @@
   }
 }
 
-.navbar-notice {
+.site-header__notice {
   width: 100%;
   background-color: var(--bloom-color-primary);
 
@@ -352,7 +354,7 @@
   display: block;
 }
 
-.navbar-notice-hide {
+.site-header__notice-hide {
   display: none;
 
   @media (min-width: $screen-md) {
@@ -360,7 +362,7 @@
   }
 }
 
-.navbar-notice__text {
+.site-header__notice-text {
   max-width: 64rem;
   font-size: var(--bloom-font-size-xs); // @apply text-sm; DETROIT CHANGE
   padding: var(--bloom-s2) var(--bloom-s3);

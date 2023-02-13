@@ -245,10 +245,10 @@ const SiteHeader = (props: SiteHeaderProps) => {
   const getMobileDrawer = () => {
     return (
       <CSSTransition in={mobileDrawer} timeout={400} classNames={"drawer-transition"} unmountOnExit>
-        <span className={`navbar-mobile-drawer-dropdown-container`}>
-          <div className={"navbar-mobile-drawer-dropdown"}>
+        <span className={"site-header__mobile-drawer-dropdown-container"}>
+          <div className={"site-header__mobile-drawer-dropdown"}>
             <button
-              className={"navbar-mobile-drawer-close-row"}
+              className={"site-header__mobile-drawer-close-row"}
               onClick={() => setMobileDrawer(false)}
               onKeyPress={(event) => {
                 if (event.key === "Enter") {
@@ -266,8 +266,8 @@ const SiteHeader = (props: SiteHeaderProps) => {
             </button>
             {buildMobileMenuOptions(
               props.menuLinks,
-              "navbar-mobile-drawer-dropdown-item navbar-mobile-drawer-dropdown-item-sublink",
-              "navbar-mobile-drawer-dropdown-item"
+              "site-header__mobile-drawer-dropdown-item site-header__mobile-drawer-dropdown-item-sublink",
+              "site-header__mobile-drawer-dropdown-item"
             )}
           </div>
         </span>
@@ -280,12 +280,12 @@ const SiteHeader = (props: SiteHeaderProps) => {
     return (
       <>
         {!props.mobileDrawer && (
-          <span className={"navbar-mobile-dropdown-container"}>
-            <div className={"navbar-mobile-dropdown"}>
+          <span className={"site-header__mobile-dropdown-container"}>
+            <div className={"site-header__mobile-dropdown"}>
               {buildMobileMenuOptions(
                 props.menuLinks,
-                "navbar-mobile-dropdown-item navbar-mobile-dropdown-item-sublink",
-                "navbar-mobile-dropdown-item",
+                "site-header__mobile-dropdown-item site-header__mobile-dropdown-item-sublink",
+                "site-header__mobile-dropdown-item",
                 "navbar-mobile-dropdown-links"
               )}
             </div>
@@ -468,8 +468,10 @@ const SiteHeader = (props: SiteHeaderProps) => {
         <LanguageNav ariaLabel={props.languageNavLabel} languages={props.languages} />
       )}
 
-      <div className={`navbar-notice ${!props.noticeMobile ? `navbar-notice-hide` : ""}`}>
-        <div className="navbar-notice__text">{props.notice ?? ""}</div>
+      <div
+        className={`site-header__notice ${!props.noticeMobile ? `site-header__notice-hide` : ""}`}
+      >
+        <div className="site-header__notice-text">{props.notice ?? ""}</div>
       </div>
 
       <nav className="navbar-container" role="navigation" aria-label="main navigation">
