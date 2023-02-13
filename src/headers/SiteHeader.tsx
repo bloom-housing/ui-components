@@ -460,7 +460,9 @@ const SiteHeader = (props: SiteHeaderProps) => {
             {props.title && (
               <div className="site-header__logo-title">
                 {props.title}
-                {props.subtitle && <div className="logo__subtitle">{props.subtitle}</div>}
+                {props.subtitle && (
+                  <div className="site-header__logo__subtitle">{props.subtitle}</div>
+                )}
               </div>
             )}
           </div>

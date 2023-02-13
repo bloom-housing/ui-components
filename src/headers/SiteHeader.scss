@@ -3,12 +3,83 @@
 .site-header {
   --background-color: var(--bloom-color-white);
   --border-color: var(--bloom-color-gray-450);
-  --link-text-color: var(--bloom-color-gray-750);
+  --container-border: none;
+  --base-height: 75px;
+  --base-max-height: 75px;
+  --base-align-items: inherit;
+  --base-desktop-padding: inherit;
+  --base-mobile-padding: inherit;
+  --base-desktop-width: inherit;
+  --base-mobile-width: inherit;
+  --notice-text-font-size: var(--bloom-font-size-xs);
+
+  // Logo
   --logo-title-text-color: var(--bloom-color-gray-950);
   --logo-title-text-size-desktop: var(--bloom-font-size-sm);
   --logo-title-text-size-mobile: var(--bloom-font-size-xs);
-  --link-text-size: var(--bloom-font-size-xs);
+  --logo-container-min-width: auto;
+  --logo-image-height: auto;
+  --logo-height: 95%;
+  --logo-margin: auto;
+  --logo-padding: auto;
+  --logo-max-height: auto;
+  --logo-max-width: auto;
+  --logo-box-shadow: none;
+  --logo-content-display: block;
+  --logo-background-color: var(--bloom-color-white);
+  --logo-content-padding: var(--bloom-s1);
+  --logo-content-align-items: center;
+  --logo-image-max-height: 1.5rem;
+  --logo-image-min-height: auto;
+  --logo-image-margin: var(--bloom-s1) 0;
+  --logo-image-mobile-max-height: 2rem;
+  --logo-image-mobile-min-height: auto;
+  --logo-image-mobile-margin: var(--bloom-s3) 0 var(--bloom-s2) 0;
+  --logo-title-text-transform: uppercase;
+  --logo-title-font-family: var(--bloom-font-alt-sans);
+  --logo-title-letter-spacing: 0.05em;
+  --logo-title-margin-desktop: 0;
+  --logo-title-margin-mobile: 0;
+  --logo-image-mobile-height: auto;
+  --logo-image-mobile-display: inline-block;
+  --logo-image-desktop-display: inline-block;
+  --logo-title-text-align: center;
+  --logo-subtitle-mobile-font-size: var(--bloom-font-size-3xs);
+  --logo-subtitle-desktop-font-size: var(--bloom-font-size-3xs);
+
+  // Mobile
+  --mobile-dropdown-margin: auto;
   --mobile-menu-text-size: var(--bloom-font-size-xs);
+  --mobile-menu-button-display: inline-block;
+  --mobile-menu-button-border: 2px var(--bloom-color-primary);
+  --mobile-menu-button-margin: var(--bloom-s4) var(--bloom-s2);
+  --mobile-menu-button-padding: 0 var(--bloom-s2);
+
+  // Link
+  --link-text-transform: uppercase;
+  --link-height: 100%;
+  --link-padding: var(--bloom-s1) var(--bloom-s3) var(--bloom-s4) var(--bloom-s3);
+  --link-font-weight: 400;
+  --link-align-items: flex-end;
+  --link-bottom-border: 3px solid transparent;
+  --link-hover-bottom-border: 3px solid var(--bloom-color-primary);
+  --link-text-hover-color: var(--bloom-color-gray-750);
+  --link-text-size: var(--bloom-font-size-xs);
+  --link-text-color: var(--bloom-color-gray-750);
+
+  // Dropdown
+  --dropdown-container-margin: 38.5px 0 0 -127px;
+  --dropdown-container-border-top: none;
+  --dropdown-container-width: 143px;
+  --dropdown-item-font-size: var(--bloom-font-size-sm);
+  --dropdown-container-display: inherit;
+  --dropdown-item-flex: inherit;
+  --navbar-menu-min-width: 110px;
+  --navbar-menu-height: height;
+  --navbar-menu-desktop-margin: inherit;
+  --navbar-menu-desktop-width: inherit;
+  --navbar-menu-mobile-margin: inherit;
+  --navbar-menu-mobile-width: inherit;
 }
 
 .site-header__mobile-dropdown-container {
@@ -20,6 +91,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin: var(--mobile-dropdown-margin);
 }
 
 .site-header__mobile-dropdown-item {
@@ -89,33 +161,33 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-}
-
-// TODO: What are these four explicit pixel numbers
-.side-header__width-base {
-  width: 1025px;
-}
-
-.site-header__width-wide {
-  width: 1230px;
+  border: var(--container-border);
 }
 
 .site-header__base {
-  height: 75px;
-  max-height: 75px;
+  height: var(--base-height);
+  max-height: var(--base-max-height);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   z-index: 10;
   max-width: 100%;
+  align-items: var(--base-align-items);
+  padding: var(--base-mobile-padding);
+  width: var(--base-mobile-width);
+
+  @media (min-width: $screen-md) {
+    padding: var(--base-desktop-padding);
+    width: var(--base-desktop-width);
+  }
 }
 
 .site-header__logo-container {
-  // min-width: fit-content; DETROIT CHANGE
   display: flex;
   align-items: center;
   justify-content: center;
   flex-grow: 1;
+  min-width: var(--logo-container-min-width);
 
   @media (min-width: $screen-md) {
     flex-shrink: 0;
@@ -129,10 +201,16 @@
   text-align: center;
   z-index: 10;
   width: 100%;
-  height: 95%;
+  height: var(--logo-height);
   display: flex;
   align-items: center;
   justify-content: center;
+
+  margin: var(--logo-margin);
+  padding: var(--logo-padding);
+  max-height: var(--logo-max-height);
+  max-width: var(--logo-max-width);
+  box-shadow: var(--logo-box-shadow);
 
   @media (min-width: $screen-md) {
     height: 120px;
@@ -150,14 +228,15 @@
     margin-top: 0;
   }
 
-  background-color: var(--bloom-color-white);
+  background-color: var(--logo-background-color);
   border-bottom: 0;
   display: flex;
 }
 
 .site-header__logo-content {
-  @apply p-1;
-  padding: var(--bloom-s1);
+  padding: var(--logo-content-padding);
+  display: var(--logo-content-display);
+  align-items: var(--logo-content-align-items);
 }
 
 .site-header__image-only-container {
@@ -165,7 +244,6 @@
   width: 100%;
   height: 100%;
 
-  // 75px minus .5rem of padding from the container around it
   @media (min-width: $screen-md) {
     height: 67px;
     height: 120px;
@@ -184,59 +262,76 @@
 }
 
 .site-header__logo-image {
-  display: inline-block;
-  margin-top: var(--bloom-s1); //@apply mt-0; DETROIT CHANGE
-  margin-bottom: var(--bloom-s1);
-  max-height: 1.5rem;
+  display: var(--logo-image-desktop-display);
+  margin: var(--logo-image-margin);
+  max-height: var(--logo-image-max-height);
+  min-height: var(--logo-image-min-height);
+  height: var(--logo-image-height);
 
   @media (min-width: $screen-md) {
-    margin-top: var(--bloom-s3); //@apply mt-0; DETROIT CHANGE
-    margin-bottom: var(--bloom-s2);
-    max-height: 2rem;
-    // @apply inline-block; DETROIT CHANGE
+    margin: var(--logo-image-mobile-margin);
+    max-height: var(--logo-image-mobile-max-height);
+    min-height: var(--logo-image-mobile-min-height);
+    height: var(--logo-image-mobile-height);
+    display: var(--logo-image-mobile-display);
   }
 }
 
 .site-header__logo-title {
-  text-transform: uppercase;
+  text-transform: var(--logo-title-text-transform);
   font-weight: 700;
   color: var(--logo-title-text-color);
-  font-family: var(--bloom-font-alt-sans);
-  letter-spacing: 0.05em;
+  font-family: var(--logo-title-font-family);
+  letter-spacing: var(--logo-title-letter-spacing);
   font-size: var(--logo-title-text-size-mobile);
+  margin: var(--logo-title-margin-mobile);
+  text-align: var(--logo-title-text-align);
 
   @media (min-width: $screen-md) {
     font-size: var(--logo-title-text-size-desktop);
+    margin: var(--logo-title-margin-desktop);
+  }
+}
+
+.site-header__logo__subtitle {
+  font-size: var(--logo-subtitle-mobile-font-size);
+  font-weight: 400;
+
+  @media (min-width: $screen-md) {
+    font-size: var(--logo-subtitle-desktop-font-size);
   }
 }
 
 .site-header__navbar-menu {
   display: flex;
   justify-content: flex-end;
-  //TODO: What are these two explicit pixel numbers
-  min-width: 110px;
+
+  min-width: var(--navbar-menu-min-width);
+  height: var(--navbar-menu-height);
+  margin: var(--navbar-menu-mobile-margin);
+  width: var(--navbar-menu-mobile-width);
 
   @media (min-width: $screen-md) {
     height: 75px;
+    margin: var(--navbar-menu-desktop-margin);
+    width: var(--navbar-menu-desktop-width);
   }
 
   .site-header__mobile-menu-button {
     position: relative;
     border-radius: var(--bloom-s1);
-    padding-left: var(--bloom-s2);
-    padding-right: var(--bloom-s2);
     text-align: center;
     text-transform: uppercase;
     font-family: var(--bloom-font-alt-sans);
-    display: inline-block;
-    letter-spacing: 0.1em;
+    display: var(--mobile-menu-button-display);
+    letter-spacing: var(--bloom-letter-spacing-widest);
     font-size: var(--mobile-menu-text-size);
     font-weight: 700;
     line-height: 1.375;
-    border: 2px var(--bloom-color-primary);
+    border: var(--mobile-menu-button-border);
     text-decoration: none;
-    margin-left: var(--bloom-s2);
-    margin-right: var(--bloom-s2);
+    margin: var(--mobile-menu-button-margin);
+    padding: var(--mobile-menu-button-padding);
   }
 }
 
@@ -277,16 +372,16 @@
 }
 
 .site-header__link {
-  text-transform: uppercase;
+  text-transform: var(--link-text-transform);
   font-size: var(--link-text-size);
-  padding-left: var(--bloom-s3);
-  padding-right: var(--bloom-s3);
   color: var(--link-text-color);
-  height: 100%;
-  padding: var(--bloom-s1) var(--bloom-s3) var(--bloom-s4) var(--bloom-s3);
+  height: var(--link-height);
+  padding: var(--link-padding);
   display: flex;
-  align-items: flex-end;
+  align-items: var(--link-align-items);
   border-bottom: 3px solid transparent;
+  font-weight: var(--link-font-weight);
+  border-bottom: var(--link-bottom-border);
 
   @media (min-width: 840px) {
     padding-right: var(--bloom-s4);
@@ -299,9 +394,9 @@
   }
 
   &:hover {
-    border-bottom: 3px solid var(--bloom-color-primary);
-    color: var(--link-text-color);
     cursor: pointer;
+    border-bottom: var(--link-hover-bottom-border);
+    color: var(--link-text-hover-color);
   }
 
   div {
@@ -312,12 +407,11 @@
 .site-header__dropdown-container {
   background-color: var(--bloom-color-white);
   position: absolute;
-  // TODO What are these exact numbers
-  margin-left: -127px;
-  margin-top: 38.5px;
+  margin: var(--dropdown-container-margin);
   border: 1px solid var(--border-color);
-  border-top: none;
-  width: 143px;
+  border-top: var(--dropdown-container-border-top);
+  width: var(--dropdown-container-width);
+  display: var(--dropdown-container-display);
 }
 
 .site-header__dropdown {
@@ -334,9 +428,10 @@
   padding: var(--bloom-s3);
   border-top: 1px solid var(--border-color);
   text-transform: none;
-  font-size: var(--bloom-font-size-sm);
+  font-size: var(--dropdown-item-font-size);
   text-align: left;
   width: 100%;
+  flex: var(--dropdown-item-flex);
 
   &:hover,
   &:focus {
@@ -366,7 +461,8 @@
 
 .site-header__notice-text {
   max-width: 64rem;
-  font-size: var(--bloom-font-size-xs); // @apply text-sm; DETROIT CHANGE
+  font-size: var(--bloom-font-size-xs);
+  font-size: var(--notice-text-font-size);
   padding: var(--bloom-s2) var(--bloom-s3);
   margin: auto;
 
@@ -438,4 +534,12 @@
 
 .site-header__icon-spacing {
   padding-left: var(--bloom-s2);
+}
+
+.side-header__width-base {
+  width: 1025px;
+}
+
+.site-header__width-wide {
+  width: 1230px;
 }
