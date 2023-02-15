@@ -15,13 +15,13 @@
 
   // Logo
   --logo-title-text-color: var(--bloom-color-gray-950);
-  --logo-title-text-size-desktop: var(--bloom-font-size-sm);
-  --logo-title-text-size-mobile: var(--bloom-font-size-xs);
+  --logo-title-font-size-desktop: var(--bloom-font-size-sm);
+  --logo-title-font-size-mobile: var(--bloom-font-size-xs);
   --logo-container-min-width: auto;
-  --logo-image-height: auto;
-  --logo-height: 95%;
+  --logo-image-mobile-height: auto;
+  --logo-mobile-height: 95%;
   --logo-margin: auto;
-  --logo-padding: auto;
+  --logo-mobile-padding: auto;
   --logo-max-height: auto;
   --logo-max-width: auto;
   --logo-box-shadow: none;
@@ -31,29 +31,37 @@
   --logo-content-align-items: center;
   --logo-image-max-height: 1.5rem;
   --logo-image-min-height: auto;
-  --logo-image-margin: var(--bloom-s1) 0;
+  --logo-image-mobile-margin: var(--bloom-s1) 0;
   --logo-image-mobile-max-height: 2rem;
   --logo-image-mobile-min-height: auto;
-  --logo-image-mobile-margin: var(--bloom-s3) 0 var(--bloom-s2) 0;
+  --logo-image-desktop-margin: var(--bloom-s3) 0 var(--bloom-s2) 0;
   --logo-title-text-transform: uppercase;
   --logo-title-font-family: var(--bloom-font-alt-sans);
   --logo-title-letter-spacing: 0.05em;
   --logo-title-margin-desktop: 0;
   --logo-title-margin-mobile: 0;
-  --logo-image-mobile-height: auto;
-  --logo-image-mobile-display: inline-block;
+  --logo-image-desktop-height: auto;
   --logo-image-desktop-display: inline-block;
+  --logo-image-mobile-display: inline-block;
   --logo-title-text-align: center;
-  --logo-subtitle-mobile-font-size: var(--bloom-font-size-3xs);
-  --logo-subtitle-desktop-font-size: var(--bloom-font-size-3xs);
+  --logo-subtitle-mobile-font-size: var(--bloom-font-size-sm);
+  --logo-subtitle-desktop-font-size: var(--bloom-font-size-sm);
+  --logo-desktop-padding: var(--bloom-s1) var(--bloom-s3) var(--bloom-s1) var(--bloom-s3);
+  --logo-container-padding-mobile: inherit;
+  --logo-container-padding-desktop: inherit;
+  --link-text-hover-color: var(--link-text-color);
+  --link-text-mobile-color: var(--link-text-color);
+  --logo-desktop-height: 120px;
 
   // Mobile
   --mobile-dropdown-margin: auto;
-  --mobile-menu-text-size: var(--bloom-font-size-xs);
+  --mobile-menu-font-size: var(--bloom-font-size-xs);
   --mobile-menu-button-display: inline-block;
   --mobile-menu-button-border: 2px var(--bloom-color-primary);
   --mobile-menu-button-margin: var(--bloom-s4) var(--bloom-s2);
   --mobile-menu-button-padding: 0 var(--bloom-s2);
+  --mobile-dropdown-item-font-size: var(--bloom-font-size-sm);
+  --mobile-menu-button-text-display: inline;
 
   // Link
   --link-text-transform: uppercase;
@@ -64,7 +72,7 @@
   --link-bottom-border: 3px solid transparent;
   --link-hover-bottom-border: 3px solid var(--bloom-color-primary);
   --link-text-hover-color: var(--bloom-color-gray-750);
-  --link-text-size: var(--bloom-font-size-xs);
+  --link-font-size: var(--bloom-font-size-xs);
   --link-text-color: var(--bloom-color-gray-750);
 
   // Dropdown
@@ -75,11 +83,14 @@
   --dropdown-container-display: inherit;
   --dropdown-item-flex: inherit;
   --navbar-menu-min-width: 110px;
-  --navbar-menu-height: height;
+  --navbar-menu-mobile-height: inherit;
   --navbar-menu-desktop-margin: inherit;
   --navbar-menu-desktop-width: inherit;
   --navbar-menu-mobile-margin: inherit;
   --navbar-menu-mobile-width: inherit;
+  --navbar-menu-desktop-padding: inherit;
+  --navbar-menu-mobile-padding: inherit;
+  --navbar-menu-desktop-height: 75px;
 }
 
 .site-header__mobile-dropdown-container {
@@ -100,12 +111,16 @@
   color: var(--link-text-color);
   padding: var(--bloom-s3) var(--bloom-s4) var(--bloom-s3) var(--bloom-s4);
   border-top: 1px solid var(--border-color);
-  font-size: var(--bloom-font-size-sm);
+  font-size: var(--mobile-dropdown-item-font-size);
 
   &:hover,
   &:focus {
     background-color: var(--bloom-color-gray-400);
-    color: var(--link-text-color);
+    color: var(--link-text-hover-color);
+  }
+
+  @media (min-width: $screen-md) {
+    color: var(--link-text-mobile-color);
   }
 }
 
@@ -188,8 +203,10 @@
   justify-content: center;
   flex-grow: 1;
   min-width: var(--logo-container-min-width);
+  padding: var(--logo-container-padding-mobile);
 
   @media (min-width: $screen-md) {
+    padding: var(--logo-container-padding-desktop);
     flex-shrink: 0;
     flex-grow: initial;
   }
@@ -201,23 +218,23 @@
   text-align: center;
   z-index: 10;
   width: 100%;
-  height: var(--logo-height);
+  height: var(--logo-mobile-height);
   display: flex;
   align-items: center;
   justify-content: center;
 
   margin: var(--logo-margin);
-  padding: var(--logo-padding);
+  padding: var(--logo-mobile-padding);
   max-height: var(--logo-max-height);
   max-width: var(--logo-max-width);
   box-shadow: var(--logo-box-shadow);
 
   @media (min-width: $screen-md) {
-    height: 120px;
+    height: var(--logo-desktop-height);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
     margin-bottom: -0.75rem;
     margin-top: -2.4rem;
-    padding: var(--bloom-s1) var(--bloom-s3) var(--bloom-s1) var(--bloom-s3);
+    padding: var(--logo-desktop-padding);
 
     &:focus {
       box-shadow: 0 0 3px 4px var(--bloom-color-accent-cool);
@@ -262,18 +279,18 @@
 }
 
 .site-header__logo-image {
-  display: var(--logo-image-desktop-display);
-  margin: var(--logo-image-margin);
+  display: var(--logo-image-mobile-display);
+  margin: var(--logo-image-mobile-margin);
   max-height: var(--logo-image-max-height);
   min-height: var(--logo-image-min-height);
-  height: var(--logo-image-height);
+  height: var(--logo-image-mobile-height);
 
   @media (min-width: $screen-md) {
-    margin: var(--logo-image-mobile-margin);
+    margin: var(--logo-image-desktop-margin);
     max-height: var(--logo-image-mobile-max-height);
     min-height: var(--logo-image-mobile-min-height);
-    height: var(--logo-image-mobile-height);
-    display: var(--logo-image-mobile-display);
+    height: var(--logo-image-desktop-height);
+    display: var(--logo-image-desktop-display);
   }
 }
 
@@ -283,12 +300,12 @@
   color: var(--logo-title-text-color);
   font-family: var(--logo-title-font-family);
   letter-spacing: var(--logo-title-letter-spacing);
-  font-size: var(--logo-title-text-size-mobile);
+  font-size: var(--logo-title-font-size-mobile);
   margin: var(--logo-title-margin-mobile);
   text-align: var(--logo-title-text-align);
 
   @media (min-width: $screen-md) {
-    font-size: var(--logo-title-text-size-desktop);
+    font-size: var(--logo-title-font-size-desktop);
     margin: var(--logo-title-margin-desktop);
   }
 }
@@ -307,14 +324,16 @@
   justify-content: flex-end;
 
   min-width: var(--navbar-menu-min-width);
-  height: var(--navbar-menu-height);
+  height: var(--navbar-menu-mobile-height);
   margin: var(--navbar-menu-mobile-margin);
   width: var(--navbar-menu-mobile-width);
+  padding: var(--navbar-menu-mobile-padding);
 
   @media (min-width: $screen-md) {
-    height: 75px;
+    height: var(--navbar-menu-desktop-height);
     margin: var(--navbar-menu-desktop-margin);
     width: var(--navbar-menu-desktop-width);
+    padding: var(--navbar-menu-desktop-padding);
   }
 
   .site-header__mobile-menu-button {
@@ -325,13 +344,17 @@
     font-family: var(--bloom-font-alt-sans);
     display: var(--mobile-menu-button-display);
     letter-spacing: var(--bloom-letter-spacing-widest);
-    font-size: var(--mobile-menu-text-size);
+    font-size: var(--mobile-menu-font-size);
     font-weight: 700;
     line-height: 1.375;
     border: var(--mobile-menu-button-border);
     text-decoration: none;
     margin: var(--mobile-menu-button-margin);
     padding: var(--mobile-menu-button-padding);
+
+    .site-header__mobile-menu-button-text {
+      display: var(--mobile-menu-button-text-display);
+    }
   }
 }
 
@@ -348,6 +371,7 @@
 }
 
 .site-header__mobile-menu-text-button-content {
+  //display - actually i dont think so
   padding-right: var(--bloom-s2);
   font-size: var(--bloom-font-size-sm);
   color: var(--bloom-color-primary);
@@ -373,7 +397,7 @@
 
 .site-header__link {
   text-transform: var(--link-text-transform);
-  font-size: var(--link-text-size);
+  font-size: var(--link-font-size);
   color: var(--link-text-color);
   height: var(--link-height);
   padding: var(--link-padding);
