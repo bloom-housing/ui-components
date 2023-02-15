@@ -134,7 +134,7 @@ export const ScrollableModal = () => {
           {text("Action 1 Label", "Cancel")}
         </Button>,
       ]}
-      scrollable
+      scrollableModal
     >
       {text(
         "Content",
@@ -156,7 +156,7 @@ export const ScrollableModalNoFooter = () => {
       title={text("Title", "Modal Title")}
       ariaDescription="Modal description"
       onClose={() => setOpenModal(!openModal)}
-      scrollable
+      scrollableModal
     >
       {text(
         "Content",
@@ -175,7 +175,7 @@ export const ScrollableModalManyButtons = () => {
       title={text("Title", "Modal Title")}
       ariaDescription="Modal description"
       onClose={() => setOpenModal(!openModal)}
-      scrollable
+      scrollableModal
       actions={[
         <Button
           onClick={() => setOpenModal(!openModal)}
@@ -241,7 +241,7 @@ export const ScrollableModalMinimalContent = () => {
           {text("Action 1 Label", "Cancel")}
         </Button>,
       ]}
-      scrollable
+      scrollableModal
     >
       {text(
         "Content",

@@ -44,6 +44,10 @@
   }
 }
 
+.modal__header {
+  min-height: var(--bloom-s14);
+}
+
 .modal__title {
   padding-block: var(--content-padding) 0px;
   padding-inline: var(--content-padding) var(--bloom-s12);
