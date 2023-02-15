@@ -33,8 +33,8 @@
   --logo-image-mobile-display: inline-block;
   --logo-image-mobile-height: auto;
   --logo-image-mobile-margin: var(--bloom-s1) 0;
-  --logo-image-mobile-max-height: 2rem;
-  --logo-image-mobile-min-height: auto;
+  --logo-image-desktop-max-height: 2rem;
+  --logo-image-desktop-min-height: auto;
   --logo-margin: auto;
   --logo-max-height: auto;
   --logo-max-width: auto;
@@ -63,7 +63,7 @@
   --link-text-color: var(--bloom-color-gray-750);
   --link-text-hover-color: var(--bloom-color-gray-750);
   --link-text-hover-color: var(--link-text-color);
-  --link-text-mobile-color: var(--link-text-color);
+  --link-text-desktop-color: var(--link-text-color);
   --link-text-transform: uppercase;
 
   // Dropdown
@@ -121,7 +121,7 @@
   }
 
   @media (min-width: $screen-md) {
-    color: var(--link-text-mobile-color);
+    color: var(--link-text-desktop-color);
   }
 }
 
@@ -288,8 +288,8 @@
 
   @media (min-width: $screen-md) {
     margin: var(--logo-image-desktop-margin);
-    max-height: var(--logo-image-mobile-max-height);
-    min-height: var(--logo-image-mobile-min-height);
+    max-height: var(--logo-image-desktop-max-height);
+    min-height: var(--logo-image-desktop-min-height);
     height: var(--logo-image-desktop-height);
     display: var(--logo-image-desktop-display);
   }
