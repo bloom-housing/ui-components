@@ -10,6 +10,7 @@ export interface ExpandableTextProps {
   strings: {
     readMore: string
     readLess: string
+    buttonAriaLabel?: string
   }
   markdownProps?: MarkdownToJSX.Options
   buttonClassName?: string
@@ -39,7 +40,11 @@ const moreLessButton = (
   }
 
   return (
-    <button className={classes.join(" ")} onClick={() => setExpanded(!expanded)}>
+    <button
+      className={classes.join(" ")}
+      onClick={() => setExpanded(!expanded)}
+      aria-label={strings.buttonAriaLabel}
+    >
       {expanded ? strings?.readLess : strings?.readMore}
     </button>
   )
@@ -56,7 +61,7 @@ const ExpandableText = (props: ExpandableTextProps) => {
     button = moreLessButton(expanded, setExpanded, props.strings, props.buttonClassName)
   }
   return (
-    <div className={`expandable-text ${props?.className}`}>
+    <div className={`expandable-text ${props?.className ? props.className : ""}`}>
       {" "}
       <Markdown
         children={getText(props.children, expanded, maxLength)}
