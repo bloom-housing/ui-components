@@ -81,10 +81,7 @@ const ImageCard = (props: ImageCardProps) => {
       )
     })
     return (
-      <aside
-        className="image-card__status"
-        aria-label={`${props.description ? props.description : ""} Statuses`}
-      >
+      <aside className="image-card__status" aria-label={`${props.description || ""} Statuses`}>
         {statuses}
       </aside>
     )
