@@ -61,7 +61,7 @@ const ExpandableText = (props: ExpandableTextProps) => {
     button = moreLessButton(expanded, setExpanded, props.strings, props.buttonClassName)
   }
   return (
-    <div className={`expandable-text ${props?.className ? props.className : ""}`}>
+    <div className={`expandable-text ${props?.className || ""}`}>
       {" "}
       <Markdown
         children={getText(props.children, expanded, maxLength)}
