@@ -35,7 +35,7 @@
   text-align: center;
   text-transform: var(--dot-text-transform);
   display: table-cell;
-  white-space: nowrap;
+  white-space: normal;
   float: none;
   @media (min-width: $screen-md) {
     font-size: var(--dot-font-size-desktop);
@@ -120,7 +120,7 @@
   padding-left: var(--bar-label-padding-left);
   position: relative;
   display: table-cell;
-  white-space: nowrap;
+  white-space: normal;
   float: none;
   max-width: 20%;
   border-top-width: var(--bar-height);

@@ -29,6 +29,11 @@ const listingPreferences = [
         url: "http://www.google.com",
         title: "Link Title 2",
       },
+      {
+        url: "http://www.apple.com",
+        ariaLabel: "Link to Apple",
+        title: "Link Title with Aria Label",
+      },
     ],
     title: "Title 2",
     subtitle: "Subtitle 2",
