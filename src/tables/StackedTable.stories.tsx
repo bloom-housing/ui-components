@@ -39,6 +39,19 @@ const basicTableRows = [
   },
 ]
 
+const basicTableRowsWithMultipleCellElements = [
+  {
+    one: [{ cellText: "Cell 1" }, { cellText: "Cell 2" }],
+    two: [{ cellText: "Cell 3" }, { cellText: "Cell 4" }, { cellText: "Cell 5" }],
+    three: { cellText: "Cell 6" },
+  },
+  {
+    one: { cellText: "Cell 1" },
+    two: { cellText: "Cell 2" },
+    three: [{ cellText: "Cell 3" }, { cellText: "Cell 4" }, { cellText: "Cell 5" }],
+  },
+]
+
 const basicTableRowsHiddenDesktop = [
   {
     one: { cellText: "Cell 1", cellSubText: "Subtext 1" },
@@ -139,4 +152,8 @@ export const UnitSummaryDefault = () => (
     headers={responsiveTableHeaders}
     headersHiddenDesktop={["availability"]}
   />
+)
+
+export const BasicWithMultipleCells = () => (
+  <StackedTable stackedData={basicTableRowsWithMultipleCellElements} headers={basicTableHeaders} />
 )
