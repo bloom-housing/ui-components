@@ -9,10 +9,18 @@ export default {
 export const basic = () => (
   <SiteHeader
     homeURL={"/"}
-    // languages={[{ label: "English", onClick: () => console.log("Clicked English"), active: true }]}
     logoSrc="/images/logo_glyph.svg"
-    // notice="This is a preview of our new website. We're just getting started. We'd love to get your feedback."
     title="Alameda County Housing Portal"
+    menuLinks={[]}
+  />
+)
+
+export const withSubtitle = () => (
+  <SiteHeader
+    homeURL={"/"}
+    logoSrc="/images/logo_glyph.svg"
+    title="Alameda County Housing Portal"
+    subtitle="Subtitle"
     menuLinks={[]}
   />
 )
