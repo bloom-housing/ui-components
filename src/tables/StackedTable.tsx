@@ -19,7 +19,7 @@ export interface StackedTableProps {
   /** Headers hidden on desktop views */
   headersHiddenDesktop?: string[]
   /** The table data passed as records of column name to cell data */
-  stackedData?: Record<string, StackedTableRow | StackedTableRow[]>[]
+  stackedData?: Record<string, StackedTableRow>[] | StackedTableRow[]
   /** A class name applied to the root of the table */
   className?: string
 }
@@ -38,13 +38,13 @@ const StackedTable = (props: StackedTableProps) => {
             }`}
           >
             {Array.isArray(dataRow[item]) ? (
-              dataRow[item].map((item) => {
+              dataRow[item].map((item: StackedTableRow) => {
                 return (
                   <>
                     <span className={"stacked-table-cell"}>{item.cellText}</span>
                     <span
                       className={`stacked-table-subtext  ${
-                        item.hideSubTextMobile && "hidden md:block"
+                        item.hideSubTextMobile ? "hidden md:block" : ""
                       } `}
                     >
                       {item.cellSubText}
