@@ -154,6 +154,6 @@ export const UnitSummaryDefault = () => (
   />
 )
 
-export const BasicWithMultipleCells = () => (
+export const BasicWithMultipleCellElements = () => (
   <StackedTable stackedData={basicTableRowsWithMultipleCellElements} headers={basicTableHeaders} />
 )

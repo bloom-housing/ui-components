@@ -38,7 +38,7 @@ const StackedTable = (props: StackedTableProps) => {
             }`}
           >
             {Array.isArray(dataRow[item]) ? (
-              dataRow[item].map((item: StackedTableRow, index) => {
+              dataRow[item].map((item: StackedTableRow, index: number) => {
                 return (
                   <div key={index}>
                     <span className={"stacked-table-cell"}>{item.cellText}</span>
