@@ -41,14 +41,24 @@ const basicTableRows = [
 
 const basicTableRowsWithMultipleCellElements = [
   {
-    one: [{ cellText: "Cell 1" }, { cellText: "Cell 2" }],
-    two: [{ cellText: "Cell 3" }, { cellText: "Cell 4" }, { cellText: "Cell 5" }],
-    three: { cellText: "Cell 6" },
+    one: [
+      { cellText: "Cell 1", cellSubText: "Cell Subtext 1" },
+      { cellText: "Cell 2", cellSubText: "Cell Subtext 2" },
+    ],
+    two: [
+      { cellText: "Cell 3", cellSubText: "Cell Subtext 3" },
+      { cellText: "Cell 4", cellSubText: "Cell Subtext 4" },
+    ],
+    three: { cellText: "Cell 5", cellSubText: "Cell Subtext 5" },
   },
   {
-    one: { cellText: "Cell 1" },
-    two: { cellText: "Cell 2" },
-    three: [{ cellText: "Cell 3" }, { cellText: "Cell 4" }, { cellText: "Cell 5" }],
+    one: { cellText: "Cell 1", cellSubText: "Cell Subtext 1" },
+    two: { cellText: "Cell 2", cellSubText: "Cell Subtext 2" },
+    three: [
+      { cellText: "Cell 3", cellSubText: "Cell Subtext 3" },
+      { cellText: "Cell 4", cellSubText: "Cell Subtext 4" },
+      { cellText: "Cell 5", cellSubText: "Cell Subtext 5" },
+    ],
   },
 ]
 

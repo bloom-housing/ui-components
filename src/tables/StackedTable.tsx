@@ -27,12 +27,10 @@ export interface StackedTableProps {
 const buildCell = (item: StackedTableRow) => {
   return (
     <>
-      <span className={"stacked-table-cell"}>{item.cellText}</span>
-      <span
-        className={`stacked-table-subtext  ${item.hideSubTextMobile ? "hidden md:block" : ""} `}
-      >
+      <p className={"stacked-table-cell"}>{item.cellText}</p>
+      <p className={`stacked-table-subtext  ${item.hideSubTextMobile ? "hidden md:block" : ""} `}>
         {item.cellSubText}
-      </span>
+      </p>
     </>
   )
 }
