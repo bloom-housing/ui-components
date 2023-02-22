@@ -25,7 +25,6 @@ export interface StackedTableProps {
 }
 
 const buildCell = (item: StackedTableRow) => {
-  console.log(item)
   return (
     <>
       <span className={"stacked-table-cell"}>{item.cellText}</span>
