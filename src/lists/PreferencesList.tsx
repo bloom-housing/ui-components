@@ -14,6 +14,7 @@ export interface ListPreference {
   title?: string
   subtitle?: string
   description?: string
+  descriptionClassName?: string
 }
 
 export interface PreferencesListProps {
@@ -49,7 +50,9 @@ const PreferencesList = (props: PreferencesListProps) => {
           <div className="preferences-list__subtitle">{preference.subtitle}</div>
         )}
         {preference.description && (
-          <div className="preferences-list__description">{preference.description}</div>
+          <div className={`preferences-list__description ${preference.descriptionClassName || ""}`}>
+            {preference.description}
+          </div>
         )}
         {preference.links && (
           <div className="preferences-list__links">
