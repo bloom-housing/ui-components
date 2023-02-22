@@ -24,6 +24,20 @@ export interface StackedTableProps {
   className?: string
 }
 
+const buildCell = (item: StackedTableRow) => {
+  console.log(item)
+  return (
+    <>
+      <span className={"stacked-table-cell"}>{item.cellText}</span>
+      <span
+        className={`stacked-table-subtext  ${item.hideSubTextMobile ? "hidden md:block" : ""} `}
+      >
+        {item.cellSubText}
+      </span>
+    </>
+  )
+}
+
 const StackedTable = (props: StackedTableProps) => {
   const tableClasses = ["base", "stacked-table", props.className]
   const modifiedData: StandardTableData = []
@@ -37,33 +51,11 @@ const StackedTable = (props: StackedTableProps) => {
               props.headersHiddenDesktop?.includes(item) ? "md:hidden" : ""
             }`}
           >
-            {Array.isArray(dataRow[item]) ? (
-              dataRow[item].map((item: StackedTableRow, index: number) => {
-                return (
-                  <div key={index}>
-                    <span className={"stacked-table-cell"}>{item.cellText}</span>
-                    <span
-                      className={`stacked-table-subtext  ${
-                        item.hideSubTextMobile ? "hidden md:block" : ""
-                      } `}
-                    >
-                      {item.cellSubText}
-                    </span>
-                  </div>
-                )
-              })
-            ) : (
-              <>
-                <span className={"stacked-table-cell"}>{dataRow[item].cellText}</span>
-                <span
-                  className={`stacked-table-subtext  ${
-                    dataRow[item].hideSubTextMobile && "hidden md:block"
-                  } `}
-                >
-                  {dataRow[item].cellSubText}
-                </span>
-              </>
-            )}
+            {Array.isArray(dataRow[item])
+              ? dataRow[item].map((item: StackedTableRow, index: number) => {
+                  return <div key={index}>{buildCell(item)}</div>
+                })
+              : buildCell(dataRow[item])}
           </div>
         ),
         mobileReplacement: dataRow[item].cellText,
