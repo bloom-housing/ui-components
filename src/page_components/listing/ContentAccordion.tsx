@@ -8,6 +8,7 @@ interface ContentAccordionProps {
   disableAccordion?: boolean
   accordionTheme?: AccordionTheme
   barClass?: string
+  initialExpanded?: boolean
 }
 
 export type AccordionTheme = "blue" | "gray"
@@ -17,7 +18,7 @@ export type AccordionTheme = "blue" | "gray"
  * Two existing themes under our design system are available
  */
 const ContentAccordion = (props: ContentAccordionProps) => {
-  const [accordionOpen, setAccordionOpen] = useState(false)
+  const [accordionOpen, setAccordionOpen] = useState(props.initialExpanded || false)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
   const toggleTable = () => {
@@ -31,16 +32,16 @@ const ContentAccordion = (props: ContentAccordionProps) => {
     <div className={`mb-4`}>
       <button
         onClick={toggleTable}
-        className={`w-full text-left ${props.disableAccordion && "cursor-default"}`}
+        className={`w-full text-left ${props.disableAccordion ? "cursor-default" : ""}`}
         ref={buttonRef}
         aria-expanded={accordionOpen}
         data-test-id={"content-accordion-button"}
       >
         <div
-          className={`flex justify-between ${props.barClass} ${
-            props.accordionTheme === "blue" && "accordion-blue-theme__bar"
-          } ${props.accordionTheme === "gray" && "accordion-gray-theme__bar"} ${
-            accordionOpen && "accordion-open"
+          className={`flex justify-between ${props.barClass ? props.barClass : ""} ${
+            props.accordionTheme === "blue" ? "accordion-blue-theme__bar" : ""
+          } ${props.accordionTheme === "gray" ? "accordion-gray-theme__bar" : ""} ${
+            accordionOpen ? "accordion-open" : ""
           }`}
         >
           {props.customBarContent}
