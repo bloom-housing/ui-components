@@ -83,15 +83,13 @@ const StackedTable = (props: StackedTableProps) => {
   }, {})
 
   return (
-    <>
-      <MinimalTable
-        headers={modifiedHeaders}
-        data={modifiedData}
-        className={tableClasses.join(" ")}
-        responsiveCollapse={true}
-        cellClassName={"b-0"}
-      />
-    </>
+    <MinimalTable
+      headers={modifiedHeaders}
+      data={modifiedData}
+      className={tableClasses.join(" ")}
+      responsiveCollapse={true}
+      cellClassName={"b-0"}
+    />
   )
 }
 
