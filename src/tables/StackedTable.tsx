@@ -50,11 +50,7 @@ const StackedTable = (props: StackedTableProps) => {
           >
             {Array.isArray(dataRow[item])
               ? dataRow[item].map((item: StackedTableRow, index: number) => {
-                  return (
-                    <div className="text-left" key={index}>
-                      {buildCell(item)}
-                    </div>
-                  )
+                  return <React.Fragment key={index}>{buildCell(item)}</React.Fragment>
                 })
               : buildCell(dataRow[item])}
           </div>
