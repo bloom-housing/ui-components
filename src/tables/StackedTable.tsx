@@ -50,7 +50,11 @@ const StackedTable = (props: StackedTableProps) => {
           >
             {Array.isArray(dataRow[item])
               ? dataRow[item].map((item: StackedTableRow, index: number) => {
-                  return <div key={index}>{buildCell(item)}</div>
+                  return (
+                    <div className="text-left" key={index}>
+                      {buildCell(item)}
+                    </div>
+                  )
                 })
               : buildCell(dataRow[item])}
           </div>
@@ -83,13 +87,15 @@ const StackedTable = (props: StackedTableProps) => {
   }, {})
 
   return (
-    <MinimalTable
-      headers={modifiedHeaders}
-      data={modifiedData}
-      className={tableClasses.join(" ")}
-      responsiveCollapse={true}
-      cellClassName={"b-0"}
-    />
+    <>
+      <MinimalTable
+        headers={modifiedHeaders}
+        data={modifiedData}
+        className={tableClasses.join(" ")}
+        responsiveCollapse={true}
+        cellClassName={"b-0"}
+      />
+    </>
   )
 }
 
