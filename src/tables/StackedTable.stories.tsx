@@ -1,6 +1,6 @@
 import React from "react"
 
-import { StackedTable, StackedTableRow } from "./StackedTable"
+import { StackedTable } from "./StackedTable"
 
 export default {
   title: "Tables/StackedTable",
@@ -62,7 +62,7 @@ const basicTableRowsWithMultipleCellElements = [
   },
 ]
 
-const basicTableRowsHiddenDesktop: Record<string, StackedTableRow>[] | StackedTableRow[] = [
+const basicTableRowsHiddenDesktop = [
   {
     one: { cellText: "Cell 1", cellSubText: "Subtext 1" },
     two: { cellText: "Cell 2", cellSubText: "Subtext 2" },
