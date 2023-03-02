@@ -28,6 +28,10 @@ export const withContent = () => (
   </PageHeader>
 )
 
+export const withBackgroundImage = () => (
+  <PageHeader title="Hello World" inverse subtitle="Here is a page header with a background image" backgroundImage="/images/banner.png" className="bg-cover bg-center"/>
+)
+
 export const styleOverrides = () => {
   const cssVarsOverride = `
     .page-header-overrides .page-header {
