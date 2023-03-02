@@ -19,9 +19,20 @@ export interface StackedTableProps {
   /** Headers hidden on desktop views */
   headersHiddenDesktop?: string[]
   /** The table data passed as records of column name to cell data */
-  stackedData?: Record<string, StackedTableRow>[]
+  stackedData?: Record<string, StackedTableRow>[] | StackedTableRow[]
   /** A class name applied to the root of the table */
   className?: string
+}
+
+const buildCell = (item: StackedTableRow) => {
+  return (
+    <>
+      <p className={"stacked-table-cell"}>{item.cellText}</p>
+      <p className={`stacked-table-subtext  ${item.hideSubTextMobile ? "hidden md:block" : ""} `}>
+        {item.cellSubText}
+      </p>
+    </>
+  )
 }
 
 const StackedTable = (props: StackedTableProps) => {
@@ -34,17 +45,14 @@ const StackedTable = (props: StackedTableProps) => {
         content: (
           <div
             className={`stacked-table-cell-container ${
-              props.headersHiddenDesktop?.includes(item) && "md:hidden"
+              props.headersHiddenDesktop?.includes(item) ? "md:hidden" : ""
             }`}
           >
-            <span className={"stacked-table-cell"}>{dataRow[item].cellText}</span>
-            <span
-              className={`stacked-table-subtext  ${
-                dataRow[item].hideSubTextMobile && "hidden md:block"
-              } `}
-            >
-              {dataRow[item].cellSubText}
-            </span>
+            {Array.isArray(dataRow[item])
+              ? dataRow[item].map((item: StackedTableRow, index: number) => {
+                  return <React.Fragment key={index}>{buildCell(item)}</React.Fragment>
+                })
+              : buildCell(dataRow[item])}
           </div>
         ),
         mobileReplacement: dataRow[item].cellText,
