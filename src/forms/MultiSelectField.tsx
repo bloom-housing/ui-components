@@ -80,7 +80,7 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
   return (
     <div className="field multi-select-field">
       {props.label && label}
-      <div className="control" data-test-id={props.dataTestId}>
+      <div className="control" data-testid={props.dataTestId}>
         <Icon symbol="search" size="medium" />
         <input
           id={props.id}

@@ -60,8 +60,8 @@ export const Select = ({
           className="input"
           id={id || name}
           name={name}
-          data-test-id={dataTestId}
-          aria-describedby={describedBy ? describedBy : `${id}-error`}
+          data-testid={dataTestId}
+          aria-describedby={describedBy ? describedBy : `${id || name}-error`}
           aria-invalid={!!error || false}
           aria-label={label}
           ref={register && register(validation)}
@@ -79,7 +79,7 @@ export const Select = ({
       </div>
       {subNote && <p className="field-sub-note">{subNote}</p>}
       {error && errorMessage && (
-        <ErrorMessage id={`${id}-error`} error={error}>
+        <ErrorMessage id={`${id || name}-error`} error={error}>
           {errorMessage}
         </ErrorMessage>
       )}

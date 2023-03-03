@@ -1,5 +1,5 @@
 import React from "react"
-import { render, cleanup } from "@testing-library/react"
+import { render, cleanup, fireEvent } from "@testing-library/react"
 import { ContentAccordion } from "../../src/page_components/listing/ContentAccordion"
 
 afterEach(cleanup)
@@ -18,7 +18,7 @@ describe("<ContentAccordion>", () => {
     )
     expect(queryByText("Header Content")).toBeTruthy()
     expect(queryByText("Expanded Content")).toBeFalsy()
-    getByTestId("content-accordion-button").click()
+    fireEvent.click(getByTestId("content-accordion-button"))
     expect(queryByText("Header Content")).toBeTruthy()
     expect(queryByText("Expanded Content")).toBeTruthy()
   })
