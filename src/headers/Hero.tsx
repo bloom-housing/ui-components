@@ -20,7 +20,7 @@ export interface HeroProps {
 }
 
 const HeroButton = (props: { title: string; href: string; className?: string }) => (
-  <span className={props.className + " hero__button"}>
+  <span className={`${props.className || ""} hero__button`}>
     <LinkButton href={props.href}>{props.title}</LinkButton>
   </span>
 )
@@ -44,7 +44,7 @@ const Hero = (props: HeroProps) => {
     classNames = "centered"
   }
   return (
-    <div className={`hero ${classNames}`} style={styles} data-test-id={"hero-component"}>
+    <div className={`hero ${classNames}`} style={styles} data-testid={"hero-component"}>
       <h1 className={`hero__title ${props.extraLargeTitle ? "lg:text-6.5xl" : ""}`}>
         {props.title}
       </h1>

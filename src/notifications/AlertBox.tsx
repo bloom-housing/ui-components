@@ -83,7 +83,7 @@ const AlertBox = (props: AlertBoxProps) => {
   }
 
   return showing ? (
-    <div className={classNames} role="alert" data-test-id={"alert-box"}>
+    <div className={classNames} role="alert" data-testid={"alert-box"}>
       {innerSection}
     </div>
   ) : null

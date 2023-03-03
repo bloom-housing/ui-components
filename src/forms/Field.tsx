@@ -138,7 +138,7 @@ const Field = (props: FieldProps) => {
           onPaste={props.onPaste}
           onDrop={props.onDrop}
           onChange={props.onChange}
-          data-test-id={props.dataTestId}
+          data-testid={props.dataTestId}
           {...inputProps}
           hidden={props.hidden}
         />

@@ -31,7 +31,7 @@ const PageHeader = (props: PageHeaderProps) => {
         )}
 
         {props.title && (
-          <h1 data-test-id="page-header" className="page-header__title">
+          <h1 data-testid="page-header" className="page-header__title">
             {props.title}
           </h1>
         )}

@@ -60,7 +60,7 @@ export const PhoneField = (props: {
           {props.label}
         </label>
       )}
-      <div className={props.controlClassName} data-test-id={props.dataTestId}>
+      <div className={props.controlClassName} data-testid={props.dataTestId}>
         {props.mask ? (
           <Controller {...controllerProps} render={props.mask} />
         ) : (
@@ -68,7 +68,7 @@ export const PhoneField = (props: {
         )}
       </div>
       {props.subNote && <p className="field-sub-note">{props.subNote}</p>}
-      <ErrorMessage id={`${props.id}-error`} error={props.error}>
+      <ErrorMessage id={`${props.id || ""}-error`} error={props.error}>
         {props.errorMessage}
       </ErrorMessage>
     </div>
