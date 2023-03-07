@@ -1,112 +1,92 @@
-import React from "react";
-import ActionBlock, { ActionBlockLayout } from "./ActionBlock";
-import HeaderBadge from "../icons/HeaderBadge";
-import { Button } from "../..";
-import { AppearanceStyleType } from "../global/AppearanceTypes";
-import Icon from "../icons/Icon";
+import React from "react"
+import ActionBlock, { ActionBlockLayout } from "./ActionBlock"
+import { Button } from "../.."
+import { AppearanceStyleType } from "../global/AppearanceTypes"
+import Icon from "../icons/Icon"
 
 export default {
   title: "Blocks/Action Block",
-};
+}
 
 export const blockWithIcon = () => (
   <ActionBlock
-    header="Action block"
+    header={{ children: "Action Block" }}
     background="primary-lighter"
     icon={<Icon size="3xl" symbol="mail" />}
     actions={[
-      <Button
-        onClick={() => console.log("click")}
-        styleType={AppearanceStyleType.primary}
-      >
+      <Button onClick={() => console.log("click")} styleType={AppearanceStyleType.primary}>
         Action
       </Button>,
     ]}
   ></ActionBlock>
-);
+)
 
 export const blockNoIconNoBackgroung = () => (
   <ActionBlock
-    header="Full length headline text that spans the block"
+    header={{ children: "Full length headline text that spans the block" }}
     actions={[
-      <Button
-        onClick={() => console.log("click")}
-        styleType={AppearanceStyleType.info}
-      >
+      <Button onClick={() => console.log("click")} styleType={AppearanceStyleType.info}>
         Button
       </Button>,
     ]}
   ></ActionBlock>
-);
+)
 
 export const blockWithDarkerBg = () => (
   <ActionBlock
-    header="Action block"
+    header={{ children: "Action Block" }}
     icon={<Icon size="3xl" symbol="mail" />}
     background="primary-darker"
     actions={[
-      <Button
-        onClick={() => console.log("click")}
-        styleType={AppearanceStyleType.primary}
-      >
+      <Button onClick={() => console.log("click")} styleType={AppearanceStyleType.primary}>
         Action
       </Button>,
-      <Button
-        onClick={() => console.log("click")}
-        styleType={AppearanceStyleType.info}
-      >
+      <Button onClick={() => console.log("click")} styleType={AppearanceStyleType.info}>
         Action
       </Button>,
     ]}
   ></ActionBlock>
-);
+)
 
 export const blockWithSubheader = () => (
   <ActionBlock
-    header="Full length headline text that spans the block"
+    header={{ children: "Full length headline text that spans the block" }}
     subheader="Brunch leggings trust fund tattooed, flannel sustainable man braid venmo. "
     icon={<Icon size="3xl" symbol="mail" />}
     background="primary-lighter"
     actions={[<Button onClick={() => console.log("click")}>Action</Button>]}
   ></ActionBlock>
-);
+)
 
 export const inlineBlock = () => (
   <ActionBlock
-    header="See more listings from our community partners"
+    header={{ children: "See more listings from our community partners" }}
     icon={<Icon size="3xl" symbol="mail" />}
     background="primary-lighter"
     layout={ActionBlockLayout.inline}
     actions={[
-      <Button
-        onClick={() => console.log("click")}
-        styleType={AppearanceStyleType.primary}
-      >
+      <Button onClick={() => console.log("click")} styleType={AppearanceStyleType.primary}>
         Action
       </Button>,
     ]}
   ></ActionBlock>
-);
+)
 
 export const inlineBlockWith2actions = () => (
   <ActionBlock
-    header="Find more listings on our website"
+    header={{ children: "Find more listings on our website" }}
     background="primary-darker"
     layout={ActionBlockLayout.inline}
     actions={[
-      <Button onClick={() => console.log("click")}>
-        First Come, First Served
-      </Button>,
-      <Button onClick={() => console.log("click")}>
-        First Come, First Served
-      </Button>,
+      <Button onClick={() => console.log("click")}>First Come, First Served</Button>,
+      <Button onClick={() => console.log("click")}>First Come, First Served</Button>,
     ]}
   ></ActionBlock>
-);
+)
 
 export const inlineBlockWith2actionsAsLinks = () => (
   <ActionBlock
-    header="Find more listings on our website:"
+    header={{ children: "Find more listings on our website:" }}
     background="primary-darker"
     layout={ActionBlockLayout.inline}
     actions={[
@@ -118,4 +98,4 @@ export const inlineBlockWith2actionsAsLinks = () => (
       </a>,
     ]}
   ></ActionBlock>
-);
+)
