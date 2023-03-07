@@ -34,7 +34,7 @@ https://www.cssscript.com/pure-html5-css3-responsive-table-solution/ */
       @apply uppercase;
       content: attr(data-label);
       text-align: left;
-      width: 50%;
+      width: 100%;
     }
 
     td:last-child {
@@ -162,7 +162,7 @@ table {
         @apply text-left;
         @apply w-full;
       }
-      width: 50%;
+      width: 100%;
       @apply text-right;
       @apply pl-2;
 
@@ -189,6 +189,7 @@ table {
     }
 
     .stacked-table-header {
+      @apply align-top;
       @apply px-0;
       @apply text-base;
       @apply text-gray-700;
@@ -252,7 +253,7 @@ table {
         @apply pl-0;
         @apply pr-2;
         @apply font-semibold;
-        width: 50%;
+        width: 100%;
       }
     }
 
@@ -273,7 +274,6 @@ table {
     }
 
     .stacked-table-cell-container {
-      width: 50%;
       @apply flex;
       @apply flex-col;
       @apply items-start;
@@ -300,7 +300,7 @@ table {
     td:last-child,
     th:last-child {
       .stacked-table-cell-container {
-        width: 50%;
+        width: 100%;
       }
     }
 

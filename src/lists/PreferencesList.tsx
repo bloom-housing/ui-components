@@ -5,6 +5,7 @@ import { locale } from "../helpers/translator"
 export interface ListPreferenceLink {
   title: string
   url: string
+  ariaLabel?: string
 }
 
 export interface ListPreference {
@@ -13,6 +14,7 @@ export interface ListPreference {
   title?: string
   subtitle?: string
   description?: string
+  descriptionClassName?: string
 }
 
 export interface PreferencesListProps {
@@ -48,13 +50,15 @@ const PreferencesList = (props: PreferencesListProps) => {
           <div className="preferences-list__subtitle">{preference.subtitle}</div>
         )}
         {preference.description && (
-          <div className="preferences-list__description">{preference.description}</div>
+          <div className={`preferences-list__description ${preference.descriptionClassName || ""}`}>
+            {preference.description}
+          </div>
         )}
         {preference.links && (
           <div className="preferences-list__links">
             {preference.links.map((link: ListPreferenceLink, linkIndex: number) => (
               <span key={linkIndex}>
-                <a href={link.url} target="_blank">
+                <a href={link.url} target="_blank" aria-label={link.ariaLabel}>
                   {link.title}
                 </a>
               </span>

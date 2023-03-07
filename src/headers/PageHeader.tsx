@@ -9,15 +9,20 @@ export interface PageHeaderProps {
   children?: React.ReactNode
   tabNav?: React.ReactNode
   breadcrumbs?: React.ReactNode
+  backgroundImage?: string
 }
 
 const PageHeader = (props: PageHeaderProps) => {
   const classNames = ["page-header"]
+  let styles
   if (props.inverse) classNames.push("is-inverse")
   if (props.className) classNames.push(...props.className.split(" "))
+  if (props.backgroundImage) {
+    styles = { backgroundImage: `url(${props.backgroundImage})` }
+  }
 
   return (
-    <header className={classNames.join(" ")}>
+    <header className={classNames.join(" ")} style={styles}>
       <hgroup className="page-header__group">
         {props?.breadcrumbs && (
           <nav className="page-header__breadcrumbs" aria-label={"Page Header"}>

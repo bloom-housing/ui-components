@@ -30,6 +30,12 @@ jobs:
       - restore_cache:
           key: build-cache-{{ .Environment.CIRCLE_SHA1 }}
       - run: yarn test:a11y
+  build-uic:
+    executor: standard-node
+    steps:
+      - restore_cache:
+          key: build-cache-{{ .Environment.CIRCLE_SHA1 }}
+      - run: yarn build
 
 workflows:
   version: 2
@@ -40,5 +46,8 @@ workflows:
           requires:
             - setup
       - jest-ui-components-a11y:
+          requires:
+            - setup
+      - build-uic:
           requires:
             - setup

@@ -81,7 +81,7 @@ const ImageCard = (props: ImageCardProps) => {
       )
     })
     return (
-      <aside className="image-card__status" aria-label={`${props.description} Statuses`}>
+      <aside className="image-card__status" aria-label={`${props.description || ""} Statuses`}>
         {statuses}
       </aside>
     )
@@ -104,24 +104,6 @@ const ImageCard = (props: ImageCardProps) => {
   const image = (
     <>
       <div className="image-card">
-        <div className="image-card-tag__wrapper">
-          {props.tags?.map((tag, index) => {
-            return (
-              <React.Fragment key={index}>
-                <Tag styleType={tag.styleType || AppearanceStyleType.warning}>
-                  {tag.iconType && (
-                    <Icon
-                      size={"medium"}
-                      symbol={tag.iconType}
-                      fill={tag.iconColor ?? IconFillColors.primary}
-                    />
-                  )}
-                  {tag.text}
-                </Tag>
-              </React.Fragment>
-            )
-          })}
-        </div>
         <figure className={innerClasses.join(" ")}>
           {props.imageUrl ? (
             <img
@@ -174,6 +156,24 @@ const ImageCard = (props: ImageCardProps) => {
           )}
         </figure>
         {getStatuses()}
+        <div className="image-card-tag__wrapper">
+          {props.tags?.map((tag, index) => {
+            return (
+              <React.Fragment key={index}>
+                <Tag styleType={tag.styleType || AppearanceStyleType.warning}>
+                  {tag.iconType && (
+                    <Icon
+                      size={"medium"}
+                      symbol={tag.iconType}
+                      fill={tag.iconColor ?? IconFillColors.primary}
+                    />
+                  )}
+                  {tag.text}
+                </Tag>
+              </React.Fragment>
+            )
+          })}
+        </div>
       </div>
       {props.images && props.images.length > 1 && (
         <Modal
