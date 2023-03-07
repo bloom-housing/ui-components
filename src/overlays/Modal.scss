@@ -6,6 +6,7 @@
   --content-font-color: var(--bloom-color-gray-700);
   --content-padding-block: var(--bloom-s6);
   --content-padding-inline: var(--bloom-s6);
+  --content-margin-top: var(--bloom-s6);
   --title-padding-block: var(--bloom-s6) 0px;
   --title-padding-inline: var(--bloom-s6) var(--bloom-s12);
   --max-width: var(--bloom-width-5xl);
@@ -18,7 +19,11 @@
   --modal-shadow: var(--bloom-shadow-md);
   --modal-border: var(--bloom-border-1) solid var(--bloom-color-gray-400);
   --footer-justify: normal;
-  overflow: auto;
+  --max-height: 100vh;
+  --overflow: auto;
+  --width: 100vw;
+
+  overflow: var(--overflow);
   -webkit-overflow-scrolling: touch;
 
   display: flex;
@@ -26,12 +31,12 @@
 
   position: relative;
   max-width: var(--max-width);
-  max-height: 100vh;
+  max-height: var(--max-height);
   margin: auto;
   border: var(--modal-border);
   background-color: var(--background-color);
   box-shadow: var(--modal-shadow);
-  width: 100vw;
+  width: var(--width);
   border-radius: var(--mobile-border-radius);
 
   @media (min-width: $screen-sm) {
@@ -63,7 +68,7 @@
 .modal__inner {
   padding-block: var(--content-padding-block);
   padding-inline: var(--content-padding-inline);
-  margin-top: var(--content-padding-block);
+  margin-top: var(--content-margin-top);
 
   &:last-of-type {
     border-bottom-right-radius: var(--border-radius);
