@@ -4,11 +4,13 @@
   --title-font-size: var(--bloom-font-size-lg);
   --title-font-family: var(--bloom-font-sans);
   --content-font-color: var(--bloom-color-gray-700);
-  --content-padding-block: var(--bloom-s6);
+  --content-padding-block: 0 var(--bloom-s6);
   --content-padding-inline: var(--bloom-s6);
   --content-margin-top: var(--bloom-s6);
   --title-padding-block: var(--bloom-s6) 0px;
   --title-padding-inline: var(--bloom-s6) var(--bloom-s12);
+  --footer-padding-block: var(--bloom-s6);
+  --footer-padding-inline: var(--bloom-s6);
   --max-width: var(--bloom-width-5xl);
   --desktop-min-width: var(--bloom-width-xl);
   --scroll-max-height: 100vh;
@@ -92,8 +94,8 @@
 }
 
 .modal__footer {
-  padding-block: var(--content-padding-block);
-  padding-inline: var(--content-padding-inline);
+  padding-block: var(--footer-padding-block);
+  padding-inline: var(--footer-padding-inline);
   border-bottom-right-radius: var(--border-radius);
   border-bottom-left-radius: var(--border-radius);
   background-color: var(--footer-background-color);
