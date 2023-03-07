@@ -24,6 +24,7 @@
   --max-height: 100vh;
   --overflow: auto;
   --width: 100vw;
+  --modal-header-min-height: auto;
 
   overflow: var(--overflow);
   -webkit-overflow-scrolling: touch;
@@ -56,7 +57,7 @@
 }
 
 .modal__header {
-  min-height: var(--bloom-s14);
+  min-height: var(--modal-header-min-height);
 }
 
 .modal__title {
