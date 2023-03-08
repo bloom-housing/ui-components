@@ -1,27 +1,27 @@
 import * as React from "react"
+import { Heading, HeadingProps } from "../text/Heading"
 import "./FormCard.scss"
 
 export interface FormCardProps {
-  header?: FormCardHeader
+  header?: HeadingProps
   children: React.ReactNode
   className?: string
 }
 
-export interface FormCardHeader {
-  isVisible: boolean
-  title: string
-}
-
 const FormCard = (props: FormCardProps) => {
-  const classNames = props.className ? `${props.className} form-card` : "form-card"
-  if (props.header?.isVisible) {
+  const classNames = `form-card ${props.className || ""}`
+  if (!!props.header) {
     return (
       <article className={classNames}>
         <div className="form-card__header">
           <header className="form-card__header_group">
-            {props.header.title && (
-              <h1 className="form-card__header_title">{props.header.title}</h1>
-            )}
+            <Heading
+              priority={props.header.priority ?? 1}
+              styleType={props.header.styleType}
+              className={`form-card__header_title ${props.header.className || ""}`}
+            >
+              {props.header.children}
+            </Heading>
           </header>
 
           <div className="form-card__header_nav">{props.children}</div>
