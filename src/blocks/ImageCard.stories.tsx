@@ -75,11 +75,15 @@ export const withLink = () => <ImageCard href="/listings" imageUrl="/images/list
 export const withNoImage = () => <ImageCard />
 
 export const withOneStatusAndSmaller = () => (
-  <ImageCard
-    href="/listings"
-    imageUrl="/images/listing.jpg"
-    statuses={[{ status: ApplicationStatusType.Closed, content: t("listings.applicationsClosed") }]}
-  />
+  <header className="image-card--leader">
+    <ImageCard
+      href="/listings"
+      imageUrl="/images/listing.jpg"
+      statuses={[
+        { status: ApplicationStatusType.Closed, content: t("listings.applicationsClosed") },
+      ]}
+    />
+  </header>
 )
 
 export const withDescriptionAsAlt = () => (
