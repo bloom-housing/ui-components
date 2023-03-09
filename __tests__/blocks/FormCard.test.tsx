@@ -9,8 +9,7 @@ describe("<FormCard>", () => {
     const { getByText } = render(
       <FormCard
         header={{
-          isVisible: true,
-          title: "Header Text",
+          children: "Header Text",
         }}
       >
         Children go here
