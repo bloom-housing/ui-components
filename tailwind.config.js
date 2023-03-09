@@ -3,6 +3,7 @@
 module.exports = {
   important: true,
   purge: false,
+  plugins: [require("tailwindcss-rtl")],
   theme: {
     screens: {
       sm: "640px",
