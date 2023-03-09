@@ -31,6 +31,7 @@ export interface FieldProps {
   setValue?: UseFormMethods["setValue"]
   dataTestId?: string
   hidden?: boolean
+  labelClassName?: string
   bordered?: boolean
 }
 
@@ -99,6 +100,7 @@ const Field = (props: FieldProps) => {
     if (props.caps) labelClasses.push("text__caps-spaced")
     if (props.primary) labelClasses.push("text-primary")
     if (props.readerOnly) labelClasses.push("sr-only")
+    if (props.labelClassName) labelClasses.push(props.labelClassName)
     if (props.type === "radio") {
       labelClasses.push("font-semibold")
     }
@@ -109,7 +111,17 @@ const Field = (props: FieldProps) => {
         {props.label}
       </label>
     )
-  }, [props.caps, props.primary, props.readerOnly, props.type, props.id, props.name, props.label])
+  }, [
+    props.caps,
+    props.primary,
+    props.readerOnly,
+    props.labelClassName,
+    props.type,
+    props.id,
+    props.name,
+    props.label,
+    props.error,
+  ])
 
   const idOrName = props.id || props.name
 
