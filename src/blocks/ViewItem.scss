@@ -1,6 +1,9 @@
 @import "../global/mixins.scss";
 
 .view-item {
+  --label-font-size: var(--bloom-font-size-sm);
+  --helper-font-size: var(--bloom-font-size-sm);
+  --label-error-font-size: var(--bloom-font-size-sm);
   @apply relative;
   @apply text-base;
   @apply mb-4;
@@ -28,8 +31,13 @@
 .view-item__label {
   @apply text-gray-800;
   @apply font-sans;
-  @apply text-sm;
+  font-size: var(--label-font-size);
   @apply block;
+}
+
+.view-item__label-error {
+  @apply text-alert;
+  font-size: var(--label-error-font-size);
 }
 
 .view-item__value {
@@ -54,6 +62,6 @@
 .view-item__helper {
   @apply text-gray-750;
   @apply font-sans;
-  @apply text-sm;
+  font-size: var(--helper-font-size);
   @apply block;
 }
