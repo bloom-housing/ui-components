@@ -4,64 +4,68 @@
   --label-font-size: var(--bloom-font-size-sm);
   --helper-font-size: var(--bloom-font-size-sm);
   --label-error-font-size: var(--bloom-font-size-sm);
-  @apply relative;
-  @apply text-base;
-  @apply mb-4;
+  --label-text-color: var(--bloom-color-gray-800);
+  --helper-text-color: var(--bloom-color-gray-750);
+  --font-size: var(--bloom-font-size-base);
+  --bottom-margin: var(--bloom-s4);
+
+  font-size: var(--font-size);
+  margin-bottom: var(--bottom-margin);
+  position: relative;
 
   &:last-of-type {
-    @apply mb-0;
+    margin-bottom: 0;
   }
 
   &.is-flagged {
-    @apply bg-warn-light;
-    @apply -my-1;
-    @apply py-1;
-    @apply -ml-8;
-    @apply pl-8;
-    box-shadow: inset 2px 0px 0px 0px $tailwind-warn;
+    background-color: var(--bloom-color-warn-light);
+    margin: calc(var(--bloom-s1) * -1) 0;
+    margin-left: calc(var(--bloom-s8) * -1);
+    padding: var(--bloom-s1) 0;
+    padding-left: var(--bloom-s8);
+    box-shadow: inset 2px 0px 0px 0px var(--bloom-color-warn);
   }
 
   .edit-link {
-    @apply absolute;
+    position: absolute;
     right: 0;
     top: 0;
   }
 }
 
 .view-item__label {
-  @apply text-gray-800;
-  @apply font-sans;
+  color: var(--label-text-color);
+  font-family: var(--bloom-font-sans);
   font-size: var(--label-font-size);
-  @apply block;
+  display: block;
 }
 
 .view-item__label-error {
-  @apply text-alert;
+  color: var(--bloom-color-alert);
   font-size: var(--label-error-font-size);
 }
 
 .view-item__value {
-  @apply font-alt-sans;
-  @apply tracking-wide;
-  @apply font-semibold;
-  @apply block;
+  font-family: var(--bloom-font-alt-sans);
+  letter-spacing: var(--bloom-letter-spacing-wide);
+  font-weight: 600;
+  display: block;
   padding-top: 10px;
 
   &.is-truncated {
     @include ellipsis;
   }
 
-  // do not change font-family for inputs
   .field .control .input,
   .error-message {
-    @apply font-sans;
-    @apply font-normal;
+    font-family: var(--bloom-font-sans);
+    font-weight: 400;
   }
 }
 
 .view-item__helper {
-  @apply text-gray-750;
-  @apply font-sans;
+  color: var(--helper-text-color);
+  font-family: var(--bloom-font-sans);
   font-size: var(--helper-font-size);
-  @apply block;
+  display: block;
 }
