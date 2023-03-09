@@ -50,3 +50,13 @@ export const withExtraLargeTitleAndSecondaryButton = () => (
     title={"Say Hello to Your Hero"}
   />
 )
+
+export const withCustomActions = () => (
+  <Hero
+    title={<>Say Hello to Your Hero</>}
+    buttonTitle="Rental Listings"
+    buttonLink="/listings"
+    backgroundImage="/images/banner.png"
+    customActions={<>Hero inset content</>}
+  />
+)

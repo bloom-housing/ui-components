@@ -1,4 +1,10 @@
 .hero {
+  --title-desktop-font-size: var(--bloom-font-size-5xl);
+  --title-mobile-font-size: var(--bloom-font-size-3xl);
+  --subtitle-desktop-font-size: var(--bloom-font-size-xl);
+  --subtitle-mobile-font-size: var(--bloom-font-size-base);
+  --inner-background-color: inherit;
+
   @apply bg-primary-darker;
   @apply py-10;
   @apply px-5;
@@ -22,20 +28,24 @@
 
 .hero__buttons {
   @apply grid;
-  @apply md:grid-cols-4;
   @apply gap-5;
   @apply max-w-screen-md;
   @apply m-auto;
+
+  @screen md {
+    @apply grid-cols-4;
+  }
 }
+
 .hero__title {
-  @apply text-3xl;
+  font-size: var(--title-mobile-font-size);
   @apply mb-5;
   @apply mx-auto;
   letter-spacing: -0.04em;
   max-width: 41rem;
 
   @screen md {
-    @apply text-5xl;
+    font-size: var(--title-desktop-font-size);
     @apply mb-8;
   }
 
@@ -48,9 +58,9 @@
   }
 }
 
-h2.hero__subtitle {
+.hero__subtitle {
   @apply font-sans;
-  @apply text-base;
+  font-size: var(--subtitle-mobile-font-size);
   @apply text-gray-100;
   @apply mb-8;
   @apply mx-auto;
@@ -58,6 +68,10 @@ h2.hero__subtitle {
   text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
 
   @screen md {
-    @apply text-xl;
+    font-size: var(--subtitle-desktop-font-size);
   }
+}
+
+.hero__inner {
+  background-color: var(--inner-background-color);
 }
