@@ -13,3 +13,9 @@ export const standard = () => (
     {content}
   </ExpandableContent>
 )
+
+export const below = () => (
+  <ExpandableContent strings={{ readMore: "read more", readLess: "read less" }} order={"below"}>
+    {content}
+  </ExpandableContent>
+)
