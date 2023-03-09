@@ -153,7 +153,6 @@ export type IconSize =
   | "xlarge"
   | "2xl"
   | "3xl"
-  | "extra-medium"
 
 export interface IconProps {
   size: IconSize
