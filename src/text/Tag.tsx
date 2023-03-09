@@ -8,7 +8,7 @@ export interface TagProps extends AppearanceProps {
   capitalized?: boolean
   children: React.ReactNode
   fillContainer?: boolean
-  tabIndex?: number
+  ariaLabel?: string
 }
 
 export const Tag = (props: TagProps) => {
@@ -20,7 +20,7 @@ export const Tag = (props: TagProps) => {
   if (props.className) tagClasses.push(props.className)
 
   return (
-    <span className={tagClasses.join(" ")} tabIndex={props.tabIndex}>
+    <span className={tagClasses.join(" ")} aria-label={props.ariaLabel || undefined}>
       {props.children}
     </span>
   )

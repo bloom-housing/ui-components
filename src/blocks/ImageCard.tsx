@@ -159,7 +159,12 @@ const ImageCard = (props: ImageCardProps) => {
         <div className="image-card-tag__wrapper">
           {props.tags?.map((tag, index) => {
             const tagContent = (
-              <Tag tabIndex={0} styleType={tag.styleType || AppearanceStyleType.warning}>
+              <Tag
+                styleType={tag.styleType || AppearanceStyleType.warning}
+                ariaLabel={
+                  tag.tooltip ? `${tag.text || ""} - ${tag.tooltip?.text || ""}` : undefined
+                }
+              >
                 {tag.iconType && (
                   <Icon
                     size={"medium"}
