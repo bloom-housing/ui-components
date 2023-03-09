@@ -23,7 +23,9 @@ const HeadingGroup = (props: HeadingGroupProps) => {
   return (
     <hgroup className={classNames.join(" ")} role="group">
       <Heading priority={props.headingPriority ?? 2}>{props.heading}</Heading>
-      <p aria-roledescription="subtitle">{props.subheading}</p>
+      <p role={"heading"} aria-roledescription="subtitle">
+        {props.subheading}
+      </p>
     </hgroup>
   )
 }
