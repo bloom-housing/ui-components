@@ -1,21 +1,29 @@
 import React, { useState } from "react"
 
+type Order = "above" | "below"
+
 type ExpandableContentProps = {
-  children: React.ReactChild
+  children: React.ReactNode
   strings: {
     readMore?: string
     readLess?: string
   }
   className?: string
+  order?: Order
 }
 
-const ExpandableContent = ({ children, strings, className }: ExpandableContentProps) => {
+const ExpandableContent = ({
+  children,
+  strings,
+  className,
+  order = "above",
+}: ExpandableContentProps) => {
   const [isExpanded, setExpanded] = useState(false)
   const rootClassNames = className ? `${className}` : undefined
 
   return (
     <div className={rootClassNames}>
-      {isExpanded && <div>{children}</div>}
+      {order === "above" && <>({isExpanded && <div>{children}</div>})</>}
       <button
         type="button"
         className="button is-unstyled m-0 no-underline has-toggle"
@@ -26,6 +34,7 @@ const ExpandableContent = ({ children, strings, className }: ExpandableContentPr
       >
         {isExpanded ? strings.readLess : strings.readMore}
       </button>
+      {order === "below" && <>({isExpanded && <div>{children}</div>})</>}
     </div>
   )
 }
