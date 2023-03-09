@@ -7,7 +7,7 @@ export interface InfoCardProps {
   subtitle?: string
   externalHref?: string
   className?: string
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 const InfoCard = (props: InfoCardProps) => {
@@ -28,7 +28,7 @@ const InfoCard = (props: InfoCardProps) => {
         ) : (
           <h3 className="info-card__title">{props.title}</h3>
         )}
-        {props.subtitle && <span className={"text-xs text-gray-700"}>{props.subtitle}</span>}
+        {props.subtitle && <span className={"text-sm text-gray-700"}>{props.subtitle}</span>}
       </div>
       {typeof props.children == "string" ? (
         <div className="markdown">
