@@ -7,8 +7,9 @@ import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons"
 import { Icon } from "../icons/Icon"
 
 export interface LinkButtonProps extends Omit<ButtonProps, "onClick"> {
-  href: string
   dataTestId?: string
+  href: string
+  linkProps?: Record<string, unknown>
   newTab?: boolean
   newTabIcon?: boolean
 }
@@ -24,6 +25,7 @@ const LinkButton = (props: LinkButtonProps) => {
         className={buttonClasses.join(" ")}
         data-test-id={props.dataTestId}
         target={props.newTab ? "_blank" : "_self"}
+        {...props.linkProps}
       >
         {buttonInner(props)}
         {props.newTabIcon && (
