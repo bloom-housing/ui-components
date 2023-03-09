@@ -111,3 +111,7 @@ export const costsNotIncluded = () => {
     />
   )
 }
+
+export const multipleFooters = () => {
+  return <AdditionalFees strings={strings} footerContent={["Footer 1", "Footer 2", "Footer 3"]} />
+}
