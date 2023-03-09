@@ -15,6 +15,10 @@
   --big-rounded: var(--bloom-rounded);
   --big-padding: var(--bloom-s6);
   --big-font-size: var(--bloom-font-size-xs);
+  --secondary-text-color: var(--bloom-text-color-light);
+  --unstyled-inline-font-size: var(--bloom-font-size-sm);
+  --inline-font-size: var(--bloom-font-size-sm);
+  --caps-font-size: var(--bloom-font-size-sm);
 
   /* Base Styles */
   position: relative;
@@ -54,7 +58,7 @@
 
   &.is-secondary {
     border-color: var(--bloom-color-gray-700);
-    color: var(--bloom-text-color-light);
+    color: var(--secondary-text-color);
 
     &:hover {
       background-color: var(--bloom-color-gray-700);
@@ -93,7 +97,7 @@
     font-weight: 400;
     text-decoration: underline;
     margin: var(--bloom-s4);
-    font-size: var(--bloom-font-size-sm);
+    font-size: var(--unstyled-inline-font-size);
 
     &:hover {
       color: var(--bloom-color-primary);
@@ -104,7 +108,7 @@
   &.is-inline {
     color: var(--bloom-color-primary);
     font-weight: 600;
-    font-size: var(--bloom-font-size-sm);
+    font-size: var(--inline-font-size);
     margin: 0;
     text-decoration: none;
 
@@ -140,7 +144,7 @@
     text-decoration: underline;
     margin: var(--bloom-s4);
     text-transform: uppercase;
-    font-size: var(--bloom-font-size-sm);
+    font-size: var(--caps-font-size);
     display: block;
 
     &:hover {
