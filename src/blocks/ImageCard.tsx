@@ -3,6 +3,7 @@ import { LocalizedLink } from "../actions/LocalizedLink"
 import { ApplicationStatus } from "../notifications/ApplicationStatus"
 import "./ImageCard.scss"
 import { Tag } from "../text/Tag"
+import { TooltipProps, Tooltip } from "./Tooltip"
 import { ApplicationStatusType } from "../global/ApplicationStatusType"
 import { AppearanceSizeType, AppearanceStyleType } from "../global/AppearanceTypes"
 import { Icon, IconFillColors, UniversalIconType } from "../icons/Icon"
@@ -18,11 +19,14 @@ export interface StatusBarType {
   iconType?: UniversalIconType
 }
 
+export type ImageTagTooltip = Pick<TooltipProps, "id" | "text">
+
 export interface ImageTag {
   text?: string
   iconType?: UniversalIconType
   iconColor?: string
   styleType?: AppearanceStyleType
+  tooltip?: ImageTagTooltip
 }
 
 export interface ImageItem {
@@ -154,20 +158,29 @@ const ImageCard = (props: ImageCardProps) => {
         {getStatuses()}
         <div className="image-card-tag__wrapper">
           {props.tags?.map((tag, index) => {
-            return (
-              <React.Fragment key={index}>
-                <Tag styleType={tag.styleType || AppearanceStyleType.warning}>
-                  {tag.iconType && (
-                    <Icon
-                      size={"medium"}
-                      symbol={tag.iconType}
-                      fill={tag.iconColor ?? IconFillColors.primary}
-                    />
-                  )}
-                  {tag.text}
-                </Tag>
-              </React.Fragment>
+            const tagContent = (
+              <Tag tabIndex={0} styleType={tag.styleType || AppearanceStyleType.warning}>
+                {tag.iconType && (
+                  <Icon
+                    size={"medium"}
+                    symbol={tag.iconType}
+                    fill={tag.iconColor ?? IconFillColors.primary}
+                    className={"mr-2"}
+                  />
+                )}
+                {tag.text}
+              </Tag>
             )
+
+            if (tag.tooltip) {
+              return (
+                <Tooltip key={index} className="mt-3" {...tag.tooltip}>
+                  {tagContent}
+                </Tooltip>
+              )
+            }
+
+            return <React.Fragment key={index}>{tagContent}</React.Fragment>
           })}
         </div>
       </div>
