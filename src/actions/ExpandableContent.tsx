@@ -23,7 +23,7 @@ const ExpandableContent = ({
 
   return (
     <div className={rootClassNames}>
-      {order === "above" && <>({isExpanded && <div>{children}</div>})</>}
+      {order === "above" && <>{isExpanded && <div>{children}</div>}</>}
       <button
         type="button"
         className="button is-unstyled m-0 no-underline has-toggle"
@@ -34,7 +34,7 @@ const ExpandableContent = ({
       >
         {isExpanded ? strings.readLess : strings.readMore}
       </button>
-      {order === "below" && <>({isExpanded && <div>{children}</div>})</>}
+      {order === "below" && <>{isExpanded && <div>{children}</div>}</>}
     </div>
   )
 }
