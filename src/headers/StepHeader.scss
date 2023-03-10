@@ -8,6 +8,9 @@
   --circle-x-padding: var(--bloom-s0_5);
   --title-spacing: var(--bloom-s1_5);
   --label-font-weight: 600;
+  --font-family: var(--bloom-font-sans);
+
+  font-family: var(--font-family);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
