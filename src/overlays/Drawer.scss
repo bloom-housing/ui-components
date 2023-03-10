@@ -94,7 +94,7 @@
 .drawer__body {
   @apply overflow-y-auto;
   @apply relative;
-  //  flex: 1 1 auto;
+  @apply h-full;
 }
 
 .drawer__content {

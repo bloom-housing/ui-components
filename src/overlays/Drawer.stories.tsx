@@ -38,6 +38,7 @@ export const Standard = () => {
           <Button
             key={1}
             onClick={() => setDrawerState(!drawerState)}
+            styleType={AppearanceStyleType.secondary}
             border={AppearanceBorderType.borderless}
             size={AppearanceSizeType.small}
           >
@@ -80,7 +81,12 @@ export const StandardOnLeft = () => {
           >
             Submit
           </Button>,
-          <Button key={1} onClick={() => setDrawerState(!drawerState)}>
+          <Button
+            key={1}
+            onClick={() => setDrawerState(!drawerState)}
+            styleType={AppearanceStyleType.secondary}
+            border={AppearanceBorderType.borderless}
+          >
             Cancel
           </Button>,
         ]}

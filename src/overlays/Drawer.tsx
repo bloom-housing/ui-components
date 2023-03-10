@@ -23,6 +23,7 @@ export interface DrawerProps extends OverlayProps {
   className?: string
   direction?: DrawerSide
   actions?: React.ReactNode[]
+  contentAreaClassName?: string
 }
 
 const Drawer = (props: DrawerProps) => {
@@ -69,7 +70,9 @@ const Drawer = (props: DrawerProps) => {
         </header>
 
         <div className="drawer__body">
-          <div className="drawer__content">{props.children}</div>
+          <div className={`drawer__content ${props.contentAreaClassName || ""}`}>
+            {props.children}
+          </div>
         </div>
 
         {props.actions && <div className="p-4 flex gap-4">{props.actions}</div>}
