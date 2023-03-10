@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { ExpandableContent } from "./ExpandableContent"
+import { ExpandableContent, Order } from "./ExpandableContent"
 
 export default {
   title: "Actions/Expandable Content",
@@ -15,7 +15,7 @@ export const standard = () => (
 )
 
 export const below = () => (
-  <ExpandableContent strings={{ readMore: "read more", readLess: "read less" }} order={"below"}>
+  <ExpandableContent strings={{ readMore: "read more", readLess: "read less" }} order={Order.below}>
     {content}
   </ExpandableContent>
 )
