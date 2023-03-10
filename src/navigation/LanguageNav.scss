@@ -1,32 +1,43 @@
 .language-bar {
-  @apply bg-gray-800;
+  --inner-max-width: var(--bloom-width-5xl);
+  --inner-width: inherit;
+  --inner-desktop-padding: inherit;
+  --inner-mobile-padding: inherit;
+
+  background-color: var(--bloom-color-gray-800);
 }
 
 .language-bar__inner {
-  @apply max-w-5xl;
-  @apply flex;
-  @apply justify-end;
+  max-width: var(--inner-max-width);
+  width: var(--inner-width);
+  display: flex;
+  justify-content: end;
   margin: auto;
+  padding: var(--inner-mobile-padding);
+
+  @media (min-width: $screen-md) {
+    padding: 0 var(--bloom-s3);
+    padding: var(--inner-desktop-padding);
+  }
 }
 
 .language-nav__list {
-  @apply flex;
+  display: flex;
 }
 
 .language-nav__list-button {
-  @apply py-2;
-  @apply px-3;
-  @apply text-gray-500;
-  @apply font-semibold;
-  @apply cursor-pointer;
-  @apply bg-none;
+  padding: var(--bloom-s2) var(--bloom-s3);
+  color: var(--bloom-color-gray-500);
+  font-weight: 600;
+  cursor: pointer;
+  background-color: transparent;
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px #fff, 0 0 3px 4px $tailwind-accent-cool;
+    box-shadow: 0 0 0 2px #fff, 0 0 3px 4px var(--bloom-color-accent-cool);
   }
 
   &.is-active {
-    @apply text-white;
+    color: var(--bloom-color-white);
   }
 }
