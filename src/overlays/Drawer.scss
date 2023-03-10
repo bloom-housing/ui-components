@@ -1,4 +1,5 @@
 .drawer {
+  --body-height: inherit;
   @apply flex;
   @apply flex-col;
   @apply bg-gray-200;
@@ -94,7 +95,7 @@
 .drawer__body {
   @apply overflow-y-auto;
   @apply relative;
-  @apply h-full;
+  height: var(--body-height);
 }
 
 .drawer__content {
