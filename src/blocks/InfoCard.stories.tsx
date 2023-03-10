@@ -35,6 +35,17 @@ More content
   </>
 )
 
+export const NoChildren = () => (
+  <>
+    <InfoCard
+      title="My Card"
+      subtitle="Subtitle"
+      externalHref="http://google.com"
+      className="is-normal-primary-lighter"
+    />
+  </>
+)
+
 export const WithMarkdown = () => (
   <InfoCard title="My Card" externalHref="http://google.com" className="is-normal-primary-lighter">
     {`
