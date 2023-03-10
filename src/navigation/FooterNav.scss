@@ -1,5 +1,8 @@
 .footer-sock {
-  @apply bg-gray-900;
+  --background-color: var(--bloom-color-gray-900);
+
+  background-color: var(--background-color);
+  @apply bg-gray-950;
   @apply py-8;
   @apply px-2;
 
@@ -32,6 +35,7 @@
     width: auto;
     flex-shrink: 0;
     @screen lg {
+      @apply w-full;
       @apply text-left;
     }
   }
