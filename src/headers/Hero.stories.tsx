@@ -57,6 +57,6 @@ export const withCustomActions = () => (
     buttonTitle="Rental Listings"
     buttonLink="/listings"
     backgroundImage="/images/banner.png"
-    customActions={<>Hero inset content</>}
+    customActions={<>Hero custom action content</>}
   />
 )
