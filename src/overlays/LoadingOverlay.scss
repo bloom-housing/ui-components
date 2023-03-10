@@ -1,4 +1,6 @@
 .loading-overlay {
+  --padding: inherit;
+  padding: var(--padding);
   @apply relative;
   @apply pointer-events-none;
 
