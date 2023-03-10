@@ -1,5 +1,6 @@
 .footer-sock {
   --background-color: var(--bloom-color-gray-900);
+  --copyright-text-color: var(--bloom-color-gray-500);
 
   background-color: var(--background-color);
   @apply bg-gray-950;
@@ -32,6 +33,7 @@
   }
 
   .footer-copyright {
+    color: var(--copyright-text-color);
     width: auto;
     flex-shrink: 0;
     @screen lg {
