@@ -25,8 +25,7 @@
   background-size: cover;
   color: var(--text-color);
   margin: var(--margin-desktop);
-  padding: var(--bloom-s20) 0 var(--bloom-s20) 0;
-  text-align: center;
+  padding: var(--bloom-s20) var(--bloom-s5);
 
   @media (max-width: $screen-md) {
     padding: var(--bloom-s10) var(--bloom-s5);
@@ -48,6 +47,7 @@
   gap: var(--bloom-s5);
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: auto;
+  width: 100%;
   max-width: var(--bloom-screen-md);
 
   @media (max-width: $screen-md) {
@@ -61,11 +61,11 @@
   letter-spacing: var(--title-letter-spacing);
   line-height: var(--title-line-height);
   margin: var(--title-margin-desktop);
-  max-width: var(--title-max-width);
+  max-width: var(--max-width);
+  text-align: center;
 
   @media (max-width: $screen-md) {
     font-size: var(--title-mobile-font-size);
-
     margin: var(--title-margin-mobile);
   }
 
@@ -79,6 +79,7 @@
 }
 
 .hero__subtitle {
+  text-align: center;
   color: var(--subtitle-text-color);
   font-family: var(--bloom-font-sans);
   font-size: var(--subtitle-desktop-font-size);
@@ -94,4 +95,7 @@
 
 .hero__inner {
   background-color: var(--inner-background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
