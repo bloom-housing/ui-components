@@ -90,7 +90,7 @@
 }
 
 .detail-header__subtitle {
-  @apply text-tiny;
+  font-size: var(--bloom-font-size-sm);
 
   @screen md {
     @apply text-gray-800;
