@@ -1,9 +1,13 @@
 import * as React from "react"
+import { BADGES } from "../../../.storybook/constants"
 
 import { ListingDetailHeader } from "./ListingDetailHeader"
 
 export default {
-  title: "Listing/ListingDetailHeader",
+  title: "Listing/ListingDetailHeader 🚩",
+  parameters: {
+    badges: [BADGES.GEN2],
+  },
 }
 
 export const Default = () => {
