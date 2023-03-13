@@ -4,8 +4,9 @@
   --subtitle-mobile-font-size: var(--bloom-font-size-sm);
   --title-desktop-font-size: var(--bloom-font-size-2xl);
   --title-mobile-font-size: var(--bloom-font-size-sm);
-
-  display: relative;
+  --title-desktop-font-family: var(--bloom-font-serif);
+  --title-mobile-font-family: var(--bloom-font-alt-sans);
+  position: relative;
   padding: var(--bloom-s4) var(--bloom-s4) var(--bloom-s6) var(--bloom-s4);
   border-bottom: 1px solid var(--bloom-color-gray-400);
   color: var(--text-color);
@@ -61,7 +62,7 @@
     }
 
     @media (min-width: $screen-md) {
-      display: hidden;
+      display: none;
     }
 
     svg {
@@ -72,13 +73,13 @@
 }
 
 .detail-header__title {
-  font-family: var(--bloom-font-alt-sans);
+  font-family: var(--title-mobile-font-family);
   text-transform: uppercase;
   font-size: var(--title-mobile-font-size);
   letter-spacing: 0.1rem;
   color: var(--text-color);
   @media (min-width: $screen-md) {
-    font-family: var(--bloom-font-serif);
+    font-family: var(--title-desktop-font-family);
     font-size: var(--title-desktop-font-size);
     text-transform: none;
     letter-spacing: 0rem;
