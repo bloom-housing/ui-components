@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Icon } from "../../icons/Icon"
+import "./ListingDetailHeader.scss"
 
 export interface ListingDetailHeaderProps {
   imageAlt: string
@@ -12,8 +13,10 @@ export interface ListingDetailHeaderProps {
 }
 
 const ListingDetailHeader = (props: ListingDetailHeaderProps) => (
-  <header className={props.hideHeader ? "detail-header md:hidden" : "detail-header"}>
-    <img alt={props.imageAlt} className="detail-header__image " src={props.imageSrc} />
+  <header className={`detail-header ${props.hideHeader ? "md:hidden" : ""}`}>
+    <span className={"detail-header__image-container"}>
+      <img alt={props.imageAlt} className="detail-header__image " src={props.imageSrc} />
+    </span>
     <hgroup className="detail-header__hgroup">
       <h2 className="detail-header__title">{props.title}</h2>
       <span className="detail-header__subtitle">{props.subtitle}</span>
