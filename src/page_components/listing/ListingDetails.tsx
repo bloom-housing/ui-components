@@ -6,9 +6,10 @@ import {
   ResponsiveContentItemBody,
 } from "../../sections/ResponsiveContentList"
 import { ListingDetailHeader, ListingDetailHeaderProps } from "./ListingDetailHeader"
+import "./ListingDetails.scss"
 
 export const ListingDetails = (props: any) => (
-  <div className="w-full md:w-2/3 md:pr-8 md:pt-8">
+  <div className="details">
     <ResponsiveContentList>{props.children}</ResponsiveContentList>
   </div>
 )
