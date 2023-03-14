@@ -53,10 +53,6 @@
     svg {
       fill: var(--bloom-color-white);
     }
-
-    .close {
-      color: var(--bloom-color-white);
-    }
   }
 
   &.alert {
@@ -113,6 +109,10 @@
   padding: 0;
   line-height: var(--bloom-s4);
   color: var(--close-icon-color);
+}
+
+.alert-box__close-inverted {
+  color: white;
 }
 
 .alert-box__icon {
