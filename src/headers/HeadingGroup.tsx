@@ -5,7 +5,7 @@ import "./HeadingGroup.scss"
 export interface HeadingGroupProps {
   /** A string or element to display in an `h2` tag (overridable via `headingPriority`) */
   heading: React.ReactNode
-  /** A string or element to display in an `p` */
+  /** A string or element to display in a `p` tag */
   subheading: React.ReactNode
   /**
    * The heading level (1 through 6)
