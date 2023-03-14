@@ -55,7 +55,11 @@ export const PhoneField = (props: {
 
   return (
     <div className={"field " + (props.error ? "error" : "")}>
-      {props.label && <label className={labelClasses.join(" ")}>{props.label}</label>}
+      {props.label && (
+        <label id={"phone-label"} className={labelClasses.join(" ")}>
+          {props.label}
+        </label>
+      )}
       <div className={props.controlClassName} data-test-id={props.dataTestId}>
         {props.mask ? (
           <Controller {...controllerProps} render={props.mask} />
