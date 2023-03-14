@@ -10,7 +10,7 @@ describe("<ActionBlock>", () => {
   it("can render with header & subheader", () => {
     const { getByText } = render(
       <ActionBlock
-        header={{ children: "My Applications" }}
+        header={<h1>My Applications</h1>}
         subheader="Subheader Text"
         icon={<span className="Action-icon"></span>}
         actions={[
@@ -32,7 +32,7 @@ describe("<ActionBlock>", () => {
   it("subheader is hidden for inline layout", () => {
     const { getByText, container } = render(
       <ActionBlock
-        header={{ children: "My Applications" }}
+        header={<h1>My Applications</h1>}
         subheader="Subheader Text"
         icon={<span className="Action-icon"></span>}
         layout={ActionBlockLayout.inline}
