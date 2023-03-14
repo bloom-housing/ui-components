@@ -173,9 +173,7 @@ const ListingCard = (props: ListingCardProps) => {
               )}
 
             {contentProps?.tableSubheader?.content && (
-              <p className="text__small-normal" aria-roledescription="subtitle">
-                {contentProps?.tableSubheader?.content}
-              </p>
+              <p className="text__small-normal">{contentProps?.tableSubheader?.content}</p>
             )}
           </div>
           {children && children}
