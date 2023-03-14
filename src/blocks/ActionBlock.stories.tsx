@@ -3,6 +3,7 @@ import ActionBlock, { ActionBlockLayout } from "./ActionBlock"
 import { Button } from "../.."
 import { AppearanceStyleType } from "../global/AppearanceTypes"
 import Icon from "../icons/Icon"
+import Heading from "../text/Heading"
 
 export default {
   title: "Blocks/Action Block",
@@ -10,7 +11,7 @@ export default {
 
 export const blockWithIcon = () => (
   <ActionBlock
-    header={{ children: "Action Block" }}
+    header={<Heading priority={2}>Action Block</Heading>}
     background="primary-lighter"
     icon={<Icon size="3xl" symbol="mail" />}
     actions={[
@@ -21,9 +22,9 @@ export const blockWithIcon = () => (
   ></ActionBlock>
 )
 
-export const blockNoIconNoBackgroung = () => (
+export const blockNoIconNoBackground = () => (
   <ActionBlock
-    header={{ children: "Full length headline text that spans the block" }}
+    header={<Heading priority={2}>Full length headline text that spans the block</Heading>}
     actions={[
       <Button onClick={() => console.log("click")} styleType={AppearanceStyleType.info}>
         Button
@@ -34,7 +35,7 @@ export const blockNoIconNoBackgroung = () => (
 
 export const blockWithDarkerBg = () => (
   <ActionBlock
-    header={{ children: "Action Block" }}
+    header={<Heading priority={2}>Action Block</Heading>}
     icon={<Icon size="3xl" symbol="mail" />}
     background="primary-darker"
     actions={[
@@ -50,7 +51,7 @@ export const blockWithDarkerBg = () => (
 
 export const blockWithSubheader = () => (
   <ActionBlock
-    header={{ children: "Full length headline text that spans the block" }}
+    header={<Heading priority={2}>Full length headline text that spans the block</Heading>}
     subheader="Brunch leggings trust fund tattooed, flannel sustainable man braid venmo. "
     icon={<Icon size="3xl" symbol="mail" />}
     background="primary-lighter"
@@ -60,7 +61,7 @@ export const blockWithSubheader = () => (
 
 export const inlineBlock = () => (
   <ActionBlock
-    header={{ children: "See more listings from our community partners" }}
+    header={<Heading priority={2}>See more listings from our community partners</Heading>}
     icon={<Icon size="3xl" symbol="mail" />}
     background="primary-lighter"
     layout={ActionBlockLayout.inline}
@@ -74,7 +75,7 @@ export const inlineBlock = () => (
 
 export const inlineBlockWith2actions = () => (
   <ActionBlock
-    header={{ children: "Find more listings on our website" }}
+    header={<Heading priority={2}>Find more listings on our website</Heading>}
     background="primary-darker"
     layout={ActionBlockLayout.inline}
     actions={[
@@ -86,7 +87,7 @@ export const inlineBlockWith2actions = () => (
 
 export const inlineBlockWith2actionsAsLinks = () => (
   <ActionBlock
-    header={{ children: "Find more listings on our website:" }}
+    header={<Heading priority={2}>Find more listings on our website</Heading>}
     background="primary-darker"
     layout={ActionBlockLayout.inline}
     actions={[
