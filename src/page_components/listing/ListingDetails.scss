@@ -1,5 +1,5 @@
 .details {
-  --desktop-width: 66.666667%;
+  --desktop-width: calc(100% * (2 / 3));
   --mobile-width: 100%;
 
   width: var(--mobile-width);
