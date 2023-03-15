@@ -11,7 +11,7 @@ export interface InfoCardGridProps {
 const InfoCardGrid = (props: InfoCardGridProps) => (
   <section className="info-cards">
     <header className="info-cards__header">
-      <Heading styleType={"underlineWeighted"} priority={2} className={"text-sm"}>
+      <Heading styleType={"underlineWeighted"} priority={2} className={"info-cards__title"}>
         {props.title}
       </Heading>
       {props.subtitle && <p className="info-cards__subtitle">{props.subtitle}</p>}

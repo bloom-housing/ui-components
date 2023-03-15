@@ -20,6 +20,7 @@ export const Default = () => (
   <>
     <InfoCard
       title="My Card"
+      subtitle="Subtitle"
       externalHref="http://google.com"
       className="is-normal-primary-lighter"
     >
@@ -31,6 +32,17 @@ Paragraph content
 More content
       `}
     </InfoCard>
+  </>
+)
+
+export const NoChildren = () => (
+  <>
+    <InfoCard
+      title="My Card"
+      subtitle="Subtitle"
+      externalHref="http://google.com"
+      className="is-normal-primary-lighter"
+    />
   </>
 )
 

@@ -46,3 +46,21 @@
     margin-bottom: var(--bloom-s4);
   }
 }
+
+.info-card__columns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.info-card__column {
+  flex: 1 1 0%;
+}
+
+.info-card__column-2 {
+  flex: 1 1 100%;
+  margin-top: var(--bloom-s4);
+  margin-right: var(--bloom-s4);
+  @media (min-width: 440px) {
+    flex: 1 1 45%;
+  }
+}
