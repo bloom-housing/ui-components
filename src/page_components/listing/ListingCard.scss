@@ -111,3 +111,12 @@
   font-size: var(--bloom-font-size-base);
   margin-bottom: var(--bloom-s3);
 }
+
+.listing-card__tag-icon {
+  margin-right: var(--bloom-s2);
+
+  [dir="rtl"] & {
+    margin-right: 0;
+    margin-left: var(--bloom-s2);
+  }
+}

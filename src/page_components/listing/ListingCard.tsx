@@ -143,7 +143,7 @@ const ListingCard = (props: ListingCardProps) => {
                       size={"medium"}
                       symbol={cardTag.iconType}
                       fill={cardTag.iconColor ?? IconFillColors.primary}
-                      className={"me-2"}
+                      className={"listing-card__tag-icon"}
                     />
                   )}
                   {cardTag.text}
