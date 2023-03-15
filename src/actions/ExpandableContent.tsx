@@ -1,21 +1,32 @@
 import React, { useState } from "react"
 
+export enum Order {
+  above = "above",
+  below = "below",
+}
+
 type ExpandableContentProps = {
-  children: React.ReactChild
+  children: React.ReactNode
   strings: {
     readMore?: string
     readLess?: string
   }
   className?: string
+  order?: Order
 }
 
-const ExpandableContent = ({ children, strings, className }: ExpandableContentProps) => {
+const ExpandableContent = ({
+  children,
+  strings,
+  className,
+  order = Order.above,
+}: ExpandableContentProps) => {
   const [isExpanded, setExpanded] = useState(false)
   const rootClassNames = className ? `${className}` : undefined
 
   return (
     <div className={rootClassNames}>
-      {isExpanded && <div>{children}</div>}
+      {order === Order.above && <>{isExpanded && <div>{children}</div>}</>}
       <button
         type="button"
         className="button is-unstyled m-0 no-underline has-toggle"
@@ -26,6 +37,7 @@ const ExpandableContent = ({ children, strings, className }: ExpandableContentPr
       >
         {isExpanded ? strings.readLess : strings.readMore}
       </button>
+      {order === Order.below && <>{isExpanded && <div>{children}</div>}</>}
     </div>
   )
 }
