@@ -25,7 +25,7 @@ const ViewItem = (props: ViewItemProps) => {
   return (
     <div id={props.id} className={viewItemClasses.join(" ")} data-test-id={props.dataTestId}>
       {props.label && (
-        <span className={`view-item__label ${props.error ? "text-alert text-sm" : ""}`}>
+        <span className={`view-item__label ${props.error ? "view-item__label-error" : ""}`}>
           {props.label}
         </span>
       )}
