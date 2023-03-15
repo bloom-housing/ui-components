@@ -3,6 +3,7 @@ import { LocalizedLink } from "../actions/LocalizedLink"
 import { ApplicationStatus } from "../notifications/ApplicationStatus"
 import "./ImageCard.scss"
 import { Tag } from "../text/Tag"
+import { TooltipProps, Tooltip } from "./Tooltip"
 import { ApplicationStatusType } from "../global/ApplicationStatusType"
 import { AppearanceSizeType, AppearanceStyleType } from "../global/AppearanceTypes"
 import { Icon, IconFillColors, UniversalIconType } from "../icons/Icon"
@@ -18,11 +19,14 @@ export interface StatusBarType {
   iconType?: UniversalIconType
 }
 
+export type ImageTagTooltip = Pick<TooltipProps, "id" | "text">
+
 export interface ImageTag {
   text?: string
   iconType?: UniversalIconType
   iconColor?: string
   styleType?: AppearanceStyleType
+  tooltip?: ImageTagTooltip
 }
 
 export interface ImageItem {
@@ -80,11 +84,7 @@ const ImageCard = (props: ImageCardProps) => {
         />
       )
     })
-    return (
-      <aside className="image-card__status" aria-label={`${props.description || ""} Statuses`}>
-        {statuses}
-      </aside>
-    )
+    return <aside aria-label={`${props.description || ""} Statuses`}>{statuses}</aside>
   }
 
   const innerClasses = ["image-card__inner"]
@@ -158,20 +158,34 @@ const ImageCard = (props: ImageCardProps) => {
         {getStatuses()}
         <div className="image-card-tag__wrapper">
           {props.tags?.map((tag, index) => {
-            return (
-              <React.Fragment key={index}>
-                <Tag styleType={tag.styleType || AppearanceStyleType.warning}>
-                  {tag.iconType && (
-                    <Icon
-                      size={"medium"}
-                      symbol={tag.iconType}
-                      fill={tag.iconColor ?? IconFillColors.primary}
-                    />
-                  )}
-                  {tag.text}
-                </Tag>
-              </React.Fragment>
+            const tagContent = (
+              <Tag
+                styleType={tag.styleType || AppearanceStyleType.warning}
+                ariaLabel={
+                  tag.tooltip ? `${tag.text || ""} - ${tag.tooltip?.text || ""}` : undefined
+                }
+              >
+                {tag.iconType && (
+                  <Icon
+                    size={"medium"}
+                    symbol={tag.iconType}
+                    fill={tag.iconColor ?? IconFillColors.primary}
+                    className={"mr-2"}
+                  />
+                )}
+                {tag.text}
+              </Tag>
             )
+
+            if (tag.tooltip) {
+              return (
+                <Tooltip key={index} className="mt-3" {...tag.tooltip}>
+                  {tagContent}
+                </Tooltip>
+              )
+            }
+
+            return <React.Fragment key={index}>{tagContent}</React.Fragment>
           })}
         </div>
       </div>
@@ -179,7 +193,7 @@ const ImageCard = (props: ImageCardProps) => {
         <Modal
           open={showModal}
           title={props.modalAriaTitle || "Images"}
-          scrollable={true}
+          scrollableModal={true}
           onClose={() => setShowModal(!showModal)}
           className="image-card__overlay"
           modalClassNames="image-card__gallery-modal"
@@ -191,24 +205,21 @@ const ImageCard = (props: ImageCardProps) => {
             </Button>,
           ]}
         >
-          {props.images &&
-            props.images.map((image, index) => (
-              <p key={index} className="mb-7">
-                <picture>
-                  {image.mobileUrl && (
-                    <source media="(max-width: 767px)" srcSet={image.mobileUrl} />
-                  )}
-                  <img
-                    src={image.url}
-                    alt={
-                      image.description
-                        ? image.description
-                        : `${props.description || ""} - photo ${index + 1}`
-                    }
-                  />
-                </picture>
-              </p>
-            ))}
+          {props.images?.map((image, index) => (
+            <p key={index} className="mb-7">
+              <picture>
+                {image.mobileUrl && <source media="(max-width: 767px)" srcSet={image.mobileUrl} />}
+                <img
+                  src={image.url}
+                  alt={
+                    image.description
+                      ? image.description
+                      : `${props.description || ""} - photo ${index + 1}`
+                  }
+                />
+              </picture>
+            </p>
+          ))}
         </Modal>
       )}
     </>

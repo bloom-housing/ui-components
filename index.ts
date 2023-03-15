@@ -21,6 +21,7 @@ export * from "./src/blocks/StatusBar"
 export * from "./src/blocks/ViewItem"
 export * from "./src/blocks/StandardCard"
 export * from "./src/blocks/MediaCard"
+export * from "./src/blocks/Tooltip"
 
 /* Contexts */
 export * from "./src/config"

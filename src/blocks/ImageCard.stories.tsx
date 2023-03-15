@@ -3,7 +3,7 @@ import { BADGES } from "../../.storybook/constants"
 import { ImageCard } from "./ImageCard"
 import { t } from "../helpers/translator"
 import { ApplicationStatusType } from "../global/ApplicationStatusType"
-import { IconFillColors } from "../icons/Icon"
+import { IconFillColors, UniversalIconType } from "../icons/Icon"
 import ImageCardDocumentation from "./ImageCard.docs.mdx"
 
 export default {
@@ -101,6 +101,32 @@ export const withMultipleTags = () => (
     tags={[{ text: "Label" }, { text: "Label2" }]}
     statuses={[{ status: ApplicationStatusType.Closed, content: t("listings.applicationsClosed") }]}
   />
+)
+
+export const withTooltip = () => (
+  <div style={{ margin: "5rem" }}>
+    <ImageCard
+      href="/listings"
+      imageUrl="/images/listing.jpg"
+      tags={[
+        {
+          text: "Label",
+        },
+        {
+          text: "Label2",
+          iconType: "globe" as UniversalIconType,
+          iconColor: IconFillColors.white,
+          tooltip: {
+            id: "tooltip",
+            text: "Here is some helpful tooltip content. Here is even more helpful tooltip content.",
+          },
+        },
+      ]}
+      statuses={[
+        { status: ApplicationStatusType.Closed, content: t("listings.applicationsClosed") },
+      ]}
+    />
+  </div>
 )
 
 export const withLongTagsAndIcons = () => (

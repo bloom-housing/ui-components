@@ -8,6 +8,7 @@ export interface TagProps extends AppearanceProps {
   capitalized?: boolean
   children: React.ReactNode
   fillContainer?: boolean
+  ariaLabel?: string
 }
 
 export const Tag = (props: TagProps) => {
@@ -18,5 +19,9 @@ export const Tag = (props: TagProps) => {
   if (props.capitalized) tagClasses.push("is-capitalized")
   if (props.className) tagClasses.push(props.className)
 
-  return <span className={tagClasses.join(" ")}>{props.children}</span>
+  return (
+    <span className={tagClasses.join(" ")} aria-label={props.ariaLabel || undefined}>
+      {props.children}
+    </span>
+  )
 }
