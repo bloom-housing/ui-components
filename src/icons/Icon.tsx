@@ -143,7 +143,16 @@ export const IconFillColors = {
   alert: "#b91c1c",
 }
 
-export type IconSize = "tiny" | "small" | "base" | "medium" | "large" | "xlarge" | "2xl" | "3xl"
+export type IconSize =
+  | "tiny"
+  | "small"
+  | "base"
+  | "medium"
+  | "md-large"
+  | "large"
+  | "xlarge"
+  | "2xl"
+  | "3xl"
 
 export interface IconProps {
   size: IconSize
@@ -151,7 +160,9 @@ export interface IconProps {
   className?: string
   fill?: string
   ariaHidden?: boolean
+  iconClass?: string
   dataTestId?: string
+  tabIndex?: number
 }
 
 const Icon = (props: IconProps) => {
@@ -172,8 +183,12 @@ const Icon = (props: IconProps) => {
       className={wrapperClasses.join(" ")}
       aria-hidden={props.ariaHidden}
       data-test-id={props.dataTestId ?? null}
+      tabIndex={props.tabIndex}
     >
-      <SpecificIcon fill={props.fill ? props.fill : undefined} />
+      <SpecificIcon
+        fill={props.fill ? props.fill : undefined}
+        className={props.iconClass ?? undefined}
+      />
     </span>
   ) : (
     <span

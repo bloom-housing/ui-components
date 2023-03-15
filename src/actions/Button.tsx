@@ -13,6 +13,8 @@ export interface ButtonProps extends AppearanceProps {
   disabled?: boolean
   fullWidth?: boolean
   icon?: UniversalIconType
+  iconClass?: string
+  iconColor?: string
   iconPlacement?: "left" | "right"
   iconSize?: IconSize
   id?: string
@@ -21,6 +23,7 @@ export interface ButtonProps extends AppearanceProps {
   inlineIcon?: "left" | "right"
   loading?: boolean
   onClick?: (e: React.MouseEvent) => void
+  passToIconClass?: string
   transition?: boolean
   type?: "button" | "submit" | "reset"
   unstyled?: boolean
@@ -47,13 +50,25 @@ export const buttonInner = (props: Omit<ButtonProps, "onClick">) => {
   if (props.icon) {
     return props.inlineIcon == "left" || props.iconPlacement == "left" ? (
       <>
-        <Icon className="button__icon" size={props.iconSize ?? iconSize} symbol={props.icon} />
+        <Icon
+          className={`button__icon ${props.iconClass || ""}`}
+          size={props.iconSize ?? iconSize}
+          symbol={props.icon}
+          iconClass={props.passToIconClass}
+          fill={props.iconColor}
+        />
         <span className="button__content">{props.children}</span>
       </>
     ) : (
       <>
         <span className="button__content">{props.children}</span>
-        <Icon className="button__icon" size={props.iconSize ?? iconSize} symbol={props.icon} />
+        <Icon
+          className={`button__icon ${props.iconClass || ""}`}
+          size={props.iconSize ?? iconSize}
+          symbol={props.icon}
+          iconClass={props.passToIconClass}
+          fill={props.iconColor}
+        />
       </>
     )
   } else if (props.loading) {
