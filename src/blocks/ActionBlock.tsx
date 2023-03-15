@@ -15,7 +15,7 @@ interface ActionBlockProps {
   actions: React.ReactNode[]
   background?: string
   className?: string
-  header: string
+  header: React.ReactNode
   icon?: React.ReactNode
   layout?: ActionBlockLayout
   subheader?: string
@@ -41,7 +41,7 @@ const ActionBlock = ({
     <div className={actionBlockClasses.join(" ")}>
       <div className="action-block__head">
         {icon && <div className="action-block__icon">{icon}</div>}
-        <h2 className="action-block__header">{header}</h2>
+        <div className={"action-block__header"}>{header}</div>
         {subheader && layout === ActionBlockLayout.block && (
           <p className="action-block__subheader">{subheader}</p>
         )}
