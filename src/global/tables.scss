@@ -237,9 +237,10 @@ table {
       @apply normal-case;
       @apply px-0;
       @apply pb-0;
-      @apply text-xs;
+      font-size: var(--bloom-font-size-sm);
       @screen md {
-        @apply py-3;
+        padding-top: var(--bloom-s2);
+        padding-bottom: var(--bloom-s2);
       }
       @apply pt-0;
       @apply pb-2;

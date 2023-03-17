@@ -51,11 +51,11 @@ export const Basic = () => (
   <CategoryTable
     categoryData={[
       {
-        header: "Header 1",
+        header: "Up to 55% AMI",
         tableData: { stackedData: responsiveTableRows, headers: responsiveTableHeaders },
       },
       {
-        header: "Header 2",
+        header: "Up to 80% AMI",
         tableData: { stackedData: responsiveTableRows, headers: responsiveTableHeaders },
       },
     ]}

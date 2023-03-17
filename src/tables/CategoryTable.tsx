@@ -21,7 +21,7 @@ const CategoryTable = (props: CategoryTableProps) => {
         <Heading priority={3} styleType={"lightWeighted"}>
           {category.header}
         </Heading>
-        <hr className={"my-2"} />
+        <hr className={"mt-3 mb-3 md:mb-1 border-gray-500"} />
         <StackedTable {...category.tableData} className={"category-table"} />
       </div>
     )

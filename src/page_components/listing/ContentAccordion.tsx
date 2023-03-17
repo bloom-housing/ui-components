@@ -32,7 +32,7 @@ const ContentAccordion = (props: ContentAccordionProps) => {
     <div className={`mb-4`}>
       <button
         onClick={toggleTable}
-        className={`w-full text-left ${props.disableAccordion ? "cursor-default" : ""}`}
+        className={`w-full ${props.disableAccordion ? "cursor-default" : ""}`}
         ref={buttonRef}
         aria-expanded={accordionOpen}
         data-test-id={"content-accordion-button"}
