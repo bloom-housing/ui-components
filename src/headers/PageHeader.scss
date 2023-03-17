@@ -7,16 +7,19 @@
   --inverse-background-color: var(--bloom-color-primary-darker);
   --inverse-border-color: var(--bloom-color-primary);
   --inverse-text-color: var(--bloom-color-white);
-  --title-font-size: var(--bloom-font-size-4xl);
+  --title-font-size-desktop: var(--bloom-font-size-4xl);
+  --title-font-size-mobile: var(--bloom-font-size-2xl);
+  --padding-desktop: var(--bloom-s10) 0;
+  --padding-mobile: var(--bloom-s8) 0;
 
   /* Base Styles */
-  padding: var(--bloom-s8) 0;
+  padding: var(--padding-mobile);
   background-color: var(--background-color);
   border-top: var(--bloom-border-1) solid var(--border-color);
   color: var(--text-color);
 
   @media (min-width: $screen-md) {
-    padding: var(--bloom-s10) 0;
+    padding: var(--padding-desktop);
   }
 
   /* Variants */
@@ -46,17 +49,19 @@
 }
 
 .page-header__title {
+  font-size: var(--title-font-size-mobile);
   text-align: center;
   font-family: var(--text-font-family);
-  word-break: break-all;
+  word-break: break-word;
 
   @media (min-width: $screen-md) {
-    font-size: var(--title-font-size);
+    font-size: var(--title-font-size-desktop);
     text-align: left;
   }
 }
 
 .page-header__lead {
+  text-align: center;
   font-family: var(--text-font-family);
   max-width: var(--bloom-width-5xl);
 }

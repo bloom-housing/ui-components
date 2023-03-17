@@ -29,24 +29,31 @@ export const withContent = () => (
 )
 
 export const withBackgroundImage = () => (
-  <PageHeader title="Hello World" inverse subtitle="Here is a page header with a background image" backgroundImage="/images/banner.png" className="bg-cover bg-center"/>
+  <PageHeader
+    title="Hello World"
+    inverse
+    subtitle="Here is a page header with a background image"
+    backgroundImage="/images/banner.png"
+    className="bg-cover bg-center"
+  />
 )
 
 export const styleOverrides = () => {
   const cssVarsOverride = `
     .page-header-overrides .page-header {
-      --background-color: darkgreen;
-      --border-color: red;
-      --text-color: yellow;
-      --title-font-size: 6rem;
+      --background-color: lightgray;
+      --border-color: gray;
+      --text-color: black;
+      --title-font-size-desktop: 5rem;
+      --title-font-size-mobile: 2rem;
     }
   `
 
   return (
     <>
       <div className="page-header-overrides">
-        <PageHeader title="Big Title" subtitle="Here is a subtitle">
-          Here is some contenta
+        <PageHeader title="Hello World" subtitle="Here is a subtitle">
+          Here is some content
         </PageHeader>
         <style>{cssVarsOverride}</style>
       </div>
