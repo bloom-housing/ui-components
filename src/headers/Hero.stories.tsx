@@ -1,9 +1,12 @@
 import * as React from "react"
-
+import { BADGES } from "../../.storybook/constants"
 import { Hero } from "./Hero"
 
 export default {
-  title: "Headers/Hero",
+  title: "Headers/Hero 🚩",
+  parameters: {
+    badges: [BADGES.GEN2],
+  },
 }
 
 export const withListings = () => (
@@ -48,5 +51,15 @@ export const withExtraLargeTitleAndSecondaryButton = () => (
     secondaryButtonLink="/listings/for-sale"
     secondaryButtonTitle="Buy"
     title={"Say Hello to Your Hero"}
+  />
+)
+
+export const withCustomActions = () => (
+  <Hero
+    title={<>Say Hello to Your Hero</>}
+    buttonTitle="Rental Listings"
+    buttonLink="/listings"
+    backgroundImage="/images/banner.png"
+    customActions={<>Hero custom action content</>}
   />
 )
