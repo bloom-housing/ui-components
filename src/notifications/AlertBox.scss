@@ -15,6 +15,9 @@
   --font-weight: 500;
   --max-width: var(--bloom-width-5xl);
   --line-height: 1.375;
+  --body-margin: inherit;
+  --body-font-size: var(--bloom-font-size-sm);
+  --body-close-font-size: var(--bloom-font-size-2xl);
 
   padding: var(--vertical-padding) var(--horizontal-padding);
   background-color: var(--background-color);
@@ -45,6 +48,10 @@
     a {
       color: var(--bloom-color-white);
       text-decoration: underline;
+    }
+
+    svg {
+      fill: var(--bloom-color-white);
     }
   }
 
@@ -91,16 +98,21 @@
 
 .alert-box__body {
   font-weight: var(--font-weight);
-  font-size: var(--bloom-font-size-sm);
+  font-size: var(--body-font-size);
+  margin: var(--body-margin);
 }
 
 .alert-box__close {
-  font-size: var(--bloom-font-size-2xl);
+  font-size: var(--body-close-font-size);
   right: var(--horizontal-padding);
   margin-left: var(--bloom-s3);
   padding: 0;
   line-height: var(--bloom-s4);
   color: var(--close-icon-color);
+}
+
+.alert-box__close-inverted {
+  color: white;
 }
 
 .alert-box__icon {

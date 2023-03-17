@@ -68,7 +68,7 @@ const AlertBox = (props: AlertBoxProps) => {
 
         {closeable && (
           <button
-            className={`alert-box__close ${props.inverted ? "text-white" : ""}`}
+            className={`alert-box__close ${props.inverted ? "alert-box__close-inverted" : ""}`}
             onClick={onClose}
             aria-label="close alert"
           >
