@@ -217,9 +217,18 @@ table {
   }
 
   &.category-table {
+    margin-bottom: var(--bloom-s2);
+    @screen md {
+      margin-bottom: var(--bloom-s6);
+    }
+
     thead {
       height: 2rem;
       @apply border-0;
+    }
+
+    thead tr th {
+      border: 0;
     }
 
     .stacked-table-header {
@@ -234,6 +243,7 @@ table {
       }
       @apply pt-0;
       @apply pb-2;
+      letter-spacing: normal;
     }
 
     td:before {
@@ -382,4 +392,12 @@ table.td-plain {
 
 .table__is-dragging {
   display: table;
+}
+
+.category-table-parent {
+  .category-table-container:last-of-type {
+    .category-table {
+      margin-bottom: 0;
+    }
+  }
 }
