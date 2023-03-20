@@ -32,3 +32,9 @@
 .accordion-gray-theme__bar.accordion-open {
   border-radius: 8px 8px 0px 0px;
 }
+
+.toggle-header-content {
+  @apply font-sans;
+  @apply text-sm;
+  @apply text-gray-800;
+}
