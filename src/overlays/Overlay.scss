@@ -3,13 +3,14 @@
 .fixed-overlay {
   --overlay-background-color: var(--bloom-color-gray-950);
   --overlay-opacity: 0.5;
+  --overlay-height: 100vh;
 
   position: fixed;
   display: flex;
   top: 0px;
   left: 0px;
   width: 100vw;
-  height: 100vh;
+  height: var(--overlay-height);
   z-index: 50;
 
   &.is-backdrop:before {
