@@ -1,19 +1,14 @@
 import React from "react"
 import { render, cleanup } from "@testing-library/react"
 import { FormCard } from "../../src/blocks/FormCard"
+import Heading from "../../src/text/Heading"
 
 afterEach(cleanup)
 
 describe("<FormCard>", () => {
   it("can render with a header", () => {
     const { getByText } = render(
-      <FormCard
-        header={{
-          children: "Header Text",
-        }}
-      >
-        Children go here
-      </FormCard>
+      <FormCard header={<Heading>Header Text</Heading>}>Children go here</FormCard>
     )
     expect(getByText("Header Text")).not.toBeNull()
   })
