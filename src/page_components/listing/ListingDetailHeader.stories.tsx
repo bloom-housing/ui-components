@@ -15,7 +15,7 @@ export const Default = () => {
     <div style={{ maxWidth: "500px" }}>
       <ListingDetailHeader
         imageAlt={"Building"}
-        imageSrc="https://housing.acgov.org/images/listing-eligibility.svg"
+        imageSrc="https://res.cloudinary.com/exygy/image/upload/w_400,c_limit,q_65/dev/listing-eligibility_advdnd.jpg"
         title={"Title"}
         subtitle={"Subtitle"}
       />
