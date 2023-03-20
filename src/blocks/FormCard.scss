@@ -1,3 +1,5 @@
+@import "../global/mixins.scss";
+
 .form-card {
   @apply bg-white;
 
@@ -70,6 +72,7 @@
 
   @screen print {
     @apply py-2;
+    @apply px-0;
   }
 }
 
@@ -87,11 +90,16 @@
 }
 
 .form-card__group {
-  @apply px-8;
+  @screen md {
+    @apply px-8;
+  }
+
+  @screen print {
+    @apply px-0;
+  }
 }
 
 .form-card__header {
-  @apply text-white;
   @apply text-center;
 
   @screen md {
@@ -100,7 +108,10 @@
 }
 
 .form-card__header_group {
-  @apply flex justify-center items-center;
+  @apply text-white;
+  @apply flex;
+  @apply justify-center;
+  @apply items-center;
   @apply bg-primary;
   @apply p-4;
   @apply h-16;
@@ -112,14 +123,14 @@
   @screen print {
     @apply py-0;
   }
-}
 
-.form-card__header_title {
-  @apply text-xl;
-  @apply font-alt-sans;
-  @apply font-bold;
-  @apply uppercase;
-  @apply mb-0;
+  @include headings {
+    @apply text-xl;
+    @apply font-alt-sans;
+    @apply font-bold;
+    @apply uppercase;
+    @apply mb-0;
+  }
 }
 
 .form-card__header_nav {
