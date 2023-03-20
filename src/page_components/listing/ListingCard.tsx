@@ -18,6 +18,7 @@ export interface ListingCardHeader {
   customClass?: string
   styleType?: AppearanceStyleType
   isPillType?: boolean
+  priority?: number
 }
 
 export interface ListingFooterButton {
@@ -32,9 +33,14 @@ export interface ListingCardContentProps {
   tableHeader?: ListingCardHeader
   tableSubheader?: ListingCardHeader
 }
+
+export interface CardTag extends ImageTag {
+  shadeType?: AppearanceShadeType
+}
+
 export interface ListingCardProps {
   /** A list of tags to be rendered below the content header, a Tag component is rendered for each */
-  cardTags?: ImageTag[]
+  cardTags?: CardTag[]
   /** Custom content rendered in the content section above the table */
   children?: React.ReactElement
   /** An object containing fields that render optional headers above the content section's table */
@@ -112,18 +118,32 @@ const ListingCard = (props: ListingCardProps) => {
   const getContentHeader = () => {
     return (
       <div className="listings-row_headers">
-        {getHeader(contentProps?.contentHeader, 2, "largePrimary", "order-1")}
-        {getHeader(contentProps?.contentSubheader, 3, "mediumNormal", "order-2")}
+        {contentProps?.contentHeader &&
+          getHeader(
+            contentProps?.contentHeader,
+            contentProps?.contentHeader?.priority ?? 2,
+            "largePrimary",
+            "order-1"
+          )}
+        {contentProps?.contentSubheader && (
+          <p className="card-subheader order-2">{contentProps?.contentSubheader?.content}</p>
+        )}
+
         {cardTags && cardTags?.length > 0 && (
           <div className="listings-row_tags">
             {cardTags?.map((cardTag, index) => {
               return (
-                <Tag styleType={cardTag.styleType || AppearanceStyleType.warning} key={index}>
+                <Tag
+                  styleType={cardTag.styleType ?? AppearanceStyleType.warning}
+                  shade={cardTag?.shadeType}
+                  key={index}
+                >
                   {cardTag.iconType && (
                     <Icon
                       size={"medium"}
                       symbol={cardTag.iconType}
                       fill={cardTag.iconColor ?? IconFillColors.primary}
+                      className={"listing-card__tag-icon"}
                     />
                   )}
                   {cardTag.text}
@@ -145,8 +165,16 @@ const ListingCard = (props: ListingCardProps) => {
               <hr className={"mb-2"} />
             )}
           <div className={"listings-row_headers"}>
-            {getHeader(contentProps?.tableHeader, 4, "smallWeighted")}
-            {getHeader(contentProps?.tableSubheader, 5, "smallNormal")}
+            {contentProps?.tableHeader &&
+              getHeader(
+                contentProps?.tableHeader,
+                contentProps?.tableHeader?.priority ?? 3,
+                "smallWeighted"
+              )}
+
+            {contentProps?.tableSubheader?.content && (
+              <p className="text__small-normal">{contentProps?.tableSubheader?.content}</p>
+            )}
           </div>
           {children && children}
           {tableProps && (tableProps.data || tableProps.stackedData) && (
@@ -159,7 +187,7 @@ const ListingCard = (props: ListingCardProps) => {
             </>
           )}
         </div>
-        <div className={"flex flex-col"}>
+        <div className={"listings-row_footer_container"}>
           {footerContent && footerContent}
           {footerButtons && footerButtons?.length > 0 && (
             <div className={footerContainerClass ?? "listings-row_footer"}>

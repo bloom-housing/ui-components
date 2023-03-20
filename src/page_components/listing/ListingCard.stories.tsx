@@ -334,6 +334,7 @@ export const detroitStyle = () => {
       --normal-font-size: var(--bloom-font-size-base);
     }
     .listing-card-overrides .tag {
+      --card-tag-padding: var(--bloom-s2) var(--bloom-s3);
       --normal-padding: var(--bloom-s2) var(--bloom-s3);
       --label-weight: 700;
     }
