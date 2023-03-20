@@ -1,27 +1,20 @@
 import * as React from "react"
-import { Heading, HeadingProps } from "../text/Heading"
 import "./FormCard.scss"
 
 export interface FormCardProps {
-  header?: HeadingProps
+  header?: React.ReactNode
   children: React.ReactNode
   className?: string
 }
 
 const FormCard = (props: FormCardProps) => {
   const classNames = `form-card ${props.className || ""}`
-  if (!!props.header) {
+  if (props.header) {
     return (
       <article className={classNames}>
         <div className="form-card__header">
-          <header className="form-card__header_group">
-            <Heading
-              priority={props.header.priority ?? 1}
-              styleType={props.header.styleType}
-              className={`form-card__header_title ${props.header.className || ""}`}
-            >
-              {props.header.children}
-            </Heading>
+          <header className="form-card__header_group form-card__header_title">
+            {props.header}
           </header>
 
           <div className="form-card__header_nav">{props.children}</div>

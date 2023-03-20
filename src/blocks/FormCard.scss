@@ -1,3 +1,5 @@
+@import "../global/mixins.scss";
+
 .form-card {
   @apply bg-white;
 
@@ -121,14 +123,14 @@
   @screen print {
     @apply py-0;
   }
-}
 
-.form-card__header_title {
-  @apply text-xl;
-  @apply font-alt-sans;
-  @apply font-bold;
-  @apply uppercase;
-  @apply mb-0;
+  @include headings {
+    @apply text-xl;
+    @apply font-alt-sans;
+    @apply font-bold;
+    @apply uppercase;
+    @apply mb-0;
+  }
 }
 
 .form-card__header_nav {
