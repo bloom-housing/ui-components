@@ -22,12 +22,15 @@ const GridCell = (props: GridCellProps) => {
 
 export interface GridSectionProps {
   title?: React.ReactNode
+  edit?: string
+  editHref?: string
   subtitle?: string
   description?: string
   tinted?: boolean
   grid?: boolean
   columns?: number
   inset?: boolean
+  wrapperClassName?: string
   className?: string
   tightSpacing?: boolean
   reverse?: boolean
@@ -38,6 +41,7 @@ export interface GridSectionProps {
 const GridSection = (props: GridSectionProps) => {
   const sectionClasses = ["grid-section"]
   if (props.separator) sectionClasses.push("has-separator")
+  if (props.wrapperClassName) sectionClasses.push(props.wrapperClassName)
 
   const gridClasses = ["grid-section__inner"]
   const grid = typeof props.grid != "undefined" ? props.grid : true
@@ -63,15 +67,26 @@ const GridSection = (props: GridSectionProps) => {
 
   return (
     <section className={sectionClasses.join(" ")}>
-      {(props.title || props.subtitle) && (
-        <header className={headerClasses.join(" ")}>
-          {props.title && <h2 className="grid-section__title">{props.title}</h2>}
-          {props.subtitle && <h3 className={subtitleClasses.join(" ")}>{props.subtitle}</h3>}
-          {props.description && (
-            <span className={"grid-section__description"}>{props.description}</span>
-          )}
-        </header>
-      )}
+      <div className={"grid-section__header-container"}>
+        {(props.title || props.subtitle) && (
+          <div>
+            <header className={headerClasses.join(" ")}>
+              {props.title && <h2 className="grid-section__title">{props.title}</h2>}
+              {props.subtitle && <h3 className={subtitleClasses.join(" ")}>{props.subtitle}</h3>}
+              {props.description && (
+                <span className={"grid-section__description"}>{props.description}</span>
+              )}
+            </header>
+          </div>
+        )}
+        {props.edit && props.editHref && (
+          <span className="grid-section__edit-link">
+            <a className="edit-link" href={props.editHref}>
+              {props.edit}
+            </a>
+          </span>
+        )}
+      </div>
 
       <div className={gridClasses.join(" ")}>{props.children}</div>
     </section>

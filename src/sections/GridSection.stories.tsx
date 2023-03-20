@@ -74,6 +74,8 @@ export const FourColumnsEdit = () => (
     title="Very Long Section Title That Wraps on Mobile"
     subtitle="Subsection Title"
     columns={4}
+    edit="Edit"
+    editHref={"/edit"}
     tinted={true}
     inset={true}
   >
