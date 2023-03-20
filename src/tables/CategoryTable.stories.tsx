@@ -16,7 +16,7 @@ const responsiveTableRows = [
     rent: { cellText: "30%", cellSubText: "income" },
   },
   {
-    units: { cellText: "1 BR", cellSubText: "3 available" },
+    units: { cellText: "1 Bedroom", cellSubText: "3 available" },
     income: { cellText: "$2,194 to $6,854", cellSubText: "per month" },
     rent: { cellText: "$1,295", cellSubText: "income" },
   },
@@ -51,11 +51,11 @@ export const Basic = () => (
   <CategoryTable
     categoryData={[
       {
-        header: "Header 1",
+        header: "Up to 55% AMI",
         tableData: { stackedData: responsiveTableRows, headers: responsiveTableHeaders },
       },
       {
-        header: "Header 2",
+        header: "Up to 80% AMI",
         tableData: { stackedData: responsiveTableRows, headers: responsiveTableHeaders },
       },
     ]}
