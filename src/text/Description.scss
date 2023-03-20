@@ -1,61 +1,54 @@
 @import "../global/mixins.scss";
 
-// Description
-.description__title {
-  @apply font-serif;
-  @apply text-xl;
-}
-
-.description__body {
-  @apply mb-4;
-
-  @screen md {
-    padding-top: 0.4em;
-  }
-}
-
-// Data lists
 .column-definition-list {
   @include clearfix;
 
-  @screen md {
-    @apply grid;
+  --title-font-family: var(--bloom-font-serif);
+  --title-font-size-desktop: var(--bloom-font-size-xl);
+  --title-font-size-mobile: var(--bloom-font-size-lg);
+  --title-text-color: var(--bloom-color-gray-800);
+  --body-font-size: var(--bloom-font-size-sm);
+  --border-color: var(--bloom-color-gray-450);
+  --last-row-grid: span 2 / span 2;
+
+  @media (min-width: $screen-md) {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    @apply gap-x-4;
+    column-gap: var(--bloom-s4);
     grid-row-gap: 0.15rem;
   }
-  
-  .description__title {
-    @apply text-xl;
-    @apply text-gray-800;
-    @apply mb-3;
-    clear: left;
-    height: max-content;
-    @apply w-full;
 
-    @screen md {
-      @apply pl-4;
-      @apply border-l-2;
-      @apply border-gray-450;
-      @apply float-left;
+  .description__title {
+    font-family: var(--title-font-family);
+    font-size: var(--title-font-size-mobile);
+    color: var(--title-text-color);
+    margin-bottom: var(--bloom-s1);
+    clear: left;
+    height: auto;
+    width: 100%;
+
+    @media (min-width: $screen-md) {
+      padding-left: var(--bloom-s4);
+      border-left: 2px solid var(--border-color);
+      float: left;
+      margin-bottom: var(--bloom-s3);
+      font-size: var(--title-font-size-desktop);
     }
   }
 
   .description__body {
-    @apply text-sm;
-    @apply mb-5;
-    @apply w-full;
+    font-size: var(--body-font-size);
+    margin-bottom: var(--bloom-s5);
+    width: 100%;
 
-    @screen md {
-      @apply mb-0;
-      @apply float-left;
+    @media (min-width: $screen-md) {
+      margin-bottom: 0;
+      float: left;
+      padding-top: 0.4em;
+
       &:last-of-type {
-        @apply col-span-2;
+        grid-column: var(--last-row-grid);
       }
-    }
-
-    &:last-of-type {
-      @apply w-full
     }
   }
 }

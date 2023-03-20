@@ -4,7 +4,7 @@ import Markdown, { MarkdownToJSX } from "markdown-to-jsx"
 
 export interface DescriptionProps {
   term: string
-  description: any
+  description: string | React.ReactNode
   dtClassName?: string
   markdown?: boolean
   markdownProps?: MarkdownToJSX.Options
@@ -21,7 +21,7 @@ export const Description = (props: DescriptionProps) => {
         <dd className={dtClasses.join(" ")}>
           <Markdown
             options={{ disableParsingRawHTML: true, ...props.markdownProps }}
-            children={props.description}
+            children={props.description as string}
           />
         </dd>
       ) : (
