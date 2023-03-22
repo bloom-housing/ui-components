@@ -41,7 +41,7 @@ const DashBlock = (props: DashBlockProps) => {
     )
   }
   return (
-    <div className="dash-block" data-test-id={props.dataTestId}>
+    <div className="dash-block" data-testid={props.dataTestId}>
       {wrapper}
     </div>
   )

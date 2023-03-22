@@ -4,7 +4,7 @@ import { AppearanceProps, classNamesForAppearanceTypes } from "../global/Appeara
 import { Icon, IconSize, UniversalIconType } from "../icons/Icon"
 
 export interface ButtonProps extends AppearanceProps {
-  "data-test-id"?: string
+  "data-testid"?: string
   ariaHidden?: boolean
   ariaLabel?: string
   children: React.ReactNode
@@ -96,7 +96,7 @@ const Button = (props: ButtonProps) => {
       aria-hidden={props.ariaHidden}
       tabIndex={props.ariaHidden ? -1 : 0}
       aria-label={props.ariaLabel}
-      data-test-id={props.dataTestId || props["data-test-id"]}
+      data-testid={props.dataTestId || props["data-testid"]}
     >
       {buttonInner(props)}
     </button>

@@ -57,7 +57,7 @@ export const Textarea = (props: TextareaProps) => {
         wrap={props.wrap ?? "soft"}
         title={props.label}
         {...inputProps}
-        data-test-id={props.dataTestId}
+        data-testid={props.dataTestId}
       />
       {props.note && <p className="field-note font-normal mb-2">{props.note}</p>}
       {props.errorMessage && <span className="textarea-error-message">{props.errorMessage}</span>}

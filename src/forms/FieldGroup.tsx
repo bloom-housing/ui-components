@@ -63,8 +63,8 @@ const FieldGroup = ({
 }: FieldGroupProps) => {
   // Always default align two-option radio groups side by side
   if (fields?.length === 2) {
-    fieldGroupClassName = `${fieldGroupClassName} flex`
-    fieldClassName = `${fieldClassName} flex-initial mr-4`
+    fieldGroupClassName = `${fieldGroupClassName || ""} flex`
+    fieldClassName = `${fieldClassName || ""} flex-initial mr-4`
   }
 
   const [checkedInputs, setCheckedInputs] = useState<string[]>([])
@@ -82,7 +82,7 @@ const FieldGroup = ({
           type={type}
           id={item.id}
           defaultValue={item.value || item.id}
-          name={subfieldsExist() || item.uniqueName ? `${name}-${item.value}` : name}
+          name={subfieldsExist() || item.uniqueName ? `${name}-${item.value || ""}` : name}
           onClick={(e) => {
             // We cannot reliably target an individual checkbox in a field group since they have the same name, so we keep track on our own
             if (e.currentTarget.checked) {
@@ -95,12 +95,12 @@ const FieldGroup = ({
           disabled={item.disabled}
           ref={register(validation)}
           {...item.inputProps}
-          data-test-id={item.dataTestId ?? dataTestId}
+          data-testid={item.dataTestId ?? dataTestId}
         />
         <label
           htmlFor={item.id}
-          className={`font-semibold ${fieldLabelClassName} ${
-            item.disabled && "text-gray-600 cursor-not-allowed"
+          className={`font-semibold ${fieldLabelClassName || ""} ${
+            item.disabled ? "text-gray-600 cursor-not-allowed" : ""
           }`}
         >
           {item.label}
@@ -150,8 +150,8 @@ const FieldGroup = ({
         {item.additionalText && checkedInputs.indexOf(item.label) >= 0 && (
           <Field
             id={item.id}
-            key={`${item.value}-additionalText`}
-            name={`${name}-${item.value}`}
+            key={`${item.value || ""}-additionalText`}
+            name={`${name}-${item.value || ""}`}
             register={register}
             defaultValue={item.defaultText}
             placeholder={strings?.description ?? t("t.description")}
@@ -168,12 +168,12 @@ const FieldGroup = ({
       {groupLabel && <label className="text__caps-spaced">{groupLabel}</label>}
       {groupNote && <p className="field-note mb-4">{groupNote}</p>}
 
-      <div className={`field ${error && "error"} ${fieldGroupClassName || ""} mb-0`}>
+      <div className={`field ${error ? "error" : ""} ${fieldGroupClassName || ""} mb-0`}>
         {fields?.map((item) => (
           <div className={`field ${fieldClassName || ""} mb-1`} key={item.id}>
             {getInputSet(item)}
             {item.subFields && checkedInputs.indexOf(item.label) >= 0 && (
-              <div className={"ml-8"} key={`${item.value}-subfields`}>
+              <div className={"ml-8"} key={`${item.value || ""}-subfields`}>
                 {item.subFields?.map((subItem) => {
                   return getInputSet(subItem)
                 })}

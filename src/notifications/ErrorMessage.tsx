@@ -17,7 +17,7 @@ const ErrorMessage = (props: {
         id={props.id}
         className={classes.join(" ")}
         aria-live="assertive"
-        data-test-id={"error-message"}
+        data-testid={"error-message"}
       >
         {props.children}
       </span>

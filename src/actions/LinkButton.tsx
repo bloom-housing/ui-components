@@ -22,7 +22,7 @@ const LinkButton = (props: LinkButtonProps) => {
       <a
         href={props.href}
         className={buttonClasses.join(" ")}
-        data-test-id={props.dataTestId}
+        data-testid={props.dataTestId}
         target={props.newTab ? "_blank" : "_self"}
       >
         {buttonInner(props)}
@@ -41,7 +41,7 @@ const LinkButton = (props: LinkButtonProps) => {
         aria-hidden={props.ariaHidden}
         tabIndex={props.ariaHidden ? -1 : 0}
         className={buttonClasses.join(" ")}
-        data-test-id={props.dataTestId}
+        data-testid={props.dataTestId}
       >
         {buttonInner(props)}
       </LinkComponent>
