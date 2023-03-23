@@ -17,7 +17,12 @@ export const GroupedTable = (props: GroupedTableProps) => {
 
   const headerLabels = Object.values(headers).map((col, index) => {
     const uniqKey = process.env.NODE_ENV === "test" ? `header-${index}` : nanoid()
-    return <th key={uniqKey}>{col as string}</th>
+    return (
+      <th key={uniqKey}>
+        {typeof col === "string" ? col : col.name}{" "}
+        {col instanceof Object && col.icon ? col.icon : null}
+      </th>
+    )
   })
 
   const body: React.ReactNode[] = []
@@ -61,7 +66,7 @@ export const GroupedTable = (props: GroupedTableProps) => {
       })
 
       body.push(
-        <tr id={rowKey} key={rowKey} className={`group-${groupClassName}`}>
+        <tr id={rowKey} key={rowKey} className={`group-${groupClassName || ""}`}>
           {cols}
         </tr>
       )

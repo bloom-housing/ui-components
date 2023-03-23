@@ -10,6 +10,7 @@ export interface TableHeadersOptions {
   name: string
   mobileReplacement?: string
   className?: string
+  icon?: React.ReactNode
 }
 export interface TableHeaders {
   [key: string]: string | TableHeadersOptions
@@ -173,7 +174,7 @@ export const StandardTable = (props: StandardTableProps) => {
         <Cell
           key={`${dataIndex}-order-draggable`}
           headerLabel={props.strings?.sortString ?? t("t.sort")}
-          className={`pl-5 ${cellClassName ?? ""}`}
+          className={`pl-5 ${cellClassName || ""}`}
         >
           {dataIndex + 1}
         </Cell>

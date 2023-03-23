@@ -28,26 +28,33 @@ const AdditionalFees = ({
   if (!deposit && !applicationFee && !hasFooter) return <></>
   return (
     <InfoCard title={strings.sectionHeader} className="bg-gray-100 border-0">
-      <GridSection columns={2} className={`${hasFooter && "mb-5"}`}>
-        {applicationFee && (
-          <GridCell>
-            <div className="text-base">{strings.applicationFee}</div>
-            <div className="text-xl font-bold">{applicationFee}</div>
-            {strings.applicationFeeSubtext?.map((appFeeSubtext, index) => (
-              <div key={index} className="text-sm">{appFeeSubtext}</div>
-            ))}
-          </GridCell>
-        )}
-        {deposit && (
-          <GridCell>
-            <div className="text-base">{strings.deposit}</div>
-            <div className="text-xl font-bold">{deposit}</div>
-            {strings.depositSubtext?.map((depositSubtext, index) => (
-              <div className="text-sm" key={index}>{depositSubtext}</div>
-            ))}
-          </GridCell>
-        )}
-      </GridSection>
+      {(applicationFee || deposit) && (
+        <GridSection columns={2} className={`${hasFooter ? "mb-5" : ""}`}>
+          {applicationFee && (
+            <GridCell>
+              <div className="text-base">{strings.applicationFee}</div>
+              <div className="text-xl font-bold">{applicationFee}</div>
+              {strings.applicationFeeSubtext?.map((appFeeSubtext, index) => (
+                <div key={index} className="text-sm">
+                  {appFeeSubtext}
+                </div>
+              ))}
+            </GridCell>
+          )}
+          {deposit && (
+            <GridCell>
+              <div className="text-base">{strings.deposit}</div>
+              <div className="text-xl font-bold">{deposit}</div>
+              {strings.depositSubtext?.map((depositSubtext, index) => (
+                <div className="text-sm" key={index}>
+                  {depositSubtext}
+                </div>
+              ))}
+            </GridCell>
+          )}
+        </GridSection>
+      )}
+
       {hasFooter && (
         <div className="info-card__columns text-xs">
           {footerContent?.map((elem, idx) => (

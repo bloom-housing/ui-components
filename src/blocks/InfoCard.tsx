@@ -31,7 +31,7 @@ const InfoCard = (props: InfoCardProps) => {
         {props.subtitle && <span className={"text-sm text-gray-700"}>{props.subtitle}</span>}
       </div>
       {typeof props.children == "string" ? (
-        <div className="markdown">
+        <div className="info-card__content markdown">
           <Markdown options={{ disableParsingRawHTML: true }} children={props.children} />
         </div>
       ) : (

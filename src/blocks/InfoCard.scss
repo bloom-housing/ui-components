@@ -12,6 +12,7 @@
   --title-text-transform-lighter: none;
   --title-letter-spacing: 0.025em;
   --title-letter-spacing-lighter: 0;
+  --content-font-size: inherit;
 
   padding: var(--padding);
   border-color: var(--border-color);
@@ -63,4 +64,8 @@
   @media (min-width: 440px) {
     flex: 1 1 45%;
   }
+}
+
+.info-card__content {
+  font-size: var(--content-font-size);
 }

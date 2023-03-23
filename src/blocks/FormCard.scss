@@ -1,6 +1,7 @@
 @import "../global/mixins.scss";
 
 .form-card {
+  --title-font-size: var(--bloom-font-size-2xl);
   @apply bg-white;
 
   @screen md {
@@ -34,7 +35,7 @@
   @apply border-t-4;
   @apply border-primary;
   @apply leading-tight;
-  @apply text-2xl;
+  font-size: var(--title-font-size);
 
   @screen md {
     @apply mx-auto;

@@ -96,7 +96,7 @@ details.disclosure {
 
 .aside-block__conjunction {
   @apply relative;
-  @apply -top;
+  top: -0.8rem;
   @apply px-1;
   @apply uppercase;
   @apply text-primary-dark;
