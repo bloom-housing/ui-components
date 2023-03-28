@@ -4,6 +4,7 @@
   --bordered-vertical-padding: var(--bloom-s4);
   --bordered-leftward-padding: 2.875rem;
   --bordered-checked-bg-color: var(--bloom-color-gray-100);
+  --input-prepend-font-size: var(--bloom-font-size-xl);
 
   margin-bottom: 1.25rem;
 
@@ -93,8 +94,8 @@
       @apply px-3;
       @apply py-2;
       @apply items-center;
-      @apply text-lg;
       background: transparent;
+      font-size: var(--input-prepend-font-size);
     }
 
     .prepend + input[aria-invalid="false"] {

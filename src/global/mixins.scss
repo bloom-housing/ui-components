@@ -129,7 +129,7 @@
   }
 
   &.is-borderless {
-    color: var(filled-borderless, var(--bloom-color-primary));
+    color: var(--borderless-filled-color, var(--bloom-color-primary));
     border-color: transparent;
     background: transparent;
 
