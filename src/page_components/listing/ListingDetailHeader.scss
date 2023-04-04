@@ -11,7 +11,7 @@
   border-bottom: 1px solid var(--bloom-color-gray-400);
   color: var(--text-color);
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
 
   @media (min-width: $screen-md) {
     padding-top: 0;
