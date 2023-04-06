@@ -21,7 +21,7 @@ export const Row = (props: { id?: string; className?: string; children: React.Re
   </tr>
 )
 
-export const HeaderCell = (props: { children: React.ReactNode; className?: string }) => (
+export const HeaderCell = (props: { children?: React.ReactNode; className?: string }) => (
   <th className={props.className}>
     <span className={!props.children ? "sr-only" : ""}>
       {!props.children ? "Actions" : props.children}
@@ -110,7 +110,7 @@ export const StandardTable = (props: StandardTableProps) => {
     const uniqKey = process.env.NODE_ENV === "test" ? `header-${index}` : nanoid()
     return (
       <HeaderCell key={uniqKey} className={headerClassName(header)}>
-        {header && header !== "" ? getTranslationWithArguments(headerName(header)) : header}
+        {header && header !== "" ? getTranslationWithArguments(headerName(header)) : undefined}
       </HeaderCell>
     )
   })
@@ -173,7 +173,7 @@ export const StandardTable = (props: StandardTableProps) => {
         <Cell
           key={`${dataIndex}-order-draggable`}
           headerLabel={props.strings?.sortString ?? t("t.sort")}
-          className={`pl-5 ${cellClassName ?? undefined}`}
+          className={`pl-5 ${cellClassName ?? ""}`}
         >
           {dataIndex + 1}
         </Cell>
