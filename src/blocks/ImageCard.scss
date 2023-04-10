@@ -10,6 +10,7 @@
   --tags-justify-desktop: flex-start;
   --grid-gap-mobile: var(--bloom-s2);
   --grid-gap-desktop: var(--bloom-s4);
+  --leader-width: var(--bloom-width-2-3rd);
 
   position: relative;
 }
@@ -151,7 +152,7 @@
   width: 100%;
 
   @media (min-width: $screen-md) {
-    width: var(--bloom-width-2-3rd);
+    width: var(--leader-width);
     padding-block-start: var(--bloom-s8);
     padding-inline-end: var(--bloom-s8);
   }

@@ -9,6 +9,7 @@
   --inverse-text-color: var(--bloom-color-white);
   --title-font-size-desktop: var(--bloom-font-size-4xl);
   --title-font-size-mobile: var(--bloom-font-size-2xl);
+  --title-font-weight: inherit;
   --padding-desktop: var(--bloom-s10) 0;
   --padding-mobile: var(--bloom-s8) 0;
 
@@ -53,6 +54,7 @@
   text-align: center;
   font-family: var(--text-font-family);
   word-break: break-word;
+  font-weight: var(--title-font-weight);
 
   @media (min-width: $screen-md) {
     font-size: var(--title-font-size-desktop);
@@ -64,4 +66,7 @@
   text-align: center;
   font-family: var(--text-font-family);
   max-width: var(--bloom-width-5xl);
+  @media (min-width: $screen-md) {
+    text-align: left;
+  }
 }
