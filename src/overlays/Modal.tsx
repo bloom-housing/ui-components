@@ -3,6 +3,7 @@ import "./Modal.scss"
 import { Icon, IconFillColors } from "../icons/Icon"
 import { Overlay, OverlayProps } from "./Overlay"
 import { nanoid } from "nanoid"
+import { Desktop, Mobile } from "../sections/ResponsiveWrappers"
 
 export interface ModalProps extends Omit<OverlayProps, "children"> {
   actions?: React.ReactNode[]
@@ -87,9 +88,9 @@ export const Modal = (props: ModalProps) => {
 
         <section className={innerClassNames.join(" ")}>
           {typeof props.children === "string" ? <p>{props.children}</p> : props.children}
+          <Desktop>{props.actions && <ModalFooter actions={props.actions} />}</Desktop>
         </section>
-
-        {props.actions && <ModalFooter actions={props.actions} />}
+        <Mobile>{props.actions && <ModalFooter actions={props.actions} />}</Mobile>
       </div>
     </Overlay>
   )

@@ -197,6 +197,7 @@ const ImageCard = (props: ImageCardProps) => {
           onClose={() => setShowModal(!showModal)}
           className="image-card__overlay"
           modalClassNames="image-card__gallery-modal"
+          innerClassNames="image-card__inner-modal"
           headerClassNames="sr-only"
           closeIconColor={IconFillColors.white}
           actions={[
@@ -206,7 +207,7 @@ const ImageCard = (props: ImageCardProps) => {
           ]}
         >
           {props.images?.map((image, index) => (
-            <p key={index} className="mb-7">
+            <p key={index} className="md:mb-7">
               <picture>
                 {image.mobileUrl && <source media="(max-width: 767px)" srcSet={image.mobileUrl} />}
                 <img

@@ -152,7 +152,7 @@
   width: 100%;
 
   @media (min-width: $screen-md) {
-    width: var(--leader-width);
+    width: var(--bloom-width-2-3rd);
     padding-block-start: var(--bloom-s8);
     padding-inline-end: var(--bloom-s8);
   }
@@ -184,4 +184,10 @@
   footer button:focus {
     box-shadow: 0 0 3px 4px var(--bloom-color-accent-cool);
   }
+}
+
+.image-card__inner-modal {
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100vh;
 }
