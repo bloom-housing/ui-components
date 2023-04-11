@@ -10,7 +10,6 @@
   --tags-justify-mobile: center;
   --tags-justify-desktop: flex-start;
   --grid-gap-desktop: var(--bloom-s4);
-  --leader-width: var(--bloom-width-2-3rd);
 
   position: relative;
   margin-bottom: var(--grid-gap-desktop);
@@ -39,9 +38,9 @@
 
     background-color: transparent;
     display: grid;
-    gap: var(--grid-gap);
     grid-template-columns: 1.3fr 0.7fr;
     grid-template-rows: 1fr 1fr;
+    gap: var(--grid-gap);
     @media (max-width: $screen-sm) {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1.2fr 0.5fr;
@@ -57,8 +56,8 @@
     &.has-3-images,
     &.has-modal-overflow {
       grid-template-areas:
-      "Main Secondary-1"
-      "Main Secondary-2";
+        "Main Secondary-1"
+        "Main Secondary-2";
       @media (max-width: $screen-sm) {
       grid-template-areas:
         "Main Main"
@@ -200,6 +199,6 @@
   margin-top: 0 !important;
   height: 100vh;
   @media (min-width: $screen-md) {
-    height: calc(100vh - 8rem);
+    height: calc(100vh - var(--bloom-s32));
   }
 }
