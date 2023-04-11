@@ -207,7 +207,7 @@ const ImageCard = (props: ImageCardProps) => {
           ]}
         >
           {props.images?.map((image, index) => (
-            <p key={index} className="md:mb-7">
+            <p key={index} className="md:mb-8">
               <picture>
                 {image.mobileUrl && <source media="(max-width: 767px)" srcSet={image.mobileUrl} />}
                 <img
