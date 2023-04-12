@@ -8,7 +8,6 @@ export default {
 }
 
 export const defaultDropzone = () => {
-  const progressValue = 50
   return (
     <>
       <Dropzone
@@ -17,7 +16,22 @@ export const defaultDropzone = () => {
         helptext="Select JPEG or PNG files"
         uploader={() => {}}
         accept="image/*"
-        progress={progressValue}
+        progress={0}
+      />
+    </>
+  )
+}
+
+export const inProgress = () => {
+  return (
+    <>
+      <Dropzone
+        id="test-uploading"
+        label="Upload File"
+        helptext="Select JPEG or PNG files"
+        uploader={() => {}}
+        accept="image/*"
+        progress={50}
       />
     </>
   )
