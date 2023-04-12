@@ -1,9 +1,8 @@
-import React, { useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import "./Modal.scss"
 import { Icon, IconFillColors } from "../icons/Icon"
 import { Overlay, OverlayProps } from "./Overlay"
 import { nanoid } from "nanoid"
-import { Desktop, Mobile } from "../sections/ResponsiveWrappers"
 
 export interface ModalProps extends Omit<OverlayProps, "children"> {
   actions?: React.ReactNode[]
@@ -44,6 +43,22 @@ const ModalFooter = (props: { actions: React.ReactNode[] }) => (
 )
 
 export const Modal = (props: ModalProps) => {
+  const DESKTOP_MIN_WIDTH = 767 // @screen md
+  const [isDesktop, setIsDesktop] = useState(true)
+
+  useEffect(() => {
+    const updateMedia = () => {
+      if (window.innerWidth > DESKTOP_MIN_WIDTH) {
+        setIsDesktop(true)
+      } else {
+        setIsDesktop(false)
+      }
+    }
+    updateMedia()
+    window.addEventListener("resize", updateMedia)
+    return () => window.removeEventListener("resize", updateMedia)
+  }, [DESKTOP_MIN_WIDTH])
+
   const uniqueIdRef = useRef(nanoid())
   const modalClassNames = ["modal"]
   const innerClassNames = ["modal__inner"]
@@ -88,9 +103,13 @@ export const Modal = (props: ModalProps) => {
 
         <section className={innerClassNames.join(" ")}>
           {typeof props.children === "string" ? <p>{props.children}</p> : props.children}
-          <Desktop>{props.actions && <ModalFooter actions={props.actions} />}</Desktop>
+          {props.scrollableModal && props.actions && isDesktop && (
+            <ModalFooter actions={props.actions} />
+          )}
         </section>
-        <Mobile>{props.actions && <ModalFooter actions={props.actions} />}</Mobile>
+        {props.actions && (!isDesktop || !props.scrollableModal) && (
+          <ModalFooter actions={props.actions} />
+        )}
       </div>
     </Overlay>
   )
