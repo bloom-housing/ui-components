@@ -14,7 +14,9 @@ export const defaultDropzone = () => {
         id="test-uploading"
         label="Upload File"
         helptext="Select JPEG or PNG files"
-        uploader={() => {}}
+        uploader={() => {
+          alert("Uploader function called")
+        }}
         accept="image/*"
         progress={0}
       />
