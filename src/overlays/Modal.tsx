@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useRef } from "react"
 import "./Modal.scss"
 import { Icon, IconFillColors } from "../icons/Icon"
 import { Overlay, OverlayProps } from "./Overlay"
@@ -34,31 +34,19 @@ const ModalHeader = (props: { title: string; uniqueId?: string; className?: stri
   )
 }
 
-const ModalFooter = (props: { actions: React.ReactNode[] }) => (
-  <footer className="modal__footer" data-testid="footer">
-    {props.actions.map((action: React.ReactNode, index: number) => (
-      <React.Fragment key={index}>{action}</React.Fragment>
-    ))}
-  </footer>
-)
+const ModalFooter = (props: { actions: React.ReactNode[]; className?: string }) => {
+  const classNames = ["modal__footer"]
+  if (props.className) classNames.push(props.className)
+  return (
+    <footer className={classNames.join(" ")} data-testid="footer">
+      {props.actions.map((action: React.ReactNode, index: number) => (
+        <React.Fragment key={index}>{action}</React.Fragment>
+      ))}
+    </footer>
+  )
+}
 
 export const Modal = (props: ModalProps) => {
-  const DESKTOP_MIN_WIDTH = 767 // @screen md
-  const [isDesktop, setIsDesktop] = useState(true)
-
-  useEffect(() => {
-    const updateMedia = () => {
-      if (window.innerWidth > DESKTOP_MIN_WIDTH) {
-        setIsDesktop(true)
-      } else {
-        setIsDesktop(false)
-      }
-    }
-    updateMedia()
-    window.addEventListener("resize", updateMedia)
-    return () => window.removeEventListener("resize", updateMedia)
-  }, [DESKTOP_MIN_WIDTH])
-
   const uniqueIdRef = useRef(nanoid())
   const modalClassNames = ["modal"]
   const innerClassNames = ["modal__inner"]
@@ -103,13 +91,11 @@ export const Modal = (props: ModalProps) => {
 
         <section className={innerClassNames.join(" ")}>
           {typeof props.children === "string" ? <p>{props.children}</p> : props.children}
-          {props.scrollableModal && props.actions && isDesktop && (
-            <ModalFooter actions={props.actions} />
+          {props.actions && (
+            <ModalFooter className="modal__footer-desktop" actions={props.actions} />
           )}
         </section>
-        {props.actions && (!isDesktop || !props.scrollableModal) && (
-          <ModalFooter actions={props.actions} />
-        )}
+        {props.actions && <ModalFooter className="modal__footer-mobile" actions={props.actions} />}
       </div>
     </Overlay>
   )
