@@ -9,7 +9,9 @@
   --image-card-inner-height: var(--bloom-s60);
   --tags-justify-mobile: center;
   --tags-justify-desktop: flex-start;
+  --grid-gap-mobile: var(--bloom-s2);
   --grid-gap-desktop: var(--bloom-s4);
+  --leader-width: var(--bloom-width-2-3rd);
 
   position: relative;
   margin-bottom: var(--grid-gap-desktop);
@@ -158,7 +160,7 @@
   width: 100%;
 
   @media (min-width: $screen-md) {
-    width: var(--bloom-width-2-3rd);
+    width: var(--leader-width);
     padding-block-start: var(--bloom-s8);
     padding-inline-end: var(--bloom-s8);
   }
@@ -194,9 +196,10 @@
 }
 
 .image-card__inner-modal {
-  padding: 0 !important;
-  margin-inline: 0 !important;
-  margin-top: 0 !important;
+  --content-padding-inline: 0;
+  --content-padding-block: 0;
+  --content-margin-top: 0;
+  margin-inline: 0;
   height: 100vh;
   @media (min-width: $screen-md) {
     height: calc(100vh - var(--bloom-s32));
