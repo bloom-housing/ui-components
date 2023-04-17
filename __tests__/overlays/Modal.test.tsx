@@ -9,7 +9,7 @@ describe("<Modal>", () => {
     const portalRoot = document.createElement("div")
     portalRoot.setAttribute("id", "__next")
     document.body.appendChild(portalRoot)
-    const { getByText, getByRole } = render(
+    const { getByText, getAllByText, getByRole } = render(
       <Modal
         open={true}
         title={"Modal Title"}
@@ -23,14 +23,14 @@ describe("<Modal>", () => {
     expect(getByRole("dialog")).toBeTruthy()
     expect(getByText("Modal Title")).toBeTruthy()
     expect(getByText("Modal Children")).toBeTruthy()
-    expect(getByText("Action 1")).toBeTruthy()
-    expect(getByText("Action 2")).toBeTruthy()
+    expect(getAllByText("Action 1")).toHaveLength(2)
+    expect(getAllByText("Action 2")).toHaveLength(2)
   })
   it("renders with JSX content", () => {
     const portalRoot = document.createElement("div")
     portalRoot.setAttribute("id", "__next")
     document.body.appendChild(portalRoot)
-    const { getByText, getByRole } = render(
+    const { getByText, getAllByText, getByRole } = render(
       <Modal
         open={true}
         title={"Modal Title"}
@@ -44,8 +44,8 @@ describe("<Modal>", () => {
     expect(getByRole("dialog")).toBeTruthy()
     expect(getByText("Modal Title")).toBeTruthy()
     expect(getByText("Modal Children")).toBeTruthy()
-    expect(getByText("Action 1")).toBeTruthy()
-    expect(getByText("Action 2")).toBeTruthy()
+    expect(getAllByText("Action 1")).toHaveLength(2)
+    expect(getAllByText("Action 2")).toHaveLength(2)
   })
   it("does not render footer with no actions", () => {
     const portalRoot = document.createElement("div")
