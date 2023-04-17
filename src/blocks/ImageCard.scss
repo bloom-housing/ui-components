@@ -6,12 +6,16 @@
   --default-background-color: var(--bloom-color-gray-500);
   --border-radius: 0px;
   --image-height: auto;
-  --image-card-inner-height: var(--bloom-s60);
   --tags-justify-mobile: center;
   --tags-justify-desktop: flex-start;
   --grid-gap-mobile: var(--bloom-s2);
   --grid-gap-desktop: var(--bloom-s4);
   --leader-width: var(--bloom-width-2-3rd);
+  --grid-template-columns-mobile: 1fr 1fr;
+  --grid-template-rows-mobile: 1.2fr 0.5fr;
+  --grid-template-areas-mobile:
+    "Main Main"
+    "Secondary-1 Secondary-2";
 
   position: relative;
   margin-bottom: var(--grid-gap-desktop);
@@ -21,7 +25,6 @@
   position: relative;
   background-color: var(--default-background-color);
   border-radius: var(--border-radius);
-  min-height: var(--image-card-inner-height);
 
   button:focus {
     outline: none;
@@ -44,8 +47,8 @@
     grid-template-rows: 1fr 1fr;
     gap: var(--grid-gap);
     @media (max-width: $screen-sm) {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1.2fr 0.5fr;
+      grid-template-columns: var(--grid-template-columns-mobile);
+      grid-template-rows: var(--grid-template-rows-mobile);
     }
 
     &.has-2-images {
@@ -61,9 +64,7 @@
         "Main Secondary-1"
         "Main Secondary-2";
       @media (max-width: $screen-sm) {
-      grid-template-areas:
-        "Main Main"
-        "Secondary-1 Secondary-2";
+      grid-template-areas: var(--grid-template-areas-mobile)
       }
     }
 
