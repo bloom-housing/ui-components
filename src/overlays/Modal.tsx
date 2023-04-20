@@ -6,6 +6,7 @@ import { nanoid } from "nanoid"
 
 export interface ModalProps extends Omit<OverlayProps, "children"> {
   actions?: React.ReactNode[]
+  actionsInContent?: boolean
   children?: React.ReactNode
   closeClassNames?: string
   closeIconColor?: string
@@ -48,10 +49,13 @@ const ModalFooter = (props: { actions: React.ReactNode[]; className?: string }) 
 
 export const Modal = (props: ModalProps) => {
   const uniqueIdRef = useRef(nanoid())
+  const footerClassNames = []
   const modalClassNames = ["modal"]
   const innerClassNames = ["modal__inner"]
   const closeClassNames = ["modal__close"]
   if (props.scrollableModal) innerClassNames.push("is-scrollable")
+  if (props.actionsInContent) footerClassNames.push("modal__footer-mobile")
+  if (!props.actionsInContent) modalClassNames.push("modal__inner-with-footer")
   if (props.modalClassNames) modalClassNames.push(...props.modalClassNames.split(" "))
   if (props.innerClassNames) innerClassNames.push(...props.innerClassNames.split(" "))
   if (props.closeClassNames) closeClassNames.push(...props.closeClassNames.split(" "))
@@ -91,11 +95,13 @@ export const Modal = (props: ModalProps) => {
 
         <section className={innerClassNames.join(" ")}>
           {typeof props.children === "string" ? <p>{props.children}</p> : props.children}
-          {props.actions && (
+          {props.actions && props.actionsInContent && (
             <ModalFooter className="modal__footer-desktop" actions={props.actions} />
           )}
         </section>
-        {props.actions && <ModalFooter className="modal__footer-mobile" actions={props.actions} />}
+        {props.actions && (
+          <ModalFooter className={footerClassNames.join(" ")} actions={props.actions} />
+        )}
       </div>
     </Overlay>
   )

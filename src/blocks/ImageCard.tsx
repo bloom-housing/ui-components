@@ -205,6 +205,7 @@ const ImageCard = (props: ImageCardProps) => {
               {props.modalCloseLabel || "Close"}
             </Button>,
           ]}
+          actionsInContent
         >
           {props.images?.map((image, index) => (
             <p key={index} className="md:mb-8">

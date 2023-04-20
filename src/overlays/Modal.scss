@@ -25,8 +25,7 @@
   --overflow: auto;
   --width: 100vw;
   --modal-header-min-height: auto;
-  --actions-display-mobile: none;
-  --actions-display-desktop: inherit;
+  --modal-margin-top: var(--bloom-s32);
 
   overflow: var(--overflow);
   -webkit-overflow-scrolling: touch;
@@ -131,7 +130,7 @@
   display: none;
 
   @media (min-width: $screen-md) {
-    display: var(--actions-display-desktop);
+    display: inherit;
   }
 }
 
@@ -139,7 +138,11 @@
   display: inherit;
 
   @media (min-width: $screen-md) {
-    display: var(--actions-display-mobile);
+    display: none;
   }
+}
+
+.modal__inner-with-footer {
+  --modal-margin-top: var(--bloom-s-6);
 }
 

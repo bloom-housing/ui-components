@@ -18,7 +18,6 @@
     "Secondary-1 Secondary-2";
 
   position: relative;
-  margin-bottom: var(--grid-gap-desktop);
 }
 
 .image-card__inner {
@@ -178,7 +177,7 @@
   @media (min-width: $screen-md) {
     --scroll-max-height: calc(80vh - 200px);
     max-width: var(--bloom-width-5xl);
-    margin-top: var(--bloom-s32);
+    margin-top: var(--modal-margin-top);
   }
   section {
     display: flex;
