@@ -1,6 +1,7 @@
 .footer-sock {
   --background-color: var(--bloom-color-gray-900);
   --copyright-text-color: var(--bloom-color-gray-500);
+  --copyright-width: auto;
 
   background-color: var(--background-color);
   @apply py-8;
@@ -36,6 +37,7 @@
     width: auto;
     flex-shrink: 0;
     @screen lg {
+      width: var(--copyright-width);
       @apply text-left;
     }
   }
