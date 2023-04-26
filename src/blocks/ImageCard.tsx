@@ -49,6 +49,8 @@ export interface ImageCardProps {
   statuses?: StatusBarType[]
   /** A list of image tags, a Tag component is rendered for each over the image */
   tags?: ImageTag[]
+  /** When true, close button will be placed inside content section on desktop  */
+  modalCloseInContent?: boolean
   /** The label text of the close button when the gallery modal is displayed */
   modalCloseLabel?: string
   /** The title text of the gallery modal, only for screen readers */
@@ -205,7 +207,7 @@ const ImageCard = (props: ImageCardProps) => {
               {props.modalCloseLabel || "Close"}
             </Button>,
           ]}
-          actionsInContent
+          actionsInContent={props.modalCloseInContent}
         >
           {props.images?.map((image, index) => (
             <p key={index} className="md:mb-8">
