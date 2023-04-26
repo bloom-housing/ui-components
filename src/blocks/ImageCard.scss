@@ -10,7 +10,6 @@
   --tags-justify-desktop: flex-start;
   --grid-gap-mobile: var(--bloom-s2);
   --grid-gap-desktop: var(--bloom-s4);
-  --leader-width: var(--bloom-width-2-3rd);
 
   position: relative;
 }
@@ -149,6 +148,7 @@
 }
 
 .image-card--leader {
+  --leader-width: var(--bloom-width-2-3rd);
   width: 100%;
 
   @media (min-width: $screen-md) {
