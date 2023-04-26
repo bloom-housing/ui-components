@@ -3,10 +3,10 @@ version: 2.1
 executors:
   standard-node:
     docker:
-      - image: "cimg/node:14.17.6"
+      - image: "cimg/node:18.14.2"
   puppeteer-node:
     docker:
-      - image: "cimg/node:14.17.6-browsers"
+      - image: "cimg/node:18.14.2-browsers"
 
 jobs:
   setup:
