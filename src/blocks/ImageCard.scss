@@ -177,7 +177,7 @@
   @media (min-width: $screen-md) {
     --scroll-max-height: calc(80vh - 200px);
     max-width: var(--bloom-width-5xl);
-    margin-top: var(--modal-margin-top);
+    --modal-margin-top: var(--bloom-s32);
   }
   section {
     display: flex;

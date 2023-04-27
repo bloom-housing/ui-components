@@ -25,7 +25,7 @@
   --overflow: auto;
   --width: 100vw;
   --modal-header-min-height: auto;
-  --modal-margin-top: var(--bloom-s32);
+  --modal-margin-top: auto;
 
   overflow: var(--overflow);
   -webkit-overflow-scrolling: touch;
@@ -36,7 +36,7 @@
   position: relative;
   max-width: var(--max-width);
   max-height: var(--max-height);
-  margin: auto;
+  margin: var(--modal-margin-top) auto auto;
   border: var(--modal-border);
   background-color: var(--background-color);
   box-shadow: var(--modal-shadow);
@@ -142,7 +142,9 @@
   }
 }
 
-.modal__inner-with-footer {
-  --modal-margin-top: var(--bloom-s-6);
+.modal.modal__inner-with-footer {
+  @media (min-width: $screen-md) {
+    --modal-margin-top: var(--bloom-s6);
+  }
 }
 
