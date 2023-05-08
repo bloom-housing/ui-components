@@ -80,7 +80,8 @@ export const GroupedTable = (props: GroupedTableProps) => {
 
   return (
     <div style={{ overflowX: "auto" }}>
-      <table className={tableClasses.join(" ")}>
+      <table aria-label={props.ariaLabel} className={tableClasses.join(" ")}>
+        {" "}
         <thead>
           <tr>{headerLabels}</tr>
         </thead>
