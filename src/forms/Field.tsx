@@ -59,6 +59,24 @@ const Field = (props: FieldProps) => {
   if (props.bordered && (props.type === "radio" || props.type === "checkbox"))
     controlClasses.push("field-border")
 
+  const formatValue = (focused = false) => {
+    if (props.getValues && props.setValue) {
+      const currencyValue = props.getValues(props.name)
+      const numericIncome = parseFloat(currencyValue)
+
+      if (focused && currencyValue) {
+        props.setValue(props.name, parseFloat(currencyValue.replaceAll(",", "")))
+      } else if (isNaN(numericIncome)) {
+        props.setValue(props.name, "")
+      } else {
+        props.setValue(
+          props.name,
+          numericIncome.toLocaleString("en-US", { minimumFractionDigits: 2 })
+        )
+      }
+    }
+  }
+
   const filterNumbers = (e: ChangeEvent<HTMLInputElement>) => {
     if (props.setValue) {
       props.setValue(props.name, e.target.value.replace(/[a-z]|[A-Z]/g, "").match(/^\d*\.?\d?\d?/g))
@@ -69,6 +87,8 @@ const Field = (props: FieldProps) => {
   if (props.type === "currency") {
     inputProps = {
       ...inputProps,
+      onBlur: () => formatValue(),
+      onFocus: () => formatValue(true),
       onChange: filterNumbers,
     }
   }
