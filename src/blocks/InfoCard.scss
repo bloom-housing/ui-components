@@ -13,6 +13,8 @@
   --title-letter-spacing: 0.025em;
   --title-letter-spacing-lighter: 0;
   --content-font-size: inherit;
+  --subtitle-font-weight: 400;
+  --subtitle-color: var(--bloom-color-gray-700);
 
   padding: var(--padding);
   border-color: var(--border-color);
@@ -40,6 +42,12 @@
   font-size: var(--title-font-size);
   font-family: var(--title-font-family);
   letter-spacing: var(--title-letter-spacing);
+}
+
+.info-card__subtitle {
+  font-size: var(--bloom-font-size-sm);
+  color: var(--subtitle-color);
+  font-weight: var(--subtitle-font-weight);
 }
 
 .info-card__header {
