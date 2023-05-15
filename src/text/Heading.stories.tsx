@@ -29,3 +29,5 @@ export const underlineHeader = () => (
 )
 export const lightWeighted = () => <Heading styleType={"lightWeighted"}>Light Weighted</Heading>
 export const capsWeighted = () => <Heading styleType={"capsWeighted"}>Caps Weighted</Heading>
+export const defaultNoStyle = () => <Heading styleType={"default"}>Default - No style</Heading>
+
