@@ -58,7 +58,7 @@ export const InfoCardDefaultHeader = () => (
   <InfoCardGrid
     title="Rentals"
     subtitle="Other rental housing funded by the City, as well as lists developed each month by community nonprofit agencies."
-    headingStyle="default"
+    defaultHeadingStyle={true}
   >
     <InfoCard
       title="My Card"
