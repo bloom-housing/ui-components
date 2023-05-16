@@ -1,11 +1,11 @@
 import * as React from "react"
-import { HeaderType, Heading } from "../text/Heading"
+import { Heading } from "../text/Heading"
 import "./InfoCardGrid.scss"
 
 export interface InfoCardGridProps {
   title: string
   subtitle?: string
-  headingStyle?: HeaderType
+  defaultHeadingStyle?: boolean
   children: React.ReactNode
 }
 
@@ -13,7 +13,7 @@ const InfoCardGrid = (props: InfoCardGridProps) => (
   <section className="info-cards">
     <header className="info-cards__header">
       <Heading
-        styleType={props.headingStyle || "underlineWeighted"}
+        styleType={props.defaultHeadingStyle ? undefined : "underlineWeighted"}
         priority={2}
         className={"info-cards__title"}
       >
