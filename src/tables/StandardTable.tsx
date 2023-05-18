@@ -81,13 +81,15 @@ export interface StandardTableProps {
   translateData?: boolean
   /** An id applied to the table */
   id?: string
+  /** An accessible label applied to the table */
+  ariaLabel?: string
   strings?: {
     orderString?: string
     sortString?: string
   }
 }
 
-const headerName = (header: string | TableHeadersOptions) => {
+const headerName = (header: string | TableHeadersOptions): string => {
   if (typeof header === "string") {
     return header
   } else {
@@ -256,7 +258,7 @@ export const StandardTable = (props: StandardTableProps) => {
 
   return (
     <div style={{ overflowX: "auto" }}>
-      <table id={props.id} className={tableClasses.join(" ")}>
+      <table id={props.id} aria-label={props.ariaLabel} className={tableClasses.join(" ")}>
         <thead>
           <tr>{headerLabels}</tr>
         </thead>
