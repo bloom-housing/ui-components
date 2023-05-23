@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useMemo } from "react"
 import { ErrorMessage } from "../notifications/ErrorMessage"
 import { UseFormMethods, RegisterOptions } from "react-hook-form"
+import { isURL } from "class-validator"
 
 export interface FieldProps {
   error?: boolean
@@ -89,6 +90,19 @@ const Field = (props: FieldProps) => {
       onBlur: () => formatValue(),
       onFocus: () => formatValue(true),
       onChange: filterNumbers,
+    }
+  }
+
+  if (props.type === "url") {
+    inputProps = {
+      ...inputProps,
+      ref:
+        props.register &&
+        props.register(
+          props.validation || {
+            validate: (value) => isURL(value, { require_protocol: true }),
+          }
+        ),
     }
   }
 
