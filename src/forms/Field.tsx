@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useMemo } from "react"
 import { ErrorMessage } from "../notifications/ErrorMessage"
 import { UseFormMethods, RegisterOptions } from "react-hook-form"
-import { urlRegex } from "../helpers/validators"
+import { httpsRegex, urlRegex } from "../helpers/validators"
 
 export interface FieldProps {
   error?: boolean
@@ -100,7 +100,14 @@ const Field = (props: FieldProps) => {
         props.register &&
         props.register(
           props.validation || {
-            pattern: urlRegex,
+            validate: {
+              https: (value) => {
+                return httpsRegex.test(value)
+              },
+              invalid: (value) => {
+                return urlRegex.test(value)
+              },
+            },
           }
         ),
     }
