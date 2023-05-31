@@ -1,14 +1,6 @@
 import React from "react"
 import { UseFormMethods } from "react-hook-form"
-import {
-  t,
-  GridSection,
-  ViewItem,
-  GridCell,
-  Field,
-  Select,
-  resolveObject,
-} from "../../"
+import { t, GridSection, ViewItem, GridCell, Field, Select, resolveObject } from "../../"
 
 type FormAddressProps = {
   subtitle: string
@@ -40,9 +32,13 @@ export const FormAddress = ({
               label={t("application.contact.streetAddress")}
               placeholder={t("application.contact.streetAddress")}
               register={register}
-              validation={{ required }}
+              validation={{ required, maxLength: 64 }}
               error={!!resolveObject(`${dataKey}.street`, errors)}
-              errorMessage={t("errors.streetError")}
+              errorMessage={
+                errors?.length && errors[`${dataKey}.street`] === "maxLength"
+                  ? t("errors.maxLength")
+                  : t("errors.streetError")
+              }
               readerOnly
             />
           </ViewItem>
@@ -56,6 +52,9 @@ export const FormAddress = ({
               placeholder={t("application.contact.apt")}
               register={register}
               readerOnly
+              error={!!resolveObject(`${dataKey}.street2`, errors)}
+              validation={{ maxLength: 64 }}
+              errorMessage={t("errors.maxLength")}
             />
           </ViewItem>
         </GridCell>
@@ -68,9 +67,13 @@ export const FormAddress = ({
               label={t("application.contact.cityName")}
               placeholder={t("application.contact.cityName")}
               register={register}
-              validation={{ required }}
+              validation={{ required, maxLength: 64 }}
               error={!!resolveObject(`${dataKey}.city`, errors)}
-              errorMessage={t("errors.cityError")}
+              errorMessage={
+                errors?.length && errors[`${dataKey}.city`] === "maxLength"
+                  ? t("errors.maxLength")
+                  : t("errors.cityError")
+              }
               readerOnly
             />
           </ViewItem>
@@ -100,9 +103,13 @@ export const FormAddress = ({
               label={t("application.contact.zip")}
               placeholder={t("application.contact.zipCode")}
               register={register}
-              validation={{ required }}
+              validation={{ required, maxLength: 64 }}
               error={!!resolveObject(`${dataKey}.zipCode`, errors)}
-              errorMessage={t("errors.zipCodeError")}
+              errorMessage={
+                errors?.length && errors[`${dataKey}.zipCode`] === "maxLength"
+                  ? t("errors.maxLength")
+                  : t("errors.zipCodeError")
+              }
               readerOnly
             />
           </ViewItem>
