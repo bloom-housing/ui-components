@@ -44,6 +44,7 @@ const moreLessButton = (
       className={classes.join(" ")}
       onClick={() => setExpanded(!expanded)}
       aria-label={strings.buttonAriaLabel}
+      aria-expanded={expanded}
     >
       {expanded ? strings?.readLess : strings?.readMore}
     </button>
