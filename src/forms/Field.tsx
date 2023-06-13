@@ -98,18 +98,20 @@ const Field = (props: FieldProps) => {
       ...inputProps,
       ref:
         props.register &&
-        props.register(
-          props.validation || {
-            validate: {
-              https: (value) => {
-                return httpsRegex.test(value)
-              },
-              invalid: (value) => {
-                return urlRegex.test(value)
-              },
+        props.register({
+          ...props.validation,
+          validate: {
+            https: (value) => {
+              if (!value?.length) return true
+              return httpsRegex.test(value)
             },
-          }
-        ),
+            invalid: (value) => {
+              if (!value?.length) return true
+              return urlRegex.test(value)
+            },
+            ...props.validation?.validate,
+          },
+        }),
     }
   }
 
