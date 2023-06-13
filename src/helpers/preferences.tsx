@@ -35,7 +35,7 @@ export const FormAddress = ({
               validation={{ required, maxLength: 64 }}
               error={!!resolveObject(`${dataKey}.street`, errors)}
               errorMessage={
-                errors?.length && errors[`${dataKey}.street`] === "maxLength"
+                resolveObject(`${dataKey}.street`, errors)?.type === "maxLength"
                   ? t("errors.maxLength")
                   : t("errors.streetError")
               }
@@ -70,7 +70,7 @@ export const FormAddress = ({
               validation={{ required, maxLength: 64 }}
               error={!!resolveObject(`${dataKey}.city`, errors)}
               errorMessage={
-                errors?.length && errors[`${dataKey}.city`] === "maxLength"
+                resolveObject(`${dataKey}.city`, errors)?.type === "maxLength"
                   ? t("errors.maxLength")
                   : t("errors.cityError")
               }
@@ -106,7 +106,7 @@ export const FormAddress = ({
               validation={{ required, maxLength: 64 }}
               error={!!resolveObject(`${dataKey}.zipCode`, errors)}
               errorMessage={
-                errors?.length && errors[`${dataKey}.zipCode`] === "maxLength"
+                resolveObject(`${dataKey}.zipCode`, errors)?.type === "maxLength"
                   ? t("errors.maxLength")
                   : t("errors.zipCodeError")
               }
