@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useMemo, useState } from "react"
+import React, { useMemo, useState } from "react"
 import { LocalizedLink } from "../actions/LocalizedLink"
 import { ApplicationStatus } from "../notifications/ApplicationStatus"
 import "./ImageCard.scss"
@@ -10,6 +10,7 @@ import { Icon, IconFillColors, UniversalIconType } from "../icons/Icon"
 import { Modal } from "../overlays/Modal"
 import { Button } from "../actions/Button"
 import { t } from "../helpers/translator"
+import { useFallbackImage } from "../helpers/useFallbackImage"
 
 export interface StatusBarType {
   status?: ApplicationStatusType
@@ -45,10 +46,8 @@ export interface ImageCardProps {
   imageUrl?: string
   /** Alternatively, a number of images can be passed in  */
   images?: ImageItem[]
-  /** A fallback image URL that will be displayed on error for all images (client side only) */
+  /** A fallback image URL that will be displayed on error for all images */
   fallbackImageUrl?: string
-  /** when true, images will be lazy loaded */
-  lazyLoadImages?: boolean
   /** A list of status indicators, an ApplicationStatus component is rendered for each item at the bottom of the card */
   statuses?: StatusBarType[]
   /** A list of image tags, a Tag component is rendered for each over the image */
@@ -75,6 +74,9 @@ export interface ImageCardProps {
  */
 const ImageCard = (props: ImageCardProps) => {
   const [showModal, setShowModal] = useState(false)
+  const { imgParentRef, imgRefs, onError } = useFallbackImage(
+    props?.fallbackImageUrl ?? "images/listing-fallback.png"
+  )
 
   const getStatuses = () => {
     const statuses = props.statuses?.map((status, index) => {
@@ -117,16 +119,10 @@ const ImageCard = (props: ImageCardProps) => {
     return props.description || ""
   }
 
-  const addFallbackImage = (e: SyntheticEvent<HTMLImageElement, Event>) => {
-    if (props?.fallbackImageUrl && e.currentTarget.src !== props.fallbackImageUrl) {
-      e.currentTarget.src = props.fallbackImageUrl
-    }
-  }
-
   const image = (
     <>
       <div className="image-card">
-        <figure className={innerClasses.join(" ")}>
+        <figure className={innerClasses.join(" ")} ref={imgParentRef}>
           {props.imageUrl ? (
             <img
               src={props.imageUrl}
@@ -135,8 +131,8 @@ const ImageCard = (props: ImageCardProps) => {
                 props.strings?.defaultImageAltText ??
                 t("listings.buildingImageAltText")
               }
-              loading={props.lazyLoadImages ? "lazy" : undefined}
-              onError={addFallbackImage}
+              ref={(el) => (imgRefs.current[0] = el)}
+              onError={onError}
             />
           ) : props.images && displayedImages ? (
             displayedImages.map((image, index) => (
@@ -144,8 +140,8 @@ const ImageCard = (props: ImageCardProps) => {
                 key={index}
                 src={image.thumbnailUrl || image.mobileUrl || image.url}
                 alt={getAltText(index, displayedImages, image.description)}
-                loading={props.lazyLoadImages ? "lazy" : undefined}
-                onError={addFallbackImage}
+                ref={(el) => (imgRefs.current[index] = el)}
+                onError={onError}
               />
             ))
           ) : (
@@ -236,8 +232,7 @@ const ImageCard = (props: ImageCardProps) => {
                 <img
                   src={image.url}
                   alt={getAltText(index, props.images, image.description)}
-                  loading={props.lazyLoadImages ? "lazy" : undefined}
-                  onError={addFallbackImage}
+                  onError={onError}
                 />
               </picture>
             </p>
