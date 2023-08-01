@@ -74,9 +74,7 @@ export interface ImageCardProps {
  */
 const ImageCard = (props: ImageCardProps) => {
   const [showModal, setShowModal] = useState(false)
-  const { imgParentRef, imgRefs, onError } = useFallbackImage(
-    props?.fallbackImageUrl ?? "images/listing-fallback.png"
-  )
+  const { imgParentRef, imgRefs, onError } = useFallbackImage(props?.fallbackImageUrl)
 
   const getStatuses = () => {
     const statuses = props.statuses?.map((status, index) => {

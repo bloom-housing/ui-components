@@ -1,18 +1,20 @@
 import { SyntheticEvent, useCallback, useEffect, useRef } from "react"
 
-export function useFallbackImage(fallbackSrc: string) {
+export function useFallbackImage(fallbackSrc?: string) {
   const imgParentRef = useRef<HTMLDivElement>(null)
   const imgRefs = useRef<(HTMLImageElement | null)[]>([])
 
   const onError = useCallback(
     (e: SyntheticEvent<HTMLImageElement>) => {
-      e.currentTarget.src = fallbackSrc
+      if (fallbackSrc) {
+        e.currentTarget.src = fallbackSrc
+      }
     },
     [fallbackSrc]
   )
 
   useEffect(() => {
-    if (imgParentRef && imgParentRef.current) {
+    if (imgParentRef && imgParentRef.current && fallbackSrc) {
       const numberOfImages = imgParentRef.current.children.length
       for (let i = 0; i < numberOfImages; i++) {
         const imgRef = imgRefs.current[i]
