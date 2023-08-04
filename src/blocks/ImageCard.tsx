@@ -10,6 +10,7 @@ import { Icon, IconFillColors, UniversalIconType } from "../icons/Icon"
 import { Modal } from "../overlays/Modal"
 import { Button } from "../actions/Button"
 import { t } from "../helpers/translator"
+import { useFallbackImage } from "../helpers/useFallbackImage"
 
 export interface StatusBarType {
   status?: ApplicationStatusType
@@ -45,6 +46,8 @@ export interface ImageCardProps {
   imageUrl?: string
   /** Alternatively, a number of images can be passed in  */
   images?: ImageItem[]
+  /** A fallback image URL that will be displayed on error for all images */
+  fallbackImageUrl?: string
   /** A list of status indicators, an ApplicationStatus component is rendered for each item at the bottom of the card */
   statuses?: StatusBarType[]
   /** A list of image tags, a Tag component is rendered for each over the image */
@@ -71,6 +74,7 @@ export interface ImageCardProps {
  */
 const ImageCard = (props: ImageCardProps) => {
   const [showModal, setShowModal] = useState(false)
+  const { imgParentRef, imgRefs, onError } = useFallbackImage(props?.fallbackImageUrl)
 
   const getStatuses = () => {
     const statuses = props.statuses?.map((status, index) => {
@@ -116,7 +120,7 @@ const ImageCard = (props: ImageCardProps) => {
   const image = (
     <>
       <div className="image-card">
-        <figure className={innerClasses.join(" ")}>
+        <figure className={innerClasses.join(" ")} ref={imgParentRef}>
           {props.imageUrl ? (
             <img
               src={props.imageUrl}
@@ -125,6 +129,8 @@ const ImageCard = (props: ImageCardProps) => {
                 props.strings?.defaultImageAltText ??
                 t("listings.buildingImageAltText")
               }
+              ref={(el) => (imgRefs.current[0] = el)}
+              onError={onError}
             />
           ) : props.images && displayedImages ? (
             displayedImages.map((image, index) => (
@@ -132,6 +138,8 @@ const ImageCard = (props: ImageCardProps) => {
                 key={index}
                 src={image.thumbnailUrl || image.mobileUrl || image.url}
                 alt={getAltText(index, displayedImages, image.description)}
+                ref={(el) => (imgRefs.current[index] = el)}
+                onError={onError}
               />
             ))
           ) : (
@@ -219,7 +227,11 @@ const ImageCard = (props: ImageCardProps) => {
             <p key={index} className="md:mb-8">
               <picture>
                 {image.mobileUrl && <source media="(max-width: 767px)" srcSet={image.mobileUrl} />}
-                <img src={image.url} alt={getAltText(index, props.images, image.description)} />
+                <img
+                  src={image.url}
+                  alt={getAltText(index, props.images, image.description)}
+                  onError={onError}
+                />
               </picture>
             </p>
           ))}
