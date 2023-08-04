@@ -100,6 +100,14 @@ export const withLink = () => <ImageCard href="/listings" imageUrl="/images/list
 
 export const withNoImage = () => <ImageCard />
 
+export const withFallbackImage = () => (
+  <ImageCard
+    href="/listings"
+    imageUrl="invalid-url"
+    fallbackImageUrl="/images/listing-fallback.png"
+  />
+)
+
 export const withOneStatusAndSmaller = () => (
   <ImageCard
     href="/listings"
