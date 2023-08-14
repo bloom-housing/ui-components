@@ -133,18 +133,9 @@ const AgTable = ({
     suppressNoRowsOverlay: data.loading,
   }
 
-  // update table items order on sort change
-  const initialLoadOnSort = useRef<boolean>(false)
-
   const onSortChange = useCallback(
     (columns: ColumnState[]) => {
       if (!setSort) return
-
-      // prevent multiple fetch on initial render
-      if (!initialLoadOnSort.current) {
-        initialLoadOnSort.current = true
-        return
-      }
 
       const sortedColumns = columns.filter((col) => !!col.sort)
 
@@ -197,11 +188,27 @@ const AgTable = ({
     sessionStorage.setItem(columnStateLsKey, columnStateJSON)
   }
 
+  const initialLoadOnSort = useRef<boolean>(false)
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onGridReady = (params: any) => {
     setGridColumnApi(params.columnApi)
     if (selectConfig?.setGridApi) {
       selectConfig.setGridApi(params.api)
+    }
+
+    // sort data on initial load if sort field present
+    if (!initialLoadOnSort.current) {
+      initialLoadOnSort.current = true
+      const initialSortColumn = columns.find((item: ColDef) => item?.sort) as ColDef
+      if (initialSortColumn && setSort && initialSortColumn.field) {
+        setSort([
+          {
+            orderBy: initialSortColumn.field,
+            orderDir: initialSortColumn.sort?.toUpperCase() || "asc",
+          },
+        ])
+      }
     }
   }
 
