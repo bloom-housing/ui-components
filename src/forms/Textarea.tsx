@@ -1,7 +1,7 @@
 import * as React from "react"
 import "./Textarea.scss"
 import { t } from "../helpers/translator"
-import { UseFormMethods } from "react-hook-form"
+import { UseFormMethods, RegisterOptions } from "react-hook-form"
 
 type WrapOptions = "soft" | "hard"
 
@@ -20,6 +20,7 @@ export interface TextareaProps {
   register?: UseFormMethods["register"]
   resize?: boolean
   rows?: number
+  validation?: RegisterOptions
   wrap?: WrapOptions
   readerOnly?: boolean
   inputProps?: Record<string, unknown>
@@ -52,7 +53,7 @@ export const Textarea = (props: TextareaProps) => {
         maxLength={props.maxLength ?? 1000}
         name={props.name}
         placeholder={props.placeholder ?? t("t.description")}
-        ref={props.register}
+        ref={props.register && props.register(props.validation)}
         rows={props.rows ?? 4}
         wrap={props.wrap ?? "soft"}
         title={props.label}
