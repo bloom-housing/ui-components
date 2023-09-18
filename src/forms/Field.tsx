@@ -161,7 +161,7 @@ const Field = (props: FieldProps) => {
       <div className={controlClasses.join(" ")}>
         {props.prepend && <span className="prepend">{props.prepend}</span>}
         <input
-          aria-describedby={props.describedBy ? props.describedBy : `${idOrName}`}
+          aria-describedby={props.describedBy ? props.describedBy : `${idOrName}-error`}
           aria-invalid={!!props.error || false}
           aria-label={props.ariaLabel}
           className="input"
@@ -183,7 +183,7 @@ const Field = (props: FieldProps) => {
       </div>
       {props.subNote && <p className="field-sub-note">{props.subNote}</p>}
       {props.errorMessage && (
-        <ErrorMessage id={idOrName} error={props.error}>
+        <ErrorMessage id={`${idOrName}-error`} error={props.error}>
           {props.errorMessage}
         </ErrorMessage>
       )}
