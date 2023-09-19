@@ -57,15 +57,17 @@ const SiteHeader = (props: SiteHeaderProps) => {
   const [mobileDrawer, setMobileDrawer] = useState(false)
   const [mobileMenu, setMobileMenu] = useState(false)
 
-  const getNavbarClass = () => {
-    // If the links have flex-wrapped onto the next line, apply the background color
-    return document.getElementById("site-header-links")?.offsetLeft ===
-      document.getElementById("site-header-logo")?.offsetLeft
-      ? "bg-gray-200 mt-3"
-      : "bg-white"
-  }
+  const [navbarClass, setNavbarClass] = useState("site-header__navbar-inline")
 
-  const [navbarClass, setNavbarClass] = useState(getNavbarClass())
+  const updateNavbarClass = () => {
+    // If the links have flex-wrapped onto the next line, apply the background color
+    const logoOffset = document.getElementById("site-header-logo")?.offsetLeft
+    const linksOffset = document.getElementById("site-header-links")?.offsetLeft
+    if (!linksOffset || !logoOffset) return
+    return linksOffset === 0 || linksOffset === logoOffset
+      ? setNavbarClass("site-header__navbar-wrapped")
+      : setNavbarClass("site-header__navbar-inline")
+  }
 
   const { LinkComponent } = useContext(NavigationContext)
 
@@ -78,7 +80,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
       } else {
         setIsDesktop(false)
       }
-      setNavbarClass(getNavbarClass())
+      updateNavbarClass()
     }
 
     updateMedia()
