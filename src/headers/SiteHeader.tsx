@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useContext, useLayoutEffect } from "react"
 import { CSSTransition } from "react-transition-group"
 import { LanguageNav, LangItem } from "../navigation/LanguageNav"
 import { Icon } from "../icons/Icon"
@@ -51,30 +51,38 @@ export interface SiteHeaderProps {
 }
 
 const SiteHeader = (props: SiteHeaderProps) => {
-  const [activeMenus, setActiveMenus] = useState<string[]>([])
+  const [activeMenu, setActiveMenu] = useState<string | null>()
   const [activeMobileMenus, setActiveMobileMenus] = useState<string[]>([])
   const [isDesktop, setIsDesktop] = useState(true)
   const [mobileDrawer, setMobileDrawer] = useState(false)
   const [mobileMenu, setMobileMenu] = useState(false)
 
+  const getNavbarClass = () => {
+    // If the links have flex-wrapped onto the next line, apply the background color
+    return document.getElementById("site-header-links")?.offsetLeft ===
+      document.getElementById("site-header-logo")?.offsetLeft
+      ? "bg-gray-200 mt-3"
+      : "bg-white"
+  }
+
+  const [navbarClass, setNavbarClass] = useState(getNavbarClass())
+
   const { LinkComponent } = useContext(NavigationContext)
 
   const DESKTOP_MIN_WIDTH = props.desktopMinWidth || 767 // @screen md
   // Enables toggling off navbar links when entering mobile
-  useEffect(() => {
-    if (window.innerWidth > DESKTOP_MIN_WIDTH) {
-      setIsDesktop(true)
-    } else {
-      setIsDesktop(false)
-    }
-
+  useLayoutEffect(() => {
     const updateMedia = () => {
       if (window.innerWidth > DESKTOP_MIN_WIDTH) {
         setIsDesktop(true)
       } else {
         setIsDesktop(false)
       }
+      setNavbarClass(getNavbarClass())
     }
+
+    updateMedia()
+
     window.addEventListener("resize", updateMedia)
     return () => window.removeEventListener("resize", updateMedia)
   }, [DESKTOP_MIN_WIDTH])
@@ -100,13 +108,12 @@ const SiteHeader = (props: SiteHeaderProps) => {
     parentMenu?: string
   ) => {
     const dropdownOptionKeyDown = (event: React.KeyboardEvent<HTMLElement>, index: number) => {
-      // Close menu when tabbing out backwards
-      if (event.shiftKey && event.key === "Tab" && isDesktop && index === 0 && parentMenu) {
-        changeMenuShow(parentMenu, activeMenus, setActiveMenus)
-      }
-      // Close menu when tabbing out forwards
-      if (event.key === "Tab" && isDesktop && index === options.length - 1 && parentMenu) {
-        changeMenuShow(parentMenu, activeMenus, setActiveMenus)
+      // Close menu when tabbing out backwards or forwards
+      if (
+        (event.shiftKey && event.key === "Tab" && isDesktop && index === 0 && parentMenu) ||
+        (event.key === "Tab" && isDesktop && index === options.length - 1 && parentMenu)
+      ) {
+        setActiveMenu(null)
       }
     }
 
@@ -169,11 +176,28 @@ const SiteHeader = (props: SiteHeaderProps) => {
 
   // Render the desktop dropdown that opens on mouse hover
   const getDesktopDropdown = (menuTitle: string, subMenus: MenuLink[]) => {
+    // Combine the last word of a multi-word header into one span to prevent chevron icon from wrapping onto its own line
+    const getMenuTitle = () => {
+      const splitTitle = menuTitle.split(" ")
+      return (
+        <span>
+          {splitTitle.length > 0 && (
+            <span className={"site-header__dropdown-title-split"}>
+              {[...splitTitle].splice(0, splitTitle.length - 1).join(" ")}
+            </span>
+          )}
+          <span className={"site-header__dropdown-title-with-icon"}>
+            {splitTitle.length > 0 ? splitTitle[splitTitle.length - 1] : menuTitle}
+            <Icon size="small" symbol="arrowDown" fill={"#555555"} className={"pl-2"} />
+          </span>
+        </span>
+      )
+    }
+
     return (
-      <span key={menuTitle}>
-        {menuTitle}
-        <Icon size="small" symbol="arrowDown" fill={"#555555"} className={"pl-2"} />
-        {activeMenus.indexOf(menuTitle) >= 0 && (
+      <span key={menuTitle} className={"dropdown-parent"}>
+        {getMenuTitle()}
+        {activeMenu === menuTitle && (
           <span className={"site-header__dropdown-container"}>
             <div className={"site-header__dropdown"}>
               {getDropdownOptions(subMenus, "site-header__dropdown-item", menuTitle)}
@@ -191,6 +215,14 @@ const SiteHeader = (props: SiteHeaderProps) => {
     dropdownOptionClassName: string,
     dropdownContainerClassName?: string
   ) => {
+    const changeMenuShow = (
+      title: string,
+      menus: string[],
+      setMenus: React.Dispatch<React.SetStateAction<string[]>>
+    ) => {
+      const indexOfTitle = menus.indexOf(title)
+      setMenus(indexOfTitle >= 0 ? menus.filter((menu) => menu !== title) : [...menus, title])
+    }
     return (
       <>
         {menuLinks.map((menuLink, index) => {
@@ -298,14 +330,6 @@ const SiteHeader = (props: SiteHeaderProps) => {
       </>
     )
   }
-  const changeMenuShow = (
-    title: string,
-    menus: string[],
-    setMenus: React.Dispatch<React.SetStateAction<string[]>>
-  ) => {
-    const indexOfTitle = menus.indexOf(title)
-    setMenus(indexOfTitle >= 0 ? menus.filter((menu) => menu !== title) : [...menus, title])
-  }
 
   const getDesktopHeader = () => {
     return (
@@ -361,11 +385,15 @@ const SiteHeader = (props: SiteHeaderProps) => {
                 key={`${menuLink.title}-${index}`}
                 onKeyPress={(event) => {
                   if (event.key === "Enter") {
-                    changeMenuShow(menuLink.title, activeMenus, setActiveMenus)
+                    setActiveMenu(menuLink.title)
                   }
                 }}
-                onMouseEnter={() => changeMenuShow(menuLink.title, activeMenus, setActiveMenus)}
-                onMouseLeave={() => changeMenuShow(menuLink.title, activeMenus, setActiveMenus)}
+                onMouseEnter={() => {
+                  setActiveMenu(menuLink.title)
+                }}
+                onMouseLeave={() => {
+                  setActiveMenu(null)
+                }}
                 role={"button"}
                 data-testid={`${menuLink.title}-${index}`}
               >
@@ -441,7 +469,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
 
   const getLogo = () => {
     return (
-      <div className={`site-header__logo-container ${getLogoWidthClass()}`}>
+      <div className={`site-header__logo-container ${getLogoWidthClass()}`} id={"site-header-logo"}>
         <LinkComponent
           className={`site-header__logo ${props.logoClass ?? ""} ${
             (props.logoWidth && "site-header__custom-width") ?? ""
@@ -499,7 +527,10 @@ const SiteHeader = (props: SiteHeaderProps) => {
           }`}
         >
           {getLogo()}
-          <div className="site-header__navbar-menu">
+          <div
+            id={"site-header-links"}
+            className={`site-header__navbar-menu ${isDesktop ? navbarClass : ""}`}
+          >
             {isDesktop ? getDesktopHeader() : getMobileHeader()}
           </div>
         </div>

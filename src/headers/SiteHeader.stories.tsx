@@ -373,15 +373,19 @@ export const DAHLIAToggleSet = () => (
     dropdownItemClassName={"text-2xs"}
     menuLinks={[
       {
-        title: "Some longer links",
+        title: "Rent",
         href: "/",
       },
       {
-        title: "Some longer links",
+        title: "Buy",
         href: "/",
       },
       {
-        title: "Some longer links",
+        title: "My Favorites",
+        href: "/",
+      },
+      {
+        title: "Get Assistance",
         href: "/",
       },
       {
@@ -410,6 +414,164 @@ export const DAHLIAToggleSet = () => (
             onClick: () => {},
             iconSrc: "https://bit.ly/2YoHrxA",
             iconClassName: "w-6 pr-2",
+          },
+        ],
+      },
+    ]}
+  />
+)
+
+export const LongLinks = () => (
+  <SiteHeader
+    homeURL={"/"}
+    languages={[
+      { label: "English", onClick: () => console.log("Clicked English"), active: true },
+      { label: "Español", onClick: () => console.log("Clicked Español"), active: false },
+      { label: "中文", onClick: () => console.log("Clicked 中文"), active: false },
+    ]}
+    notice="We'd love to get your feedback."
+    logoWidth={"medium"}
+    title="Alameda County Housing Portal"
+    logoSrc="/images/logo_glyph.svg"
+    menuLinks={[
+      {
+        title: "Consectetur adipiscing elit",
+        href: "/",
+      },
+      {
+        title: "Excepteur sint occaecat",
+        href: "/",
+      },
+      {
+        title: "Reprehenderit",
+        href: "/",
+      },
+      {
+        title: "Voluptate",
+        href: "/",
+      },
+      {
+        title: "Ut labore et dolore",
+        subMenuLinks: [
+          {
+            title: "Consectetur adipiscing elit",
+            href: "/account/dashboard",
+          },
+          {
+            title: "My Applications",
+            href: "/account/dashboard",
+          },
+          {
+            title: "Account Settings",
+            href: "/account/edit",
+          },
+          {
+            title: "Sign Out",
+            onClick: () => {},
+          },
+        ],
+      },
+      {
+        title: "Nostrud exercitation",
+        subMenuLinks: [
+          {
+            title: "My Dashboard",
+            href: "/account/dashboard",
+          },
+          {
+            title: "My Applications",
+            href: "/account/dashboard",
+          },
+          {
+            title: "Account Settings",
+            href: "/account/edit",
+          },
+          {
+            title: "Sign Out",
+            onClick: () => {},
+          },
+        ],
+      },
+    ]}
+  />
+)
+
+export const LongLinksAlwaysWrapped = () => (
+  <SiteHeader
+    homeURL={"/"}
+    languages={[
+      { label: "English", onClick: () => console.log("Clicked English"), active: true },
+      { label: "Español", onClick: () => console.log("Clicked Español"), active: false },
+      { label: "中文", onClick: () => console.log("Clicked 中文"), active: false },
+    ]}
+    notice="We'd love to get your feedback."
+    logoWidth={"medium"}
+    title="Alameda County Housing Portal"
+    logoSrc="/images/logo_glyph.svg"
+    menuLinks={[
+      {
+        title: "Ipsum dolor",
+        href: "/",
+      },
+      {
+        title: "Incididunt",
+        href: "/",
+      },
+      {
+        title: "Consectetur adipiscing elit",
+        href: "/",
+      },
+      {
+        title: "Excepteur sint occaecat",
+        href: "/",
+      },
+      {
+        title: "Reprehenderit",
+        href: "/",
+      },
+      {
+        title: "Voluptate",
+        href: "/",
+      },
+      {
+        title: "Ut labore et dolore",
+        subMenuLinks: [
+          {
+            title: "Incididunt",
+            href: "/",
+          },
+          {
+            title: "Consectetur adipiscing elit ",
+            href: "/",
+          },
+          {
+            title: "Exercitation",
+            href: "/",
+          },
+          {
+            title: "Nostrud",
+            onClick: () => {},
+          },
+        ],
+      },
+      {
+        title: "Nostrud exercitation",
+        subMenuLinks: [
+          {
+            title: "Incididunt",
+            href: "/",
+          },
+          {
+            title: "Consectetur",
+            href: "/",
+          },
+          {
+            title: "Exercitation",
+            href: "/",
+          },
+          {
+            title: "Nostrud",
+            onClick: () => {},
           },
         ],
       },
