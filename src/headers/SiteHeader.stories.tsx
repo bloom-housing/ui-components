@@ -435,11 +435,7 @@ export const LongLinks = () => (
     logoSrc="/images/logo_glyph.svg"
     menuLinks={[
       {
-        title: "Consectetur adipiscing elit",
-        href: "/",
-      },
-      {
-        title: "Excepteur sint occaecat",
+        title: "Excepteur",
         href: "/",
       },
       {
