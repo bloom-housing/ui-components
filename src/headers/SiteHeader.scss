@@ -9,6 +9,8 @@
   --base-max-height: 75px;
   --base-mobile-padding: inherit;
   --base-mobile-width: 1025px;
+  --base-desktop-wrap: wrap;
+  --base-mobile-wrap: initial;
   --border-color: var(--bloom-color-gray-450);
   --container-border: none;
   --notice-text-font-size: var(--bloom-font-size-xs);
@@ -194,7 +196,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  flex-wrap: initial;
+  flex-wrap: var(--base-mobile-wrap);
   z-index: 10;
   max-width: 100%;
   align-items: var(--base-align-items);
@@ -202,7 +204,7 @@
   width: var(--base-mobile-width);
 
   @media (min-width: $screen-md) {
-    flex-wrap: wrap;
+    flex-wrap: var(--base-desktop-wrap);
     padding: var(--base-desktop-padding);
     width: var(--base-desktop-width);
   }
