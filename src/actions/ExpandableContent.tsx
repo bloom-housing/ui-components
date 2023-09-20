@@ -10,6 +10,7 @@ type ExpandableContentProps = {
   strings: {
     readMore?: string
     readLess?: string
+    buttonAriaLabel?: string
   }
   className?: string
   order?: Order
@@ -34,6 +35,7 @@ const ExpandableContent = ({
         onClick={() => {
           setExpanded(!isExpanded)
         }}
+        aria-label={strings.buttonAriaLabel}
       >
         {isExpanded ? strings.readLess : strings.readMore}
       </button>
