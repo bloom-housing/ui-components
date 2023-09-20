@@ -439,11 +439,11 @@ export const LongLinks = () => (
         href: "/",
       },
       {
-        title: "Reprehenderit",
+        title: "Voluptate",
         href: "/",
       },
       {
-        title: "Voluptate",
+        title: "Reprehenderit",
         href: "/",
       },
       {
