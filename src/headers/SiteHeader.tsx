@@ -183,13 +183,13 @@ const SiteHeader = (props: SiteHeaderProps) => {
       const splitTitle = menuTitle.split(" ")
       return (
         <span>
-          {splitTitle.length > 0 && (
+          {splitTitle.length > 1 && (
             <span className={"site-header__dropdown-title-split"}>
               {[...splitTitle].splice(0, splitTitle.length - 1).join(" ")}
             </span>
           )}
           <span className={"site-header__dropdown-title-with-icon"}>
-            {splitTitle.length > 0 ? splitTitle[splitTitle.length - 1] : menuTitle}
+            {splitTitle.length > 1 ? splitTitle[splitTitle.length - 1] : menuTitle}
             <Icon size="small" symbol="arrowDown" fill={"#555555"} className={"pl-2"} />
           </span>
         </span>
