@@ -93,8 +93,8 @@ As a reviewer on a PR, try not to leave only comments, but a clear next step act
 - Don’t nest more than 3 layers deep.
 - Don’t fix problems with !important. Use !important purposefully.
 - Refrain from using overqualified selectors; div.container can simply be stated as .container.
-- Use flex instead of float
-- Use grid utilities for uniform grids
+- Use flex instead of float.
+- Use grid utilities for uniform grids.
 
 ### Accessibility Considerations
 
