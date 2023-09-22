@@ -10,6 +10,7 @@ export interface ExpandableSectionProps {
     title: string
     readMore?: string
     readLess?: string
+    buttonAriaLabel?: string
   }
 }
 
@@ -36,7 +37,13 @@ const ExpandableSection = ({ content, expandableContent, strings }: ExpandableSe
         {getTextContent(content)}
         {expandableContent && (
           <div className={"mt-2"}>
-            <ExpandableContent strings={{ readMore: strings.readMore, readLess: strings.readLess }}>
+            <ExpandableContent
+              strings={{
+                readMore: strings.readMore,
+                readLess: strings.readLess,
+                buttonAriaLabel: strings.buttonAriaLabel,
+              }}
+            >
               {getTextContent(expandableContent)}
             </ExpandableContent>
           </div>

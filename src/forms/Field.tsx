@@ -161,7 +161,7 @@ const Field = (props: FieldProps) => {
       <div className={controlClasses.join(" ")}>
         {props.prepend && <span className="prepend">{props.prepend}</span>}
         <input
-          aria-describedby={props.describedBy ? props.describedBy : `${idOrName}`}
+          aria-describedby={props.describedBy ? props.describedBy : `${idOrName}-error`}
           aria-invalid={!!props.error || false}
           aria-label={props.ariaLabel}
           className="input"
@@ -169,6 +169,7 @@ const Field = (props: FieldProps) => {
           id={idOrName}
           name={props.name}
           defaultValue={props.defaultValue}
+          title={props.placeholder ? props.placeholder : idOrName}
           placeholder={props.placeholder}
           ref={props.register && props.register(props.validation)}
           disabled={props.disabled}
