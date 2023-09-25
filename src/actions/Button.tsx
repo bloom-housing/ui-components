@@ -5,6 +5,7 @@ import { Icon, IconSize, UniversalIconType } from "../icons/Icon"
 
 export interface ButtonProps extends AppearanceProps {
   "data-testid"?: string
+  ariaExpanded?: boolean
   ariaHidden?: boolean
   ariaLabel?: string
   children: React.ReactNode
@@ -94,6 +95,7 @@ const Button = (props: ButtonProps) => {
       onClick={props.onClick}
       disabled={props.disabled || props.loading}
       aria-hidden={props.ariaHidden}
+      aria-expanded={props.ariaExpanded}
       tabIndex={props.ariaHidden ? -1 : 0}
       aria-label={props.ariaLabel}
       data-testid={props.dataTestId || props["data-testid"]}
