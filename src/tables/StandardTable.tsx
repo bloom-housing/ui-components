@@ -71,6 +71,8 @@ export interface StandardTableProps {
   headers: TableHeaders
   /** The table data passed as records of column name to cell data with optional settings */
   data?: StandardTableData
+  /** A class name applied to the wrapper of the table */
+  className?: string
   /** A class name applied to the root of the table */
   tableClassName?: string
   /** A class name applied to each cell */
@@ -257,7 +259,7 @@ export const StandardTable = (props: StandardTableProps) => {
   }
 
   return (
-    <div style={{ overflowX: "auto" }}>
+    <div style={{ overflowX: "auto" }} className={props.className}>
       <table id={props.id} aria-label={props.ariaLabel} className={tableClasses.join(" ")}>
         <thead>
           <tr>{headerLabels}</tr>
