@@ -183,10 +183,12 @@ const Field = (props: FieldProps) => {
         {isRadioOrCheckbox && label}
       </div>
       {props.subNote && <p className="field-sub-note">{props.subNote}</p>}
-      {props.errorMessage && (
+      {props.errorMessage ? (
         <ErrorMessage id={`${idOrName}-error`} error={props.error}>
           {props.errorMessage}
         </ErrorMessage>
+      ) : (
+        <span id={`${idOrName}-error`}></span>
       )}
     </div>
   )
