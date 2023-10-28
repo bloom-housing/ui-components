@@ -21,7 +21,7 @@ export const PhoneField = (props: {
   mask?: (args: any) => JSX.Element
   dataTestId?: string
 }) => {
-  const labelClasses = ["label"]
+  const labelClasses = []
   if (props.caps) labelClasses.push("text__caps-spaced")
   if (props.readerOnly) labelClasses.push("sr-only")
   /**

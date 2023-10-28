@@ -69,8 +69,7 @@ const DOBField = (props: DOBFieldProps) => {
           name={getFieldName("birthMonth")}
           label={props.strings?.month ?? t("t.month")}
           disabled={props.disabled}
-          readerOnly={true}
-          placeholder={props.strings?.monthPlaceholder ?? t("account.settings.placeholders.month")}
+          placeholder={props.strings?.monthPlaceholder ?? ""}
           defaultValue={defaultDOB?.birthMonth ? defaultDOB.birthMonth : ""}
           error={error?.birthMonth !== undefined}
           validation={{
@@ -91,8 +90,7 @@ const DOBField = (props: DOBFieldProps) => {
           name={getFieldName("birthDay")}
           label={props.strings?.day ?? t("t.day")}
           disabled={props.disabled}
-          readerOnly={true}
-          placeholder={props.strings?.dayPlaceholder ?? t("account.settings.placeholders.day")}
+          placeholder={props.strings?.dayPlaceholder ?? ""}
           defaultValue={defaultDOB?.birthDay ? defaultDOB.birthDay : ""}
           error={error?.birthDay !== undefined}
           validation={{
@@ -113,8 +111,7 @@ const DOBField = (props: DOBFieldProps) => {
           name={getFieldName("birthYear")}
           label={props.strings?.year ?? t("t.year")}
           disabled={props.disabled}
-          readerOnly={true}
-          placeholder={props.strings?.yearPlaceholder ?? t("account.settings.placeholders.year")}
+          placeholder={props.strings?.yearPlaceholder ?? ""}
           defaultValue={defaultDOB?.birthYear ? defaultDOB.birthYear : ""}
           error={error?.birthYear !== undefined}
           validation={{
@@ -137,7 +134,7 @@ const DOBField = (props: DOBFieldProps) => {
 
       {hasError && (
         <div className="field error">
-          <span id={`${id}-error`} className="error-message">
+          <span id={`${id || ""}-error`} className="error-message">
             {errorMessage ? errorMessage : props.strings?.dateError ?? t("errors.dateOfBirthError")}
           </span>
         </div>

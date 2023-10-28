@@ -10,7 +10,7 @@ export const PhoneMask = React.forwardRef((props: any, ref: any) => {
         mask={["(", /[1-9]/, /\d/, /\d/, ")", " ", /\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
         className="input"
         type="tel"
-        placeholder={placeholder || "(555) 555-5555"}
+        placeholder={placeholder ?? ""}
         guide={false}
         id={name}
         value={value}
