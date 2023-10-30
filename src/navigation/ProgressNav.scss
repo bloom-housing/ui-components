@@ -10,8 +10,7 @@
   --dot-label-padding-top: var(--bloom-s4);
   --dot-label-padding-left: var(--bloom-s1);
   --dot-label-padding-right: var(--bloom-s4);
-  --dot-font-size-desktop: var(--bloom-font-size-sm);
-  --dot-font-size-mobile: var(--bloom-font-size-3xs);
+  --dot-font-size: var(--bloom-font-size-sm);
   --dot-line-color: var(--bloom-color-gray-450);
   --dot-active-font-weight: bold;
   --dot-text-transform: capitalize;
@@ -31,7 +30,7 @@
 }
 
 .progress-nav__dot-item {
-  font-size: var(--dot-font-size-desktop);
+  font-size: var(--dot-font-size);
   position: relative;
   text-align: center;
   text-transform: var(--dot-text-transform);
