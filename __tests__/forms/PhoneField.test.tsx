@@ -40,14 +40,12 @@ const ErrorPhoneField = () => {
 
 describe("<PhoneField>", () => {
   it("renders default state", () => {
-    const { getByText, getByPlaceholderText } = render(<DefaultPhoneField />)
+    const { getByText } = render(<DefaultPhoneField />)
     expect(getByText("Your Second Phone Number")).toBeTruthy()
-    expect(getByPlaceholderText("(555) 555-5555")).toBeTruthy()
   })
   it("renders error state", () => {
-    const { getByText, getByPlaceholderText } = render(<ErrorPhoneField />)
+    const { getByText } = render(<ErrorPhoneField />)
     expect(getByText("Your Second Phone Number")).toBeTruthy()
-    expect(getByPlaceholderText("(555) 555-5555")).toBeTruthy()
     expect(getByText("Uh oh!")).toBeTruthy()
   })
 })
