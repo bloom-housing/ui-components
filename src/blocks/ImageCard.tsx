@@ -52,6 +52,8 @@ export interface ImageCardProps {
   statuses?: StatusBarType[]
   /** A list of image tags, a Tag component is rendered for each over the image */
   tags?: ImageTag[]
+  /** When defined, add passed className to the innerClasses array  */
+  innerClassName?: string
   /** When true, close button will be placed inside content section on desktop  */
   modalCloseInContent?: boolean
   /** The label text of the close button when the gallery modal is displayed */
@@ -101,6 +103,9 @@ const ImageCard = (props: ImageCardProps) => {
     } else {
       innerClasses.push(`has-${props.images.length}-images`)
     }
+  }
+  if (props.innerClassName) {
+    innerClasses.push(props.innerClassName)
   }
 
   const displayedImages = useMemo(() => {
