@@ -30,6 +30,7 @@
     --max-height: 80dvh;
   }
   @supports not (max-height: 100dvh) {
+    --max-height: 100vh;
     @media (max-width: $screen-sm) {
       padding-bottom: var(--bloom-s32);
     }
