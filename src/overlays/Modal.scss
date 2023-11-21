@@ -26,8 +26,8 @@
   --modal-header-min-height: auto;
   --modal-margin-top: auto;
 
-  @supports (max-height: 100dvh) {
-    --max-height: 100dvh;
+  @supports (max-height: 80dvh) {
+    --max-height: 80dvh;
   }
   @supports not (max-height: 100dvh) {
     @media (max-width: $screen-sm) {
