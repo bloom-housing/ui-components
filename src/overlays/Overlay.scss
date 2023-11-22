@@ -4,6 +4,9 @@
   --overlay-background-color: var(--bloom-color-gray-950);
   --overlay-opacity: 0.5;
   --overlay-height: 100vh;
+  @supports (height: 100dvh) {
+    --overlay-height: 100dvh;
+  }
 
   position: fixed;
   display: flex;

@@ -21,18 +21,19 @@
   --modal-shadow: var(--bloom-shadow-md);
   --modal-border: var(--bloom-border-1) solid var(--bloom-color-gray-400);
   --footer-justify: normal;
+  --max-height: 100vh;
   --overflow: auto;
   --width: 100vw;
   --modal-header-min-height: auto;
   --modal-margin-top: auto;
+  --modal-fallback-padding: var(--bloom-s32);
 
-  @supports (max-height: 80dvh) {
-    --max-height: 80dvh;
+  @supports (max-height: 100dvh) {
+    --max-height: 100dvh;
   }
   @supports not (max-height: 100dvh) {
-    --max-height: 100vh;
     @media (max-width: $screen-sm) {
-      padding-bottom: var(--bloom-s32);
+      padding-bottom: var(--modal-fallback-padding);
     }
   }
 
