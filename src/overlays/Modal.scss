@@ -26,16 +26,7 @@
   --width: 100vw;
   --modal-header-min-height: auto;
   --modal-margin-top: auto;
-  --modal-fallback-padding: var(--bloom-s32);
-
-  @supports (max-height: 100dvh) {
-    --max-height: 100dvh;
-  }
-  @supports not (max-height: 100dvh) {
-    @media (max-width: $screen-sm) {
-      padding-bottom: var(--modal-fallback-padding);
-    }
-  }
+  --modal-fallback-padding: var(--bloom-s20);
 
   overflow: var(--overflow);
   -webkit-overflow-scrolling: touch;
@@ -63,8 +54,18 @@
     max-height: calc(100vh - var(--bloom-s6));
     max-width: calc(100vw - var(--bloom-s6));
   }
+  // @supports (max-height: 100dvh) {
+  //   --max-height: 100dvh;
+  // }
+  // @supports not (max-height: 100dvh) {
+  @media (max-width: $screen-sm) {
+    padding-bottom: var(--modal-fallback-padding);
+    border: none;
+    box-shadow: none;
+    background-clip: content-box;
+    // }
+  }
 }
-
 .modal__header {
   min-height: var(--modal-header-min-height);
 }

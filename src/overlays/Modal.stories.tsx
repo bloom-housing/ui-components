@@ -254,30 +254,6 @@ export const ScrollableModalMinimalContent = () => {
   )
 }
 
-export const TransparentOverlayModal = () => (
-  <Modal
-    open={true}
-    title={text("Title", "Modal Title")}
-    ariaDescription={text("Aria Description", "Modal Description")}
-    hideCloseIcon={true}
-    actions={[
-      <Button
-        size={AppearanceSizeType.small}
-        onClick={noop}
-        styleType={AppearanceStyleType.primary}
-      >
-        {text("Action 2 Label", "Submit")}
-      </Button>,
-      <Button size={AppearanceSizeType.small} onClick={noop}>
-        {text("Action 1 Label", "Cancel")}
-      </Button>,
-    ]}
-    backdrop={false}
-  >
-    {text("Content", "Modal Content")}
-  </Modal>
-)
-
 export const ManyButtons = () => {
   const [openModal, setOpenModal] = useState(false)
 
