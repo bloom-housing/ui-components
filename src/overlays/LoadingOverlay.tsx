@@ -19,11 +19,7 @@ const LoadingOverlay = ({ isLoading, children }: LoadingOverlayProps) => {
     )
   }, [isLoading, children])
 
-  return (
-    <div role="alert" aria-live="assertive">
-      {content}
-    </div>
-  )
+  return { content }
 }
 
 export { LoadingOverlay as default, LoadingOverlay }
