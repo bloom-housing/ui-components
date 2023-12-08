@@ -19,7 +19,7 @@ const LoadingOverlay = ({ isLoading, children }: LoadingOverlayProps) => {
     )
   }, [isLoading, children])
 
-  return { content }
+  return <>{content}</>
 }
 
 export { LoadingOverlay as default, LoadingOverlay }
