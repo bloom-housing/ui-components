@@ -67,6 +67,7 @@ export const Modal = (props: ModalProps) => {
     <Overlay
       ariaLabelledBy={uniqueIdRef.current}
       ariaDescription={props.ariaDescription}
+      aria-modal={true}
       open={props.open}
       onClose={props.onClose}
       className={props.className}
