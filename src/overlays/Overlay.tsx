@@ -10,6 +10,7 @@ export type OverlayProps = {
   open?: boolean
   ariaLabelledBy?: string
   ariaDescription?: string
+  ariaModal?: boolean
   className?: string
   backdrop?: boolean
   onClose?: () => void
@@ -36,6 +37,7 @@ const OverlayInner = (props: OverlayProps) => {
       role={props.role}
       aria-labelledby={props.ariaLabelledBy}
       aria-describedby={props.ariaDescription}
+      aria-modal={props.ariaModal}
       onClick={(e) => {
         if (e.target === e.currentTarget) closeHandler()
       }}
