@@ -14,6 +14,7 @@ interface ListingCardTableProps extends StandardTableProps, StackedTableProps {}
 
 export interface ListingCardHeader {
   content: string | React.ReactNode
+  isElement?: boolean
   href?: string
   customClass?: string
   styleType?: AppearanceStyleType
@@ -115,6 +116,14 @@ const ListingCard = (props: ListingCardProps) => {
     }
   }
 
+  const getContentSubHeader = (subheader: ListingCardHeader, returnElement?: boolean) => {
+    return React.isValidElement(subheader.content) && returnElement ? (
+      subheader.content
+    ) : (
+      <p className="card-subheader order-2">{contentProps?.contentSubheader?.content}</p>
+    )
+  }
+
   const getContentHeader = () => {
     return (
       <div className="listings-row_headers">
@@ -125,10 +134,11 @@ const ListingCard = (props: ListingCardProps) => {
             "largePrimary",
             "order-1"
           )}
-        {contentProps?.contentSubheader && (
-          <p className="card-subheader order-2">{contentProps?.contentSubheader?.content}</p>
-        )}
-
+        {contentProps?.contentSubheader &&
+          getContentSubHeader(
+            contentProps?.contentSubheader,
+            contentProps?.contentSubheader?.isElement
+          )}
         {cardTags && cardTags?.length > 0 && (
           <div className="listings-row_tags">
             {cardTags?.map((cardTag, index) => {
