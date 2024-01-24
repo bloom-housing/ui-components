@@ -116,11 +116,11 @@ const ListingCard = (props: ListingCardProps) => {
     }
   }
 
-  const getContentSubHeader = (subheader: ListingCardHeader, returnElement?: boolean) => {
+  const getTableSubHeader = (subheader: ListingCardHeader, returnElement?: boolean) => {
     return React.isValidElement(subheader.content) && returnElement ? (
       subheader.content
     ) : (
-      <p className="card-subheader order-2">{contentProps?.contentSubheader?.content}</p>
+      <p className="text__small-normal">{subheader?.content}</p>
     )
   }
 
@@ -134,11 +134,9 @@ const ListingCard = (props: ListingCardProps) => {
             "largePrimary",
             "order-1"
           )}
-        {contentProps?.contentSubheader &&
-          getContentSubHeader(
-            contentProps?.contentSubheader,
-            contentProps?.contentSubheader?.isElement
-          )}
+        {contentProps?.contentSubheader && (
+          <p className="card-subheader order-2">{contentProps?.contentSubheader?.content}</p>
+        )}
         {cardTags && cardTags?.length > 0 && (
           <div className="listings-row_tags">
             {cardTags?.map((cardTag, index) => {
@@ -181,10 +179,11 @@ const ListingCard = (props: ListingCardProps) => {
                 contentProps?.tableHeader?.priority ?? 3,
                 "smallWeighted"
               )}
-
-            {contentProps?.tableSubheader?.content && (
-              <p className="text__small-normal">{contentProps?.tableSubheader?.content}</p>
-            )}
+            {contentProps?.tableSubheader &&
+              getTableSubHeader(
+                contentProps?.tableSubheader,
+                contentProps?.tableSubheader?.isElement
+              )}
           </div>
           {children && children}
           {tableProps && (tableProps.data || tableProps.stackedData) && (

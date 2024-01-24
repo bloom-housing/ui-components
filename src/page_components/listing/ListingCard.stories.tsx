@@ -110,6 +110,22 @@ export const WithHeaders = () => {
   )
 }
 
+export const WithElementSubHeader = () => {
+  return (
+    <ListingCard
+      imageCardProps={{ ...standardImageCardProps, href: undefined }}
+      tableProps={{ ...standardTableProps }}
+      footerButtons={[{ text: "See Details", href: "see-details-link", ariaHidden: true }]}
+      contentProps={{
+        contentHeader: { content: "Header", href: "listing-link" },
+        contentSubheader: { content: "Optional content subheader" },
+        tableHeader: { content: "Table Header with list subheader" },
+        tableSubheader: { content: <ul className="text__small-normal list-disc" ><li>Test</li><li>Test 2</li></ul>, isElement: true },
+      }}
+    />
+  )
+}
+
 export const WithPillHeader = () => {
   return (
     <ListingCard
