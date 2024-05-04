@@ -169,7 +169,6 @@ const Field = (props: FieldProps) => {
           id={idOrName}
           name={props.name}
           defaultValue={props.defaultValue}
-          title={props.placeholder ? props.placeholder : idOrName}
           placeholder={props.placeholder}
           ref={props.register && props.register(props.validation)}
           disabled={props.disabled}

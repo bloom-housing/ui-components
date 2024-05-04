@@ -56,7 +56,6 @@ export const Textarea = (props: TextareaProps) => {
         ref={props.register && props.register(props.validation)}
         rows={props.rows ?? 4}
         wrap={props.wrap ?? "soft"}
-        title={props.label}
         {...inputProps}
         data-testid={props.dataTestId}
       />
