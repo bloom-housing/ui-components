@@ -15,6 +15,7 @@ export interface MenuLink {
   className?: string
   href?: string
   iconClassName?: string
+  iconElement?: React.ReactNode
   iconSrc?: string
   onClick?: () => void
   subMenuLinks?: MenuLink[]
@@ -122,6 +123,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
     const dropdownOptionContent = (option: MenuLink) => {
       return (
         <>
+          {option?.iconElement && isDesktop && option.iconElement}
           {option.iconSrc && isDesktop && (
             <img
               src={option.iconSrc}
