@@ -433,6 +433,10 @@
   padding-right: var(--bloom-s1);
 }
 
+.site-header__dropdown-wrapper {
+  position: relative;
+}
+
 .site-header__navbar-wrapped {
   background-color: var(--wrapped-background-color);
   justify-content: flex-start;
@@ -503,6 +507,17 @@
 .site-header__dropdown {
   display: flex;
   flex-direction: column;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    bottom: -20px;
+    left: -20px;
+    right: -20px;
+    z-index: -1;
+    pointer-events: auto;
+  }
 }
 
 .site-header__dropdown-item {

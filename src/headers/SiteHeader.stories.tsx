@@ -1,6 +1,7 @@
 import * as React from "react"
 
 import { SiteHeader } from "./SiteHeader"
+import Icon from "../icons/Icon"
 
 export default {
   title: "Headers/Site Header",
@@ -338,6 +339,49 @@ export const withDropdownIcons = () => (
     ]}
   />
 )
+
+export const withDropdownIconElement = () => (
+  <SiteHeader
+    homeURL={"/"}
+    languages={[
+      { label: "English", onClick: () => console.log("Clicked English"), active: true },
+      { label: "Español", onClick: () => console.log("Clicked Español"), active: false },
+      { label: "中文", onClick: () => console.log("Clicked 中文"), active: false },
+    ]}
+    notice="We're just getting started. We'd love to get your feedback."
+    logoSrc="/images/logo_glyph.svg"
+    title="Alameda County Housing Portal"
+    dropdownItemClassName={"text-2xs"}
+    menuLinks={[
+      {
+        title: "My Account",
+        subMenuLinks: [
+          {
+            title: "My Dashboard",
+            href: "/account/dashboard",
+            className: "text-[13px]",
+            iconElement: <Icon symbol="profile" size="medium" className="pr-2" />,
+          },
+          {
+            title: "My Applications",
+            href: "/account/dashboard",
+            iconElement: <Icon symbol="application" size="medium" className="pr-2" />,
+          },
+          {
+            title: "Account Settings",
+            href: "/account/edit",
+            iconElement: <Icon symbol="settings" size="medium" className="pr-2" />,
+          },
+          {
+            title: "Sign Out",
+            onClick: () => {},
+          },
+        ],
+      },
+    ]}
+  />
+)
+
 export const imageOnlyLogo = () => (
   <SiteHeader
     homeURL={"/"}
