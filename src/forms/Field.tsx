@@ -35,6 +35,7 @@ export interface FieldProps {
   hidden?: boolean
   labelClassName?: string
   bordered?: boolean
+  postInputContent?: JSX.Element
 }
 
 const Field = (props: FieldProps) => {
@@ -179,6 +180,7 @@ const Field = (props: FieldProps) => {
           {...inputProps}
           hidden={props.hidden}
         />
+        {props.postInputContent}
         {isRadioOrCheckbox && label}
       </div>
       {props.subNote && <p className="field-sub-note">{props.subNote}</p>}
