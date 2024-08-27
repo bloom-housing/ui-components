@@ -26,6 +26,20 @@ export const TextFieldError = () => {
   )
 }
 
+export const TextFieldErrorElement = () => {
+  const { register } = useForm({ mode: "onChange" })
+  return (
+    <Field
+      register={register}
+      name={"Test Input"}
+      label={"Custom label"}
+      type={"text"}
+      error={true}
+      errorMessage={<div className="font-bold italic">Custom error message as element</div>}
+    />
+  )
+}
+
 export const CurrencyField = () => {
   const { register, getValues, setValue } = useForm({ mode: "onChange" })
   return (
