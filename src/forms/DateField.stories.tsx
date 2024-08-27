@@ -8,17 +8,28 @@ export default {
 }
 
 export const Default = () => {
-  const { register, watch, errors } = useForm({ mode: "onChange" })
+  const { register, watch, errors, setValue, handleSubmit } = useForm()
+
+  const onSubmit = (data: any) => {
+    console.log(data)
+  }
 
   return (
-    <DateField
-      id="appDueDate"
-      name="appDueDate"
-      label="Application Due Date"
-      required={true}
-      register={register}
-      watch={watch}
-      error={errors?.appDueDate}
-    />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <DateField
+        id="appDueDate"
+        name="appDueDate"
+        label="Application Due Date"
+        register={register}
+        required={true}
+        setValue={setValue}
+        watch={watch}
+        error={errors?.appDueDate}
+      />
+      <br />
+      <button type="submit" className="button">
+        Submit
+      </button>
+    </form>
   )
 }

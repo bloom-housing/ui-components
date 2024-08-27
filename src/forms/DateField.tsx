@@ -23,6 +23,7 @@ export interface DateFieldProps {
   readerOnly?: boolean
   register: UseFormMethods["register"]
   required?: boolean
+  setValue?: UseFormMethods["setValue"]
   watch: UseFormMethods["watch"]
   dataTestId?: string
   strings?: {
@@ -34,6 +35,10 @@ export interface DateFieldProps {
     year?: string
     yearPlaceholder?: string
   }
+}
+
+export const maskNumber = (value: string) => {
+  return value.match(/\d+/g)?.join("")
 }
 
 const DateField = (props: DateFieldProps) => {
@@ -70,6 +75,11 @@ const DateField = (props: DateFieldProps) => {
           }}
           inputProps={{ maxLength: 2 }}
           register={register}
+          onChange={(e) => {
+            if (!props.setValue) return
+
+            props.setValue(getFieldName("month"), maskNumber(e.target.value))
+          }}
           dataTestId={props.dataTestId ? `${props.dataTestId}-month` : undefined}
         />
         <Field
@@ -91,6 +101,11 @@ const DateField = (props: DateFieldProps) => {
           }}
           inputProps={{ maxLength: 2 }}
           register={register}
+          onChange={(e) => {
+            if (!props.setValue) return
+
+            props.setValue(getFieldName("day"), maskNumber(e.target.value))
+          }}
           dataTestId={props.dataTestId ? `${props.dataTestId}-day` : undefined}
         />
         <Field
@@ -105,15 +120,21 @@ const DateField = (props: DateFieldProps) => {
             required: props.required,
             validate: {
               yearRange: (value: string) => {
-                if (props.required && value && parseInt(value) < 1900) return false
-                if (props.required && value && parseInt(value) > dayjs().year() + 10) return false
                 if (!props.required && !value?.length) return true
-                return true
+
+                const numVal = parseInt(value)
+                if (isNaN(numVal)) return false
+                return !(numVal < 1900 || numVal > dayjs().year() + 10)
               },
             },
           }}
           inputProps={{ maxLength: 4 }}
           register={register}
+          onChange={(e) => {
+            if (!props.setValue) return
+
+            props.setValue(getFieldName("year"), maskNumber(e.target.value))
+          }}
           dataTestId={props.dataTestId ? `${props.dataTestId}-year` : undefined}
         />
       </div>
@@ -121,7 +142,7 @@ const DateField = (props: DateFieldProps) => {
 
       {(error?.month || error?.day || error?.year) && (
         <div className="field error">
-          <span id={`${id}-error`} className="error-message">
+          <span id={`${id || "date-field"}-error`} className="error-message">
             {errorMessage ? errorMessage : props.strings?.dateError ?? t("errors.dateError")}
           </span>
         </div>
