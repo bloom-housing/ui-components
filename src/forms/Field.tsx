@@ -5,7 +5,7 @@ import { httpsRegex, urlRegex } from "../helpers/validators"
 
 export interface FieldProps {
   error?: boolean
-  errorMessage?: string
+  errorMessage?: string | JSX.Element
   className?: string
   controlClassName?: string
   caps?: boolean
