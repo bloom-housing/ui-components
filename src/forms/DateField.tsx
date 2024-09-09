@@ -69,6 +69,7 @@ const DateField = (props: DateFieldProps) => {
             validate: {
               monthRange: (value: string) => {
                 if (!props.required && !value?.length) return true
+
                 return parseInt(value) > 0 && parseInt(value) <= 12
               },
             },
@@ -95,6 +96,7 @@ const DateField = (props: DateFieldProps) => {
             validate: {
               dayRange: (value: string) => {
                 if (!props.required && !value?.length) return true
+
                 return parseInt(value) > 0 && parseInt(value) <= 31
               },
             },

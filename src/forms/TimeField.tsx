@@ -5,6 +5,7 @@ import { ErrorMessage } from "../notifications/ErrorMessage"
 import { Field } from "./Field"
 import { Select } from "../forms/Select"
 import { UseFormMethods } from "react-hook-form"
+import { maskNumber } from "./DateField"
 
 export type TimeFieldPeriod = "am" | "pm"
 
@@ -26,6 +27,7 @@ export type TimeFieldProps = {
   readerOnly?: boolean
   register: UseFormMethods["register"]
   required?: boolean
+  setValue?: UseFormMethods["setValue"]
   watch: UseFormMethods["watch"]
   seconds?: boolean
   dataTestId?: string
@@ -54,9 +56,10 @@ const TimeField = ({
   required = false,
   error,
   register,
+  setValue,
   watch,
   name,
-  id,
+  id = "time",
   label,
   labelClass,
   readerOnly,
@@ -66,16 +69,16 @@ const TimeField = ({
   dataTestId,
   strings,
 }: TimeFieldProps) => {
-  const fieldName = (baseName: string) => {
+  const getFieldName = (baseName: string) => {
     return [name, baseName].filter((item) => item).join(".")
   }
 
   // it prevents partial fill, all fields should be filled or nothing
   const [innerRequiredRule, setInnerRequiredRule] = useState(false)
 
-  const hoursField = watch(fieldName("hours"))
-  const minutesField = watch(fieldName("minutes"))
-  const secondsField = watch(fieldName("seconds"))
+  const hoursField = watch(getFieldName("hours"))
+  const minutesField = watch(getFieldName("minutes"))
+  const secondsField = watch(getFieldName("seconds"))
 
   useEffect(() => {
     const someFieldsFilled = hoursField || minutesField || secondsField
@@ -90,7 +93,7 @@ const TimeField = ({
       <legend className={labelClasses.join(" ")}>{label}</legend>
       <div className="field-group--date">
         <Field
-          name={fieldName("hours")}
+          name={getFieldName("hours")}
           label={strings?.hour ?? t("t.hour")}
           defaultValue={defaultValues?.hours ?? ""}
           readerOnly={true}
@@ -108,13 +111,18 @@ const TimeField = ({
           }}
           inputProps={{ maxLength: 2 }}
           register={register}
+          onChange={(e) => {
+            if (!setValue) return
+
+            setValue(getFieldName("hours"), maskNumber(e.target.value))
+          }}
           describedBy={`${id}-error`}
           disabled={disabled}
           dataTestId={dataTestId ? `${dataTestId}-hours` : undefined}
         />
 
         <Field
-          name={fieldName("minutes")}
+          name={getFieldName("minutes")}
           label={strings?.minutes ?? t("t.minutes")}
           defaultValue={defaultValues?.minutes ?? ""}
           readerOnly={true}
@@ -132,6 +140,11 @@ const TimeField = ({
           }}
           inputProps={{ maxLength: 2 }}
           register={register}
+          onChange={(e) => {
+            if (!setValue) return
+
+            setValue(getFieldName("minutes"), maskNumber(e.target.value))
+          }}
           describedBy={`${id}-error`}
           disabled={disabled}
           dataTestId={dataTestId ? `${dataTestId}-minutes` : undefined}
@@ -141,7 +154,7 @@ const TimeField = ({
           <Field
             label={strings?.seconds ?? t("t.seconds")}
             defaultValue={defaultValues?.seconds ?? ""}
-            name={fieldName("seconds")}
+            name={getFieldName("seconds")}
             readerOnly={true}
             placeholder="SS"
             error={error}
@@ -157,6 +170,11 @@ const TimeField = ({
             }}
             inputProps={{ maxLength: 2 }}
             register={register}
+            onChange={(e) => {
+              if (!setValue) return
+
+              setValue(getFieldName("seconds"), maskNumber(e.target.value))
+            }}
             describedBy={`${id}-error`}
             disabled={disabled}
             dataTestId={dataTestId ? `${dataTestId}-seconds` : undefined}
@@ -164,8 +182,8 @@ const TimeField = ({
         )}
 
         <Select
-          name={fieldName("period")}
-          id={fieldName("period")}
+          name={getFieldName("period")}
+          id={getFieldName("period")}
           labelClassName="sr-only"
           label={strings?.time ?? t("t.time")}
           register={register}
