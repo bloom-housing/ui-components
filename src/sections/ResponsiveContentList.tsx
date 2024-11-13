@@ -6,11 +6,16 @@ import {
   AccordionItemHeading,
   AccordionItemButton,
   AccordionItemPanel,
+  resetNextUuid,
 } from "react-accessible-accordion"
 
 export interface ResponsiveContentProps {
   children: React.ReactNode
   desktopClass?: string
+}
+
+const resetAccordionUuid = () => {
+  resetNextUuid()
 }
 
 const ResponsiveContentList = (props: ResponsiveContentProps) => (
@@ -64,4 +69,5 @@ export {
   ResponsiveContentItem,
   ResponsiveContentItemHeader,
   ResponsiveContentItemBody,
+  resetAccordionUuid,
 }
