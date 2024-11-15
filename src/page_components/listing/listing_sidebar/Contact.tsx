@@ -25,6 +25,8 @@ export interface ContactProps {
   contactTitleClassname?: string
   /** The text for the section's header */
   sectionTitle: string
+  /** The header level for the sectionTitle */
+  priority?: number
   strings: { email?: string; getDirections: string; website?: string }
 }
 
@@ -40,6 +42,7 @@ const Contact = ({
   contactTitle,
   contactTitleClassname,
   sectionTitle,
+  priority,
   strings,
 }: ContactProps) => {
   const formattedPhoneLink = contactPhoneNumber
@@ -54,7 +57,7 @@ const Contact = ({
 
   return (
     <section className="aside-block">
-      <Heading priority={4} styleType={"underlineWeighted"}>
+      <Heading priority={priority ?? 4} styleType={"underlineWeighted"}>
         {sectionTitle}
       </Heading>
 
