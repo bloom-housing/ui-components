@@ -6,6 +6,7 @@ import { Heading } from "../../../text/Heading"
 export interface ExpandableSectionProps {
   content: string | React.ReactNode
   expandableContent?: string | React.ReactNode
+  priority?: number
   strings: {
     title: string
     readMore?: string
@@ -14,7 +15,12 @@ export interface ExpandableSectionProps {
   }
 }
 
-const ExpandableSection = ({ content, expandableContent, strings }: ExpandableSectionProps) => {
+const ExpandableSection = ({
+  content,
+  expandableContent,
+  priority,
+  strings,
+}: ExpandableSectionProps) => {
   if (!content) return null
 
   const getTextContent = (textContent: string | React.ReactNode) => {
@@ -30,7 +36,7 @@ const ExpandableSection = ({ content, expandableContent, strings }: ExpandableSe
   }
   return (
     <section className="aside-block">
-      <Heading priority={4} styleType={"underlineWeighted"}>
+      <Heading priority={priority ?? 4} styleType={"underlineWeighted"}>
         {strings.title}
       </Heading>
       <div className="text-sm text-gray-750">
