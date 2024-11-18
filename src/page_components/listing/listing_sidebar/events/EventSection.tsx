@@ -14,6 +14,7 @@ type EventSectionProps = {
   headerText?: string
   sectionHeader?: boolean
   dateClassName?: string
+  priority?: number
 }
 
 const EventSection = (props: EventSectionProps) => {
@@ -29,7 +30,7 @@ const EventSection = (props: EventSectionProps) => {
     <section className="aside-block">
       {props.headerText && (
         <Heading
-          priority={4}
+          priority={props.priority ?? 4}
           styleType={props.sectionHeader ? "underlineWeighted" : "capsWeighted"}
         >
           {props.headerText}
