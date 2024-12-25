@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Button } from "../../actions/Button"
 import { Icon, UniversalIconType } from "../../icons/Icon"
 import "./ListingsGroup.scss"
@@ -13,6 +13,7 @@ export interface ListingsGroupProps {
   showButtonText: string
   refKey?: string
   observerRef?: React.MutableRefObject<null | IntersectionObserver>
+  isOpen?: boolean
 }
 
 const ListingsGroup = (props: ListingsGroupProps) => {
@@ -20,6 +21,12 @@ const ListingsGroup = (props: ListingsGroupProps) => {
   const toggleListings = () => setShowListings(!showListings)
 
   const listingsCount = ` (${props.listingsCount})`
+
+  useEffect(() => {
+    if (props.isOpen) {
+      setShowListings(true)
+    }
+  }, [props.isOpen])
 
   return (
     <div className="listings-group">
