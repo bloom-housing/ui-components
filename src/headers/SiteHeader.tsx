@@ -114,7 +114,11 @@ const SiteHeader = (props: SiteHeaderProps) => {
       // Close menu when tabbing out backwards or forwards
       if (
         (event.shiftKey && event.key === "Tab" && isDesktop && index === 0 && parentMenu) ||
-        (event.key === "Tab" && isDesktop && index === options.length - 1 && parentMenu)
+        (event.key === "Tab" &&
+          !event.shiftKey &&
+          isDesktop &&
+          index === options.length - 1 &&
+          parentMenu)
       ) {
         setActiveMenu(null)
       }
