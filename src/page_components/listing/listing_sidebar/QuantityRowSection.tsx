@@ -13,6 +13,7 @@ export interface QuantityRowSectionProps {
   strings: {
     sectionTitle: string
     description?: string | React.ReactNode
+    priority?: number
   }
 }
 
@@ -34,7 +35,7 @@ const QuantityRowSection = ({ quantityRows, strings }: QuantityRowSectionProps) 
 
   return (
     <section className="aside-block is-tinted">
-      <Heading priority={4} styleType={"capsWeighted"}>
+      <Heading priority={strings.priority ?? 4} styleType={"capsWeighted"}>
         {strings.sectionTitle}
       </Heading>
       <div>
