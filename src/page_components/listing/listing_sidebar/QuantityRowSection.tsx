@@ -10,14 +10,14 @@ export interface QuantityRow {
 export interface QuantityRowSectionProps {
   /** Any amount of number/text combinations, rendered in a list */
   quantityRows: QuantityRow[]
+  priority?: number
   strings: {
     sectionTitle: string
     description?: string | React.ReactNode
-    priority?: number
   }
 }
 
-const QuantityRowSection = ({ quantityRows, strings }: QuantityRowSectionProps) => {
+const QuantityRowSection = ({ quantityRows, strings, priority }: QuantityRowSectionProps) => {
   const getRow = (row: QuantityRow) => {
     if (row.amount === null) return null
     return (
@@ -35,7 +35,7 @@ const QuantityRowSection = ({ quantityRows, strings }: QuantityRowSectionProps) 
 
   return (
     <section className="aside-block is-tinted">
-      <Heading priority={strings.priority ?? 4} styleType={"capsWeighted"}>
+      <Heading priority={priority ?? 4} styleType={"capsWeighted"}>
         {strings.sectionTitle}
       </Heading>
       <div>
