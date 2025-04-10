@@ -4,7 +4,7 @@ import "./LoadingOverlay.scss"
 
 type LoadingOverlayProps = {
   isLoading: boolean
-  children: React.ReactChild
+  children: React.ReactNode
 }
 
 const LoadingOverlay = ({ isLoading, children }: LoadingOverlayProps) => {
