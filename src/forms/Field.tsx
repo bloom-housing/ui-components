@@ -87,10 +87,28 @@ const Field = (props: FieldProps) => {
 
   let inputProps = { ...props.inputProps }
   if (props.type === "currency") {
+    const customOnBlur =
+      typeof inputProps.onBlur === "function"
+        ? (inputProps.onBlur as () => void)
+        : () => {
+            //noop
+          }
+    const customOnFocus =
+      typeof inputProps.onFocus === "function"
+        ? (inputProps.onFocus as () => void)
+        : () => {
+            //noop
+          }
     inputProps = {
       ...inputProps,
-      onBlur: () => formatValue(),
-      onFocus: () => formatValue(true),
+      onBlur: () => {
+        formatValue()
+        customOnBlur()
+      },
+      onFocus: () => {
+        formatValue(true)
+        customOnFocus()
+      },
       onChange: filterNumbers,
     }
   }
