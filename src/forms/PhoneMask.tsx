@@ -7,6 +7,7 @@ export const PhoneMask = React.forwardRef((props: any, ref: any) => {
 
   return (
     <>
+      A
       <IMaskInput
         aria-labelledby={"phone-label"}
         className="input"
@@ -20,7 +21,7 @@ export const PhoneMask = React.forwardRef((props: any, ref: any) => {
         }}
         placeholder={placeholder ?? ""}
         ref={ref}
-        type="text"
+        type="tel"
         unmask={false}
         value={value}
       />
