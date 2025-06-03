@@ -38,6 +38,15 @@ export const EmphasizedValue = () => {
   )
 }
 
+export const LargeEmphasizedValue = () => {
+  return (
+    <QuantityRowSection
+      quantityRows={[{ amount: 30000, text: "Open Waitlist Slots", emphasized: true }]}
+      strings={strings}
+    />
+  )
+}
+
 export const OpenWithSomeZeroes = () => {
   return (
     <QuantityRowSection
