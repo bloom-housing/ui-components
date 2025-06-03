@@ -27,7 +27,7 @@ const QuantityRowSection = ({ quantityRows, strings, priority }: QuantityRowSect
           row.emphasized ? "font-bold" : "font-normal"
         } font-alt-sans leading-7`}
       >
-        <span className="text-right w-12 inline-block pr-2.5 text-base">{row.amount}</span>
+        <span className="text-right w-14 inline-block pr-2.5 text-base">{row.amount}</span>
         <span className={"text-xs"}>{row.text}</span>
       </li>
     )

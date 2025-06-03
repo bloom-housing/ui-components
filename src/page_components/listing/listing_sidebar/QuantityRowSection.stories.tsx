@@ -81,7 +81,7 @@ export const CustomDescription = () => {
   return (
     <QuantityRowSection
       quantityRows={[
-        { amount: 100, text: "Final Size" },
+        { amount: 40000, text: "Final Size" },
         { amount: 40, text: "Current Size" },
         { amount: 60, text: "Open Spots" },
       ]}
