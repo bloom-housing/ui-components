@@ -1,5 +1,5 @@
 import React from "react"
-import { IMaskInput } from "react-imask"
+import MaskedInput from "react-text-mask"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const PhoneMask = React.forwardRef((props: any, ref: any) => {
@@ -7,22 +7,23 @@ export const PhoneMask = React.forwardRef((props: any, ref: any) => {
 
   return (
     <>
-      <IMaskInput
-        aria-labelledby={"phone-label"}
+      <MaskedInput
+        mask={["(", /[1-9]/, /\d/, /\d/, ")", " ", /\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
         className="input"
-        disabled={disabled}
-        id={name}
-        mask={"(000) 000-0000"}
-        name={name}
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        onAccept={(value, _) => {
-          onChange(value)
-        }}
-        placeholder={placeholder ?? ""}
-        ref={ref}
         type="tel"
-        unmask={false}
+        placeholder={placeholder ?? ""}
+        guide={false}
+        id={name}
         value={value}
+        name={name}
+        disabled={disabled}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        onChange={(e: any) => {
+          e.persist()
+          onChange(e)
+        }}
+        ref={ref}
+        aria-labelledby={"phone-label"}
       />
     </>
   )
