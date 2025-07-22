@@ -164,8 +164,8 @@ const FieldGroup = ({
     )
   }
   return (
-    <div>
-      {groupLabel && <label className="text__caps-spaced">{groupLabel}</label>}
+    <fieldset>
+      {groupLabel && <legend className="text__caps-spaced">{groupLabel}</legend>}
       {groupNote && <p className="field-note mb-4">{groupNote}</p>}
 
       <div className={`field ${error ? "error" : ""} ${fieldGroupClassName || ""} mb-0`}>
@@ -188,7 +188,7 @@ const FieldGroup = ({
           {errorMessage}
         </ErrorMessage>
       )}
-    </div>
+    </fieldset>
   )
 }
 

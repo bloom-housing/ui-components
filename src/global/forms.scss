@@ -229,7 +229,8 @@
   }
 
   &.error {
-    label {
+    label,
+    legend {
       @apply text-alert;
     }
 
@@ -359,7 +360,6 @@ input[type="number"] {
   @apply mt-2;
   @apply text-gray-750;
   @apply text-xs;
-  @apply tracking-wide;
   @apply font-sans;
   font-weight: normal;
 }
