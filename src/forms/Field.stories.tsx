@@ -12,6 +12,21 @@ export const FieldDefault = () => {
   return <Field register={register} name={"Test Input"} label={"Custom label"} />
 }
 
+export const FieldFormattedLabel = () => {
+  const { register } = useForm({ mode: "onChange" })
+  return (
+    <Field
+      register={register}
+      name={"Test Input"}
+      label={
+        <>
+          Custom label <strong className={"text-alert"}>*</strong>
+        </>
+      }
+    />
+  )
+}
+
 export const TextFieldError = () => {
   const { register } = useForm({ mode: "onChange" })
   return (

@@ -6,7 +6,7 @@ import "./Dropzone.scss"
 interface DropzoneProps {
   uploader: (file: File) => void
   id: string
-  label: string
+  label: string | React.ReactNode
   helptext?: string
   accept?: string | string[]
   progress?: number

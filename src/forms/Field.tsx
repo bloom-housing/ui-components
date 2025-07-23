@@ -16,7 +16,7 @@ export interface FieldProps {
   name: string
   note?: string | JSX.Element
   subNote?: string
-  label?: string
+  label?: string | React.ReactNode
   defaultValue?: string | number
   onDrop?: (e: React.DragEvent<HTMLElement>) => boolean
   onPaste?: (e: React.ClipboardEvent) => boolean

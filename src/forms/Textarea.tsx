@@ -12,7 +12,7 @@ export interface TextareaProps {
   errorMessage?: string
   fullWidth?: boolean
   id?: string
-  label: string
+  label: string | React.ReactNode
   maxLength?: number
   name: string
   note?: string

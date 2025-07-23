@@ -14,7 +14,7 @@ export interface FieldSingle {
   disabled?: boolean
   id: string
   inputProps?: Record<string, unknown>
-  label: string
+  label: string | React.ReactNode
   uniqueName?: boolean
   note?: string
   subFields?: FieldSingle[]
@@ -30,7 +30,7 @@ interface FieldGroupProps {
   fieldGroupClassName?: string
   fieldLabelClassName?: string
   fields?: FieldSingle[]
-  groupLabel?: string
+  groupLabel?: string | React.ReactNode
   groupNote?: string
   groupSubNote?: string
   name: string
@@ -86,7 +86,7 @@ const FieldGroup = ({
           onClick={(e) => {
             // We cannot reliably target an individual checkbox in a field group since they have the same name, so we keep track on our own
             if (e.currentTarget.checked) {
-              setCheckedInputs([...checkedInputs, item.label])
+              setCheckedInputs([...checkedInputs, item.label?.toString() || ""])
             } else {
               setCheckedInputs(checkedInputs.filter((subset) => item.label !== subset))
             }
@@ -127,7 +127,7 @@ const FieldGroup = ({
     (formFields: FieldSingle[] | undefined, checkedValues: string[]) => {
       formFields?.forEach((field) => {
         if (field.defaultChecked) {
-          checkedValues.push(field.label)
+          checkedValues.push(field.label?.toString() || "")
         }
         if (field.subFields) {
           checkSelected(field.subFields, checkedValues)
@@ -147,7 +147,7 @@ const FieldGroup = ({
     return (
       <div key={item.value}>
         {getIndividualInput(item)}
-        {item.additionalText && checkedInputs.indexOf(item.label) >= 0 && (
+        {item.additionalText && checkedInputs.indexOf(item.label?.toString() || "") >= 0 && (
           <Field
             id={item.id}
             key={`${item.value || ""}-additionalText`}
@@ -165,14 +165,16 @@ const FieldGroup = ({
   }
   return (
     <fieldset>
-      {groupLabel && <legend className="text__caps-spaced">{groupLabel}</legend>}
+      {groupLabel && (
+        <legend className={`text__caps-spaced ${error ? "text-alert" : ""}`}>{groupLabel}</legend>
+      )}
       {groupNote && <p className="field-note mb-4">{groupNote}</p>}
 
       <div className={`field ${error ? "error" : ""} ${fieldGroupClassName || ""} mb-0`}>
         {fields?.map((item) => (
           <div className={`field ${fieldClassName || ""} mb-1`} key={item.id}>
             {getInputSet(item)}
-            {item.subFields && checkedInputs.indexOf(item.label) >= 0 && (
+            {item.subFields && checkedInputs.indexOf(item.label?.toString() || "") >= 0 && (
               <div className={"ml-8"} key={`${item.value || ""}-subfields`}>
                 {item.subFields?.map((subItem) => {
                   return getInputSet(subItem)
