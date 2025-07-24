@@ -76,3 +76,27 @@ export const FieldGroupError = () => {
     />
   )
 }
+
+export const FieldGroupFormattedLabel = () => {
+  const { register } = useForm({ mode: "onChange" })
+  return (
+    <FieldGroup
+      register={register}
+      name={"Test Input"}
+      type={"checkbox"}
+      fields={[
+        { id: "1234", label: "Input 1" },
+        { id: "5678", label: "Input 2" },
+      ]}
+      fieldGroupClassName={"field-group-classname"}
+      fieldClassName={"field-classname"}
+      fieldLabelClassName={"text-primary"}
+      groupNote={"Group Note"}
+      groupLabel={
+        <>
+          Custom label <strong className={"text-alert"}>*</strong>
+        </>
+      }
+    />
+  )
+}

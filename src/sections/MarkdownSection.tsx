@@ -16,7 +16,7 @@ export const MarkdownSection = ({ fullwidth, padding = true, children }: Markdow
   return (
     <div className={sectionClassNames.join(" ")}>
       <div className="markdown-section__inner">
-        <article className={contentWidth}>{children}</article>
+        <div className={contentWidth}>{children}</div>
       </div>
     </div>
   )
