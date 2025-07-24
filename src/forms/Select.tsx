@@ -77,10 +77,12 @@ export const Select = ({
         </select>
       </div>
       {subNote && <p className="field-sub-note">{subNote}</p>}
-      {error && errorMessage && (
+      {error && errorMessage ? (
         <ErrorMessage id={`${id || name}-error`} error={error}>
           {errorMessage}
         </ErrorMessage>
+      ) : (
+        <span id={`${id || name}-error`}></span>
       )}
     </div>
   )

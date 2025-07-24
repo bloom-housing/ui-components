@@ -185,10 +185,12 @@ const FieldGroup = ({
         ))}
       </div>
       {groupSubNote && <p className="field-sub-note">{groupSubNote}</p>}
-      {error && errorMessage && (
+      {error && errorMessage ? (
         <ErrorMessage id={`${name}-error`} error={error}>
           {errorMessage}
         </ErrorMessage>
+      ) : (
+        <span id={`${name}-error`}></span>
       )}
     </fieldset>
   )
