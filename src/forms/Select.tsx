@@ -16,7 +16,7 @@ interface SelectProps {
   type?: string
   id?: string
   name: string
-  label?: string
+  label?: string | React.ReactNode
   subNote?: string
   defaultValue?: string
   placeholder?: string
@@ -63,7 +63,6 @@ export const Select = ({
           data-testid={dataTestId}
           aria-describedby={describedBy ? describedBy : `${id || name}-error`}
           aria-invalid={!!error || false}
-          aria-label={label}
           ref={register && register(validation)}
           disabled={disabled}
           defaultValue={defaultValue ?? ""}
@@ -78,10 +77,12 @@ export const Select = ({
         </select>
       </div>
       {subNote && <p className="field-sub-note">{subNote}</p>}
-      {error && errorMessage && (
+      {error && errorMessage ? (
         <ErrorMessage id={`${id || name}-error`} error={error}>
           {errorMessage}
         </ErrorMessage>
+      ) : (
+        <span id={`${id || name}-error`}></span>
       )}
     </div>
   )

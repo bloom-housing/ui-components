@@ -5,7 +5,7 @@ import { Icon } from "../icons/Icon"
 
 export interface MultiSelectFieldItem {
   value: string
-  label: string
+  label: string | React.ReactNode
 }
 
 export type MultiSelectDataSourceParams<T> = (

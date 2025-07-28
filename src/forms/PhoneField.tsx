@@ -10,7 +10,7 @@ export const PhoneField = (props: {
   subNote?: string
   id?: string
   name: string
-  label?: string
+  label?: string | React.ReactNode
   caps?: boolean
   readerOnly?: boolean
   placeholder?: string

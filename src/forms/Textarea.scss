@@ -20,11 +20,12 @@
 
 .textarea-error {
   @apply border;
+  @apply border-2;
   @apply border-alert;
 }
 
 .textarea-error-message {
-  @apply text-2xs;
+  @apply text-xs;
   @apply text-alert;
   @apply block;
   @apply leading-5;
