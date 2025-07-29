@@ -21,7 +21,7 @@ export type TimeFieldProps = {
   disabled?: boolean
   error?: boolean
   id?: string
-  label: string
+  label?: string | React.ReactNode
   labelClass?: string
   name?: string
   readerOnly?: boolean
