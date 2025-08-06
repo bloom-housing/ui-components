@@ -1,14 +1,7 @@
 import React, { useState, useCallback, useEffect, useRef } from "react"
 import { useForm } from "react-hook-form"
 import { AgGridReact } from "ag-grid-react"
-import {
-  GridOptions,
-  ColumnState,
-  ColumnApi,
-  ColDef,
-  ColGroupDef,
-  GridApi,
-} from "ag-grid-community"
+import { GridOptions, ColumnState, ColDef, ColGroupDef, GridApi } from "ag-grid-community"
 import { AgPagination, AG_PER_PAGE_OPTIONS } from "./AgPagination"
 import { LoadingOverlay } from "../overlays/LoadingOverlay"
 import { Field } from "../forms/Field"
@@ -117,18 +110,17 @@ const AgTable = ({
     resizable: true,
   }
 
-  const [gridColumnApi, setGridColumnApi] = useState<ColumnApi | null>(null)
+  const [gridColumnApi, setGridColumnApi] = useState<GridApi | null>(null)
 
   const [validSearch, setValidSearch] = useState<boolean>(true)
 
   const gridOptions: GridOptions = {
     onSortChanged: (params) => {
       if (!setSort) return
-
-      saveColumnState(params.columnApi)
-      onSortChange(params.columnApi.getColumnState())
+      saveColumnState(params.api)
+      onSortChange(params.api.getColumnState())
     },
-    onColumnMoved: (params) => saveColumnState(params.columnApi),
+    onColumnMoved: (params) => saveColumnState(params.api),
     components: gridComponents,
     suppressNoRowsOverlay: data.loading,
   }
@@ -182,7 +174,7 @@ const AgTable = ({
     }
   }, [gridColumnApi, id, columnStateLsKey])
 
-  const saveColumnState = (api: ColumnApi) => {
+  const saveColumnState = (api: GridApi) => {
     const columnState = api.getColumnState()
     const columnStateJSON = JSON.stringify(columnState)
     sessionStorage.setItem(columnStateLsKey, columnStateJSON)
@@ -192,7 +184,7 @@ const AgTable = ({
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onGridReady = (params: any) => {
-    setGridColumnApi(params.columnApi)
+    setGridColumnApi(params.api)
     if (selectConfig?.setGridApi) {
       selectConfig.setGridApi(params.api)
     }
@@ -219,7 +211,7 @@ const AgTable = ({
           showSearch || headerContent ? "mb-4" : ""
         }`}
       >
-        <div className={`flex flex-wrap ${!showSearch && "hidden"}`}>
+        <div className={`flex flex-wrap ${showSearch ? "" : "hidden"}`}>
           <div className="md:mr-5 w-full md:w-56">
             <Field
               dataTestId="ag-search-input"
@@ -257,7 +249,7 @@ const AgTable = ({
               suppressScrollOnNewData={true}
               rowSelection={rowSelection ? "multiple" : undefined}
               rowMultiSelectWithClick={rowSelection}
-              onRowDataChanged={selectConfig?.updateSelectedValues ?? undefined}
+              onRowDataUpdated={selectConfig?.updateSelectedValues ?? undefined}
               onFirstDataRendered={selectConfig?.updateSelectedValues ?? undefined}
             ></AgGridReact>
           </div>
