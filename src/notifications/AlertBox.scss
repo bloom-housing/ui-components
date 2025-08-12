@@ -31,16 +31,14 @@
   .alert-box_inner {
     margin: auto;
     max-width: var(--max-width);
-    padding-right: var(--horizontal-padding);
-    padding-left: var(--horizontal-padding);
+    padding-inline: var(--horizontal-padding);
     flex: 1;
     display: flex;
     align-items: center;
   }
 
   &.narrow {
-    padding-top: var(--bloom-s1_5);
-    padding-bottom: var(--bloom-s1_5);
+    padding-block: var(--bloom-s1_5);
   }
 
   &.invert {
@@ -105,7 +103,7 @@
 .alert-box__close {
   font-size: var(--body-close-font-size);
   right: var(--horizontal-padding);
-  margin-left: var(--bloom-s3);
+  margin-inline-start: var(--bloom-s3);
   padding: 0;
   line-height: var(--bloom-s4);
   color: var(--close-icon-color);
@@ -116,14 +114,14 @@
 }
 
 .alert-box__icon {
-  margin-right: var(--bloom-s3);
+  margin-inline-end: var(--bloom-s3);
 }
 
 .alert-box__sticky {
   position: sticky;
   top: var(--bloom-s3);
-  margin-top: var(--bloom-s3);
-  margin-right: var(--bloom-s3);
+  margin-block-start: var(--bloom-s3);
+  margin-inline-end: var(--bloom-s3);
   z-index: 10;
   margin-left: auto;
   width: fit-content;
@@ -131,5 +129,5 @@
 
 .alert-box__sticky + * {
   --alert-box-height: -3.6rem;
-  margin-top: var(--alert-box-height);
+  margin-block-start: var(--alert-box-height);
 }
