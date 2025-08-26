@@ -47,8 +47,8 @@
     width: var(--dot-size);
     background-color: var(--completed-step-color);
     border-radius: 50%;
-    top: 0;
-    left: 0.5rem;
+    inset-block-start: 0;
+    inset-inline-start: 0.5rem;
     content: "";
     transform: translateX(-50%);
     z-index: 2;
@@ -58,34 +58,34 @@
     position: absolute;
     background-color: var(--completed-step-color);
     width: 100%;
-    left: 0.5rem;
-    top: 0.4rem;
+    inset-inline-start: 0.9rem;
+    inset-block-start: 0.4rem;
     content: "";
     height: 1px;
   }
 
   &:first-of-type {
     &:after {
-      left: 20%;
+      inset-inline-start: 32%;
     }
   }
 
   &:last-of-type {
     &:after {
-      left: auto;
-      right: 80%;
+      inset-inline-start: auto;
+      inset-inline-end: 80%;
     }
   }
   .progress-nav__item-container {
-    padding-top: var(--dot-label-padding-top);
-    padding-left: var(--dot-label-padding-left);
+    padding-block-start: var(--dot-label-padding-top);
+    padding-inline-start: var(--dot-label-padding-left);
     color: var(--completed-step-font-color);
     display: block;
     position: relative;
     pointer-events: none;
     cursor: default;
     z-index: 3;
-    padding-right: var(--dot-label-padding-right);
+    padding-inline-end: var(--dot-label-padding-right);
   }
 
   &.is-active {
@@ -129,8 +129,8 @@
 .progress-nav__bar-item {
   // drop the labels on mobile view
   font-size: 0;
-  padding-top: var(--bar-label-padding-top);
-  padding-left: var(--bar-label-padding-left);
+  padding-block-start: var(--bar-label-padding-top);
+  padding-inline-start: var(--bar-label-padding-left);
   position: relative;
   display: table-cell;
   white-space: normal;

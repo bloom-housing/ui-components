@@ -102,7 +102,7 @@
 
 .alert-box__close {
   font-size: var(--body-close-font-size);
-  right: var(--horizontal-padding);
+  inset-inline-end: var(--horizontal-padding);
   margin-inline-start: var(--bloom-s3);
   padding: 0;
   line-height: var(--bloom-s4);
@@ -119,11 +119,11 @@
 
 .alert-box__sticky {
   position: sticky;
-  top: var(--bloom-s3);
+  inset-block-start: var(--bloom-s3);
   margin-block-start: var(--bloom-s3);
   margin-inline-end: var(--bloom-s3);
   z-index: 10;
-  margin-left: auto;
+  margin-inline-start: auto;
   width: fit-content;
 }
 

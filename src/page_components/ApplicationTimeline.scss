@@ -1,6 +1,6 @@
 .markdown ul.application-timeline {
   @apply mb-8;
-  @apply ml-0;
+  @apply ms-0;
 }
 
 .application-timeline {
@@ -11,9 +11,9 @@
     text-transform: unset;
 
     .absolute {
-      margin-top: 0.25rem;
+      margin-block-start: 0.25rem;
       z-index: 2;
-      margin-left: -0.4rem;
+      margin-inline-start: -0.4rem;
     }
 
     p {
@@ -21,23 +21,23 @@
     }
 
     &:before {
-      left: 50%;
+      inset-inline-start: 50%;
     }
 
     &:after {
-      left: 0;
+      inset-inline-start: 0;
     }
 
     &:first-of-type {
       &:after {
-        left: 50%;
+        inset-inline-start: 50%;
       }
     }
 
     &:last-of-type {
       &:after {
-        left: auto;
-        right: 50%;
+        inset-inline-start: auto;
+        inset-inline-end: 50%;
       }
     }
 
@@ -67,6 +67,6 @@
   }
 
   .progress-nav__dot-item::after {
-    top: 1rem;
+    inset-block-start: 1rem;
   }
 }

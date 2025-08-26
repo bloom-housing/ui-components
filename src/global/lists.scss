@@ -13,8 +13,7 @@
 
   .header-hidden {
     @screen md {
-      @apply pt-0;
-      @apply pb-0;
+      padding-block: 0;
     }
   }
 }
@@ -28,13 +27,16 @@
   position: relative;
   display: block;
   counter-increment: list;
-  margin: 0 0 1rem 2rem;
+  margin-block-start: 0;
+  margin-inline-end: 0;
+  margin-block-end: 1rem;
+  margin-inline-start: 2rem;
 }
 .numbered-list li:before {
   display: inline-block;
   position: absolute;
-  top: 0;
-  left: -2rem;
+  inset-block-start: 0;
+  inset-inline-start: -2rem;
   text-align: center;
   content: counter(list);
   border-radius: 50%;
@@ -49,7 +51,10 @@
 }
 @screen md {
   .numbered-list li {
-    margin: 0 0 1.5rem 2.5rem;
+    margin-block-start: 0;
+    margin-inline-end: 0;
+    margin-block-end: 1.5rem;
+    margin-inline-start: 2.5rem;
   }
   .numbered-list li:before {
     font-size: 1rem;
@@ -57,7 +62,7 @@
     width: 2rem;
     height: 2rem;
     line-height: 2rem;
-    top: -0.25rem;
-    left: -2.5rem;
+    inset-block-start: -0.25rem;
+    inset-inline-start: -2.5rem;
   }
 }
