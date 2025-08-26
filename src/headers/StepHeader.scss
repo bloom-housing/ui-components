@@ -33,11 +33,11 @@
     height: var(--circle-desktop-size);
   }
   padding: 0rem var(--circle-x-padding);
-  margin-right: var(--title-spacing);
+  margin-inline-end: var(--title-spacing);
   border-radius: 50%;
 }
 
 .step-header__title {
-  margin-left: var(--title-spacing);
+  margin-inline-start: var(--title-spacing);
   font-weight: var(--label-font-weight);
 }

@@ -38,9 +38,9 @@
   .field-border {
     label {
       background-color: var(--bloom-color-white);
-      padding-top: var(--bordered-vertical-padding);
-      padding-bottom: var(--bordered-vertical-padding);
-      padding-left: var(--bordered-leftward-padding);
+      padding-block-start: var(--bordered-vertical-padding);
+      padding-block-end: var(--bordered-vertical-padding);
+      padding-inline-start: var(--bordered-leftward-padding);
       border-width: var(--bordered-border-width);
       border-radius: var(--bordered-border-radius);
       border-color: var(--bloom-color-gray-450);
@@ -80,8 +80,8 @@
     }
 
     select.input {
-      @apply pl-3;
-      @apply pr-8;
+      @apply ps-3;
+      @apply pe-8;
     }
 
     input.input {
@@ -98,11 +98,11 @@
     }
 
     .prepend + input[aria-invalid="false"] {
-      @apply pl-8;
+      @apply ps-8;
     }
 
     .prepend + input[aria-invalid="true"] {
-      @apply pl-12;
+      @apply ps-12;
     }
 
     &.control-narrower {
@@ -114,7 +114,7 @@
   input[type="radio"] {
     opacity: 0;
     position: absolute;
-    margin-left: -20px;
+    margin-inline-start: -20px;
 
     &:focus {
       text-decoration: none;
@@ -287,7 +287,7 @@ input[type="number"] {
   @apply flex;
 
   .field {
-    @apply mr-5;
+    @apply me-5;
     @apply mb-0;
   }
 }
@@ -303,23 +303,23 @@ input[type="number"] {
 }
 
 .field--inline + .field--inline {
-  margin-left: 1.5rem;
+  margin-inline-start: 1.5rem;
 }
 
 .flex > .field,
 .field-group--date .field {
   @apply flex-auto;
-  margin-left: 0.325rem;
-  margin-right: 0.325rem;
+  margin-inline-start: 0.325rem;
+  margin-inline-end: 0.325rem;
 }
 
 .flex > .field,
 .field-group--date .field {
   &:first-of-type {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
   &:last-of-type {
-    margin-right: 0;
+    margin-inline-end: 0;
   }
 }
 
