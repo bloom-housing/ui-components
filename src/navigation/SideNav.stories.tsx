@@ -3,16 +3,12 @@ import { BADGES } from "../../.storybook/constants"
 import { StandardTable } from "../tables/StandardTable"
 import { SideNav } from "./SideNav"
 import { mockHeaders, mockData } from "../tables/StandardTable.stories"
-import SideNavDocumentation from "./SideNav.docs.mdx"
 
 export default {
   title: "Navigation/Side Nav 🚩",
   id: "navigation/side-nav",
   decorators: [(storyFn: any) => <div style={{ padding: "1rem" }}>{storyFn()}</div>],
   parameters: {
-    docs: {
-      page: SideNavDocumentation,
-    },
     badges: [BADGES.GEN2],
   },
 }

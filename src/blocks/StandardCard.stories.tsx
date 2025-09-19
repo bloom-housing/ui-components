@@ -6,7 +6,6 @@ import { MinimalTable } from "../tables/MinimalTable"
 import { mockDataWithStyling, mockHeadersWithStyling } from "../tables/MinimalTable.stories"
 
 import { Button } from "../actions/Button"
-import StandardCardDocumentation from "./StandardCard.docs.mdx"
 
 export default {
   title: "Blocks/StandardCard  🚩",
@@ -14,9 +13,6 @@ export default {
   decorators: [(storyFn: any) => <div style={{ padding: "1rem" }}>{storyFn()}</div>],
   component: StandardCard,
   parameters: {
-    docs: {
-      page: StandardCardDocumentation,
-    },
     badges: [BADGES.GEN2],
   },
 }

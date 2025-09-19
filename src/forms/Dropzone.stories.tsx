@@ -1,10 +1,9 @@
 import * as React from "react"
-import { withKnobs } from "@storybook/addon-knobs"
 import { Dropzone } from "./Dropzone"
 
 export default {
   title: "Forms/Dropzone",
-  decorators: [(storyFn: any) => <div style={{ padding: "1rem" }}>{storyFn()}</div>, withKnobs],
+  decorators: [(storyFn: any) => <div style={{ padding: "1rem" }}>{storyFn()}</div>],
 }
 
 export const defaultDropzone = () => {

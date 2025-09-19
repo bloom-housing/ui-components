@@ -1,6 +1,5 @@
 import React from "react"
 import { AlertBox } from "./AlertBox"
-import AlertBoxDocumentation from "./AlertBox.docs.mdx"
 import { BADGES } from "../../.storybook/constants"
 import { withMenuLinks } from "../headers/SiteHeader.stories"
 
@@ -10,9 +9,6 @@ export default {
   decorators: [(storyFn: any) => <div style={{ padding: "1rem" }}>{storyFn()}</div>],
   component: AlertBox,
   parameters: {
-    docs: {
-      page: AlertBoxDocumentation,
-    },
     badges: [BADGES.GEN2],
   },
 }

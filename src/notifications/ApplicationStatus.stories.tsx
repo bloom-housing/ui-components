@@ -5,7 +5,6 @@ import { ApplicationStatus } from "./ApplicationStatus"
 import { ApplicationStatusType } from "../global/ApplicationStatusType"
 import { t } from "../helpers/translator"
 import Archer from "../../__tests__/fixtures/archer.json"
-import { text, withKnobs } from "@storybook/addon-knobs"
 import formatDateTime from "../helpers/DateFormat"
 
 dayjs.extend(advancedFormat)
@@ -13,7 +12,7 @@ dayjs.extend(advancedFormat)
 export default {
   component: ApplicationStatus,
   title: "Notifications/Application Status",
-  decorators: [(storyFn: any) => <div>{storyFn()}</div>, withKnobs],
+  decorators: [(storyFn: any) => <div>{storyFn()}</div>],
 }
 
 const listing = Object.assign({}, Archer) as any
@@ -74,7 +73,7 @@ export const pastDueAndVivid = () => (
 
 export const pastDueWithStyles = () => (
   <ApplicationStatus
-    className={text("className", "place-content-center")}
+    className={"place-content-center"}
     content={
       t("listings.applicationsClosed") + ": " + formatDateTime(listingPast.applicationDueDate)
     }
@@ -87,7 +86,7 @@ export const pastDueWithIconColor = () => (
     content={
       t("listings.applicationsClosed") + ": " + formatDateTime(listingPast.applicationDueDate)
     }
-    iconColor={text("Icon Color", "#ff0000")}
+    iconColor={"#ff0000"}
     status={ApplicationStatusType.Closed}
   />
 )

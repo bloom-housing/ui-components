@@ -1,4 +1,4 @@
-import "@testing-library/jest-dom/extend-expect"
+import "@testing-library/jest-dom"
 import { addTranslation } from "../src/helpers/translator"
 import general from "../src/locales/general.json"
 

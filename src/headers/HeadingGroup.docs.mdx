@@ -1,11 +1,12 @@
-import { Canvas, Story, ArgsTable } from "@storybook/addon-docs"
+import { ArgTypes, Canvas, Meta } from "@storybook/blocks"
 import { HeadingGroup } from "./HeadingGroup"
+import * as HeadingGroupStories from './HeadingGroup.stories';
+
+<Meta of={HeadingGroupStories} />
 
 # Heading Group
 
-<Canvas>
-  <Story id="headers-heading-group--with-content" />
-</Canvas>
+<Canvas of={HeadingGroupStories.withContent} />
 
 The HeadingGroup component provides a heading tag (h1-h6) combined with a paragraph tag as a subheading in an aria-minded fashion. Good for use in Card header components and other headers.
 

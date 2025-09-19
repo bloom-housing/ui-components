@@ -1,15 +1,11 @@
 import * as React from "react"
 import { BADGES } from "../../.storybook/constants"
 import { PageHeader } from "./PageHeader"
-import PageHeaderDocumentation from "./PageHeader.docs.mdx"
 
 export default {
   title: "Headers/Page Header 🚩",
   id: "headers/page-header",
   parameters: {
-    docs: {
-      page: PageHeaderDocumentation,
-    },
     badges: [BADGES.GEN2],
   },
 }

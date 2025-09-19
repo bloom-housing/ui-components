@@ -1,6 +1,9 @@
-import { Canvas, Story, Source, ArgsTable } from "@storybook/addon-docs"
+import { ArgTypes, Canvas, Meta } from "@storybook/blocks"
 import { Swatch } from "../prototypes/Swatch"
 import { Button } from "./Button"
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
 
 # Button
 
@@ -14,15 +17,13 @@ The button component offers flexible usage with a variety of different appearanc
 
 There are several props which accept enums to adjust style type, border, and size. For example, to choose the "primary" style and a "small" size, you would pass the `AppearanceStyleType.primary` enum to `styleType` prop and `AppearanceSizeType.small` enum to `size` prop.
 
-<Canvas>
-  <Story id="actions-button--small-and-primary" />
-</Canvas>
+<Canvas of={ButtonStories.SmallAndPrimary} />
 
 Other variants include appearances which aren't button-like such as `unstyled` and `inline`.
 
 ## Component Properties
 
-<ArgsTable of={Button} />
+<ArgTypes of={Button} />
 
 ## Theming Variables
 

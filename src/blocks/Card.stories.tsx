@@ -3,15 +3,11 @@ import { BADGES } from "../../.storybook/constants"
 import { AppearanceStyleType, Button, ButtonGroup, ButtonGroupSpacing, LinkButton } from "../.."
 import { HeadingGroup } from "../headers/HeadingGroup"
 import Card from "./Card"
-import CardDocumentation from "./Card.docs.mdx"
 
 export default {
   title: "Blocks/Card 🚩",
   id: "blocks/card",
   parameters: {
-    docs: {
-      page: CardDocumentation,
-    },
     badges: [BADGES.GEN2],
   },
 }

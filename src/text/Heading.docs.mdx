@@ -1,18 +1,20 @@
-import { Canvas, Story, ArgsTable } from "@storybook/addon-docs"
+import { ArgTypes, Canvas, Meta } from "@storybook/blocks"
 import { Swatch } from "../prototypes/Swatch"
 import { Heading } from "./Heading"
+import * as HeadingStories from './Heading.stories';
+
+<Meta of={HeadingStories} />
 
 # Heading
 
 The heading component renders an HTML heading with a flexible priority and style. Each style available maps to a [Typography](?path=/story/theming-typography--page) variant.
 
-<Canvas>
-  <Story id="text-heading--large-header" />
-</Canvas>
+<Canvas of={HeadingStories.largeHeader} />
 
 <br />
+
 <br />
 
 ## Component Properties
 
-<ArgsTable of={Heading} />
+<ArgTypes of={Heading} />

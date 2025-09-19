@@ -1,23 +1,22 @@
-import { Canvas, Story, ArgsTable } from "@storybook/addon-docs"
+import { ArgTypes, Canvas, Meta } from "@storybook/blocks"
 import { StandardCard } from "./StandardCard"
+import * as StandardCardStories from './StandardCard.stories';
+
+<Meta of={StandardCardStories} />
 
 # Standard Card
 
 The standard card component displays a title with a child element (e.g table) and optional footer.
 
-<Canvas>
-  <Story id="blocks-standard-card" />
-</Canvas>
+<Canvas of={StandardCardStories.StandardCard} />
 
 ## Component Properties
 
-<ArgsTable of={StandardCard} />
+<ArgTypes of={StandardCard} />
 
 ## Theming Variables
 
-<Canvas>
-  <Story id="blocks-standard-card--style-overrides" />
-</Canvas>
+<Canvas of={StandardCardStories.styleOverrides} />
 
 You can apply CSS variables to the `.standard-card` selector to customize the appearance of the component.
 
