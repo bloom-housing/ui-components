@@ -7,6 +7,7 @@
   "main": "index.js",
   "license": "Apache-2.0",
   "private": false,
+  "packageManager": "yarn@1.22.22",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
