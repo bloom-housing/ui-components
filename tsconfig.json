@@ -5,6 +5,7 @@
     "esModuleInterop": true,
     "target": "es5",
     "lib": ["es5", "es6", "es7", "es2017", "dom"],
+    "typeRoots": ["node_modules/@types", "node_modules/@testing-library"],
     "sourceMap": true,
     "allowJs": true,
     "jsx": "react",

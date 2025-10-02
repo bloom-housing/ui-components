@@ -1,23 +1,22 @@
-import { Canvas, Story, ArgsTable } from "@storybook/addon-docs"
+import { ArgTypes, Canvas, Meta } from "@storybook/blocks"
 import { AlertBox } from "./AlertBox"
+import * as AlertBoxStories from './AlertBox.stories';
+
+<Meta of={AlertBoxStories} />
 
 # Alert Box
 
 The alert box component displays a themed notice with text.
 
-<Canvas>
-  <Story id="notifications-alert-box" />
-</Canvas>
+<Canvas of={AlertBoxStories.AlertBoxAlert} />
 
 ## Component Properties
 
-<ArgsTable of={AlertBox} />
+<ArgTypes of={AlertBox} />
 
 ## Theming Variables
 
-<Canvas>
-  <Story id="notifications-alert-box--style-overrides" />
-</Canvas>
+<Canvas of={AlertBoxStories.styleOverrides} />
 
 You can apply CSS variables to the `.alert-box` selector to customize the appearance of the component.
 

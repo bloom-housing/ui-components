@@ -1,15 +1,17 @@
-import { Canvas, Story, ArgsTable } from "@storybook/addon-docs"
+import { ArgTypes, Canvas, Meta } from "@storybook/blocks"
 import { ListingCard } from "./ListingCard"
+import * as ListingCardStories from './ListingCard.stories';
+
+<Meta of={ListingCardStories} />
 
 # ListingCard
 
 The listing card component renders an image with optional status bars below it, and a content section associated with the image which can include titles, a table, and custom content.
 
-<Canvas>
-  <Story id="page-components-listing-card--with-tags-and-headers" />
-</Canvas>
+<Canvas of={ListingCardStories.WithTagsAndHeaders} />
 
 <br />
+
 <br />
 
 ## Variants
@@ -20,15 +22,13 @@ Many of the display variations of the card are enabled by the interior content p
 
 By setting `stackedTable` to true, the interior table component switches from `StandardTable` to `StackedTable` for a different UI presentation.
 
-<Canvas>
-  <Story id="page-components-listing-card--with-stacked-table" />
-</Canvas>
+<Canvas of={ListingCardStories.withStackedTable} />
 
 ## Component Properties
 
-<ArgsTable of={ListingCard} />
+<ArgTypes of={ListingCard} />
 
-**Note:** for accessbility reasons, if you have a link that should apply to the card as a whole, pass an `href` prop to the `contentHeader` key of `contentProps`. (If you previously passed `href` to `imageCardProps`, you should remove that.) You'll also want to pass `ariaHidden: true` as a prop for the footer button.
+**Note:** for accessibility reasons, if you have a link that should apply to the card as a whole, pass an `href` prop to the `contentHeader` key of `contentProps`. (If you previously passed `href` to `imageCardProps`, you should remove that.) You'll also want to pass `ariaHidden: true` as a prop for the footer button.
 
 ## Theming Variables
 

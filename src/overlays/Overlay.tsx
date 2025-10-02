@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import "./Overlay.scss"
 import useKeyPress from "../helpers/useKeyPress"
 import { createPortal } from "react-dom"
@@ -18,6 +18,7 @@ export type OverlayProps = {
   slim?: boolean
   role?: string
   scrollable?: boolean
+  nodeRef?: React.MutableRefObject<null>
 }
 
 const OverlayInner = (props: OverlayProps) => {
@@ -33,6 +34,7 @@ const OverlayInner = (props: OverlayProps) => {
 
   return (
     <div
+      ref={props.nodeRef}
       className={classNames.join(" ")}
       role={props.role}
       aria-labelledby={props.ariaLabelledBy}
@@ -53,6 +55,7 @@ const OverlayInner = (props: OverlayProps) => {
 }
 
 export const Overlay = (props: OverlayProps): any => {
+  const nodeRef = useRef(null)
   const documentAvailable = typeof document !== "undefined"
   const overlayRoot = useState<Element | null>(
     documentAvailable ? document.querySelector("#__next") : null
@@ -76,6 +79,7 @@ export const Overlay = (props: OverlayProps): any => {
     elForPortal &&
     createPortal(
       <CSSTransition
+        nodeRef={nodeRef}
         in={props.open}
         timeout={250}
         classNames="overlay-effect"
@@ -83,7 +87,9 @@ export const Overlay = (props: OverlayProps): any => {
         unmountOnExit
       >
         <RemoveScroll>
-          <OverlayInner {...props}>{props.children}</OverlayInner>
+          <OverlayInner nodeRef={nodeRef} {...props}>
+            {props.children}
+          </OverlayInner>
         </RemoveScroll>
       </CSSTransition>,
       elForPortal

@@ -1,5 +1,4 @@
-import { useState } from "@storybook/addons"
-import * as React from "react"
+import React, { useState } from "react"
 import { BADGES } from "../../.storybook/constants"
 import { StepHeader } from "./StepHeader"
 import { Button } from "../actions/Button"

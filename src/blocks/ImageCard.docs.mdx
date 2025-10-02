@@ -1,21 +1,23 @@
-import { Canvas, Story, ArgsTable } from "@storybook/addon-docs"
+import { ArgTypes, Canvas, Meta } from "@storybook/blocks"
 import { Swatch } from "../prototypes/Swatch"
 import { ImageCard, ImageItem } from "./ImageCard"
+import * as ImageCardStories from './ImageCard.stories';
+
+<Meta of={ImageCardStories} />
 
 # Image Card
 
-The image card component renders an image with optional tags at top and status bars below it. You can optionally pass multiple images in which will faciliate a popup gallery modal automatically.
+The image card component renders an image with optional tags at top and status bars below it. You can optionally pass multiple images in which will facilitate a popup gallery modal automatically.
 
-<Canvas>
-  <Story id="blocks-image-card--with-one-status-and-tag" />
-</Canvas>
+<Canvas of={ImageCardStories.withOneStatusAndTag} />
 
 <br />
+
 <br />
 
 ## Component Properties
 
-<ArgsTable of={ImageCard} />
+<ArgTypes of={ImageCard} />
 
 ## Theming Variables
 

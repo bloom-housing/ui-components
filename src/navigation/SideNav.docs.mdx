@@ -1,21 +1,23 @@
-import { Canvas, Story, ArgsTable } from "@storybook/addon-docs"
+import { ArgTypes, Canvas, Meta } from "@storybook/blocks"
 import { Swatch } from "../prototypes/Swatch"
 import { SideNav } from "./SideNav"
+import * as SideNavStories from './SideNav.stories';
+
+<Meta of={SideNavStories} />
 
 # Side Navigation
 
 The side nav component renders a list of navigation links, any of which can optionally have children links for a hierarchical list.
 
-<Canvas>
-  <Story id="navigation-side-nav--current" />
-</Canvas>
+<Canvas of={SideNavStories.Current} />
 
 <br />
+
 <br />
 
 ## Component Properties
 
-<ArgsTable of={SideNav} />
+<ArgTypes of={SideNav} />
 
 ## Theming Variables
 

@@ -2,16 +2,12 @@ import React from "react"
 import { BADGES } from "../../.storybook/constants"
 import { InfoCard } from "../blocks/InfoCard"
 import { ExpandableText } from "../actions/ExpandableText"
-import InfoCardDocumentation from "./InfoCard.docs.mdx"
 
 export default {
   title: "blocks/Info Card  🚩",
   decorators: [(storyFn: any) => <div style={{ padding: "1rem" }}>{storyFn()}</div>],
   id: "blocks/info-card",
   parameters: {
-    docs: {
-      page: InfoCardDocumentation,
-    },
     badges: [BADGES.GEN2],
   },
 }

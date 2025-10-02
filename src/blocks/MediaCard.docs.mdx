@@ -1,23 +1,22 @@
-import { Canvas, Story, ArgsTable } from "@storybook/addon-docs"
+import { ArgTypes, Canvas, Meta } from "@storybook/blocks"
 import { MediaCard } from "./MediaCard"
+import * as MediaCardStories from './MediaCard.stories';
+
+<Meta of={MediaCardStories} />
 
 # Media Card
 
 The media card component is used to describe the title and, optionally, subtitle of a corresponding piece of media. The header section and title of the media card is clickable and displays the media via the required handleClick prop.
 
-<Canvas>
-  <Story id="blocks-media-card--with-title-and-subtitle" />
-</Canvas>
-<Canvas>
-  <Story id="blocks-media-card--with-just-title" />
-</Canvas>
-<Canvas>
-  <Story id="blocks-media-card--with-custom-icon" />
-</Canvas>
+<Canvas of={MediaCardStories.withTitleAndSubtitle} />
+
+<Canvas of={MediaCardStories.withJustTitle} />
+
+<Canvas of={MediaCardStories.withCustomIcon} />
 
 ## Component Properties
 
-<ArgsTable of={MediaCard} />
+<ArgTypes of={MediaCard} />
 
 ## Theming Variables
 

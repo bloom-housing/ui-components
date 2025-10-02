@@ -3,30 +3,45 @@ const bloomTheme = require("../tailwind.config.js");
 const tailwindVars = require("../tailwind.tosass.js")(bloomTheme);
 
 module.exports = {
-  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  staticDirs: ['../public'],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-docs",
     "@storybook/addon-a11y",
-    "@storybook/addon-knobs",
     "@geometricpanda/storybook-addon-badges",
-    {
-      /**
-       * Fix Storybook issue with PostCSS@8
-       * @see https://github.com/storybookjs/storybook/issues/12668#issuecomment-773958085
-       */
-      name: "@storybook/addon-postcss",
+    "@storybook/addon-mdx-gfm",
+    "@storybook/addon-webpack5-compiler-babel",
+    "@chromatic-com/storybook",
+    "@storybook/addon-styling-webpack",
+    ({
+      name: "@storybook/addon-styling-webpack",
+
       options: {
-        postcssLoaderOptions: {
-          implementation: require("postcss"),
-        },
-      },
+        rules: [{
+      test: /\.css$/,
+      sideEffects: true,
+      use: [
+          require.resolve("style-loader"),
+          {
+              loader: require.resolve("css-loader"),
+              options: {
+                  
+                  importLoaders: 1,
+              },
+          },{
+    loader: require.resolve("postcss-loader"),
+    options: {
+    implementation: require.resolve("postcss"),
     },
+    },
+      ],
+    },],
+      }
+    })
   ],
-  core: {
-    builder: "webpack5",
-  },
+
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
@@ -70,6 +85,18 @@ module.exports = {
     });
 
     config.resolve.extensions.push(".ts", ".tsx");
+    config.resolve.alias = {
+      "/images": path.resolve(__dirname, "../public/images")
+    }
     return config;
   },
+
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {}
+  },
+
+  docs: {
+    autodocs: true
+  }
 };

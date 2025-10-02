@@ -1,15 +1,17 @@
-import { Canvas, Story, ArgsTable } from "@storybook/addon-docs"
+import { ArgTypes, Canvas, Meta } from "@storybook/blocks"
 import { Tag } from "./Tag"
+import * as TagStories from './Tag.stories';
+
+<Meta of={TagStories} />
 
 # Tag
 
 The tag component offers a simple way to present a content label or status indicator.
 
-<Canvas>
-  <Story id="text-tag--pill-colors" />
-</Canvas>
+<Canvas of={TagStories.pillColors} />
 
 <br />
+
 <br />
 
 ## Variants
@@ -20,29 +22,23 @@ There are several props which accept enums to adjust style type and size. For ex
 
 (Default, no prop required.)
 
-<Canvas>
-  <Story id="text-tag--standard" />
-</Canvas>
+<Canvas of={TagStories.standard} />
 
 ### Pill
 
 Set the `pillStyle` property to `true`.
 
-<Canvas>
-  <Story id="text-tag--pill" />
-</Canvas>
+<Canvas of={TagStories.pill} />
 
 ### Fill Container
 
 Set the `fillContainer` property to `true` for a block tag which spans the entire width of its container.
 
-<Canvas>
-  <Story id="text-tag--pill-listings" />
-</Canvas>
+<Canvas of={TagStories.pillListings} />
 
 ## Component Properties
 
-<ArgsTable of={Tag} />
+<ArgTypes of={Tag} />
 
 ## Theming Variables
 

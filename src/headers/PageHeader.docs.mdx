@@ -1,15 +1,17 @@
-import { Canvas, Story, ArgsTable } from "@storybook/addon-docs"
+import { ArgTypes, Canvas, Meta } from "@storybook/blocks"
 import { PageHeader } from "./PageHeader"
+import * as PageHeaderStories from './PageHeader.stories';
+
+<Meta of={PageHeaderStories} />
 
 # Page Header
 
-The page header component displays a title, with an optional subtitle and/or arbitary children elements.
+The page header component displays a title, with an optional subtitle and/or arbitrary children elements.
 
-<Canvas>
-  <Story id="headers-page-header--with-content" />
-</Canvas>
+<Canvas of={PageHeaderStories.withContent} />
 
 <br />
+
 <br />
 
 ## Variants
@@ -18,19 +20,15 @@ The page header component displays a title, with an optional subtitle and/or arb
 
 Set the `inverse` property to `true`.
 
-<Canvas>
-  <Story id="headers-page-header--inversed" />
-</Canvas>
+<Canvas of={PageHeaderStories.inversed} />
 
 ## Component Properties
 
-<ArgsTable of={PageHeader} />
+<ArgTypes of={PageHeader} />
 
 ## Theming Variables
 
-<Canvas>
-  <Story id="headers-page-header--style-overrides" />
-</Canvas>
+<Canvas of={PageHeaderStories.styleOverrides} />
 
 You can apply CSS variables to the `.page-header` selector to customize the appearance of the component.
 

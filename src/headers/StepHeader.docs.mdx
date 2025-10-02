@@ -1,27 +1,28 @@
-import { Canvas, Story, ArgsTable } from "@storybook/addon-docs"
+import { ArgTypes, Canvas, Meta } from "@storybook/blocks"
 import { StepHeader } from "./StepHeader"
+import * as StepHeaderStories from './StepHeader.stories';
+
+<Meta of={StepHeaderStories} />
 
 # Step Header
 
 The step header component is used to quickly describe progress in a multi-step process. It displays the current step number, the total steps in the process, and the name of the current step. The component also requires the step preposition to be passed in along with any custom css classes if the use case requires customization.
 
-<Canvas>
-  <Story id="headers-step-header--basic-dynamic" />
-</Canvas>
+<Canvas of={StepHeaderStories.basicDynamic} />
 
 ## Varying Process Lengths
 
-<Canvas>
-  <Story id="headers-step-header--final-step" />
-</Canvas>
+<Canvas of={StepHeaderStories.finalStep} />
 
-<Canvas>
-  <Story id="headers-step-header--double-digits" />
-</Canvas>
+<Canvas of={StepHeaderStories.doubleDigits} />
 
-<Canvas>
-  <Story id="headers-step-header--triple-digits" />
-</Canvas>
+<Canvas of={StepHeaderStories.tripleDigits} />
+
+## Component Properties
+
+<ArgTypes of={StepHeader} />
+
+## Theming Variables
 
 You can apply CSS variables to the `.step-header` selector to customize the appearance of the component.
 

@@ -1,5 +1,8 @@
-import { Canvas, Story, ArgsTable } from "@storybook/addon-docs"
+import { ArgTypes, Canvas, Meta } from "@storybook/blocks"
 import { ProgressNav } from "./ProgressNav"
+import * as ProgressNavStories from './ProgressNav.stories';
+
+<Meta of={ProgressNavStories} />
 
 # Progress Nav
 
@@ -7,17 +10,19 @@ The progress nav component is used to illustrate progress in a multi-step proces
 
 ## Dot Style
 
-<Canvas>
-  <Story id="navigation-progress-nav--default" />
-</Canvas>
+<Canvas of={ProgressNavStories.Default} />
 
 ## Bar Style
 
-<Canvas>
-  <Story id="navigation-progress-nav--bar-style" />
-</Canvas>
+<Canvas of={ProgressNavStories.barStyle} />
 
-You can apply CSS variables to the `.progrss-nav` selector to customize the appearance of the component.
+## Component Properties
+
+<ArgTypes of={ProgressNav} />
+
+## Theming Variables
+
+You can apply CSS variables to the `.progress-nav` selector to customize the appearance of the component.
 
 | Name                          | Type  | Description                                 | Default                        |
 | ----------------------------- | ----- | ------------------------------------------- | ------------------------------ |

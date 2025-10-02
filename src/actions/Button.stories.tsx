@@ -1,5 +1,5 @@
 import * as React from "react"
-import { withKnobs, text, select } from "@storybook/addon-knobs"
+import { useArgs } from "@storybook/preview-api"
 import { BADGES } from "../../.storybook/constants"
 import { Button } from "../actions/Button"
 import {
@@ -7,18 +7,37 @@ import {
   AppearanceSizeType,
   AppearanceStyleType,
 } from "../global/AppearanceTypes"
-import ButtonDocumentation from "./Button.docs.mdx"
 import { faArrowsRotate, faCoffee, faTable } from "@fortawesome/free-solid-svg-icons"
 
 export default {
   title: "Actions/Button 🚩",
-  id: "actions-button",
-  decorators: [(storyFn: any) => <div>{storyFn()}</div>, withKnobs],
+  decorators: [(storyFn: any) => <div>{storyFn()}</div>],
   parameters: {
-    docs: {
-      page: ButtonDocumentation,
-    },
     badges: [BADGES.GEN2],
+    controls: {
+      disable: true,
+    },
+  },
+  argTypes: {
+    label: {
+      control: "text",
+    },
+    styleType: {
+      options: AppearanceStyleType,
+      control: "select",
+    },
+    border: {
+      options: AppearanceBorderType,
+      control: "select",
+    },
+    icon: {
+      options: { arrowBack: "arrowBack", arrowForward: "arrowForward", coffee: faCoffee, rotate: faArrowsRotate, table: faTable },
+      control: "select",
+    },
+    iconPlacement: {
+      options: { left: "left", right: "right" },
+      control: "select",
+    },
   },
 }
 
@@ -26,63 +45,55 @@ const handleClick = (e: React.MouseEvent) => {
   alert(`You clicked me! Event: ${e.type}`)
 }
 
-const StyleTypeStory = { ...AppearanceStyleType, default: undefined }
-const BorderTypeStory = { ...AppearanceBorderType, default: undefined }
+export const standard = {
+  parameters: {
+    controls: {
+      disable: false,
+    },
+  },
+  args: {
+    label: "Hello Storybook",
+  },
+  render: (args: Record<string, any>) => {
+    return (
+      <>
+        <Button
+          styleType={args.styleType}
+          border={args.border}
+          icon={args.icon}
+          iconPlacement={args.iconPlacement}
+          onClick={handleClick}
+        >
+          {args.label}
+        </Button>
 
-export const standard = () => {
-  const styleSelect = select("Appearance Style", StyleTypeStory, undefined)
-  const borderSelect = select("Appearance Border", BorderTypeStory, undefined)
-  const iconSelect = select(
-    "Icon",
-    { arrowBack: "arrowBack", arrowForward: "arrowForward", default: undefined },
-    undefined
-  )
-  const iconPlacementSelect = select(
-    "Icon Placement",
-    { left: "left", right: "right", default: undefined },
-    undefined
-  )
-
-  return (
-    <>
-      <Button
-        styleType={styleSelect}
-        border={borderSelect}
-        icon={iconSelect}
-        iconPlacement={iconPlacementSelect}
-        onClick={handleClick}
-      >
-        {text("Label", "Hello Storybook")}
-      </Button>
-
-      <p className="mt-10">Try out different styles with the Knobs below.</p>
-    </>
-  )
+        <p className="mt-10">Try out different styles with the controls below.</p>
+      </>
+    )
+  },
 }
 
-export const withFontAwesomeIcon = () => {
-  const iconSelect = select("Icon", ["coffee", "rotate", "table"], "rotate")
+export const withFontAwesomeIcon = {
+  parameters: {
+    controls: {
+      disable: false,
+      include: ["icon"]
+    },
+  },
+  args: {
+    icon: faArrowsRotate,
+  },
+  render: (args: Record<string, any>) => {
+    return (
+      <>
+        <Button icon={args.icon} iconSize="medium" iconPlacement="left" onClick={handleClick}>
+          FontAwesome is awesome
+        </Button>
 
-  const iconsMap = {
-    coffee: faCoffee,
-    rotate: faArrowsRotate,
-    table: faTable,
-  }
-
-  return (
-    <>
-      <Button
-        icon={iconSelect ? iconsMap[iconSelect] : undefined}
-        iconSize="medium"
-        iconPlacement="left"
-        onClick={handleClick}
-      >
-        FontAwesome is awesome
-      </Button>
-
-      <p className="mt-10">Try out different icons with the Knobs below.</p>
-    </>
-  )
+        <p className="mt-10">Try out different icons with the controls below.</p>
+      </>
+    )
+  },
 }
 
 export const small = () => (

@@ -5,7 +5,6 @@ import MultiSelectField, {
   MultiSelectFieldItem,
 } from "./MultiSelectField"
 import { useForm } from "react-hook-form"
-import MultiSelectFieldDocumentation from "./MultiSelectField.docs.mdx"
 
 export default {
   title: "Forms/MultiSelect Field 🚩",
@@ -16,9 +15,6 @@ export default {
     ),
   ],
   parameters: {
-    docs: {
-      page: MultiSelectFieldDocumentation,
-    },
     badges: [BADGES.GEN2],
   },
 }
