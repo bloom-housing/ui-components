@@ -5,7 +5,7 @@ import { httpsRegex, urlRegex } from "../helpers/validators"
 
 export interface FieldProps {
   error?: boolean
-  errorMessage?: string | JSX.Element
+  errorMessage?: string | React.JSX.Element
   className?: string
   controlClassName?: string
   caps?: boolean
@@ -14,7 +14,7 @@ export interface FieldProps {
   type?: string
   id?: string
   name: string
-  note?: string | JSX.Element
+  note?: string | React.JSX.Element
   subNote?: string
   label?: string | React.ReactNode
   defaultValue?: string | number
@@ -35,7 +35,7 @@ export interface FieldProps {
   hidden?: boolean
   labelClassName?: string
   bordered?: boolean
-  postInputContent?: JSX.Element
+  postInputContent?: React.JSX.Element
 }
 
 const Field = (props: FieldProps) => {
