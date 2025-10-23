@@ -10,7 +10,7 @@ export default {
   title: "Forms/MultiSelect Field 🚩",
   id: "forms/multi-select-field",
   decorators: [
-    (storyFn: () => JSX.Element) => (
+    (storyFn: () => React.JSX.Element) => (
       <div style={{ padding: "30px", maxWidth: "600px" }}>{storyFn()}</div>
     ),
   ],

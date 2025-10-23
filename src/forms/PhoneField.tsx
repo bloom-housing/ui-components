@@ -18,7 +18,7 @@ export const PhoneField = (props: {
   control?: any
   disabled?: boolean
   required?: boolean
-  mask?: (args: any) => JSX.Element
+  mask?: (args: any) => React.JSX.Element
   dataTestId?: string
 }) => {
   const labelClasses = []

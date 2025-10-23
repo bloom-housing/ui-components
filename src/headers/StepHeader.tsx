@@ -18,7 +18,7 @@ const StepHeader = ({
   className,
   priority,
 }: StepHeaderProps) => {
-  const Tag = `h${priority || 2}` as keyof JSX.IntrinsicElements
+  const Tag = `h${priority || 2}` as keyof React.JSX.IntrinsicElements
 
   return (
     <Tag className={`step-header ${className || ""}`}>

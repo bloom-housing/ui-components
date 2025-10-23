@@ -343,7 +343,7 @@ const SiteHeader = (props: SiteHeaderProps) => {
     return (
       <>
         {props.menuLinks.map((menuLink, index) => {
-          let menuContent: JSX.Element
+          let menuContent: React.JSX.Element
           if (menuLink.subMenuLinks) {
             menuContent = getDesktopDropdown(menuLink.title, menuLink.subMenuLinks)
           } else {
