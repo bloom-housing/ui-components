@@ -28,13 +28,14 @@
   color: var(--number-color);
   min-width: var(--circle-mobile-size);
   height: var(--circle-mobile-size);
+  padding: 0rem var(--circle-x-padding);
+  margin-inline-end: var(--title-spacing);
+  border-radius: 50%;
+
   @media (min-width: $screen-md) {
     min-width: var(--circle-desktop-size);
     height: var(--circle-desktop-size);
   }
-  padding: 0rem var(--circle-x-padding);
-  margin-inline-end: var(--title-spacing);
-  border-radius: 50%;
 }
 
 .step-header__title {

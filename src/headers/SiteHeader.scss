@@ -253,6 +253,10 @@
   max-width: var(--logo-max-width);
   box-shadow: var(--logo-box-shadow);
 
+  background-color: var(--logo-background-color);
+  border-bottom: 0;
+  display: flex;
+
   @media (min-width: $screen-md) {
     height: var(--logo-desktop-height);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
@@ -268,10 +272,6 @@
   @media (min-width: $screen-print) {
     margin-top: 0;
   }
-
-  background-color: var(--logo-background-color);
-  border-bottom: 0;
-  display: flex;
 }
 
 @media print {
@@ -552,14 +552,14 @@
 .site-header__notice {
   width: 100%;
   background-color: var(--bloom-color-primary);
+  text-align: left;
+  color: var(--bloom-color-white);
+  display: var(--notice-display-mobile);
 
   @media (min-width: $screen-md) {
     text-align: right;
     display: var(--notice-display-desktop);
   }
-  text-align: left;
-  color: var(--bloom-color-white);
-  display: var(--notice-display-mobile);
 }
 
 .site-header__notice-text {
