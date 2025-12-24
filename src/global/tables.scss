@@ -155,6 +155,9 @@ table {
         @apply text-gray-700;
       }
 
+      width: 100%;
+      @apply text-right;
+      @apply pl-2;
       @screen md {
         @apply flex;
         @apply flex-col;
@@ -162,9 +165,6 @@ table {
         @apply text-left;
         @apply w-full;
       }
-      width: 100%;
-      @apply text-right;
-      @apply pl-2;
 
       .stacked-table-cell {
         @apply font-semibold;
@@ -193,10 +193,10 @@ table {
       @apply px-0;
       @apply text-base;
       @apply text-gray-700;
+      @apply py-2;
       @screen md {
         @apply py-3;
       }
-      @apply py-2;
     }
 
     thead {
@@ -208,10 +208,10 @@ table {
       .stacked-table-cell-container {
         @apply text-right;
         @apply pr-0;
+        width: 100%;
         @screen md {
           width: auto;
         }
-        width: 100%;
       }
     }
   }
@@ -238,12 +238,13 @@ table {
       @apply px-0;
       @apply pb-0;
       font-size: var(--bloom-font-size-sm);
+      @apply pt-0;
+      @apply pb-2;
       @screen md {
         padding-top: var(--bloom-s2);
         padding-bottom: var(--bloom-s2);
       }
-      @apply pt-0;
-      @apply pb-2;
+
       letter-spacing: normal;
     }
 
@@ -295,12 +296,12 @@ table {
         @apply py-0;
       }
       .stacked-table-cell {
-        @screen md {
-          @apply text-base;
-        }
         @apply text-xs;
         @apply text-black;
         @apply font-normal;
+        @screen md {
+          @apply text-base;
+        }
       }
       .stacked-table-subtext {
         @apply pl-0;
@@ -318,10 +319,10 @@ table {
     tr {
       td:first-child {
         .stacked-table-cell:first-child {
+          display: none;
           @screen md {
             display: block;
           }
-          display: none;
         }
       }
     }
