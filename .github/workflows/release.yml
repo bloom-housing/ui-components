@@ -6,7 +6,7 @@ on:
       - alpha
 permissions:
   id-token: write
-  contents: read
+  contents: write
 jobs:
   release:
     name: Release
