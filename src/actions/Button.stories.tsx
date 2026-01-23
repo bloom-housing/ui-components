@@ -1,5 +1,4 @@
 import * as React from "react"
-import { useArgs } from "@storybook/preview-api"
 import { BADGES } from "../../.storybook/constants"
 import { Button } from "../actions/Button"
 import {
@@ -31,7 +30,13 @@ export default {
       control: "select",
     },
     icon: {
-      options: { arrowBack: "arrowBack", arrowForward: "arrowForward", coffee: faCoffee, rotate: faArrowsRotate, table: faTable },
+      options: {
+        arrowBack: "arrowBack",
+        arrowForward: "arrowForward",
+        coffee: faCoffee,
+        rotate: faArrowsRotate,
+        table: faTable,
+      },
       control: "select",
     },
     iconPlacement: {
@@ -77,7 +82,7 @@ export const withFontAwesomeIcon = {
   parameters: {
     controls: {
       disable: false,
-      include: ["icon"]
+      include: ["icon"],
     },
   },
   args: {

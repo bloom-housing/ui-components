@@ -5,15 +5,12 @@ const tailwindVars = require("../tailwind.tosass.js")(bloomTheme);
 module.exports = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   staticDirs: ['../public'],
+
   addons: [
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
     "@storybook/addon-docs",
     "@storybook/addon-a11y",
-    "@geometricpanda/storybook-addon-badges",
-    "@storybook/addon-mdx-gfm",
     "@storybook/addon-webpack5-compiler-babel",
-    "@chromatic-com/storybook",
     "@storybook/addon-styling-webpack",
     ({
       name: "@storybook/addon-styling-webpack",
@@ -94,9 +91,5 @@ module.exports = {
   framework: {
     name: "@storybook/react-webpack5",
     options: {}
-  },
-
-  docs: {
-    autodocs: true
   }
 };
