@@ -1,10 +1,10 @@
 const path = require("path")
-const bloomTheme = require("../tailwind.config.js");
-const tailwindVars = require("../tailwind.tosass.js")(bloomTheme);
+const bloomTheme = require("../tailwind.config.js")
+const tailwindVars = require("../tailwind.tosass.js")(bloomTheme)
 
 module.exports = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
-  staticDirs: ['../public'],
+  staticDirs: ["../public"],
 
   addons: [
     "@storybook/addon-links",
@@ -12,31 +12,33 @@ module.exports = {
     "@storybook/addon-a11y",
     "@storybook/addon-webpack5-compiler-babel",
     "@storybook/addon-styling-webpack",
-    ({
+    {
       name: "@storybook/addon-styling-webpack",
 
       options: {
-        rules: [{
-      test: /\.css$/,
-      sideEffects: true,
-      use: [
-          require.resolve("style-loader"),
+        rules: [
           {
-              loader: require.resolve("css-loader"),
-              options: {
-                  
+            test: /\.css$/,
+            sideEffects: true,
+            use: [
+              require.resolve("style-loader"),
+              {
+                loader: require.resolve("css-loader"),
+                options: {
                   importLoaders: 1,
+                },
               },
-          },{
-    loader: require.resolve("postcss-loader"),
-    options: {
-    implementation: require.resolve("postcss"),
+              {
+                loader: require.resolve("postcss-loader"),
+                options: {
+                  implementation: require.resolve("postcss"),
+                },
+              },
+            ],
+          },
+        ],
+      },
     },
-    },
-      ],
-    },],
-      }
-    })
   ],
 
   webpackFinal: async (config, { configType }) => {
@@ -67,7 +69,7 @@ module.exports = {
         },
       ],
       include: path.resolve(__dirname, "../"),
-    });
+    })
 
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
@@ -79,17 +81,17 @@ module.exports = {
           },
         },
       ],
-    });
+    })
 
-    config.resolve.extensions.push(".ts", ".tsx");
+    config.resolve.extensions.push(".ts", ".tsx")
     config.resolve.alias = {
-      "/images": path.resolve(__dirname, "../public/images")
+      "/images": path.resolve(__dirname, "../public/images"),
     }
-    return config;
+    return config
   },
 
   framework: {
     name: "@storybook/react-webpack5",
-    options: {}
-  }
-};
+    options: {},
+  },
+}
