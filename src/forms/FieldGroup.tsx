@@ -63,8 +63,8 @@ const FieldGroup = ({
 }: FieldGroupProps) => {
   // Always default align two-option radio groups side by side
   if (fields?.length === 2) {
-    fieldGroupClassName = `${fieldGroupClassName || ""} flex`
-    fieldClassName = `${fieldClassName || ""} flex-initial mr-4`
+    fieldGroupClassName = `flex ${fieldGroupClassName || ""} `
+    fieldClassName = `flex-initial mr-4 ${fieldClassName || ""} `
   }
 
   const [checkedInputs, setCheckedInputs] = useState<string[]>([])
@@ -170,9 +170,9 @@ const FieldGroup = ({
       )}
       {groupNote && <p className="field-note mb-4">{groupNote}</p>}
 
-      <div className={`field ${error ? "error" : ""} ${fieldGroupClassName || ""} mb-0`}>
+      <div className={`field ${error ? "error" : ""} mb-0 ${fieldGroupClassName || ""}`}>
         {fields?.map((item) => (
-          <div className={`field ${fieldClassName || ""} mb-1`} key={item.id}>
+          <div className={`field mb-1 ${fieldClassName || ""}`} key={item.id}>
             {getInputSet(item)}
             {item.subFields && checkedInputs.indexOf(item.label?.toString() || "") >= 0 && (
               <div className={"ml-8"} key={`${item.value || ""}-subfields`}>
