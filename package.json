@@ -29,7 +29,7 @@
     "index.ts"
   ],
   "scripts": {
-    "build-storybook": "storybook build -c .storybook ./public",
+    "build-storybook": "storybook build -c .storybook",
     "start": "storybook dev -p 40791",
     "build": "tsc",
     "test": "jest -w 1",
