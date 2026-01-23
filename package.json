@@ -162,5 +162,10 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --max-warnings 0"
+  },
+  "resolutions": {
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "@fortawesome/react-fontawesome": "3.1.0"
   }
 }
