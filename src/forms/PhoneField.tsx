@@ -38,13 +38,14 @@ export const PhoneField = (props: {
     defaultValue: props.defaultValue || "",
     disabled: props.disabled,
     control: props.control,
+    "aria-describedby": `${props.id ? `${props.id}-error` : ""} ${props.subNote ? `${props.id}-sub-note` : ""}`,
     rules: {
       validate: {
         inputTel: (v: string) => {
           if (!props.required && !v?.length) return true
 
           const dropdown = document.querySelector<HTMLInputElement>(
-            "#" + props.name.replace(".", "\\.")
+            "#" + props.name.replace(".", "\\."),
           )
           if (!dropdown || dropdown.disabled) return true
           return v?.match(/\d/g)?.length == 10 ? true : false
@@ -67,7 +68,11 @@ export const PhoneField = (props: {
           <Controller {...controllerProps} as={PhoneMask} />
         )}
       </div>
-      {props.subNote && <p className="field-sub-note">{props.subNote}</p>}
+      {props.subNote && (
+        <p id={`${props.id || ""}-sub-note`} className="field-sub-note">
+          {props.subNote}
+        </p>
+      )}
       <ErrorMessage id={`${props.id || ""}-error`} error={props.error}>
         {props.errorMessage}
       </ErrorMessage>
