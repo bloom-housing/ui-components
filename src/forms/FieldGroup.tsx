@@ -164,7 +164,7 @@ const FieldGroup = ({
     )
   }
   return (
-    <fieldset aria-describedby={`${name}-group-sub-note ${name}-error`} data-testid={dataTestId}>
+    <fieldset aria-describedby={`${name}-group-sub-note ${name}-error`}>
       {groupLabel && (
         <legend className={`text__caps-spaced ${error ? "text-alert" : ""}`}>{groupLabel}</legend>
       )}
