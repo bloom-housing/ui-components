@@ -34,6 +34,7 @@ export interface DOBFieldProps {
     year?: string
     yearPlaceholder?: string
   }
+  ariaDescribedBy?: string
 }
 
 const DOBField = (props: DOBFieldProps) => {
@@ -61,7 +62,7 @@ const DOBField = (props: DOBFieldProps) => {
   if (hasError) labelClasses.push("text-alert")
 
   return (
-    <fieldset id={id}>
+    <fieldset id={id} aria-describedby={`${id || ""}-error ${props.ariaDescribedBy || ""}`}>
       <legend className={labelClasses.join(" ")}>{props.label}</legend>
 
       <div className="field-group--date">
@@ -135,7 +136,9 @@ const DOBField = (props: DOBFieldProps) => {
       {hasError && (
         <div className="field error">
           <span id={`${id || ""}-error`} className="error-message">
-            {errorMessage ? errorMessage : props.strings?.dateError ?? t("errors.dateOfBirthError")}
+            {errorMessage
+              ? errorMessage
+              : (props.strings?.dateError ?? t("errors.dateOfBirthError"))}
           </span>
         </div>
       )}

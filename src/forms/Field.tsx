@@ -73,7 +73,7 @@ const Field = (props: FieldProps) => {
       } else {
         props.setValue(
           props.name,
-          numericIncome.toLocaleString("en-US", { minimumFractionDigits: 2 })
+          numericIncome.toLocaleString("en-US", { minimumFractionDigits: 2 }),
         )
       }
     }
@@ -170,7 +170,11 @@ const Field = (props: FieldProps) => {
 
   let note = <></>
   if (props.note) {
-    note = <p className="field-note mb-4">{props.note}</p>
+    note = (
+      <p id={`${idOrName}-note`} className="field-note mb-4">
+        {props.note}
+      </p>
+    )
   }
 
   return (
@@ -180,7 +184,7 @@ const Field = (props: FieldProps) => {
       <div className={controlClasses.join(" ")}>
         {props.prepend && <span className="prepend">{props.prepend}</span>}
         <input
-          aria-describedby={props.describedBy ? props.describedBy : `${idOrName}-error`}
+          aria-describedby={`${props.describedBy ? props.describedBy : ""}  ${`${idOrName}-error ${idOrName}-note ${idOrName}-sub-note`}`}
           aria-invalid={!!props.error || false}
           aria-label={props.ariaLabel}
           className="input"
@@ -201,7 +205,11 @@ const Field = (props: FieldProps) => {
         {props.postInputContent}
         {isRadioOrCheckbox && label}
       </div>
-      {props.subNote && <p className="field-sub-note">{props.subNote}</p>}
+      {props.subNote && (
+        <p id={`${idOrName}-sub-note`} className="field-sub-note">
+          {props.subNote}
+        </p>
+      )}
       {props.errorMessage ? (
         <ErrorMessage id={`${idOrName}-error`} error={props.error}>
           {props.errorMessage}
