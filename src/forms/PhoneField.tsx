@@ -38,14 +38,17 @@ export const PhoneField = (props: {
     defaultValue: props.defaultValue || "",
     disabled: props.disabled,
     control: props.control,
-    "aria-describedby": `${props.id ? `${props.id}-error` : ""} ${props.subNote ? `${props.id}-sub-note` : ""}`,
+    "aria-describedby": `${props.id ? `${props.id}-error` : ""} ${
+      props.subNote && props.id ? `${props.id}-sub-note` : ""
+    }`,
+    "aria-invalid": !!props.error,
     rules: {
       validate: {
         inputTel: (v: string) => {
           if (!props.required && !v?.length) return true
 
           const dropdown = document.querySelector<HTMLInputElement>(
-            "#" + props.name.replace(".", "\\."),
+            "#" + props.name.replace(".", "\\.")
           )
           if (!dropdown || dropdown.disabled) return true
           return v?.match(/\d/g)?.length == 10 ? true : false
@@ -57,7 +60,7 @@ export const PhoneField = (props: {
   return (
     <div className={"field " + (props.error ? "error" : "")}>
       {props.label && (
-        <label id={"phone-label"} className={labelClasses.join(" ")}>
+        <label id={"phone-label"} className={labelClasses.join(" ")} htmlFor={props.id}>
           {props.label}
         </label>
       )}

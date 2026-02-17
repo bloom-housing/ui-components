@@ -73,7 +73,7 @@ const Field = (props: FieldProps) => {
       } else {
         props.setValue(
           props.name,
-          numericIncome.toLocaleString("en-US", { minimumFractionDigits: 2 }),
+          numericIncome.toLocaleString("en-US", { minimumFractionDigits: 2 })
         )
       }
     }
@@ -184,7 +184,9 @@ const Field = (props: FieldProps) => {
       <div className={controlClasses.join(" ")}>
         {props.prepend && <span className="prepend">{props.prepend}</span>}
         <input
-          aria-describedby={`${props.describedBy ? props.describedBy : ""}  ${`${idOrName}-error ${idOrName}-note ${idOrName}-sub-note`}`}
+          aria-describedby={`${
+            props.describedBy ? props.describedBy : ""
+          }  ${`${idOrName}-error ${idOrName}-note ${idOrName}-sub-note`}`}
           aria-invalid={!!props.error || false}
           aria-label={props.ariaLabel}
           className="input"

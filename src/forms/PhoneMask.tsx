@@ -20,10 +20,12 @@ export const PhoneMask = React.forwardRef((props: any, ref: any) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onChange={(e: any) => {
           e.persist()
-          onChange(e)
+          onChange && onChange(e)
         }}
         ref={ref}
         aria-labelledby={"phone-label"}
+        aria-describedby={props["aria-describedby"]}
+        aria-invalid={props["aria-invalid"]}
       />
     </>
   )

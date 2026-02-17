@@ -247,6 +247,18 @@
       }
     }
 
+    input[type="radio"]:focus + label::before {
+      background-color: none;
+      box-shadow: 0 0 0 1px white, 0 0 0 3px var(--bloom-color-alert),
+        0 0 4px 5px var(--bloom-color-accent-cool);
+    }
+
+    input[type="checkbox"]:focus + label::before {
+      background-color: none;
+      box-shadow: 0 0 0 1px white, 0 0 0 3px var(--bloom-color-alert),
+        0 0 4px 5px var(--bloom-color-accent-cool);
+    }
+
     input[type="radio"] + label::before {
       box-shadow: 0 0 0 2px #fff, 0 0 0 4px $tailwind-alert;
     }
