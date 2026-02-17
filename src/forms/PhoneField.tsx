@@ -60,7 +60,7 @@ export const PhoneField = (props: {
   return (
     <div className={"field " + (props.error ? "error" : "")}>
       {props.label && (
-        <label id={"phone-label"} className={labelClasses.join(" ")} htmlFor={props.id}>
+        <label className={labelClasses.join(" ")} htmlFor={props.id}>
           {props.label}
         </label>
       )}
