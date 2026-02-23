@@ -134,7 +134,7 @@ const FieldGroup = ({
         }
       })
     },
-    [],
+    []
   )
 
   useEffect(() => {
@@ -164,7 +164,11 @@ const FieldGroup = ({
     )
   }
   return (
-    <fieldset aria-describedby={`${name}-group-sub-note ${name}-error`}>
+    <fieldset
+      aria-describedby={`${groupSubNote ? `${name}-group-sub-note` : ""} ${
+        error ? `${name}-error` : ""
+      }`}
+    >
       {groupLabel && (
         <legend className={`text__caps-spaced ${error ? "text-alert" : ""}`}>{groupLabel}</legend>
       )}
