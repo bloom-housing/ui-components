@@ -74,15 +74,23 @@ const getDeleteButton = () => {
 
 export const preferenceData = [
   {
-    name: { content: "Live or Work in City of Hayward" },
+    name: { content: "Bart Simpson" },
     action: { content: getDeleteButton() },
   },
   {
-    name: { content: "Displacee Tenant" },
+    name: { content: "Homer Simpson" },
     action: { content: getDeleteButton() },
   },
   {
-    name: { content: "Veteran Status" },
+    name: { content: "Lisa Simpson" },
+    action: { content: getDeleteButton() },
+  },
+  {
+    name: { content: "Marge Simpson" },
+    action: { content: getDeleteButton() },
+  },
+  {
+    name: { content: "Maggie Simpson" },
     action: { content: getDeleteButton() },
   },
 ]

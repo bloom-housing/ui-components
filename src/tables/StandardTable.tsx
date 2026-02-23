@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react"
-import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd"
-import { nanoid } from "nanoid"
+import { DragDropProvider } from "@dnd-kit/react"
+import { isSortable, useSortable } from "@dnd-kit/react/sortable"
 import { faGripLines } from "@fortawesome/free-solid-svg-icons"
+import { nanoid } from "nanoid"
 import { getTranslationWithArguments } from "../helpers/getTranslationWithArguments"
 import { Icon, IconFillColors } from "../icons/Icon"
 import { t } from "../helpers/translator"
@@ -21,6 +22,26 @@ export const Row = (props: { id?: string; className?: string; children: React.Re
     {props.children}
   </tr>
 )
+
+export const DraggableRow = (props: {
+  rowKey: string
+  index: number
+  children: React.ReactNode
+}) => {
+  const [element, setElement] = useState<Element | null>(null)
+
+  useSortable({
+    id: props.rowKey,
+    index: props.index,
+    element,
+  })
+
+  return (
+    <tr key={props.rowKey} id={props.rowKey} ref={setElement}>
+      {props.children}
+    </tr>
+  )
+}
 
 export const HeaderCell = (props: { children?: React.ReactNode; className?: string }) => (
   <th className={props.className}>
@@ -109,7 +130,7 @@ const headerClassName = (header: string | TableHeadersOptions) => {
 export const StandardTable = (props: StandardTableProps) => {
   const { headers = {}, cellClassName } = props
 
-  const [tableData, setTableData] = useState<StandardTableData>()
+  const [tableData, setTableData] = useState<StandardTableData | undefined>(props.data)
 
   const headerLabels = Object.values(headers)?.map((header, index) => {
     const uniqKey = process.env.NODE_ENV === "test" ? `header-${index}` : nanoid()
@@ -203,21 +224,9 @@ export const StandardTable = (props: StandardTableProps) => {
     return (
       <React.Fragment key={rowKey}>
         {props.draggable ? (
-          <Draggable draggableId={rowKey} index={dataIndex} key={rowKey}>
-            {(provided, snapshot) => (
-              <tr
-                key={rowKey}
-                id={rowKey}
-                {...provided.draggableProps}
-                {...provided.dragHandleProps}
-                // eslint-disable-next-line @typescript-eslint/unbound-method
-                ref={provided.innerRef}
-                className={snapshot.isDragging ? "table__is-dragging" : ""}
-              >
-                {cols}
-              </tr>
-            )}
-          </Draggable>
+          <DraggableRow rowKey={rowKey} index={dataIndex}>
+            {cols}
+          </DraggableRow>
         ) : (
           <tr id={rowKey} key={rowKey} className={rowClass ? rowClass : ""}>
             {cols}
@@ -235,29 +244,6 @@ export const StandardTable = (props: StandardTableProps) => {
     tableClasses.push(props.tableClassName)
   }
 
-  const reorder = (list: StandardTableData | undefined, startIndex: number, endIndex: number) => {
-    if (!list) return
-
-    const result = Array.from(list)
-    const [removed] = result.splice(startIndex, 1)
-    result.splice(endIndex, 0, removed)
-    return result
-  }
-
-  const onDragEnd = (result: DropResult) => {
-    if (!result.destination) {
-      return
-    }
-    if (result.destination.index === result.source.index) {
-      return
-    }
-    const reorderedTableData = reorder(tableData, result.source.index, result.destination.index)
-    setTableData(reorderedTableData)
-    if (props.setData && reorderedTableData) {
-      props.setData(reorderedTableData)
-    }
-  }
-
   return (
     <div style={{ overflowX: "auto" }} className={props.className}>
       <table id={props.id} aria-label={props.ariaLabel} className={tableClasses.join(" ")}>
@@ -265,17 +251,29 @@ export const StandardTable = (props: StandardTableProps) => {
           <tr>{headerLabels}</tr>
         </thead>
         {props.draggable ? (
-          <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable droppableId="standard-table">
-              {(provided) => (
-                // eslint-disable-next-line @typescript-eslint/unbound-method
-                <tbody {...provided.droppableProps} ref={provided.innerRef}>
-                  {body}
-                  {provided.placeholder}
-                </tbody>
-              )}
-            </Droppable>
-          </DragDropContext>
+          <DragDropProvider
+            onDragEnd={(event) => {
+              const { source } = event.operation
+
+              if (isSortable(source)) {
+                const { initialIndex, index } = source
+                if (initialIndex !== index) {
+                  if (tableData) {
+                    const newItems = [...(tableData || [])]
+                    const [removed] = newItems.splice(initialIndex, 1)
+                    newItems.splice(index, 0, removed)
+
+                    setTableData(newItems)
+                    if (props.setData) {
+                      props.setData(newItems)
+                    }
+                  }
+                }
+              }
+            }}
+          >
+            <tbody>{body}</tbody>
+          </DragDropProvider>
         ) : (
           <tbody>{body}</tbody>
         )}
