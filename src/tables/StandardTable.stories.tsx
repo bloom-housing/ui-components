@@ -76,22 +76,27 @@ export const preferenceData = [
   {
     name: { content: "Bart Simpson" },
     action: { content: getDeleteButton() },
+    id: { content: "BartSimpson" },
   },
   {
     name: { content: "Homer Simpson" },
     action: { content: getDeleteButton() },
+    id: { content: "HomerSimpson" },
   },
   {
     name: { content: "Lisa Simpson" },
     action: { content: getDeleteButton() },
+    id: { content: "LisaSimpson" },
   },
   {
     name: { content: "Marge Simpson" },
     action: { content: getDeleteButton() },
+    id: { content: "MargeSimpson" },
   },
   {
     name: { content: "Maggie Simpson" },
     action: { content: getDeleteButton() },
+    id: { content: "MaggieSimpson" },
   },
 ]
 

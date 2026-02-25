@@ -169,7 +169,7 @@ export const StandardTable = (props: StandardTableProps) => {
 
     let rowClass: string | undefined = ""
     const cols = Object.keys(headers)?.map((colKey, colIndex) => {
-      const uniqKey = process.env.NODE_ENV === "test" ? `standardcol-${colIndex}` : nanoid()
+      const uniqKey = `${rowKey}-${colIndex}`
       const cell = row[colKey]?.content
       rowClass = row[colKey]?.rowClass ? row[colKey].rowClass : ""
 
@@ -197,7 +197,7 @@ export const StandardTable = (props: StandardTableProps) => {
         0,
         0,
         <Cell
-          key={`${dataIndex}-order-draggable`}
+          key={`${rowKey}-order-draggable`}
           headerLabel={props.strings?.sortString ?? t("t.sort")}
           className={`pl-5 ${cellClassName || ""}`}
         >
@@ -208,7 +208,7 @@ export const StandardTable = (props: StandardTableProps) => {
         0,
         0,
         <Cell
-          key={`${dataIndex}-sort-draggable`}
+          key={`${rowKey}-sort-draggable`}
           headerLabel={props.strings?.sortString ?? t("t.sort")}
           className={`table__draggable-cell pl-7`}
         >
