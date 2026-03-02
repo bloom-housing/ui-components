@@ -1,5 +1,6 @@
 import * as React from "react"
 import "./StepHeader.scss"
+import { HeadingTag } from "../text/Heading"
 
 export interface StepHeaderProps {
   currentStep: number
@@ -18,7 +19,8 @@ const StepHeader = ({
   className,
   priority,
 }: StepHeaderProps) => {
-  const Tag = `h${priority || 2}` as keyof React.JSX.IntrinsicElements
+  const limitedPriority = priority && priority >= 1 && priority <= 6 ? priority : 2
+  const Tag = `h${limitedPriority}` as HeadingTag
 
   return (
     <Tag className={`step-header ${className || ""}`}>

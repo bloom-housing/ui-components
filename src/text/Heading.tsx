@@ -19,9 +19,11 @@ const HeaderStyleMap = {
   capsWeighted: "text__caps-weighted",
 }
 
+export type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+
 const Heading = (props: HeadingProps) => {
   const priority = props.priority && props.priority >= 1 && props.priority <= 6 ? props.priority : 1
-  const Tag = `h${priority}` as keyof React.JSX.IntrinsicElements
+  const Tag = `h${priority}` as HeadingTag
   const classNames = []
   if (props.styleType) classNames.push(HeaderStyleMap[props.styleType])
   if (props.className) classNames.push(props.className)
