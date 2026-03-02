@@ -10,6 +10,8 @@ export interface StepHeaderProps {
   priority?: number
 }
 
+type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+
 const StepHeader = ({
   currentStep,
   totalSteps,
@@ -18,7 +20,8 @@ const StepHeader = ({
   className,
   priority,
 }: StepHeaderProps) => {
-  const Tag = `h${priority || 2}` as keyof React.JSX.IntrinsicElements
+  const limitedPriority = priority && priority >= 1 && priority <= 6 ? priority : 2
+  const Tag = `h${limitedPriority}` as HeadingTag
 
   return (
     <Tag className={`step-header ${className || ""}`}>
