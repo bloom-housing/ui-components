@@ -19,7 +19,7 @@ const HeaderStyleMap = {
   capsWeighted: "text__caps-weighted",
 }
 
-type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+export type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 
 const Heading = (props: HeadingProps) => {
   const priority = props.priority && props.priority >= 1 && props.priority <= 6 ? props.priority : 1

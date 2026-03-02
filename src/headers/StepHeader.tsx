@@ -1,5 +1,6 @@
 import * as React from "react"
 import "./StepHeader.scss"
+import { HeadingTag } from "../text/Heading"
 
 export interface StepHeaderProps {
   currentStep: number
@@ -9,8 +10,6 @@ export interface StepHeaderProps {
   className?: string
   priority?: number
 }
-
-type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 
 const StepHeader = ({
   currentStep,
