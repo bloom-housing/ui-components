@@ -36,6 +36,7 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
   const autocompleteRef = useRef<HTMLInputElement>(null)
 
   const { name, register, setValue } = props
+  const inputId = props.id || name
   register({ name }, props.validation)
 
   useEffect(() => {
@@ -71,11 +72,11 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
     const labelClasses = ["label"]
 
     return (
-      <label className={labelClasses.join(" ")} htmlFor={props.id}>
+      <label className={labelClasses.join(" ")} htmlFor={inputId}>
         {props.label}
       </label>
     )
-  }, [props.id, props.label])
+  }, [inputId, props.label])
 
   return (
     <div className="field multi-select-field">
@@ -83,7 +84,7 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
       <div className="control" data-testid={props.dataTestId}>
         <Icon symbol="search" size="medium" />
         <input
-          id={props.id}
+          id={inputId}
           ref={autocompleteRef}
           className="input"
           placeholder={props.placeholder}

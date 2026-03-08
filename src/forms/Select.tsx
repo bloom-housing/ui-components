@@ -50,18 +50,22 @@ export const Select = ({
   subNote,
   dataTestId,
 }: SelectProps) => {
+  const idOrName = id || name
+
   return (
     <div className={`field ${error ? "error" : ""}`}>
-      <label className={labelClassName} htmlFor={id}>
+      <label className={labelClassName} htmlFor={idOrName}>
         {label}
       </label>
       <div className={controlClassName}>
         <select
           className="input"
-          id={id || name}
+          id={idOrName}
           name={name}
           data-testid={dataTestId}
-          aria-describedby={describedBy ? describedBy : `${id || name}-error`}
+          aria-describedby={`${describedBy ? describedBy : ""}  ${
+            error ? `${idOrName}-error` : ""
+          } ${subNote ? `${idOrName}-sub-note` : ""}`}
           aria-invalid={!!error || false}
           ref={register && register(validation)}
           disabled={disabled}
@@ -76,13 +80,17 @@ export const Select = ({
           <FormOptions options={options} keyPrefix={keyPrefix} />
         </select>
       </div>
-      {subNote && <p className="field-sub-note">{subNote}</p>}
+      {subNote && (
+        <p className="field-sub-note" id={`${idOrName}-sub-note`}>
+          {subNote}
+        </p>
+      )}
       {error && errorMessage ? (
-        <ErrorMessage id={`${id || name}-error`} error={error}>
+        <ErrorMessage id={`${idOrName}-error`} error={error}>
           {errorMessage}
         </ErrorMessage>
       ) : (
-        <span id={`${id || name}-error`}></span>
+        <span id={`${idOrName}-error`}></span>
       )}
     </div>
   )

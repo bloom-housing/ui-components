@@ -4,6 +4,7 @@ import MaskedInput from "react-text-mask"
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const PhoneMask = React.forwardRef((props: any, ref: any) => {
   const { value, onChange, name, disabled, placeholder } = props
+  const inputId = props.id ?? name
 
   return (
     <>
@@ -13,7 +14,7 @@ export const PhoneMask = React.forwardRef((props: any, ref: any) => {
         type="tel"
         placeholder={placeholder ?? ""}
         guide={false}
-        id={name}
+        id={inputId}
         value={value}
         name={name}
         disabled={disabled}
@@ -23,7 +24,6 @@ export const PhoneMask = React.forwardRef((props: any, ref: any) => {
           onChange && onChange(e)
         }}
         ref={ref}
-        aria-labelledby={"phone-label"}
         aria-describedby={props["aria-describedby"]}
         aria-invalid={props["aria-invalid"]}
       />

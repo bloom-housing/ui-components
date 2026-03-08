@@ -21,6 +21,7 @@ export const PhoneField = (props: {
   mask?: (args: any) => React.JSX.Element
   dataTestId?: string
 }) => {
+  const idOrName = props.id || props.name
   const labelClasses = []
   if (props.caps) labelClasses.push("text__caps-spaced")
   if (props.readerOnly) labelClasses.push("sr-only")
@@ -32,14 +33,14 @@ export const PhoneField = (props: {
    */
   const controllerProps = {
     className: "input",
-    id: props.id,
+    id: idOrName,
     name: props.name,
     placeholder: props.placeholder,
     defaultValue: props.defaultValue || "",
     disabled: props.disabled,
     control: props.control,
-    "aria-describedby": `${props.id ? `${props.id}-error` : ""} ${
-      props.subNote && props.id ? `${props.id}-sub-note` : ""
+    "aria-describedby": `${props.error ? `${idOrName}-error` : ""} ${
+      props.subNote ? `${idOrName}-sub-note` : ""
     }`,
     "aria-invalid": !!props.error,
     rules: {
@@ -60,7 +61,7 @@ export const PhoneField = (props: {
   return (
     <div className={"field " + (props.error ? "error" : "")}>
       {props.label && (
-        <label className={labelClasses.join(" ")} htmlFor={props.id}>
+        <label className={labelClasses.join(" ")} htmlFor={idOrName}>
           {props.label}
         </label>
       )}
@@ -72,11 +73,11 @@ export const PhoneField = (props: {
         )}
       </div>
       {props.subNote && (
-        <p id={`${props.id || ""}-sub-note`} className="field-sub-note">
+        <p id={`${idOrName}-sub-note`} className="field-sub-note">
           {props.subNote}
         </p>
       )}
-      <ErrorMessage id={`${props.id || ""}-error`} error={props.error}>
+      <ErrorMessage id={`${idOrName}-error`} error={props.error}>
         {props.errorMessage}
       </ErrorMessage>
     </div>
