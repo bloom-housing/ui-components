@@ -157,8 +157,9 @@ export * from "./src/tables/GroupedTable"
 export * from "./src/tables/MinimalTable"
 export * from "./src/tables/StackedTable"
 export * from "./src/tables/CategoryTable"
-export * from "./src/tables/AgTable"
-export * from "./src/tables/AgPagination"
+/* AgTable/AgPagination (ag-grid)
+   Use: import { AgTable, useAgTable, AgPagination } from "@bloom-housing/ui-components/ag-table"
+*/
 
 /* Text */
 export * from "./src/text/Description"
