@@ -26,6 +26,6 @@
     "resolveJsonModule": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*", "__tests__/**/*"]
+  "include": ["src/**/*", "__tests__/**/*", "index.ts", "ag-table.ts"]
   // "exclude": ["../../node_modules", "node_modules", "build", "scripts"]
 }
