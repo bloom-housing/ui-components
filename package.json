@@ -7,7 +7,11 @@
   "main": "index.js",
   "exports": {
     ".": "./index.ts",
-    "./ag-table": "./ag-table.ts"
+    "./ag-table": "./ag-table.ts",
+    "./tailwind.config.js": "./tailwind.config.js",
+    "./tailwind.tosass.js": "./tailwind.tosass.js",
+    "./src/global/css-imports.scss": "./src/global/css-imports.scss",
+    "./src/global/app-css.scss": "./src/global/app-css.scss"
   },
   "license": "Apache-2.0",
   "private": false,
