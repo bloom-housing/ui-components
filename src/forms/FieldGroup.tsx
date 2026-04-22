@@ -31,6 +31,7 @@ interface FieldGroupProps {
   fieldLabelClassName?: string
   fields?: FieldSingle[]
   groupLabel?: string | React.ReactNode
+  groupLabelClassName?: string
   groupNote?: string
   groupSubNote?: string
   name: string
@@ -47,6 +48,7 @@ interface FieldGroupProps {
 const FieldGroup = ({
   name,
   groupLabel,
+  groupLabelClassName,
   fields,
   type = "checkbox",
   validation = {},
@@ -75,9 +77,9 @@ const FieldGroup = ({
 
   const getIndividualInput = (item: FieldSingle): React.ReactNode => {
     return (
-      <div key={item.value}>
+      <>
         <input
-          aria-describedby={`${name}-error`}
+          aria-describedby={`${name}-error ${item.note ? `${item.id}-note` : ""}`}
           aria-invalid={!!error || false}
           type={type}
           id={item.id}
@@ -105,7 +107,11 @@ const FieldGroup = ({
         >
           {item.label}
         </label>
-        {item.note && <span className={"field-note font-normal"}>{item.note}</span>}
+        {item.note && (
+          <span id={`${item.id}-note`} className={"field-note font-normal"}>
+            {item.note}
+          </span>
+        )}
 
         {item.description && (
           <div className="ml-8 -mt-1 mb-5">
@@ -119,7 +125,7 @@ const FieldGroup = ({
             </ExpandableContent>
           </div>
         )}
-      </div>
+      </>
     )
   }
 
@@ -145,7 +151,7 @@ const FieldGroup = ({
 
   const getInputSet = (item: FieldSingle): React.ReactNode => {
     return (
-      <div key={item.value}>
+      <>
         {getIndividualInput(item)}
         {item.additionalText && checkedInputs.indexOf(item.label?.toString() || "") >= 0 && (
           <Field
@@ -160,17 +166,21 @@ const FieldGroup = ({
             dataTestId={item.dataTestId}
           />
         )}
-      </div>
+      </>
     )
   }
+  const describedBy = [groupSubNote ? `${name}-group-sub-note` : "", error ? `${name}-error` : ""]
+    .filter(Boolean)
+    .join(" ")
+
   return (
-    <fieldset
-      aria-describedby={`${groupSubNote ? `${name}-group-sub-note` : ""} ${
-        error ? `${name}-error` : ""
-      }`}
-    >
+    <fieldset {...(describedBy ? { "aria-describedby": describedBy } : {})}>
       {groupLabel && (
-        <legend className={`text__caps-spaced ${error ? "text-alert" : ""}`}>{groupLabel}</legend>
+        <legend
+          className={`text__caps-spaced ${error ? "text-alert" : ""} ${groupLabelClassName || ""}`}
+        >
+          {groupLabel}
+        </legend>
       )}
       {groupNote && <p className="field-note mb-4">{groupNote}</p>}
 
