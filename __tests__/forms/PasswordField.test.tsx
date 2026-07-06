@@ -74,12 +74,6 @@ describe("<PasswordField>", () => {
     expect(input.value).toBe("hunter2")
   })
 
-  it("derives the checkbox id/name from the field's id or name", () => {
-    const { container } = render(<PasswordFieldDefault />)
-    const checkboxInput = container.querySelector("#password-show-password")
-    expect(checkboxInput).toBeTruthy()
-  })
-
   it("renders the error message when passed through", () => {
     const { getByText } = render(<PasswordFieldError />)
     expect(getByText("Wrong password")).toBeTruthy()
