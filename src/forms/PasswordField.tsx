@@ -2,10 +2,13 @@ import * as React from "react"
 import { useState } from "react"
 import { Field, FieldProps } from "./Field"
 
-export interface PasswordFieldProps extends Omit<FieldProps, "type" | "postInputContent"> {
+export interface PasswordFieldProps
+  extends Omit<FieldProps, "type" | "postInputContent" | "className"> {
   showPasswordLabel?: string
   hidePasswordLabel?: string
   checkboxDataTestId?: string
+  className?: string
+  fieldClassName?: string
 }
 
 const PasswordField = (props: PasswordFieldProps) => {
@@ -13,6 +16,8 @@ const PasswordField = (props: PasswordFieldProps) => {
     showPasswordLabel = "Show password",
     hidePasswordLabel = "Hide password",
     checkboxDataTestId,
+    className,
+    fieldClassName,
     ...fieldProps
   } = props
 
@@ -22,8 +27,8 @@ const PasswordField = (props: PasswordFieldProps) => {
   const checkboxIdOrName = `${idOrName}-show-password`
 
   return (
-    <>
-      <Field {...fieldProps} type={visible ? "text" : "password"} />
+    <div className={className}>
+      <Field {...fieldProps} className={fieldClassName} type={visible ? "text" : "password"} />
       <Field
         type="checkbox"
         id={checkboxIdOrName}
@@ -32,7 +37,7 @@ const PasswordField = (props: PasswordFieldProps) => {
         onChange={() => setVisible((prevVisible) => !prevVisible)}
         dataTestId={checkboxDataTestId}
       />
-    </>
+    </div>
   )
 }
 
