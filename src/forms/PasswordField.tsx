@@ -21,13 +21,19 @@ const PasswordField = (props: PasswordFieldProps) => {
     ...fieldProps
   } = props
 
+  const classes = ["password-field"]
+
+  if (className) {
+    classes.push(className)
+  }
+
   const [visible, setVisible] = useState(false)
 
   const idOrName = props.id || props.name
   const checkboxIdOrName = `${idOrName}-show-password`
 
   return (
-    <div className={className}>
+    <div className={classes.join(" ")}>
       <Field {...fieldProps} className={fieldClassName} type={visible ? "text" : "password"} />
       <Field
         type="checkbox"
