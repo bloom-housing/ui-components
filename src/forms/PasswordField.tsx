@@ -5,7 +5,6 @@ import { Field, FieldProps } from "./Field"
 export interface PasswordFieldProps
   extends Omit<FieldProps, "type" | "postInputContent" | "className"> {
   showPasswordLabel?: string
-  hidePasswordLabel?: string
   checkboxDataTestId?: string
   className?: string
   fieldClassName?: string
@@ -14,7 +13,6 @@ export interface PasswordFieldProps
 const PasswordField = (props: PasswordFieldProps) => {
   const {
     showPasswordLabel = "Show password",
-    hidePasswordLabel = "Hide password",
     checkboxDataTestId,
     className,
     fieldClassName,
@@ -39,7 +37,7 @@ const PasswordField = (props: PasswordFieldProps) => {
         type="checkbox"
         id={checkboxIdOrName}
         name={checkboxIdOrName}
-        label={visible ? hidePasswordLabel : showPasswordLabel}
+        label={showPasswordLabel}
         onChange={() => setVisible((prevVisible) => !prevVisible)}
         dataTestId={checkboxDataTestId}
       />

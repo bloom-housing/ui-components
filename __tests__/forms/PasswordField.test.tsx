@@ -34,7 +34,6 @@ const PasswordFieldCustomLabels = () => {
       name={"password"}
       label={"Password"}
       showPasswordLabel={"Disclose password"}
-      hidePasswordLabel={"Conceal password"}
     />
   )
 }
@@ -47,21 +46,18 @@ describe("<PasswordField>", () => {
     expect(getByLabelText("Show password")).toBeTruthy()
   })
 
-  it("toggles the input type and checkbox label when the checkbox is clicked", () => {
-    const { getByLabelText, queryByLabelText } = render(<PasswordFieldDefault />)
+  it("toggles the input type when the checkbox is clicked", () => {
+    const { getByLabelText } = render(<PasswordFieldDefault />)
     const input = getByLabelText("Password") as HTMLInputElement
     const checkbox = getByLabelText("Show password")
 
     fireEvent.click(checkbox)
 
     expect(input.type).toBe("text")
-    expect(queryByLabelText("Hide password")).toBeTruthy()
-    expect(queryByLabelText("Show password")).toBeNull()
 
-    fireEvent.click(getByLabelText("Hide password"))
+    fireEvent.click(checkbox)
 
     expect(input.type).toBe("password")
-    expect(queryByLabelText("Show password")).toBeTruthy()
   })
 
   it("preserves the typed value when toggling visibility", () => {
@@ -79,10 +75,8 @@ describe("<PasswordField>", () => {
     expect(getByText("Wrong password")).toBeTruthy()
   })
 
-  it("supports custom show/hide labels", () => {
+  it("supports a custom show password label", () => {
     const { getByLabelText } = render(<PasswordFieldCustomLabels />)
     expect(getByLabelText("Disclose password")).toBeTruthy()
-    fireEvent.click(getByLabelText("Disclose password"))
-    expect(getByLabelText("Conceal password")).toBeTruthy()
   })
 })
