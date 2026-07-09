@@ -414,8 +414,8 @@ progress,
 }
 
 .password-field {
-  margin-bottom: 1.25rem;
+  margin-block-end: 1.25rem;
   * > &:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 }
