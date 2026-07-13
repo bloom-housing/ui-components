@@ -412,3 +412,10 @@ progress,
   @apply bg-primary;
   transition: width 0.25s;
 }
+
+.password-field {
+  margin-block-end: 1.25rem;
+  * > &:last-child {
+    margin-block-end: 0;
+  }
+}
