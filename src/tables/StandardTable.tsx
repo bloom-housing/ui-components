@@ -135,7 +135,7 @@ export const StandardTable = (props: StandardTableProps) => {
   const tableId = useId()
 
   const headerLabels = Object.values(headers)?.map((header, index) => {
-    const uniqKey = `${tableId}header-${index}`
+    const uniqKey = `header-${index}`
     return (
       <HeaderCell key={uniqKey} className={headerClassName(header)}>
         {header && header !== "" ? getTranslationWithArguments(headerName(header)) : undefined}
