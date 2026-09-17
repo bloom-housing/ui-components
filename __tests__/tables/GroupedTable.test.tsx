@@ -68,3 +68,34 @@ describe("<GroupedTable>", () => {
     expect(getByText(data[1].data[1].dob.content))
   })
 })
+
+describe("GroupedTable row ids", () => {
+  const rowIdsIn = (container: HTMLElement) =>
+    Array.from(container.querySelectorAll("tbody tr"))
+      .map((row) => row.id)
+      .filter((id) => id.length > 0)
+
+  it("does not repeat an id when a page renders two tables", () => {
+    const { container } = render(
+      <>
+        <GroupedTable headers={headers} data={data} />
+        <GroupedTable headers={headers} data={data} />
+      </>
+    )
+
+    const ids = rowIdsIn(container)
+    expect(ids.length).toBeGreaterThan(0)
+    expect(new Set(ids).size).toBe(ids.length)
+  })
+
+  it("uses a row's own id when it has one", () => {
+    const withIds = [
+      { data: [{ id: { content: "abc" }, name: { content: "Akane" } }] },
+      { data: [{ id: { content: "def" }, name: { content: "Beatrice" } }] },
+    ]
+
+    const { container } = render(<GroupedTable headers={{ name: t("t.name") }} data={withIds} />)
+
+    expect(rowIdsIn(container)).toEqual(["row-abc", "row-def"])
+  })
+})

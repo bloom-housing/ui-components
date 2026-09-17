@@ -76,3 +76,39 @@ describe("<StandardTable>", () => {
     expect(container.getElementsByClassName("cell-class").length).toBe(6)
   })
 })
+
+describe("StandardTable row ids", () => {
+  const rowIdsIn = (container: HTMLElement) =>
+    Array.from(container.querySelectorAll("tbody tr")).map((row) => row.id)
+
+  it("gives every row an id", () => {
+    const { container } = render(<StandardTable headers={headers} data={data} />)
+
+    expect(rowIdsIn(container)).toHaveLength(2)
+    expect(rowIdsIn(container).every((id) => id.length > 0)).toBe(true)
+  })
+
+  it("does not repeat an id when a page renders two tables", () => {
+    const { container } = render(
+      <>
+        <StandardTable headers={headers} data={data} />
+        <StandardTable headers={headers} data={data} />
+      </>
+    )
+
+    const ids = rowIdsIn(container)
+    expect(ids).toHaveLength(4)
+    expect(new Set(ids).size).toBe(4)
+  })
+
+  it("uses a row's own id when it has one", () => {
+    const withIds: StandardTableData = [
+      { id: { content: "abc" }, number: { content: "100" } },
+      { id: { content: "def" }, number: { content: "101" } },
+    ]
+
+    const { container } = render(<StandardTable headers={{ number: "t.unit" }} data={withIds} />)
+
+    expect(rowIdsIn(container)).toEqual(["row-abc", "row-def"])
+  })
+})

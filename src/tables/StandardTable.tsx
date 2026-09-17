@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React, { useId, useState, useEffect } from "react"
 import { DragDropProvider } from "@dnd-kit/react"
 import { isSortable, useSortable } from "@dnd-kit/react/sortable"
 import { faGripLines } from "@fortawesome/free-solid-svg-icons"
-import { nanoid } from "nanoid"
 import { getTranslationWithArguments } from "../helpers/getTranslationWithArguments"
 import { Icon, IconFillColors } from "../icons/Icon"
 import { t } from "../helpers/translator"
@@ -131,9 +130,12 @@ export const StandardTable = (props: StandardTableProps) => {
   const { headers = {}, cellClassName } = props
 
   const [tableData, setTableData] = useState<StandardTableData | undefined>(props.data)
+  // Unique per table and identical on the server and the client, so row ids survive hydration
+  // without colliding when a page renders more than one table.
+  const tableId = useId()
 
   const headerLabels = Object.values(headers)?.map((header, index) => {
-    const uniqKey = process.env.NODE_ENV === "test" ? `header-${index}` : nanoid()
+    const uniqKey = `header-${index}`
     return (
       <HeaderCell key={uniqKey} className={headerClassName(header)}>
         {header && header !== "" ? getTranslationWithArguments(headerName(header)) : undefined}
@@ -161,11 +163,7 @@ export const StandardTable = (props: StandardTableProps) => {
   }
 
   const body = tableData?.map((row, dataIndex) => {
-    const rowKey = row["id"]
-      ? `row-${row["id"].content as string}`
-      : process.env.NODE_ENV === "test"
-      ? `standardrow-${dataIndex}`
-      : nanoid()
+    const rowKey = row["id"] ? `row-${row["id"].content as string}` : `${tableId}row-${dataIndex}`
 
     let rowClass: string | undefined = ""
     const cols = Object.keys(headers)?.map((colKey, colIndex) => {

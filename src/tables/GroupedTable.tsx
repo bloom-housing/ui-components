@@ -1,5 +1,5 @@
 import * as React from "react"
-import { nanoid } from "nanoid"
+import { useId } from "react"
 import { Cell, StandardTableData, StandardTableProps } from "./StandardTable"
 
 export interface GroupedTableGroup {
@@ -14,9 +14,12 @@ export interface GroupedTableProps extends Omit<StandardTableProps, "data"> {
 
 export const GroupedTable = (props: GroupedTableProps) => {
   const { headers, data, cellClassName } = props
+  // Rendered as each row's dom id, so it has to be identical on the server and the client and
+  // unique when a page renders more than one table.
+  const tableId = useId()
 
   const headerLabels = Object.values(headers).map((col, index) => {
-    const uniqKey = process.env.NODE_ENV === "test" ? `header-${index}` : nanoid()
+    const uniqKey = `header-${index}`
     return (
       <th key={uniqKey}>
         {typeof col === "string" ? col : col.name}{" "}
@@ -36,9 +39,9 @@ export const GroupedTable = (props: GroupedTableProps) => {
 
     if (groupHeader) {
       body.push(
-        <tr key={process.env.NODE_ENV === "test" ? "data-header" : nanoid()}>
+        <tr key={`${tableId}group-${dataIndex}`}>
           <Cell
-            key={process.env.NODE_ENV === "test" ? "cell-header" : nanoid()}
+            key={`${tableId}group-${dataIndex}-header`}
             className={groupClassName}
             colSpan={colSpan}
           >
@@ -51,11 +54,9 @@ export const GroupedTable = (props: GroupedTableProps) => {
     groupData.forEach((row, groupDataIndex) => {
       const rowKey = row["id"]
         ? `row-${row["id"].content as string}`
-        : process.env.NODE_ENV === "test"
-        ? `groupedrow-${dataIndex}-${groupDataIndex}`
-        : nanoid()
+        : `${tableId}row-${dataIndex}-${groupDataIndex}`
       const cols = Object.keys(headers).map((colKey, colIndex) => {
-        const uniqKey = process.env.NODE_ENV === "test" ? `col-${colIndex}` : nanoid()
+        const uniqKey = `${rowKey}-${colIndex}`
         const header = headers[colKey]
         const cell = row[colKey]?.content
         return (
